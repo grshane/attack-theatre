@@ -1,0 +1,60 @@
+/*Styles for /calendar pages */
+
+.view-calendar .view-header {
+	margin-bottom: 1em;
+}
+
+.view .date-nav-wrapper .date-nav {
+	margin: 0px;
+	padding: 0px;
+	min-height: none;
+	.date-prev, .date-next {
+		margin-top: 15px;
+		background: none;
+		background-color: none !important;
+		list-style: none;
+		.fa {
+		color: $red;
+		}
+	}
+}
+
+.date-nav h2 {
+	margin: 0px;
+}
+
+.pager {
+	margin: 0;
+
+}
+
+.calendar-calendar td {
+	border: 1px solid $lightgrey;
+	text-align: center;
+	&.mini {
+	padding: 10px;
+	border: 1px solid $lightgrey;
+		
+	}
+}
+
+.calendar-calendar table.mini td.empty{
+		background-color: $palegrey;
+		border: 1px solid $lightgrey;
+		}
+
+.event-date div span {
+	text-transform: uppercase;
+	font-size: .9em;
+	@include secondary-font;
+}
+
+.event-title {
+	color: $black;
+	font-size: 1.1em;
+}
+
+.event-building {
+	color: $black;
+	font-size: .9em;
+}

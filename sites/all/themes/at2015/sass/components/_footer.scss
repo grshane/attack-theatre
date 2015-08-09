@@ -1,0 +1,74 @@
+/*Styles to support the sticky footer */
+
+
+#footer {
+margin-top: 1em;
+	h2 {
+	color:$white;
+	margin: 0;
+	}
+	border: 1px solid green;
+	@include secondary-font;
+	background-color: $darkgrey;
+	color: $white;
+	height:120px;
+	display: table-row;
+	width: 100%;
+	/*min-width: 768px;*/
+	font-size:.8em;
+		div {
+		margin-bottom: 0px;
+			a{
+			color: $white;
+			text-decoration: none;
+		}
+	}
+}
+
+#block-block-1 {
+	max-width: 960px;
+	margin: 20px auto;
+}
+.footer_left {
+	float: left;
+	margin-left: 30px;
+	display: table;
+}
+.footer_right{
+	float:right;
+	display:table;
+	margin-right: 30px;
+		.footer_logo {
+    	text-align: left;
+    	margin-top: 20px;
+    }
+}
+.footer_logo {
+	float: left;
+	max-width:100px;
+}
+
+.fa {
+	margin-right: .2em;
+}
+
+@media (max-width: 767px) {
+	.footer_left, .footer_middle, .footer_right {
+	width: 100%;
+	margin: 10px 10px 10px 0;
+	text-align: center;
+	.footer_logo {
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 2em;
+	img {
+	padding-left: .5em;
+	}
+		}
+	}
+}
+
+#footer p {
+	margin:1em 0;
+}
+

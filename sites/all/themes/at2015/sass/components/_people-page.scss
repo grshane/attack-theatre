@@ -1,0 +1,389 @@
+/*Styles for People Pages */
+
+.node-type-people-page {
+	.contact_info {
+	padding: 10px;
+	border: 1px solid $lightgrey;
+	background-color: $palegrey;
+	@media (max-width: 767px) {
+	width: 95%;
+	margin-bottom: 20px;
+	}
+	@media (min-width: 768px) {
+	max-width: 300px;
+	float: left;
+	margin: 0 20px 20px 0;
+	}
+	.field-name-field-photo {
+		padding: 9px;
+		margin: 0 auto;
+		width: 200px;
+		text-align: center;
+		}
+	}
+	.bio {
+		vertical-align: top;
+		h1 {
+			margin-top: 0;
+		}
+
+	.field-collection-container {
+		border-bottom: 0px;
+	}
+	.field-collection-view {
+	margin: 0;
+	.field-label {
+	width: 100%;
+	}
+	}
+	}
+}
+
+
+.contact_info p {
+	margin: .5em 0;
+}
+
+.field-name-field-selected-publications header {
+	display:none;
+}
+
+.field-name-field-selected-publications .field-item {
+	padding: 1em 0;
+	border-bottom: 1px dotted $grey;
+}
+
+.node-type-people-page h2 {
+	margin-top: 0px;
+}
+
+.node-type-people-page h1 {
+	margin-bottom: 0px;
+}
+
+/*Directory table layouts */
+
+#block-menu-menu-directory-menu ul.menu{
+	list-style-type: none;
+	width: 100%;
+	display: table;
+	padding-left: 0;
+	li {
+		display:table-cell;
+		width: 20%;
+		text-align:center;
+		background-color: $palegrey;
+		color: $darkgrey;
+		border-right: 2px solid $white;
+		height: 50px;
+		vertical-align: middle;
+		&.is-active-trail {
+			background-color: $red;
+			a {
+			color: $white;
+			}
+		}
+		a {
+			text-transform:uppercase;
+			color:$darkgrey;
+			width: 100%;
+			&:hover {
+				color:$grey;
+			}
+		}
+	}
+}
+
+/* Grid Layouts */
+
+.view-people-pages-and-attachments {
+	table.views-view-grid{
+	border-spacing:10px;
+	border-collapse: separate;
+		td {
+		border: 1px solid $grey;
+		padding: 1em;
+		@media (min-width:509px) {
+  		width: 50%;
+  		}
+  		@media (max-width:510px) {
+  		width: auto;
+  		display: block;
+  		&.col-first {
+  			margin-bottom:.5em;
+  		}
+  		}
+		h2 {
+			margin:0px;
+			line-height: 1.5em;
+		}
+		.views-field-field-computed-prof-title {
+			margin: 0 0 .5em 0;
+			font-size: 1.2em;
+		}
+	}
+	}
+}
+
+.section-directory {
+	table {
+		color: $darkgrey;
+	}
+}
+
+.views-field-field-photo {
+	float: left;
+	padding-right: 1em;
+}
+
+/* Submenus */
+
+#block-menu-menu-faculty-submenu ul, #block-menu-menu-staff-submenu ul, #block-menu-menu-student-submenu ul {
+	list-style-type: none;
+	padding-left: 0;
+	li {
+		display:inline-block;
+		text-align:center;
+		border: 2px solid $palegrey;
+		border-radius: 10px;
+		color: $darkgrey;
+		margin: 5px;
+		padding: 5px 10px;
+		&.is-active-trail {
+			background-color: $palegrey;
+			}
+		}
+}
+
+
+/* Fake active trail for dynamic second-tier menus */
+
+.page-directory-all-200, .page-directory-all-2728, 
+.page-directory-a-1, .page-directory-b-1, .page-directory-c-1, .page-directory-d-1, .page-directory-e-1,
+.page-directory-f-1, .page-directory-g-1, .page-directory-h-1, .page-directory-i-1, .page-directory-j-1,
+.page-directory-k-1, .page-directory-l-1, .page-directory-m-1, .page-directory-n-1, .page-directory-o-1,
+.page-directory-p-1, .page-directory-q-1, .page-directory-r-1, .page-directory-s-1, .page-directory-t-1,
+.page-directory-u-1, .page-directory-v-1, .page-directory-w-1, .page-directory-x-1, .page-directory-y-1, 
+.page-directory-z-1,
+.page-directory-a-200, .page-directory-b-200, .page-directory-c-200, .page-directory-d-200, .page-directory-e-200,
+.page-directory-f-200, .page-directory-g-200, .page-directory-h-200, .page-directory-i-200, .page-directory-j-200,
+.page-directory-k-200, .page-directory-l-200, .page-directory-m-200, .page-directory-n-200, .page-directory-o-200,
+.page-directory-p-200, .page-directory-q-200, .page-directory-r-200, .page-directory-s-200, .page-directory-t-200,
+.page-directory-u-200, .page-directory-v-200, .page-directory-w-200, .page-directory-x-200, .page-directory-y-200, 
+.page-directory-z-200,
+.page-directory-a-2728, .page-directory-b-2728, .page-directory-c-2728, .page-directory-d-2728, .page-directory-e-2728,
+.page-directory-f-2728, .page-directory-g-2728, .page-directory-h-2728, .page-directory-i-2728, .page-directory-j-2728,
+.page-directory-k-2728, .page-directory-l-2728, .page-directory-m-2728, .page-directory-n-2728, .page-directory-o-2728,
+.page-directory-p-2728, .page-directory-q-2728, .page-directory-r-2728, .page-directory-s-2728, .page-directory-t-2728,
+.page-directory-u-2728, .page-directory-v-2728, .page-directory-w-2728, .page-directory-x-2728, .page-directory-y-2728, 
+.page-directory-z-2728 {
+	#faculty {
+		background-color: $red;
+		a {
+		color: $white;
+		}
+	}
+}
+
+.page-directory-a-1, .page-directory-b-1, .page-directory-c-1, .page-directory-d-1, .page-directory-e-1,
+.page-directory-f-1, .page-directory-g-1, .page-directory-h-1, .page-directory-i-1, .page-directory-j-1,
+.page-directory-k-1, .page-directory-l-1, .page-directory-m-1, .page-directory-n-1, .page-directory-o-1,
+.page-directory-p-1, .page-directory-q-1, .page-directory-r-1, .page-directory-s-1, .page-directory-t-1,
+.page-directory-u-1, .page-directory-v-1, .page-directory-w-1, .page-directory-x-1, .page-directory-y-1, 
+.page-directory-z-1 {
+	#all-faculty {
+		background-color: $palegrey;
+		a {
+		color: $black;
+		}
+	}
+}
+
+.page-directory-a-200, .page-directory-b-200, .page-directory-c-200, .page-directory-d-200, .page-directory-e-200,
+.page-directory-f-200, .page-directory-g-200, .page-directory-h-200, .page-directory-i-200, .page-directory-j-200,
+.page-directory-k-200, .page-directory-l-200, .page-directory-m-200, .page-directory-n-200, .page-directory-o-200,
+.page-directory-p-200, .page-directory-q-200, .page-directory-r-200, .page-directory-s-200, .page-directory-t-200,
+.page-directory-u-200, .page-directory-v-200, .page-directory-w-200, .page-directory-x-200, .page-directory-y-200, 
+.page-directory-z-200 {
+	#adjunct-faculty {
+		background-color: $palegrey;
+		a {
+		color: $black;
+		}
+	}
+}
+
+.page-directory-a-2728, .page-directory-b-2728, .page-directory-c-2728, .page-directory-d-2728, .page-directory-e-2728,
+.page-directory-f-2728, .page-directory-g-2728, .page-directory-h-2728, .page-directory-i-2728, .page-directory-j-2728,
+.page-directory-k-2728, .page-directory-l-2728, .page-directory-m-2728, .page-directory-n-2728, .page-directory-o-2728,
+.page-directory-p-2728, .page-directory-q-2728, .page-directory-r-2728, .page-directory-s-2728, .page-directory-t-2728,
+.page-directory-u-2728, .page-directory-v-2728, .page-directory-w-2728, .page-directory-x-2728, .page-directory-y-2728, 
+.page-directory-z-2728 {
+	#affiliated-faculty {
+		background-color: $palegrey;
+		a {
+		color: $black;
+		}
+	}
+}
+
+
+
+.page-directory-all-2731, .page-directory-all-2730,
+.page-directory-a-2, .page-directory-b-2, .page-directory-c-2, .page-directory-d-2, .page-directory-e-2,
+.page-directory-f-2, .page-directory-g-2, .page-directory-h-2, .page-directory-i-2, .page-directory-j-2,
+.page-directory-k-2, .page-directory-l-2, .page-directory-m-2, .page-directory-n-2, .page-directory-o-2,
+.page-directory-p-2, .page-directory-q-2, .page-directory-r-2, .page-directory-s-2, .page-directory-t-2,
+.page-directory-u-2, .page-directory-v-2, .page-directory-w-2, .page-directory-x-2, .page-directory-y-2, 
+.page-directory-z-2,
+.page-directory-a-2731, .page-directory-b-2731, .page-directory-c-2731, .page-directory-d-2731, .page-directory-e-2731,
+.page-directory-f-2731, .page-directory-g-2731, .page-directory-h-2731, .page-directory-i-2731, .page-directory-j-2731,
+.page-directory-k-2731, .page-directory-l-2731, .page-directory-m-2731, .page-directory-n-2731, .page-directory-o-2731,
+.page-directory-p-2731, .page-directory-q-2731, .page-directory-r-2731, .page-directory-s-2731, .page-directory-t-2731,
+.page-directory-u-2731, .page-directory-v-2731, .page-directory-w-2731, .page-directory-x-2731, .page-directory-y-2731, 
+.page-directory-z-2731,
+.page-directory-a-2730, .page-directory-b-2730, .page-directory-c-2730, .page-directory-d-2730, .page-directory-e-2730,
+.page-directory-f-2730, .page-directory-g-2730, .page-directory-h-2730, .page-directory-i-2730, .page-directory-j-2730,
+.page-directory-k-2730, .page-directory-l-2730, .page-directory-m-2730, .page-directory-n-2730, .page-directory-o-2730,
+.page-directory-p-2730, .page-directory-q-2730, .page-directory-r-2730, .page-directory-s-2730, .page-directory-t-2730,
+.page-directory-u-2730, .page-directory-v-2730, .page-directory-w-2730, .page-directory-x-2730, .page-directory-y-2730, 
+.page-directory-z-2730 {
+	#staff {
+		background-color: $red;
+		a {
+		color: $white;
+		}
+	}
+}
+
+
+.page-directory-a-2, .page-directory-b-2, .page-directory-c-2, .page-directory-d-2, .page-directory-e-2,
+.page-directory-f-2, .page-directory-g-2, .page-directory-h-2, .page-directory-i-2, .page-directory-j-2,
+.page-directory-k-2, .page-directory-l-2, .page-directory-m-2, .page-directory-n-2, .page-directory-o-2,
+.page-directory-p-2, .page-directory-q-2, .page-directory-r-2, .page-directory-s-2, .page-directory-t-2,
+.page-directory-u-2, .page-directory-v-2, .page-directory-w-2, .page-directory-x-2, .page-directory-y-2, 
+.page-directory-z-2 {
+	#all-staff {
+		background-color: $palegrey;
+		a {
+		color: $black;
+		}
+	}
+}
+
+.page-directory-a-2731, .page-directory-b-2731, .page-directory-c-2731, .page-directory-d-2731, .page-directory-e-2731,
+.page-directory-f-2731, .page-directory-g-2731, .page-directory-h-2731, .page-directory-i-2731, .page-directory-j-2731,
+.page-directory-k-2731, .page-directory-l-2731, .page-directory-m-2731, .page-directory-n-2731, .page-directory-o-2731,
+.page-directory-p-2731, .page-directory-q-2731, .page-directory-r-2731, .page-directory-s-2731, .page-directory-t-2731,
+.page-directory-u-2731, .page-directory-v-2731, .page-directory-w-2731, .page-directory-x-2731, .page-directory-y-2731, 
+.page-directory-z-2731 {
+	#administrative {
+		background-color: $palegrey;
+		a {
+		color: $black;
+		}
+	}
+}
+
+.page-directory-a-2730, .page-directory-b-2730, .page-directory-c-2730, .page-directory-d-2730, .page-directory-e-2730,
+.page-directory-f-2730, .page-directory-g-2730, .page-directory-h-2730, .page-directory-i-2730, .page-directory-j-2730,
+.page-directory-k-2730, .page-directory-l-2730, .page-directory-m-2730, .page-directory-n-2730, .page-directory-o-2730,
+.page-directory-p-2730, .page-directory-q-2730, .page-directory-r-2730, .page-directory-s-2730, .page-directory-t-2730,
+.page-directory-u-2730, .page-directory-v-2730, .page-directory-w-2730, .page-directory-x-2730, .page-directory-y-2730, 
+.page-directory-z-2730 {
+	#technical {
+		background-color: $palegrey;
+		a {
+		color: $black;
+		}
+	}
+}
+
+.page-directory-students-current, .page-directory-students-alumni,
+.page-directory-a-3, .page-directory-b-3, .page-directory-c-3, .page-directory-d-3, .page-directory-e-3,
+.page-directory-f-3, .page-directory-g-3, .page-directory-h-3, .page-directory-i-3, .page-directory-j-3,
+.page-directory-k-3, .page-directory-l-3, .page-directory-m-3, .page-directory-n-3, .page-directory-o-3,
+.page-directory-p-3, .page-directory-q-3, .page-directory-r-3, .page-directory-s-3, .page-directory-t-3,
+.page-directory-u-3, .page-directory-v-3, .page-directory-w-3, .page-directory-x-3, .page-directory-y-3, 
+.page-directory-z-3,
+.page-directory-students-current-a, .page-directory-students-current-b, .page-directory-students-current-c, .page-directory-students-current-d, .page-directory-students-current-e,
+.page-directory-students-current-f, .page-directory-students-current-g, .page-directory-students-current-h, .page-directory-students-current-i, .page-directory-students-current-j,
+.page-directory-students-current-k, .page-directory-students-current-l, .page-directory-students-current-m, .page-directory-students-current-n, .page-directory-students-current-o,
+.page-directory-students-current-p, .page-directory-students-current-q, .page-directory-students-current-r, .page-directory-students-current-s, .page-directory-students-current-t,
+.page-directory-students-current-u, .page-directory-students-current-v, .page-directory-students-current-w, .page-directory-students-current-x, .page-directory-students-current-y, 
+.page-directory-students-current-z
+ {
+	#students {
+		background-color: $red;
+		a {
+		color: $white;
+		}
+	}
+}
+
+.page-directory-a-3, .page-directory-b-3, .page-directory-c-3, .page-directory-d-3, .page-directory-e-3,
+.page-directory-f-3, .page-directory-g-3, .page-directory-h-3, .page-directory-i-3, .page-directory-j-3,
+.page-directory-k-3, .page-directory-l-3, .page-directory-m-3, .page-directory-n-3, .page-directory-o-3,
+.page-directory-p-3, .page-directory-q-3, .page-directory-r-3, .page-directory-s-3, .page-directory-t-3,
+.page-directory-u-3, .page-directory-v-3, .page-directory-w-3, .page-directory-x-3, .page-directory-y-3, 
+.page-directory-z-3 {
+	#all-students {
+		background-color: $palegrey;
+		a {
+		color: $black;
+		}
+	}
+}
+
+.page-directory-students-current-a, .page-directory-students-current-b, .page-directory-students-current-c, .page-directory-students-current-d, .page-directory-students-current-e,
+.page-directory-students-current-f, .page-directory-students-current-g, .page-directory-students-current-h, .page-directory-students-current-i, .page-directory-students-current-j,
+.page-directory-students-current-k, .page-directory-students-current-l, .page-directory-students-current-m, .page-directory-students-current-n, .page-directory-students-current-o,
+.page-directory-students-current-p, .page-directory-students-current-q, .page-directory-students-current-r, .page-directory-students-current-s, .page-directory-students-current-t,
+.page-directory-students-current-u, .page-directory-students-current-v, .page-directory-students-current-w, .page-directory-students-current-x, .page-directory-students-current-y, 
+.page-directory-students-current-z {
+	#current {
+		background-color: $palegrey;
+		a {
+		color: $black;
+		}
+	}
+}
+
+
+/* Alpha pager styles */
+
+.view-display-id-attachment_1, .view-people-pages-and-attachments .view-header {
+	span.alpha {
+	margin-bottom: 1em;
+	display:inline-block;
+	a{
+	border: 1px solid $grey;
+	display:inline-block;
+	height: 26px;
+	width: 26px;
+	line-height: 26px;
+	border-radius: 13px;
+	text-align: center;
+}
+	}
+}
+
+
+/*Alumni Listing */
+
+.page-directory-students-alumni, .page-work-technical-reports {
+	caption {
+		font-size:2em;
+		text-align: left;
+		padding: 1em 0;
+		white-space:nowrap;
+		color: $darkgrey;
+	}
+}
+
+
+
+
+
+
+

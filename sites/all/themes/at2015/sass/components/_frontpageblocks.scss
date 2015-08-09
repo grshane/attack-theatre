@@ -1,0 +1,203 @@
+@import "compass/css3/_box-shadow.scss";
+
+/* Global headers for the blocks. These should all look the same. */
+
+.front div.view-header h2{
+  padding-bottom: 10px;
+  margin: 0px;
+  line-height: 1em;
+  color: $red;
+  font-size: .875em;
+  text-transform: uppercase;
+  a {
+    color:$red;
+  }
+}
+
+/*shared classes*/
+.frontpage-view {
+  clear: left;
+  height: auto;
+  min-height: 60px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted $palegrey;
+}
+
+div.view-footer {
+padding:0 .5em 0 .5em;
+clear: left;
+  }
+
+/* Icon callout blocks */
+
+.region-blockgroup-homepage-icon-callouts {
+  text-align:center;
+  margin: 0px auto;
+  vertical-align: top;
+}
+#block-block-8, #block-block-9, #block-block-10 {
+  display: inline-block;
+  max-width: 300px;
+  padding: 1em;
+  text-align: center;
+  vertical-align: top;
+}
+
+
+/* Red Read More buttons */
+  .views-field-button {
+  background-color: $red;
+  color: $white;
+  max-width: 125px;
+  padding: 10px;
+  margin: 1em 0;
+  text-align: center;
+  a {
+  color: $white;
+  }
+  a:after {
+  content:"" !important;
+  }
+  }
+
+/* Styling for full width Callout Boxes */
+
+.block-nodeblock {
+  @include secondary-font;
+    .node-content-callout {
+    clear:left;
+    height: 500px;
+    background-size: cover;
+    background-position: center center;
+      .content{
+      max-width: 960px;
+      margin: 0px auto;
+      text-align: center;
+      @include vertical-align;
+      h2 {
+      color: $white;
+      font-size: 2em;
+      line-height: normal;
+      }
+      .field-name-field-button-target {
+      color: $white;
+      border: 1px solid $white;
+      width: 100px;
+      margin: 0px auto;
+      padding: 10px;
+        a {
+        color: $white;
+        }
+        a:after {
+        content:"" !important;
+        }
+      }
+      .field-name-field-subtitle {
+      color: $white;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      }
+    }
+  }
+}
+
+#block-nodeblock-222186288 {
+  margin-bottom: -10px;
+}
+
+/*Styling for News and Calendar Feeds */
+
+#block-views-ab3c0c534b4b1da949f380185f7e45b1 {
+  margin-left:1em;
+  margin-right:1em;
+}
+
+.region-blockgroup-feeds {
+text-align: center;
+margin: 0 auto;
+max-width: 90%;
+  #block-views-ab3c0c534b4b1da949f380185f7e45b1, #block-views-fde4ccd696c94b0b833277471e679471 {
+  @media (min-width: 0px) and (max-width: 767px) {
+  max-width: 100%;
+  margin: 0 1em;
+  }
+  @media (min-width: 768px) {
+  max-width: 45%;
+  }
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+    .views-row {
+    padding-bottom: 1em;
+    white-space: nowrap;
+    .views-field-body, .views-field-title {
+    white-space:normal;
+    }
+    }
+    h2.block__title {
+    @include secondary-font;
+    color: $grey;
+    font-size: 1.3em;
+    }
+    .views-field-title {
+    margin-bottom: -1em;
+      a{
+      @include secondary-font;
+      font-size: 1.3em;
+      line-height: 2em;
+      }
+    } 
+    .views-field-nothing {
+      display: inline-block;
+      @include secondary-font;
+      line-height: 1em;
+      min-width: 120px;
+      text-align: center;
+      vertical-align: top;
+      font-size: 2em;
+      text-transform: uppercase;
+      border-bottom: 1px solid $red;
+      padding-bottom: 15px;
+      color: $red;
+      margin-bottom: 1.2em;
+      margin-right: .5em;
+    } 
+    .event_feed_wrapper {
+      display: inline-block;
+      @include secondary-font;
+      line-height: 1.3em;
+      color: $grey;
+      max-width: 66%;
+      white-space: normal;
+      a {
+      color: $black;
+      font-size: 1.3em;
+      }
+      p {
+      height: 0;
+      margin: 0;
+      }
+    } 
+    p.clear {
+    height:0;
+    width: 0;
+    margin: 0;
+    clear: left;
+    }
+    .view-footer {
+    padding-left:0;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

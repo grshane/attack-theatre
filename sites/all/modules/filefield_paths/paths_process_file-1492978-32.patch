@@ -1,0 +1,42 @@
+diff --git a/modules/filefield_paths.inc b/modules/filefield_paths.inc
+index 6c3f0f7..7fc2f9a 100644
+--- a/modules/filefield_paths.inc
++++ b/modules/filefield_paths.inc
+@@ -29,19 +29,25 @@ function file_aliases_filefield_paths_field_settings() {
+ /**
+  * Implements hook_filefield_paths_process_file().
+  */
+-function file_aliases_filefield_paths_process_file($new, &$file, $settings, &$entity, $type, &$update) {
+-  if ($new && !empty($file['field']['filename'])) {
+-    $token_data = array('file' => file_load($file['field']['fid']), $type => $entity);
+-    $file['filealias'] = filefield_paths_process_string($settings['filealias']['value'], $token_data, $settings['filealias']);
++function file_aliases_filefield_paths_process_file($type, $entity, $field, $instance, $langcode, &$items) {
++  $settings = $instance['settings']['filefield_paths'];
++  foreach ($items as &$file) {
++    if ($file['timestamp'] == REQUEST_TIME || $settings['active_updating']) {
++      $token_data = array(
++        'file' => (object) $file,
++        $type => $entity,
++      );
+ 
+-    $path = "filefield_paths/alias/{$file['field']['fid']}";
+-    $alias = drupal_get_path_alias($path);
+-    if ($alias !== $path) {
+-      path_delete(array('source' => $path));
++      // Process filealias
++      $file['filealias'] = filefield_paths_process_string($settings['file_alias']['file_alias'], $token_data, $settings['file_alias']['options']);
++
++      $path = array('source' => 'filefield_paths/alias/' . $file['fid']);
++      $alias = drupal_get_path_alias($path['source']);
++      if ($alias !== $path['source']) {
++        path_delete($path);
++      }
++      $path['alias'] = $file['filealias'];
++      path_save($path);
+     }
+-    path_save($path = array(
+-      'source' => $path,
+-      'alias' => $file['filealias']
+-    ));
+   }
+ }

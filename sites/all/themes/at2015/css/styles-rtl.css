@@ -1,0 +1,797 @@
+/**
+ * @file
+ * RTL companion for the styles.scss file.
+ */
+/* Import Sass mixins, variables, Compass modules, etc. */
+/* line 109, ../sass/_init.scss */
+th.views-field-field-prof-title-term-1 {
+  width: 10%;
+}
+
+/* line 170, ../sass/_init.scss */
+p, div, ul, a, span, h1, h2, h3, h4, h5 {
+  font-family: 'opensans', Helvetica, Arial, Verdana, sans-serif;
+  line-height: auto;
+}
+
+/* line 174, ../sass/_init.scss */
+h1 {
+  font-size: 2.2em;
+  font-weight: normal;
+  color: #1c305f;
+}
+
+/* line 180, ../sass/_init.scss */
+h2, .heading, h2.minical {
+  font-size: 1.5em;
+  font-weight: normal;
+  color: #1c305f;
+  background-color: none;
+}
+
+/* line 188, ../sass/_init.scss */
+p.heading {
+  margin: 0;
+}
+
+/* line 192, ../sass/_init.scss */
+.button {
+  font-size: 1.2em;
+  font-weight: normal;
+  color: #1c305f;
+  padding: 5px 10px;
+  margin: 0;
+  background-color: #e8e8e8;
+  width: 100%;
+}
+/* line 200, ../sass/_init.scss */
+.button:after {
+  content: "\f054";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  text-align: right;
+  float: right;
+}
+
+/* line 211, ../sass/_init.scss */
+.button a, a.button {
+  color: #1c305f;
+}
+/* line 213, ../sass/_init.scss */
+.button a:hover, a.button:hover {
+  color: #58a9e6;
+}
+
+/* line 218, ../sass/_init.scss */
+h3, .subheading {
+  font-size: 1.2em;
+  font-weight: normal;
+  color: #1c305f;
+  text-transform: uppercase;
+}
+
+/* line 225, ../sass/_init.scss */
+h4, .label {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* line 230, ../sass/_init.scss */
+h5 {
+  font-size: .8em;
+  font-weight: bold;
+}
+
+/* line 235, ../sass/_init.scss */
+a {
+  color: #58a9e6;
+  text-decoration: none;
+}
+/* line 238, ../sass/_init.scss */
+a:hover {
+  color: #1c305f;
+}
+
+/*Add an offsite icon after offsite links*/
+/* line 244, ../sass/_init.scss */
+a[href^="https://"]:after {
+  content: "\f08e";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 3px;
+  color: #cccccc;
+}
+
+/*Add an offsite icon after offsite links - https version*/
+/* line 256, ../sass/_init.scss */
+a[href^="https://"]:after {
+  content: "\f08e";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 3px;
+  color: #cccccc;
+}
+
+/* Strip from links to own domain or with class no_icon */
+/* line 269, ../sass/_init.scss */
+a[href^="https://rich.srv.cs.cmu.edu"]:after,
+a.no_icon:after {
+  content: "" !important;
+  padding-left: 0;
+}
+
+/* line 274, ../sass/_init.scss */
+.fa-lg {
+  font-size: 1.8em !important;
+}
+
+/* line 278, ../sass/_init.scss */
+.region-header a {
+  font-family: 'opensans', Helvetica, Arial, Verdana, sans-serif;
+  line-height: auto;
+  font-weight: normal;
+  color: white;
+  text-decoration: none;
+  font-size: .75em;
+}
+/* line 284, ../sass/_init.scss */
+.region-header a:hover {
+  color: #e8e8e8;
+}
+
+/* line 289, ../sass/_init.scss */
+.navigation a, .navigation .nolink, .navigation .menu a.active {
+  font-family: 'opensans', Helvetica, Arial, Verdana, sans-serif;
+  line-height: auto;
+  color: #333333;
+  text-decoration: none;
+  font-size: .9em;
+}
+
+/* line 296, ../sass/_init.scss */
+#highlighted {
+  background-color: #e8e8e8;
+  width: 100%;
+  margin-bottom: 2em;
+  text-align: center;
+}
+/* line 301, ../sass/_init.scss */
+#highlighted .region-highlighted {
+  max-width: 960px;
+  margin: -20px auto;
+  padding: 4px 0;
+}
+
+/* line 308, ../sass/_init.scss */
+hr {
+  border: 1px dotted #cccccc;
+  border-style: none none dotted;
+  color: none;
+  background-color: none;
+  margin-bottom: 1em;
+}
+
+/* line 317, ../sass/_init.scss */
+.front #back-top {
+  display: none !important;
+}
+
+/*Collapsible Fieldset Styles */
+/* line 323, ../sass/_init.scss */
+html.js fieldset.collapsed {
+  height: auto;
+}
+
+/* line 327, ../sass/_init.scss */
+fieldset {
+  padding-bottom: 0px;
+}
+/* line 329, ../sass/_init.scss */
+fieldset .fieldset-wrapper {
+  padding-top: 1em;
+}
+
+/* line 334, ../sass/_init.scss */
+fieldset.collapsible, fieldset.collapsed {
+  border-bottom: none;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+}
+/* line 339, ../sass/_init.scss */
+fieldset.collapsible .collapsed .fieldset-legend, fieldset.collapsed .collapsed .fieldset-legend {
+  background: none;
+}
+
+/* line 344, ../sass/_init.scss */
+.fieldset-icons {
+  float: left;
+  margin-top: 1em;
+  color: #e8e8e8;
+}
+
+/* line 350, ../sass/_init.scss */
+.node-type-people-page .fieldset-icons {
+  margin-top: .5em;
+}
+
+/*Event URL field on Calendar node edit page is wonky */
+/* line 356, ../sass/_init.scss */
+.form-item-field-event-url-und-0-url {
+  margin-top: 0px !important;
+}
+
+/*Give the content container a little room against the footer */
+/* line 362, ../sass/_init.scss */
+#content {
+  padding-bottom: 1em;
+}
+
+/*People Editing Page UX*/
+/* line 368, ../sass/_init.scss */
+#edit-field-override-first-name- {
+  float: left;
+}
+
+/*@font-face fonts here; Font Awesome has its own component */
+/*Montserrat styles */
+@font-face {
+  font-family: 'montserrat';
+  src: url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.eot");
+  src: url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.woff") format("woff"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.ttf") format("truetype"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.svg#montserratregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url("../fonts/montserrat_bold_macroman/Montserrat-Bold-webfont.eot");
+  src: url("../fonts/montserrat_bold_macroman/Montserrat-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat_bold_macroman/Montserrat-Bold-webfont.woff") format("woff"), url("../fonts/montserrat_bold_macroman/Montserrat-Bold-webfont.ttf") format("truetype"), url("../fonts/montserrat_bold_macroman/Montserrat-Bold-webfont.svg#montserratbold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.eot");
+  src: url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.woff") format("woff"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.ttf") format("truetype"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.svg#montserratregular") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.eot");
+  src: url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.woff") format("woff"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.ttf") format("truetype"), url("../fonts/montserrat_regular_macroman/Montserrat-Regular-webfont.svg#montserratregular") format("svg");
+  font-weight: bold;
+  font-style: italic;
+}
+
+/*Open Sans styles */
+@font-face {
+  font-family: 'opensans';
+  src: url("../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.eot");
+  src: url("../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.woff") format("woff"), url("../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.ttf") format("truetype"), url("../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.svg#open_sansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensans';
+  src: url("../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.eot");
+  src: url("../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.woff") format("woff"), url("../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.ttf") format("truetype"), url("../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.svg#open_sansitalic") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'opensans';
+  src: url("../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.eot");
+  src: url("../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.woff") format("woff"), url("../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.ttf") format("truetype"), url("../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.svg#open_sansbold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'opensans';
+  src: url("../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.eot");
+  src: url("../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.woff") format("woff"), url("../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.ttf") format("truetype"), url("../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.svg#open_sansbold_italic") format("svg");
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* HTML element (SMACSS base) rules */
+/**
+ * @file
+ * Normalize-rtl.scss is the RTL language extension of normalize.scss
+ */
+/**
+ * Lists
+ */
+/* line 9, ../sass/_normalize-rtl.scss */
+dd {
+  margin: 0 30px 0 0;
+}
+
+/* Address paddings set differently in IE 6/7. */
+/* line 16, ../sass/_normalize-rtl.scss */
+menu,
+ol,
+ul {
+  padding: 0 30px 0 0;
+}
+
+/* Layout rules */
+/**
+ * @file
+ * RTL companion for the layout-responsive.css file.
+ */
+/**
+ * @file
+ * Positioning for a responsive layout.
+ *
+ * Define CSS classes to create a fluid grid layout with optional sidebars
+ * depending on whether blocks are placed in the left or right sidebars.
+ *
+ * This layout uses the Zen Grids plugin for Compass: https://zengrids.com
+ */
+/**
+ * Use 3 grid columns for smaller screens.
+ */
+@media all and (min-width: 768px) and (max-width: 959px) {
+  /* line 151, ../sass/layouts/_responsive.scss */
+  .page-undergrads div#controls .fa-volume-off, .fa-pause, .fa-repeat, .fa-caret-down, .fa-caret-up {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* line 156, ../sass/layouts/_responsive.scss */
+  .front span#views-field-field-view-node {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* line 161, ../sass/layouts/_responsive.scss */
+  .front span#views-field-field-title {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* line 166, ../sass/layouts/_responsive.scss */
+  .front span#views-field-field-youtube-url {
+    display: block;
+    visibility: visible;
+  }
+
+  /* line 171, ../sass/layouts/_responsive.scss */
+  .front a.mobile {
+    display: block;
+    visibility: visible;
+  }
+
+  /* line 176, ../sass/layouts/_responsive.scss */
+  .front div#preview {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* line 181, ../sass/layouts/_responsive.scss */
+  .page-undergrads i#youtube {
+    display: block;
+    visibility: visible;
+  }
+
+  /**
+   * The layout when there is only one sidebar, the left one.
+   */
+  /* line 191, ../sass/layouts/_responsive.scss */
+  .sidebar-first {
+    /* Span 2 columns, starting in 2nd column from left. */
+    /* Span 1 column, starting in 1st column from left. */
+  }
+  /* line 193, ../sass/layouts/_responsive.scss */
+  .sidebar-first #content {
+    float: right;
+    width: 66.66667%;
+    margin-right: 33.33333%;
+    margin-left: -100%;
+  }
+  /* line 198, ../sass/layouts/_responsive.scss */
+  .sidebar-first .region-sidebar-first {
+    float: right;
+    width: 33.33333%;
+    margin-right: 0%;
+    margin-left: -33.33333%;
+  }
+
+  /**
+   * The layout when there is only one sidebar, the right one.
+   */
+  /* line 207, ../sass/layouts/_responsive.scss */
+  .sidebar-second {
+    /* Span 2 columns, starting in 1st column from left. */
+    /* Span 1 column, starting in 3rd column from left. */
+  }
+  /* line 209, ../sass/layouts/_responsive.scss */
+  .sidebar-second #content {
+    float: right;
+    width: 66.66667%;
+    margin-right: 0%;
+    margin-left: -66.66667%;
+  }
+  /* line 214, ../sass/layouts/_responsive.scss */
+  .sidebar-second .region-sidebar-second {
+    float: right;
+    width: 33.33333%;
+    margin-right: 66.66667%;
+    margin-left: -100%;
+  }
+
+  /**
+   * The layout when there are two sidebars.
+   */
+  /* line 222, ../sass/layouts/_responsive.scss */
+  .two-sidebars {
+    /* Span 2 columns, starting in 2nd column from left. */
+    /* Span 1 column, starting in 1st column from left. */
+    /* Start a new row and span all 3 columns. */
+  }
+  /* line 224, ../sass/layouts/_responsive.scss */
+  .two-sidebars #content {
+    float: right;
+    width: 66.66667%;
+    margin-right: 33.33333%;
+    margin-left: -100%;
+  }
+  /* line 229, ../sass/layouts/_responsive.scss */
+  .two-sidebars .region-sidebar-first {
+    float: right;
+    width: 33.33333%;
+    margin-right: 0%;
+    margin-left: -33.33333%;
+  }
+  /* line 234, ../sass/layouts/_responsive.scss */
+  .two-sidebars .region-sidebar-second {
+    float: right;
+    width: 100%;
+    margin-right: 0%;
+    margin-left: -100%;
+    padding-left: 0;
+    padding-right: 0;
+    clear: right;
+    /* Apply the shared properties of grid items in a single, efficient ruleset. */
+    /* Span 1 column, starting in the 1st column from left. */
+    /* Span 1 column, starting in the 2nd column from left. */
+    /* Span 1 column, starting in the 3rd column from left. */
+  }
+  /* line 240, ../sass/layouts/_responsive.scss */
+  .two-sidebars .region-sidebar-second .block {
+    padding-left: 11px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+  /* line 244, ../sass/layouts/_responsive.scss */
+  .two-sidebars .region-sidebar-second .block:nth-child(3n+1) {
+    float: right;
+    width: 33.33333%;
+    margin-right: 0%;
+    margin-left: -33.33333%;
+    clear: right;
+  }
+  /* line 249, ../sass/layouts/_responsive.scss */
+  .two-sidebars .region-sidebar-second .block:nth-child(3n+2) {
+    float: right;
+    width: 33.33333%;
+    margin-right: 33.33333%;
+    margin-left: -66.66667%;
+  }
+  /* line 253, ../sass/layouts/_responsive.scss */
+  .two-sidebars .region-sidebar-second .block:nth-child(3n) {
+    float: right;
+    width: 33.33333%;
+    margin-right: 66.66667%;
+    margin-left: -100%;
+  }
+}
+/**
+ * Use 5 grid columns for larger screens.
+ */
+@media all and (min-width: 960px) {
+  /* line 265, ../sass/layouts/_responsive.scss */
+  .page-undergrads i#youtube {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* line 270, ../sass/layouts/_responsive.scss */
+  .front span#views-field-field-title {
+    display: block;
+    visibility: visible;
+  }
+
+  /* line 275, ../sass/layouts/_responsive.scss */
+  .front span#views-field-field-youtube-url {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* line 280, ../sass/layouts/_responsive.scss */
+  .front a.mobile {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* line 285, ../sass/layouts/_responsive.scss */
+  .front div#preview {
+    display: block;
+    visibility: visible;
+  }
+
+  /**
+   * The layout when there is only one sidebar, the left one.
+   */
+  /* line 296, ../sass/layouts/_responsive.scss */
+  .sidebar-first {
+    /* Span 4 columns, starting in 2nd column from left. */
+    /* Span 1 column, starting in 1st column from left. */
+  }
+  /* line 298, ../sass/layouts/_responsive.scss */
+  .sidebar-first #content {
+    float: right;
+    width: 80%;
+    margin-right: 20%;
+    margin-left: -100%;
+  }
+  /* line 303, ../sass/layouts/_responsive.scss */
+  .sidebar-first .region-sidebar-first {
+    float: right;
+    width: 20%;
+    margin-right: 0%;
+    margin-left: -20%;
+  }
+
+  /**
+   * FRONT PAGE - The layout when there is only one sidebar, the right one.
+   */
+  /* line 311, ../sass/layouts/_responsive.scss */
+  .front.sidebar-second {
+    /* Span 4 columns, starting in 1st column from left. */
+    /* Span 1 column, starting in 5th column from left. */
+  }
+  /* line 313, ../sass/layouts/_responsive.scss */
+  .front.sidebar-second #content {
+    float: right;
+    width: 80%;
+    margin-right: 0%;
+    margin-left: -80%;
+  }
+  /* line 318, ../sass/layouts/_responsive.scss */
+  .front.sidebar-second .region-sidebar-second {
+    float: right;
+    width: 20%;
+    margin-right: 80%;
+    margin-left: -100%;
+  }
+
+  /**
+   * The layout when there is only one sidebar, the right one.
+   */
+  /* line 326, ../sass/layouts/_responsive.scss */
+  .sidebar-second {
+    /* Span 4 columns, starting in 1st column from left. */
+    /* Span 1 column, starting in 5th column from left. */
+  }
+  /* line 328, ../sass/layouts/_responsive.scss */
+  .sidebar-second #content {
+    float: right;
+    width: 60%;
+    margin-right: 0%;
+    margin-left: -60%;
+  }
+  /* line 333, ../sass/layouts/_responsive.scss */
+  .sidebar-second .region-sidebar-second {
+    float: right;
+    width: 40%;
+    margin-right: 60%;
+    margin-left: -100%;
+  }
+
+  /**
+   * The layout when there are two sidebars.
+   */
+  /* line 341, ../sass/layouts/_responsive.scss */
+  .two-sidebars {
+    /* Span 3 columns, starting in 2nd column from left. */
+    /* Span 1 column, starting in 1st column from left. */
+    /* Span 1 column, starting in 5th column from left. */
+  }
+  /* line 343, ../sass/layouts/_responsive.scss */
+  .two-sidebars #content {
+    float: right;
+    width: 60%;
+    margin-right: 20%;
+    margin-left: -80%;
+  }
+  /* line 348, ../sass/layouts/_responsive.scss */
+  .two-sidebars .region-sidebar-first {
+    float: right;
+    width: 20%;
+    margin-right: 0%;
+    margin-left: -20%;
+  }
+  /* line 353, ../sass/layouts/_responsive.scss */
+  .two-sidebars .region-sidebar-second {
+    float: right;
+    width: 20%;
+    margin-right: 80%;
+    margin-left: -100%;
+  }
+}
+/* Component (SMACSS module) rules */
+/**
+ * @file
+ * RTL companion for the modular-styles.css file.
+ */
+/**
+ * Branding header.
+ */
+/* Wrapping link for logo. */
+/* line 11, ../sass/components/_misc-rtl.scss */
+.header__logo {
+  float: right;
+}
+
+/* The secondary menu (login, etc.) */
+/* line 16, ../sass/components/_misc-rtl.scss */
+.header__secondary-menu {
+  float: left;
+}
+
+/**
+ * Navigation bar.
+ */
+/* Main menu and secondary menu links and menu block links. */
+/* line 27, ../sass/components/_misc-rtl.scss */
+#navigation .links,
+#navigation .menu {
+  text-align: right;
+}
+/* line 30, ../sass/components/_misc-rtl.scss */
+#navigation .links li,
+#navigation .menu li {
+  /* A simple method to get navigation links to appear in one line. */
+  float: right;
+  padding: 0 0 0 10px;
+}
+
+/**
+ * Messages.
+ */
+/* line 41, ../sass/components/_misc-rtl.scss */
+.messages, .messages--status, .messages--warning, .messages--error {
+  padding: 10px 50px 10px 10px;
+  background-position: 99% 8px;
+}
+
+/**
+ * Tabs.
+ */
+/* line 58, ../sass/components/_misc-rtl.scss */
+.tabs-primary__tab, .tabs-primary__tab.is-active, .tabs-secondary__tab,
+.tabs-secondary__tab.is-active {
+  float: right;
+}
+
+/**
+ * Inline styles.
+ */
+/* List of links */
+/* line 77, ../sass/components/_misc-rtl.scss */
+.inline li {
+  /* Bug in Safari causes display: inline to fail. */
+  display: inline-block;
+  padding: 0 0 0 1em;
+}
+
+/* The inline field label used by the Fences.module */
+/* line 84, ../sass/components/_misc-rtl.scss */
+span.field-label {
+  padding: 0 0 0 1em;
+}
+
+/**
+ * "More" links.
+ */
+/* line 91, ../sass/components/_misc-rtl.scss */
+.more-link {
+  text-align: left;
+}
+
+/* line 94, ../sass/components/_misc-rtl.scss */
+.more-help-link {
+  text-align: left;
+}
+
+/* line 97, ../sass/components/_misc-rtl.scss */
+.more-help-link a {
+  background-position: 100% 50%;
+  padding: 1px 20px 1px 0;
+}
+
+/**
+ * Menus.
+ */
+/* line 105, ../sass/components/_misc-rtl.scss */
+.menu__item.is-collapsed {
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABNJREFUCB1j4GASYFJgcmD+A4IADUIDfIUMT4wAAAAASUVORK5CYII=');
+}
+
+/**
+ * Comments.
+ */
+/* Nested comments are indented. */
+/* line 117, ../sass/components/_misc-rtl.scss */
+.indented {
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+/**
+ * Forms.
+ */
+/* Drupal's default login form block */
+/* line 127, ../sass/components/_misc-rtl.scss */
+#user-login-form {
+  text-align: right;
+}
+
+/* line 132, ../sass/components/_misc-rtl.scss */
+html.js #user-login-form li.openid-link,
+#user-login-form li.openid-link {
+  /* Un-do some of the padding on the ul list. */
+  margin-left: 0;
+  margin-right: -20px;
+}
+
+/*
+ * Drupal admin tables.
+ */
+/* line 142, ../sass/components/_misc-rtl.scss */
+form th {
+  text-align: right;
+  padding-left: 1em;
+  padding-right: 0;
+}
+
+/**
+ * Collapsible fieldsets.
+ *
+ * @see collapse.js
+ */
+/* line 155, ../sass/components/_misc-rtl.scss */
+html.js .collapsible .fieldset-legend {
+  background-position: 98% 75%;
+  padding-left: 0;
+  padding-right: 15px;
+}
+/* line 160, ../sass/components/_misc-rtl.scss */
+html.js .collapsed .fieldset-legend {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABNJREFUCB1j4GASYFJgcmD+A4IADUIDfIUMT4wAAAAASUVORK5CYII=');
+  background-position: 98% 50%;
+}
+
+/* SMACSS theme rules */
+/* @import "theme-A-rtl"; */
+/* @import "theme-B-rtl"; */
