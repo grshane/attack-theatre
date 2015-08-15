@@ -11,14 +11,30 @@
   background-color: $white;
   opacity: .8;
   margin-top: -120px;
-  height: 120px;
+  height: 100px;
   width: 100%;
   padding: 10px; 
+  }
+  .fa-chevron-left, .fa-chevron-right {
+  color: $highlight;
+  }
+  .fa-circle {
+  color: $white;
+  }
+  .views-slideshow-controls-bottom {
+  margin-top: -50%;
+  .views_slideshow_controls_text_previous {
+  float: left;
+  }
+  .views_slideshow_controls_text_next {
+  float: right;
+  }
   }
 }
 
 #block-views-calendar-block-4 {
   display: inline-block;
+  width: 33%;
   vertical-align: top;
   height: 500px;
   .button {

@@ -208,6 +208,17 @@ body {
     @include master-font;
     }
 
+.navigation {
+  padding: 10px 0;
+  margin: 0px auto;
+  background-color: $highlight;
+  min-height: 100px;
+}
+
+.region-navigation {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 #page {
     display: table;
     height: 100%;
@@ -223,7 +234,7 @@ body {
     }
 
 #content-container {
-  max-width: 960px;
+  max-width: 1200px;
   margin:0 auto;
 }
 #highlighted {
@@ -233,7 +244,7 @@ body {
   .region-highlighted {
   margin: 0 auto;
   text-align: left;
-  width: 80%;
+  max-width: 1200px;
   padding: 4px 0;
   p {
     margin: 1.5em .5em;
