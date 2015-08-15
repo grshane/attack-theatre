@@ -3,8 +3,13 @@
 .navigation {
 	padding: 10px 0;
 	margin: 0px auto;
-	background-color: $darkgrey;
+	background-color: $highlight;
 	min-height: 100px;
+}
+
+.region-navigation {
+	max-width: 960px;
+	margin: 0 auto;
 }
 
 /* Move the Nav when hamburger menu fires */
@@ -50,12 +55,12 @@
 
 /*Logo Block*/
 #block-block-6 {
+float: left;
 	margin-bottom: .5em;
 	img {
-	max-width: 100%;
 	height: auto;
 	max-height: 100px;
-		margin-left: 1em;
+	margin-left: 1em;
 
 	}
 }
@@ -78,27 +83,24 @@
 
 @media (min-width: 605px) {
 	#block-block-6 {
-	float: left;
+	display: inline-block;
 	margin: 0 auto;
-	}
-	.block-search {
-	float:right;
-	clear:right;
 	}
 }
 
 /*main menu */
 
 #block-superfish-1 {
-	text-transform: uppercase;
 	white-space: nowrap;
-	margin-bottom: 0px;
-	margin-top: 1em;
-	margin-right: 1em;
-	float: right;
-	clear:right;
+	margin: 0 auto;
+	width: 450px;
+	padding-top: 25px;
+	position:relative;
+	text-align:center;
 		li {
 		@include horizontal-menu;
+			font-size: 1.5em;
+			font-weight: bold;
 		display: table-cell;
 		margin-right: 20px;
 		margin-left: 20px;
@@ -114,7 +116,6 @@
 			width: 100% !important;
 				li {
 				border-bottom: 1px solid $lightgrey;
-				text-transform: uppercase;
 				font-weight: normal;
 				white-space: normal;
 				margin: 0px;
@@ -136,10 +137,8 @@
 /*Search Block*/	
 
 .block-search{
-
 	@include secondary-font;
-	margin-top: 1em;
-	margin-right: 1em;
+	float: right;
 	.form-item {
 	margin: 0;
 	}
@@ -147,17 +146,14 @@
 	background: none;
 	border: 2px solid $lightgrey;
 	height: 30px;
+	width: 180px;
 	margin: 0;
 	}
 	.form-submit {
-	background-color: $lightgrey;
-	margin-left: -10px;
-	color: $white;
-	text-transform: uppercase;
-	font-size: 1em;
+	display: none;
 	}
 	.form-text {
-		width: 300px;
+		width: 180px;
 
 	}
 }

@@ -1,5 +1,45 @@
 @import "compass/css3/_box-shadow.scss";
 
+/*Remove unneeded regions */
+.front #highlighted, .front #page-title {
+  display: none;
+}
+/*HP Slideshow*/
+
+#block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
+  display: inline-block;
+  width: 66%;
+  vertical-align: top;
+  height: 500px;
+  .views_slideshow_cycle_main {
+  background-color: $white;
+  opacity: .8;
+  margin-top: -200px;
+  height: 200px; 
+  }
+}
+
+#block-views-calendar-block-4 {
+  display: inline-block;
+  width: 33%;
+  vertical-align: top;
+  height: 500px;
+  .button {
+  float: left;
+  }
+}
+
+.cal_social {
+  margin-left: 1em;
+  margin-top: 5px;
+  float: left;
+  color: $highlight;
+  span {
+  margin-right: .5em;
+
+  }
+}
+
 /* Global headers for the blocks. These should all look the same. */
 
 .front div.view-header h2{
