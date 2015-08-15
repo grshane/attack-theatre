@@ -39,23 +39,29 @@
 
 #block-views-calendar-block-4 {
   display: inline-block;
-  width: 33%;
+  width: 30%;
   vertical-align: top;
-  height: 500px;
+  min-height: 500px;
+  margin-top: 2%;
+  margin-left:2%;
+  .views-row {
+  margin: 1em 0;
+  }
   .button {
   float: left;
   }
-}
-
-.cal_social {
+  .view-footer {
+  padding: 0;
+  }
+  .cal_social {
   margin-left: 1em;
   margin-top: 5px;
   float: left;
   color: $highlight;
   span {
   margin-right: .5em;
-
   }
+}
 }
 
 /*Content blocks*/
