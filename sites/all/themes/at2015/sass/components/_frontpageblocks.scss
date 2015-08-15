@@ -22,12 +22,17 @@
   color: $white;
   }
   .views-slideshow-controls-bottom {
-  margin-top: -50%;
+  margin-top: -45%;
+  margin-left: -2em;
+  margin-right:-2em;
   .views_slideshow_controls_text_previous {
   float: left;
   }
   .views_slideshow_controls_text_next {
   float: right;
+  }
+  .views_slideshow_controls_text_pause {
+  display:none;
   }
   }
 }
