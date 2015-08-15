@@ -19,6 +19,7 @@
         <?php print render($page['highlighted']); ?>
 </div>
   <div id="main">
+    <div id="content-container">
     <div id="content" class="column" role="main">
       <?php print $breadcrumb; ?>
       <a id="main-content"></a>
@@ -48,7 +49,7 @@
         <?php print $sidebar_second; ?>
       </aside>
     <?php endif; ?>
-
+</div>
   </div>
 
   <?php print render($page['footer']); ?>

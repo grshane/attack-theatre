@@ -205,6 +205,7 @@ body {
     margin:0;
     padding:0;
     height:100%;
+    @include master-font;
     }
 
 #page {
@@ -220,6 +221,11 @@ body {
 #content {
     height:100%;
     }
+
+#content-container {
+  max-width: 960px;
+  margin:0 auto;
+}
 #highlighted {
   background-color: $white;
   width: 100%;
@@ -311,7 +317,7 @@ h5 {
 }
 
 a {
-    color: $red;
+    color: $highlight;
     text-decoration:none;
     &:hover {
     color: $darkblue;
@@ -319,7 +325,7 @@ a {
 }
 
 .views-field-title a {
-  font-size: 1.8 em;
+  font-size: 1.6em;
   font-weight: bold;
   @include master-font;
 }

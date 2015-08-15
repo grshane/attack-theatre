@@ -6,7 +6,7 @@
   display: inline-block;
   vertical-align: top;
   height: 500px;
-  width: 100%;
+  width: 66%;
   .slideshow_overlay {
   background-color: $white;
   opacity: .8;
@@ -40,33 +40,27 @@
 /*Content blocks*/
 
 #block-views-content-features-block {
+margin-top: 1em;
   img {
   float: left;
+  margin: 0 5px 5px 0;
   } 
+  p {
+  margin: 0;
+  }
 }
 
 #block-views-content-features-block-1 {
   .views-row {
   display: inline-block;
-  width: 40%;
+  width: 43%;
   vertical-align: top;
   background-color: $palegrey;
-  padding: 1em;
-  margin: 1em;
+  padding: .5em;
+  margin: .5em;
   }
 }
 
-
-
-/*shared classes*/
-.frontpage-view {
-  clear: left;
-  height: auto;
-  min-height: 60px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-bottom: 1px dotted $palegrey;
-}
 
 div.view-footer {
 padding:0 .5em 0 .5em;
