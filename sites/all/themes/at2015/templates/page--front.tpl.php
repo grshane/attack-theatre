@@ -15,15 +15,6 @@
 <div id="nav" class="navigation">
       <?php print render($page['navigation']); ?>
 </div>
-<div id="page-title">
-<?php 
-$block = module_invoke('content_glider', 'block_view', 'content_glider_0');
-print $block['content'];
-?>
-</div>
-<div id="highlighted">
-    <?php print render($page['highlighted']); ?>
-  </div>
 
   <div id="main">
     <div id="content" class="column" role="main">

@@ -315,14 +315,14 @@ $zen-column-count: 5;
    * FRONT PAGE - The layout when there is only one sidebar, the right one.
    */
   .front.sidebar-second {
-    /* Span 4 columns, starting in 1st column from left. */
+    /* Span 3 columns, starting in 1st column from left. */
     #content {
-      @include zen-grid-item(4, 1, $zen-float-direction, $zen-column-count);
+      @include zen-grid-item(3, 1, $zen-float-direction, $zen-column-count);
     }
 
-    /* Span 1 column, starting in 5th column from left. */
+    /* Span 2 columns, starting in 4th column from left. */
     .region-sidebar-second {
-      @include zen-grid-item(1, 5, $zen-float-direction, $zen-column-count);
+      @include zen-grid-item(2, 4, $zen-float-direction, $zen-column-count);
     }
   }
 

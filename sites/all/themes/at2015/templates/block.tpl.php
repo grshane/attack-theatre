@@ -12,7 +12,6 @@
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
     <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
-    <div class="pop-stripe"></div>
   <?php endif; ?>
   <?php print render($title_suffix); ?>
 
