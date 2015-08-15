@@ -84,7 +84,7 @@ float: left;
 #block-superfish-1 {
 	white-space: nowrap;
 	margin: 0 auto;
-	width: 450px;
+	width: 600px;
 	padding-top: 2.2em;
 	position:relative;
 	text-align:center;
@@ -93,30 +93,44 @@ float: left;
 			font-size: 1.5em;
 			font-weight: bold;
 		display: table-cell;
-		margin-right: 20px;
-		margin-left: 20px;
 		text-align: center;
 		&.last {
 			margin-right: 0px;
-		}
+			}
 			ul {
-			background-color: $white;
-			border: 1px dotted $palegrey;
 			white-space: wrap;
-			margin-top: -12px;
-			width: 100% !important;
+			margin-top: -50px;	
+			width: 150px !important;
+			text-align:center;
+			position:relative;
 				li {
-				border-bottom: 1px solid $lightgrey;
+				display: table-cell;
+				text-align: center;
 				font-weight: normal;
 				white-space: normal;
 				margin: 0px;
 				border-collapse: collapse;
+				background-color: $white;
+				&.first {
+				-moz-border-radius-topleft: 5px;
+    			-moz-border-radius-topright: 5px;                
+    			border-top-left-radius: 5px;
+    			border-top-right-radius: 5px; 
+				}
+				&.last {
+				-moz-border-radius-bottomleft: 5px;
+    			-moz-border-radius-bottomright: 5px;                
+    			border-bottom-left-radius: 5px;
+    			border-bottom-right-radius: 5px; 
+				}
 					a {
 					height: auto;
+					color: $medgrey;
+					font-size: .5em;
+					font-weight: normal;
 					padding: 10px;
 						&:hover {
-						background-color: $medgrey;
-						color: $lightgrey;
+						color: $highlight;
 						}
 					}
 				}
@@ -130,7 +144,7 @@ float: left;
 .block-search{
 	@include secondary-font;
 	float: right;
-	margin-right:1em;
+	padding-right:1em;
 	.form-item {
 	margin: 0;
 	}

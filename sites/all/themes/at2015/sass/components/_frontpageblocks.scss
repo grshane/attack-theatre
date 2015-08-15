@@ -45,6 +45,9 @@
   margin-left:2%;
   .views-row {
   margin: 1em 0;
+  .views-field-title {
+  margin: .3em 0 0 0;
+  }
   }
   .button {
   float: left;
@@ -109,21 +112,6 @@ clear: left;
 }
 
 
-/* Red Read More buttons */
-  .views-field-button {
-  background-color: $red;
-  color: $white;
-  max-width: 125px;
-  padding: 10px;
-  margin: 1em 0;
-  text-align: center;
-  a {
-  color: $white;
-  }
-  a:after {
-  content:"" !important;
-  }
-  }
 
 /* Styling for full width Callout Boxes */
 
