@@ -161,7 +161,7 @@ function at2015_form_search_block_form_alter(&$form, &$form_state, $form_id) {
     $form['#attributes']['onsubmit'] = "if(this.search_block_form.value=='Search'){ alert('Please enter a search'); return false; }";
 
     // Alternative (HTML5) placeholder attribute instead of using the javascript
-    $form['search_block_form']['#attributes']['placeholder'] = t('Search');
+    $form['search_block_form']['#attributes']['placeholder'] = t(' Search...');
 } 
 
 

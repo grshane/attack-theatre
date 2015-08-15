@@ -17,25 +17,28 @@
 /*top utility menu */
 
 #block-menu-menu-utility-menu {
-	background-color: $black;
+	@include vertical-align;
+	background-color: $darkgrey;
 	color: $white;
-	height: 30px;
+	height: 40px;
+	width:100%;
 	ul {
-	margin: 0px;
-	float:right;
-	padding-right: 1em;
+	margin: 10px auto;
+	padding: 0 1em;
+	height: 40px;
 		li {
 		@include horizontal-menu;
+		@include button;
 		display: inline;
-		margin: 0px 10px;
-		padding: 0px 10px;
-		height: 30px;
 		vertical-align: middle;
 		white-space: nowrap;
-		a {
-		text-transform: uppercase;
-		color: $medgrey;
-			}
+		background-color: $highlight;
+		&.first {
+		float: left;
+		}
+		&.last {
+		float: right;
+		}
 		}
 	}
 }
@@ -82,7 +85,7 @@ float: left;
 	white-space: nowrap;
 	margin: 0 auto;
 	width: 450px;
-	padding-top: 25px;
+	padding-top: 2.2em;
 	position:relative;
 	text-align:center;
 		li {
@@ -127,6 +130,7 @@ float: left;
 .block-search{
 	@include secondary-font;
 	float: right;
+	margin-right:1em;
 	.form-item {
 	margin: 0;
 	}
@@ -148,24 +152,12 @@ float: left;
 
 
 /* Add/Remove main menu items on sticky header and hamburger menu */
-#learn, #explore, #collaborate, 
-#rm-no-id #collaborate, #rm-no-id #explore, #rm-no-id #learn {
-	display:none;
-}
-
-.is-sticky #learn, .is-sticky #explore, .is-sticky #collaborate {
-	display:inline !important;
-}
-
-.rm-removed #learn, .rm-removed #explore, .rm-removed #collaborate {
-	display: block;
-}
 
 .header .block-menu, .sticky-wrapper .block-menu {
 	padding-left: 0px;
 	width: 100%;
 	display:table;
-	height: 40px;
+	height: 45px;
 	z-index: 500;
 }
 
@@ -207,7 +199,7 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified {
 	span.toggler {
 		border-radius: 0px;
 		box-shadow: none;
-		background-color: $red;
+		background-color: $highlight;
 		text-align: left;
 		font-size: 1em;
 		padding: 5px;

@@ -190,8 +190,15 @@ $tabs-border: #bbb;
   #{$attribute}: $color;
 }
 
+@mixin button {
+    font-size: 1.2em;
+    font-weight: normal;
+    color: $white;
+    padding: .5em;
+    background-color: $highlight;
+    text-align: center;
 
-
+}
 
 
 // ===============================================================================
@@ -246,7 +253,7 @@ body {
   text-align: left;
   max-width: 1200px;
   max-height:520px;
-  padding: 4px 0;
+  padding: 4px 1em;
   p {
     margin: 1.5em .5em;
   }
@@ -337,11 +344,13 @@ a {
     }
 }
 
-.views-field-title a {
+.views-field-title {
+  margin: 1.5em 0 1em 0;
+  a {
   font-size: 1.6em;
   font-weight: bold;
   @include master-font;
-  margin: 1em 0;
+  }
 }
 
 #highlighted .views-field-title a {
@@ -357,12 +366,7 @@ p.heading {
 }
 
 .button {
-    font-size: 1.2em;
-    font-weight: normal;
-    color: $white;
-    padding: .5em;
-    background-color: $highlight;
-    text-align: center;
+    @include button;
     &.big {
     margin: .5em auto;
     }
