@@ -8,20 +8,19 @@
 
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
   display: inline-block;
-  width: 66%;
   vertical-align: top;
   height: 500px;
   .slideshow_overlay {
   background-color: $white;
   opacity: .8;
-  margin-top: -200px;
-  height: 200px; 
+  margin-top: -120px;
+  height: 120px;
+  padding: 10px; 
   }
 }
 
 #block-views-calendar-block-4 {
   display: inline-block;
-  width: 33%;
   vertical-align: top;
   height: 500px;
   .button {
@@ -40,19 +39,26 @@
   }
 }
 
-/* Global headers for the blocks. These should all look the same. */
+/*Content blocks*/
 
-.front div.view-header h2{
-  padding-bottom: 10px;
-  margin: 0px;
-  line-height: 1em;
-  color: $red;
-  font-size: .875em;
-  text-transform: uppercase;
-  a {
-    color:$red;
+#block-views-content-features-block {
+  img {
+  float: left;
+  } 
+}
+
+#block-views-content-features-block-1 {
+  .views-row {
+  display: inline-block;
+  width: 40%;
+  vertical-align: top;
+  background-color: $palegrey;
+  padding: 1em;
+  margin: 1em;
   }
 }
+
+
 
 /*shared classes*/
 .frontpage-view {
