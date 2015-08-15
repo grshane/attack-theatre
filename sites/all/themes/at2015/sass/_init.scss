@@ -400,38 +400,7 @@ color: $grey;
   border-right: 0;
 }
 }
-/*Add an offsite icon after offsite links*/
 
-a[href^="http://"]:after {
-content: "\f08e";
-font-family: FontAwesome;
-font-weight: normal;
-font-style: normal;
-display: inline-block;
-text-decoration: none;
-padding-left: 3px;
-color: $lightgrey;
-}
-
-/*Add an offsite icon after offsite links - https version*/
-a[href^="https://"]:after {
-content: "\f08e";
-font-family: FontAwesome;
-font-weight: normal;
-font-style: normal;
-display: inline-block;
-text-decoration: none;
-padding-left: 3px;
-color: $lightgrey;
-}
-
-/* Strip from links to own domain or with class no_icon */
-a[href^="http://www-test.cs.cmu.edu"]:after, a[href^="https://rich.srv.cs.cmu.edu"]:after, a[href^="http://lti.cs.cmu.edu"]:after, a[href^="https://lti.cs.cmu.edu"]:after,
-a[href^="http://www.lti.cs.cmu.edu"]:after, a[href^="https://www.lti.cs.cmu.edu"]:after,
-a.no_icon:after {
-content:"" !important;
-padding-left: 0;
-}
 
 .fa-lg {
     font-size: 1.8em !important;

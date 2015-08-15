@@ -15,6 +15,8 @@
 <div id="nav" class="navigation">
       <?php print render($page['navigation']); ?>
 </div>
+<div id="highlighted" class="highlighted">
+        <?php print render($page['highlighted']); ?>
 
   <div id="main">
     <div id="content" class="column" role="main">
