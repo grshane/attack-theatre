@@ -190,34 +190,7 @@ $tabs-border: #bbb;
   #{$attribute}: $color;
 }
 
-/* Pop Stripe */
 
-$stripe-width: 100% / 5;
-$stripe-1: $red;
-$stripe-2: $palegrey;
-$stripe-3: $palegrey;
-$stripe-4: $palegrey;
-$stripe-5: $palegrey;
-$colors: $stripe-1, $stripe-2, $stripe-3, $stripe-4, $stripe-5;
-
-@function stripes($position, $colors) {
-  $colors: if(type-of($colors) != "list", compact($colors), $colors);
-  $gradient: compact();
-  $width: 100% / length($colors);
-  @for $i from 1 through length($colors) {
-    $pop: nth($colors, $i);
-    $new: $pop $width * ($i - 1), $pop $width * $i;
-    $gradient: join($gradient, $new, comma);
-  }
-  @return linear-gradient($position, $gradient);
-}
-
-.pop-stripe {
-  height: 1px;
-  margin-bottom: 1em;
-  @include background-image(stripes(left, $colors));
-  @include box-shadow(0 1px 2px rgba(black, 0.25) inset);
-}
 
 
 
@@ -247,8 +220,29 @@ body {
 #content {
     height:100%;
     }
+#highlighted {
+  background-color: $white;
+  width: 100%;
+  margin-bottom: 2em;
+  text-align: center;
+  .region-highlighted {
+  margin: -20px auto;
+  width: 80%;
+  padding: 4px 0;
+  p {
+    margin: 1.5em .5em;
+  }
+  }
+}
 
+#highlighted {
+  clear: both;
+}
 
+#main {
+  overflow:hidden;
+  background-color: $lightgrey;
+}
 /*Basic typography */
 
 p {
@@ -424,24 +418,6 @@ color: $grey;
 	font-size: .9em;
 }
 
-#highlighted {
-  background-color: $white;
-  width: 100%;
-  margin-bottom: 2em;
-  text-align: center;
-  .region-highlighted {
-  margin: -20px auto;
-  width: 80%;
-  padding: 4px 0;
-  p {
-    margin: 1.5em .5em;
-  }
-  }
-}
-
-#highlighted {
-  clear: both;
-}
 
 .region-blockgroup-feeds {
   max-width: 960px;
