@@ -20,15 +20,15 @@
   <div id="highlighted">
     <?php print render($page['highlighted']); ?>
   </div>
-  <div class="title_bar">
+  
+  <div id="main">
+<div class="title_bar">
 <?php print render($title_prefix); ?>
       <?php if ($title): ?>
         <h1 class="page__title title" id="page-title"><?php print $title; ?></h1>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
   </div>    
-  <div id="main">
-
     <div id="content" class="column" role="main">
 
      
