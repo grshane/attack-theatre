@@ -84,7 +84,7 @@ float: left;
 #block-superfish-1 {
 	white-space: nowrap;
 	margin: 0 auto;
-	width: 600px;
+	width: 400px;
 	padding-top: 2.2em;
 	position:relative;
 	text-align:center;
@@ -94,13 +94,14 @@ float: left;
 			font-weight: bold;
 		display: table-cell;
 		text-align: center;
-		width: 150px;
+		width: 100px;
 		&.last {
 			margin-right: 0px;
 			}
 			ul {
 			white-space: wrap;
 			margin-top: -30px;	
+			margin-left:-25px;
 			width: 150px !important;
 			text-align:center;
 				li {
