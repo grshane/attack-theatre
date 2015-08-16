@@ -5,8 +5,12 @@
 .view-display-id-block_5 {
 
 .views-row {
-	padding:1em;
 	background-color: $palegrey;
+	height:300px;
+	margin-bottom: 1em;
+	.event_content {
+	padding: 1em;
+	}
 	p {
 	margin:0;
 	}
@@ -30,12 +34,12 @@ img {
 	padding: 0px;
 	min-height: none;
 	.date-prev, .date-next {
-		margin-top: 15px;
+		margin-top: -12px;
 		background: none;
 		background-color: none !important;
 		list-style: none;
 		.fa {
-		color: $red;
+		color: $highlight;
 		}
 	}
 }
