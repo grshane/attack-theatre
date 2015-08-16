@@ -94,6 +94,7 @@ float: left;
 			font-weight: bold;
 		display: table-cell;
 		text-align: center;
+		width: 150px;
 		&.last {
 			margin-right: 0px;
 			}
@@ -102,7 +103,6 @@ float: left;
 			margin-top: -50px;	
 			width: 150px !important;
 			text-align:center;
-			position:relative;
 				li {
 				display: table-cell;
 				text-align: center;
@@ -138,6 +138,18 @@ float: left;
 		}
 	}
 
+
+.sf-menu {
+float: left;
+position: relative;
+left: 50%;
+}
+.sf-menu ul li {
+left: 0%;
+}
+.sf-menu li {
+left: -50%;
+}
 
 /*Search Block*/	
 
