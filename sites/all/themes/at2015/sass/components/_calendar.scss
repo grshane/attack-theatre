@@ -1,5 +1,25 @@
 /*Styles for /calendar pages */
 
+.calendar {
+
+.view-display-id-block_5 {
+
+.views-row {
+	padding:1em;
+	p {
+	margin:0;
+	}
+}
+
+.views-field-title {
+	margin: .3em 0;
+}
+
+img {
+	float:right;
+}
+
+}
 .view-calendar .view-header {
 	margin-bottom: 1em;
 }
@@ -53,8 +73,4 @@
 	color: $black;
 	font-size: 1.1em;
 }
-
-.event-building {
-	color: $black;
-	font-size: .9em;
 }
