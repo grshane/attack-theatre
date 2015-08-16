@@ -6,7 +6,6 @@
   display: inline-block;
   vertical-align: top;
   height: 500px;
-  width: 66%;
   .slideshow_overlay {
   background-color: $white;
   opacity: .8;
@@ -35,6 +34,14 @@
   display:none;
   }
   }
+}
+
+.front #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9{
+  width: 66%;
+}
+
+.calendar #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9{
+  width: 100%;
 }
 
 #block-views-calendar-block-4 {
