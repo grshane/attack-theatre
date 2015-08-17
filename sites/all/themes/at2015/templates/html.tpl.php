@@ -15,7 +15,7 @@
 
 <head>
   <?php print $head; ?>
-  
+
   <title><?php print $head_title; ?></title>
 
   <?php if ($default_mobile_metatags): ?>
@@ -41,9 +41,9 @@
     <![endif]-->
   <?php endif; ?>
 
-  
-         
- 
+
+
+
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php if ($skip_link_text && $skip_link_anchor): ?>
@@ -56,6 +56,14 @@
   <?php print $page_bottom; ?>
 
 
-        
+ <script type="text/javascript">
+      $('body').flowtype({
+      minimum   : 500,
+      maximum   : 1200,
+      minFont   : 12,
+      maxFont : 20,
+      fontRatio : 65
+      });
+    </script>
 </body>
 </html>
