@@ -14,7 +14,7 @@
 	height: 13px;
 	background-color: #8e8d8d;
 	background: url('/sites/all/themes/csd2014/images/bg-track.png') repeat top left !important;
-    box-shadow: inset 0 1px 5px 0px rgba(0, 0, 0, .5), 
+    box-shadow: inset 0 1px 5px 0px rgba(0, 0, 0, .5),
     				  0 1px 0 0px rgba(250, 250, 250, .5);
     left: 20px;
 }
@@ -84,11 +84,19 @@
 div#showmax {
 width: 50px;
 height: 50px;
-position: fixed; 
-left: 5px; 
+position: fixed;
+left: 5px;
 bottom: 105px;
 }
 
-div#Glidercontent_glider_1.glidecontentwrapper div.glidecontent li.node-readmore.first.last { 
+div#Glidercontent_glider_1.glidecontentwrapper div.glidecontent li.node-readmore.first.last {
 display:none;
+}
+
+.highlighed img {
+	object-position: 50% 0%;
+	object-fit: cover;
+	width: 100%;
+	height: 500px;
+	overflow: hidden;
 }
