@@ -136,12 +136,19 @@ function at2015_preprocess_block(&$variables, $hook) {
 function at2015_preprocess_html(&$variables) {
 drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', array('group' => CSS_THEME, 'preprocess' => FALSE));
 drupal_add_css('https://fonts.googleapis.com/css?family=Fira_Sans', array('group' => CSS_THEME, 'preprocess' => FALSE));
+ // give colorbox its own html
+  if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
+    $vars['theme_hook_suggestions'][] = 'html__colorbox';
+  }
 }
 
 function hook_preprocess_page(&$vars) {
 drupal_add_js('https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', 'external');
+  // give colorbox its own page
+  if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
+    $vars['theme_hook_suggestions'][] = 'page__colorbox';
+  }
 }
-
 
 /**
 * hook_form_FORM_ID_alter
@@ -207,15 +214,3 @@ function at2015_date_nav_title($params) {
   }
 }
 
-function at2015_preprocess_html(&$vars) {
-  // give colorbox its own html
-  if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
-    $vars['theme_hook_suggestions'][] = 'html__colorbox';
-  }
-}
-function at2015_preprocess_page(&$vars) {
-  // give colorbox its own page
-  if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
-    $vars['theme_hook_suggestions'][] = 'page__colorbox';
-  }
-}
