@@ -202,7 +202,7 @@ $tabs-border: #bbb;
 
 
 // ===============================================================================
-// Custom Font Styles 
+// Custom Font Styles
 // ===============================================================================
 
 /*Element styles to allow sticky footer and sticky header to be friends */
@@ -235,7 +235,7 @@ body {
 #comments_wrapper {
     height: 100%;
     }
-    
+
 #content {
     height:100%;
     }
@@ -263,6 +263,13 @@ body {
 
 #highlighted {
   clear: both;
+  img {
+  object-position: 50% 0%;
+  object-fit: cover;
+  width: 100%;
+  height: 500px !important;
+  overflow: hidden;
+  }
 }
 
 #main {
@@ -278,7 +285,7 @@ p {
 
 img {
   max-width: 100% !important;
-  height: auto !important;
+  //height: auto !important;
 }
 
 h1, h2, h2 a, h3, h4, h5 {
@@ -380,7 +387,7 @@ html.js fieldset.collapsible {
   border-bottom: 1px solid $darkgrey;
   legend:before {
    content: "\f0d7";
-   font-family: FontAwesome;  
+   font-family: FontAwesome;
    float: left;
    margin-left: 0;
    margin-right: 10px;
@@ -447,8 +454,8 @@ color: $grey;
 
 hr {
     border: 1px dotted $lightgrey;
-    border-style: none none dotted; 
-    color: none; 
+    border-style: none none dotted;
+    color: none;
     background-color: none;
     margin-bottom: 1em;
 
@@ -508,7 +515,7 @@ fieldset.collapsible, fieldset.collapsed {
 }
 
 .node-type-people-page .fieldset-icons {
-    margin-top: .5em;  
+    margin-top: .5em;
 }
 
 
