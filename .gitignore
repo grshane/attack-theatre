@@ -51,3 +51,6 @@ sites/all/themes/README.txt
 
 # Ignore .htaccess
 .htaccess
+attacktheatre.sublime-project
+attacktheatre.sublime-workspace
+config.codekit

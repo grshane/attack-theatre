@@ -62,7 +62,7 @@
       maximum   : 1200,
       minFont   : 12,
       maxFont : 20,
-      fontRatio : 65
+      fontRatio : 70
       });
     </script>
 </body>

@@ -1,0 +1,42 @@
+/**
+*
+* Featured Content
+*
+**/
+
+/*doc
+---
+title: Blockquote
+name: Blockquote
+category: Components - blockquote
+---
+```html_example
+    <blockquote>
+        <p>Inspirational quote goes here</p>
+        <footer>-Quote Author</footer>
+    </blockquote>
+```
+*/
+
+blockquote {
+    background-color: #fff;
+
+    padding-right: 3em;
+    padding-left: 4em;
+    padding-bottom: 1.5em;
+    margin: 0.7em;
+
+    footer {
+        font-style: italic;
+        font-size: 0.9em;
+    }
+}
+
+blockquote::before {
+    content: "\201C";
+    position: relative;
+    top: 75px;
+    left: -40px;
+    font-size: 88px;
+    color: $accent-color;
+}

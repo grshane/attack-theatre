@@ -21,7 +21,7 @@
   color: $white;
   }
   .views-slideshow-controls-bottom {
-  margin-top: -45%;
+  transform: translateY(-300px);
   margin-left: -2em;
   margin-right:-2em;
   .views_slideshow_controls_text_previous {
@@ -80,6 +80,7 @@ margin-top: 1em;
   img {
   float: left;
   margin: 0 5px 5px 0;
+  height: 186px; /* Forcing image height for prototy */
   }
   p {
   margin: 0;

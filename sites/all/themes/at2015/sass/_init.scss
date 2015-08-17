@@ -50,7 +50,8 @@ $legacy-support-for-ie8: true;
 // @see http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
 $base-font-size:   16px; // The font size set on the root html element.
-$base-line-height: 24px; // This line-height determines the basic unit of vertical rhythm.
+$base-line-height: 1.45;
+$lineHeight: $base-line-height; // This line-height determines the basic unit of vertical rhythm.
 
 $h1-font-size: 2    * $base-font-size;
 $h2-font-size: 1.8  * $base-font-size;
@@ -113,6 +114,7 @@ $brown: #6c4f31;
 $darkblue: #333366;
 $orange: #ff6600;
 $darkred: #660000;
+$accent-color: $highlight;
 
 
 th.views-field-field-prof-title-term-1 {
@@ -250,9 +252,10 @@ body {
   width: 100%;
   text-align:center;
   .region-highlighted {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   text-align: left;
-  max-width: 1200px;
+
   max-height:520px;
   padding: 4px 1em;
   p {
