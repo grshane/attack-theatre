@@ -207,3 +207,15 @@ function at2015_date_nav_title($params) {
   }
 }
 
+function at2015_preprocess_html(&$vars) {
+  // give colorbox its own html
+  if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
+    $vars['theme_hook_suggestions'][] = 'html__colorbox';
+  }
+}
+function at2015_preprocess_page(&$vars) {
+  // give colorbox its own page
+  if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
+    $vars['theme_hook_suggestions'][] = 'page__colorbox';
+  }
+}
