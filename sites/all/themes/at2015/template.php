@@ -52,12 +52,12 @@ function at2015_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-function at2015_preprocess_page(&$variables, $hook) {
+/*function at2015_preprocess_page(&$variables, $hook) {
   $variables['sample_variable'] = t('Lorem ipsum.'); 
   if (isset($variables['node']->type)) { 
     $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type; 
   }
-}
+}*/
 // */
 
 /**
@@ -145,6 +145,9 @@ drupal_add_css('https://fonts.googleapis.com/css?family=Fira_Sans', array('group
 function hook_preprocess_page(&$vars) {
 drupal_add_js('https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', 'external');
   // give colorbox its own page
+}
+
+function at2015_process_page(&$vars) {
   if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
     $vars['theme_hook_suggestions'][] = 'page__colorbox';
   }

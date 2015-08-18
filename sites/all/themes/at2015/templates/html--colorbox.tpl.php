@@ -46,6 +46,8 @@
  
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
+
+  ##Debugging ##
   <?php 
 print render($page['content']); 
 ?>
