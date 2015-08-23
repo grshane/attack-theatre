@@ -20,14 +20,14 @@
 
     <div<?php print $content_attributes; ?>>
       <?php foreach ($items as $delta => $item): ?>
-        <?php print render($item); ?>
+        <?php print $settings['prev_arrow']; ?><?php print render($item); ?><?php print $settings['next_arrow']; ?>
       <?php endforeach; ?>
     </div>
 
     <nav<?php print $arrow_attributes; ?>>
-      <?php print $settings['prev_arrow']; ?>
+      
       <?php isset($arrow_down) && print $arrow_down; ?>
-      <?php print $settings['next_arrow']; ?>
+      
     </nav>
 
   <?php
@@ -35,7 +35,7 @@
     else: ?>
 
     <?php foreach ($items as $delta => $item): ?>
-      <?php print render($item); ?>
+        <?php print $settings['prev_arrow']; ?><?php print render($item); ?><?php print $settings['next_arrow']; ?>
     <?php endforeach; ?>
 
   <?php endif; ?>
