@@ -12,7 +12,7 @@ class OembedTestHelper extends DrupalWebTestCase {
   // One URL for each provider supported by the oEmbed module. The URLs predict the type
   // of oEmbed response and the viability of a thumbnail.
   protected $urls = array(
-    'http://www.flickr.com/photos/boris/2351723120/' => array(
+    'https://www.flickr.com/photos/boris/2351723120/' => array(
       'type' => 'photo',
       'thumbnail' => TRUE,
     ),

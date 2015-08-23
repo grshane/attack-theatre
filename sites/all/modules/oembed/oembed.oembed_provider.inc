@@ -16,10 +16,10 @@ function oembed_default_oembed_provider() {
   $provider->api_version = 1;
   $provider->name = 'flickr';
   $provider->title = 'Flickr';
-  $provider->endpoint = 'http://www.flickr.com/services/oembed/';
-  $provider->scheme = 'http://*.flickr.com/*
-http://flickr.com/*
-http://flic.kr/*';
+  $provider->endpoint = 'https://www.flickr.com/services/oembed/';
+  $provider->scheme = 'https://*.flickr.com/*
+https://flickr.com/*
+https://flic.kr/*';
   $providers['flickr'] = $provider;
 
   $provider = new stdClass();
