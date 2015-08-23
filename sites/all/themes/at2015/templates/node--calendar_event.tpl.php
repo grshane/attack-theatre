@@ -8,61 +8,37 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  
+
+  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
     <header>
-      <h1>
-    <?php if (empty($content['field_title_override'])): ?>
-      <?php echo render($content['title'][0]);?>
-      <?php else: ?>
-      <?php echo render($content['field_title_override'][0]); ?>
-    <?php endif; ?>
-</header>
-<article>
-      <?php echo '<h2>'.render($content['field_date_and_time_2'][0]).'</h2>';?>
+      <?php print render($title_prefix); ?>
+      <?php if (!$page && $title): ?>
+        <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
 
-      <?php if (($content['field_office_number']) or ($content['field_building'])): ?>
-      <?php echo '<h3>Location:</h3> '.render($content['field_office_number'][0]).' '.render($content['field_building'][0]);?>
-      <?php else: ?>
-      <?php echo ''; ?>
+      <?php if ($display_submitted): ?>
+        <p class="submitted">
+          <?php print $user_picture; ?>
+          <?php print $submitted; ?>
+        </p>
       <?php endif; ?>
 
-      <?php if (!empty($content['field_speaker_name']) and ($content['field_speaker_professional_title'])): ?>
-      <?php echo '<h3>Speaker:</h3> '.render($content['field_speaker_name'][0]).', '.render($content['field_speaker_professional_title'][0]);?>
-      <?php elseif (empty($content['field_speaker_professional_title']) and !empty($content['field_speaker_name'])): ?>
-      <?php echo '<h3>Speaker:</h3> '.render($content['field_speaker_name'][0]);?>
-      <?php else: ?>
-      <?php echo ''; ?>
+      <?php if ($unpublished): ?>
+        <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
       <?php endif; ?>
+    </header>
+  <?php endif; ?>
 
-      <?php echo render($content['field_speaker_company'][0]);?>
+  <?php
+    // We hide the comments and links now so that we can render them later.
+    hide($content['comments']);
+    hide($content['links']);
+    print render($content);
+  ?>
 
-      <?php if (!empty($content['field_event_url'])): ?>
-      <?php echo '<h3>Event Website:</h3> '.render($content['field_event_url'][0]);?>
-      <?php else: ?>
-      <?php echo ''; ?>
-      <?php endif; ?>
+  <?php print render($content['links']); ?>
 
-      <?php if (($content['field_contact_name']) and ($content['field_contact_email'])): ?>
-      <?php echo '<h3>For More Information, Contact:</h3> '.render($content['field_contact_name'][0]).', '.render($content['field_contact_email'][0]);?>
-      <?php elseif ((empty($content['field_contact_name'])) and ($content['field_contact_email'])): ?>
-      <?php echo '<h3>For More Information, Contact:</h3> '.render($content['field_contact_email'][0]);?>
-      <?php elseif (($content['field_contact_name']) and (empty($content['field_contact_email']))): ?>
-      <?php echo '<h3>For More Information, Contact:</h3> '.render($content['field_contact_name'][0]);?>
-      <?php else: ?>
-      <?php echo ''; ?>
-      <?php endif; ?>
-
-      <?php if (empty($content['field_body_override'])): ?>
-      <?php echo render($content['body'][0]);?>
-      <?php else: ?>
-      <?php echo render($content['field_body_override'][0]); ?>
-      <?php endif; ?>
-
-      <?php if (!empty($content['field_event_type'])): ?>
-      <?php echo '<h3>Keywords:</h3> '.render($content['field_event_type'][0]);?>
-      <?php else: ?>
-      <?php echo ''; ?>
-      <?php endif; ?>
+  <?php print render($content['comments']); ?>
 
 </article>
-
