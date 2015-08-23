@@ -17,13 +17,14 @@
 ?>
 <div<?php print $attributes; ?>>
   <?php if (count($items) > 1): ?>
-<?php print $settings['prev_arrow']; ?>
     <div<?php print $content_attributes; ?>>
+    <?php print $settings['prev_arrow']; ?>
       <?php foreach ($items as $delta => $item): ?>
         <?php print render($item); ?>
       <?php endforeach; ?>
+      <?php print $settings['next_arrow']; ?>
+
     </div>
-<?php print $settings['next_arrow']; ?>
   
   <?php
     // A single item slick (unslick) with simplified markup to avoid arrows.
