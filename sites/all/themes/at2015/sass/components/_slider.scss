@@ -82,13 +82,38 @@
 }
 
 div#showmax {
-width: 50px;
-height: 50px;
-position: fixed;
-left: 5px;
-bottom: 105px;
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	left: 5px;
+	bottom: 105px;
 }
 
 div#Glidercontent_glider_1.glidecontentwrapper div.glidecontent li.node-readmore.first.last {
 display:none;
+}
+
+.slick__slide {
+	height: calc(100vh - 120px) !important;
+}
+
+nav.slick__arrow {
+	display: flex;
+	justify-content: space-between;
+	transform: translateY(calc(-50vh - 60px));
+
+
+	button {
+		text-indent: -9999px;
+		background-color: white;
+		color: $accent-color;
+		width: 3em;
+		height: 3em;
+		&:first-of-type {
+			@include border-right-radius(50%);
+		}
+		&:last-of-type {
+			@include border-left-radius(50%);
+		}
+	}
 }

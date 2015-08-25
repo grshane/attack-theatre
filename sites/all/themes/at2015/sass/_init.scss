@@ -131,6 +131,29 @@ $nav-height: 3em;
 $tabs-container-bg: #fff;
 $tabs-border: #bbb;
 
+/*********************
+BREAKPOINTS
+*********************/
+
+ @mixin breakpoint($point) {
+   @if $point == desktop {
+     @media (min-width: 70em) { @content ; }
+  }
+   @else if $point == laptop {
+     @media (min-width: 64em) { @content ; }
+  }
+    @else if $point == tablet {
+     @media (min-width: 50em) { @content ; }
+  }
+   @else if $point == phablet {
+     @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $point == mobileonly {
+     @media (max-width: 37.5em)  { @content ; }
+
+  }
+}
+
 
 // =============================================================================
 // Partials to be shared with all .scss files.
@@ -222,6 +245,7 @@ body {
   margin: 0px auto;
   background-color: $highlight;
   min-height: 100px;
+  width: 100vw;
 }
 
 .region-navigation {
@@ -248,15 +272,15 @@ body {
   padding: 0 1em;
 }
 #highlighted {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  max-height: calc(100vh - 120px);
   background-color: $white;
   width: 100%;
   text-align:center;
   .region-highlighted {
-  display: flex;
-  justify-content: center;
-  text-align: left;
-
-  max-height:520px;
+    width: 100vw;
   padding: 4px 1em;
   p {
     margin: 1.5em .5em;

@@ -5,7 +5,7 @@
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
   display: inline-block;
   vertical-align: top;
-  height: 500px;
+  height: calc(100vh - 120px);
   .slideshow_overlay {
   background-color: $white;
   opacity: .8;
@@ -45,15 +45,18 @@
 }
 
 #block-views-calendar-block-4 {
-  display: inline-block;
-  width: 30%;
-  vertical-align: top;
-  margin-left:3%;
-  .views-row {
-  margin: 1em 0;
-  .views-field-title {
-  margin: .3em 0 0 0;
-  }
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    margin-left:3%;
+    @include breakpoint(mobileonly) {
+        width: 100%;
+    }
+    .views-row {
+    margin: 1em 0;
+    .views-field-title {
+    margin: .3em 0 0 0;
+    }
   }
 
   .button {
@@ -125,40 +128,40 @@ clear: left;
 
 .block-nodeblock {
   @include secondary-font;
-    .node-content-callout {
-    clear:left;
-    height: 500px;
-    background-size: cover;
-    background-position: center center;
-      .content{
-      max-width: 960px;
-      margin: 0px auto;
-      text-align: center;
-      @include vertical-align;
-      h2 {
-      color: $white;
-      font-size: 2em;
-      line-height: normal;
-      }
-      .field-name-field-button-target {
-      color: $white;
-      border: 1px solid $white;
-      width: 100px;
-      margin: 0px auto;
-      padding: 10px;
-        a {
-        color: $white;
-        }
-        a:after {
-        content:"" !important;
-        }
-      }
-      .field-name-field-subtitle {
-      color: $white;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      }
-    }
+	.node-content-callout {
+	clear:left;
+	height: 500px;
+	background-size: cover;
+	background-position: center center;
+	  .content{
+	  max-width: 960px;
+	  margin: 0px auto;
+	  text-align: center;
+	  @include vertical-align;
+	  h2 {
+	  color: $white;
+	  font-size: 2em;
+	  line-height: normal;
+	  }
+	  .field-name-field-button-target {
+	  color: $white;
+	  border: 1px solid $white;
+	  width: 100px;
+	  margin: 0px auto;
+	  padding: 10px;
+		a {
+		color: $white;
+		}
+		a:after {
+		content:"" !important;
+		}
+	  }
+	  .field-name-field-subtitle {
+	  color: $white;
+	  text-transform: uppercase;
+	  letter-spacing: .2em;
+	  }
+	}
   }
 }
 
@@ -188,66 +191,66 @@ max-width: 90%;
   display: inline-block;
   text-align: left;
   vertical-align: top;
-    .views-row {
-    padding-bottom: 1em;
-    white-space: nowrap;
-    .views-field-body, .views-field-title {
-    white-space:normal;
-    }
-    }
-    h2.block__title {
-    @include secondary-font;
-    color: $grey;
-    font-size: 1.3em;
-    }
-    .views-field-title {
-    margin-bottom: -1em;
-      a{
-      @include secondary-font;
-      font-size: 1.3em;
-      line-height: 2em;
-      }
-    }
-    .views-field-nothing {
-      display: inline-block;
-      @include secondary-font;
-      line-height: 1em;
-      min-width: 120px;
-      text-align: center;
-      vertical-align: top;
-      font-size: 2em;
-      text-transform: uppercase;
-      border-bottom: 1px solid $red;
-      padding-bottom: 15px;
-      color: $red;
-      margin-bottom: 1.2em;
-      margin-right: .5em;
-    }
-    .event_feed_wrapper {
-      display: inline-block;
-      @include secondary-font;
-      line-height: 1.3em;
-      color: $grey;
-      max-width: 66%;
-      white-space: normal;
-      a {
-      color: $black;
-      font-size: 1.3em;
-      }
-      p {
-      height: 0;
-      margin: 0;
-      }
-    }
-    p.clear {
-    height:0;
-    width: 0;
-    margin: 0;
-    clear: left;
-    }
-    .view-footer {
-    padding-left:0;
-    }
+	.views-row {
+	padding-bottom: 1em;
+	white-space: nowrap;
+	.views-field-body, .views-field-title {
+	white-space:normal;
+	}
+	}
+	h2.block__title {
+	@include secondary-font;
+	color: $grey;
+	font-size: 1.3em;
+	}
+	.views-field-title {
+	margin-bottom: -1em;
+	  a{
+	  @include secondary-font;
+	  font-size: 1.3em;
+	  line-height: 2em;
+	  }
+	}
+	.views-field-nothing {
+	  display: inline-block;
+	  @include secondary-font;
+	  line-height: 1em;
+	  min-width: 120px;
+	  text-align: center;
+	  vertical-align: top;
+	  font-size: 2em;
+	  text-transform: uppercase;
+	  border-bottom: 1px solid $red;
+	  padding-bottom: 15px;
+	  color: $red;
+	  margin-bottom: 1.2em;
+	  margin-right: .5em;
+	}
+	.event_feed_wrapper {
+	  display: inline-block;
+	  @include secondary-font;
+	  line-height: 1.3em;
+	  color: $grey;
+	  max-width: 66%;
+	  white-space: normal;
+	  a {
+	  color: $black;
+	  font-size: 1.3em;
+	  }
+	  p {
+	  height: 0;
+	  margin: 0;
+	  }
+	}
+	p.clear {
+	height:0;
+	width: 0;
+	margin: 0;
+	clear: left;
+	}
+	.view-footer {
+	padding-left:0;
+	}
   }
 }
 
