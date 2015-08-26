@@ -52,12 +52,12 @@ function at2015_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/*function at2015_preprocess_page(&$variables, $hook) {
+function at2015_preprocess_page(&$variables, $hook) {
   $variables['sample_variable'] = t('Lorem ipsum.'); 
   if (isset($variables['node']->type)) { 
     $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type; 
   }
-}*/
+}
 // */
 
 /**
