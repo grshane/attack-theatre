@@ -19,12 +19,8 @@
   </div>
   <div id="highlighted">
     <?php print render($page['highlighted']); ?>
-    <?php if (isset($node->field_additional_images_for_an_e['und'][0]['value'])): ?>
       <?php $block = block_load('views', 'a6a3197875169e84a0517474cfa13f88');     
       print render(_block_get_renderable_array(_block_render_blocks(array($block)))); ?>
-      <?php else: ?>
-      <?php echo 'yy'; ?>
-    <?php endif; ?>
   </div>
   
   <div id="main">
