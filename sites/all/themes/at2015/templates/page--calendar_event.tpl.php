@@ -18,7 +18,6 @@
 
   </div>
   <div id="highlighted">
-    <?php print render($page['highlighted']); ?>
       <?php $block = block_load('views', 'a6a3197875169e84a0517474cfa13f88');     
       print render(_block_get_renderable_array(_block_render_blocks(array($block)))); ?>
   </div>
