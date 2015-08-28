@@ -47,14 +47,13 @@
 /*Logo Block*/
 #block-block-6 {
 float: left;
-	margin-bottom: .5em;
 	img {
 	height: auto;
 	@media (min-width:835px) {
-	max-height: 100px;
+	max-height: 70px;
 	}
 	@media (max-width:834px) {
-	max-height: 70px;
+	max-height: 50px;
 	}
 	margin-left: 1em;
 
@@ -69,7 +68,7 @@ float: left;
 	white-space: nowrap;
 	margin: 0 auto;
 	width: 400px;
-	padding-top: 2.2em;
+	padding-top: 1.4em;
 	position:relative;
 	text-align:center;
 		li {
@@ -84,7 +83,7 @@ float: left;
 			}
 			ul {
 			white-space: wrap;
-			margin-top: -30px;	
+			margin-top: -30px;
 			margin-left:-25px;
 			width: 150px !important;
 			text-align:center;
@@ -98,15 +97,15 @@ float: left;
 				background-color: $white;
 				&.first {
 				-moz-border-radius-topleft: 5px;
-    			-moz-border-radius-topright: 5px;                
+    			-moz-border-radius-topright: 5px;
     			border-top-left-radius: 5px;
-    			border-top-right-radius: 5px; 
+    			border-top-right-radius: 5px;
 				}
 				&.last {
 				-moz-border-radius-bottomleft: 5px;
-    			-moz-border-radius-bottomright: 5px;                
+    			-moz-border-radius-bottomright: 5px;
     			border-bottom-left-radius: 5px;
-    			border-bottom-right-radius: 5px; 
+    			border-bottom-right-radius: 5px;
 				}
 					a {
 					height: auto;
@@ -136,7 +135,7 @@ left: 0%;
 left: -50%;
 }
 
-/*Search Block*/	
+/*Search Block*/
 
 .block-search{
 	@include secondary-font;
