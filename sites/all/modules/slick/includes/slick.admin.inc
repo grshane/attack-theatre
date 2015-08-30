@@ -56,6 +56,7 @@ function slick_clean_options(array $options) {
     'appendArrows',
     'dotsClass',
     'appendDots',
+    'respondTo',
     'rtl',
   ));
 
@@ -114,20 +115,26 @@ function slick_layouts() {
 /**
  * Gets supported Slick skins, and additional ones for select options.
  *
+ * @param string $group
+ *   The skin group name.
+ * @param bool $all
+ *   The flag to limit the skins, if FALSE only those specified within $group
+ *   returned, otherwise $group is excluded.
+ *
  * @return array
- *   An array of available skins.
+ *   An array of available skins excluding the $group if specified.
  */
-function slick_skins_options() {
-  $skins = &drupal_static(__FUNCTION__, NULL);
-
-  if (!isset($skins)) {
-    $skins = array();
-    foreach (slick_skins() as $skin => $properties) {
-      $skins[$skin] = $properties['name'];
+function slick_skins_options($group = 'lightbox', $all = TRUE) {
+  $skins = $groups = array();
+  foreach (slick_skins() as $skin => $properties) {
+    if (!empty($group) && !empty($properties['group']) && $properties['group'] == $group) {
+      $groups[$skin] = $properties['name'];
+      continue;
     }
+    $skins[$skin] = $properties['name'];
   }
 
-  return $skins;
+  return $group && !$all ? $groups : $skins;
 }
 
 /**
@@ -172,7 +179,7 @@ function slick_arrows_options() {
  * Load all slick optionsets as select options.
  *
  * @return array
- *   An array containing slicks indexed by their names.
+ *   An array containing slick optionsets indexed by their names.
  */
 function slick_optionset_options() {
   $optionsets = &drupal_static(__FUNCTION__, NULL);
@@ -205,7 +212,7 @@ function slick_optionset_exists($optionset_name) {
 }
 
 /**
- * Fetches all option sets from the storage.
+ * Fetches all optionsets from the storage.
  *
  * @param bool $reset
  *   If TRUE, the static cache of all objects will be flushed prior to
@@ -583,4 +590,279 @@ function slick_get_media_fields($instance, $widget_types = NULL) {
   }
 
   return $media_options;
+}
+
+/**
+ * Returns shared starting form elements across field formatter and Views.
+ */
+function slick_get_top_elements(array &$elements, $settings, &$form_state) {
+  $slick_path = drupal_get_path('module', 'slick');
+  $optionsets = slick_optionset_options();
+  $skins      = slick_skins_options();
+  $readme     = url($slick_path . '/README.txt');
+
+  $elements['optionset'] = array(
+    '#title'       => t('Optionset main'),
+    '#type'        => 'select',
+    '#options'     => $optionsets,
+    '#description' => t('Manage optionsets at <a href="@link" target="_blank">Slick carousel admin page</a>.', array('@link' => url('admin/config/media/slick'))),
+  );
+
+  $elements['skin'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Skin main'),
+    '#options'     => $skins,
+    '#description' => t('Skins allow swappable layouts like next/prev links, split image and caption, etc. However a combination of skins and options may lead to unpredictable layouts, get dirty yourself. See <a href="@url" target="_blank">SKINS section at README.txt</a> for details on Skins. Leave empty to DIY, or use hook_slick_skins_info() to override one.', array('@url' => $readme)),
+  );
+
+  $elements['optionset_thumbnail'] = array(
+    '#title'       => t('Optionset thumbnail'),
+    '#type'        => 'select',
+    '#options'     => $optionsets,
+    '#description' => t('If provided, asNavFor aka thumbnail navigation applies. Leave empty to not use thumbnail navigation.'),
+  );
+
+  $elements['skin_thumbnail'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Skin thumbnail'),
+    '#options'     => $skins,
+    '#description' => t('Thumbnail navigation skin. See main <a href="@url" target="_blank">README</a> for details on Skins. Leave empty to not use thumbnail navigation.', array('@url' => $readme)),
+  );
+
+  $elements['skin_arrows'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Skin arrows'),
+    '#options'     => array(),
+    '#description' => t('Use hook_slick_arrows_info() to add your own arrows skins, in the same format as hook_slick_skins_info().'),
+    '#access'      => FALSE,
+  );
+
+  if ($arrows = slick_arrows_options()) {
+    $elements['skin_arrows']['#options'] = $arrows;
+    $elements['skin_arrows']['#access'] = TRUE;
+  }
+
+  $elements['skin_dots'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Skin dots'),
+    '#options'     => array(),
+    '#description' => t('Use hook_slick_dots_info() to add your own dots skins, in the same format as hook_slick_skins_info().'),
+    '#access'      => FALSE,
+  );
+
+  if ($dots = slick_dots_options()) {
+    $elements['skin_dots']['#options'] = $dots;
+    $elements['skin_dots']['#access'] = TRUE;
+  }
+
+  $elements['asnavfor_main'] = array(
+    '#type'        => 'textfield',
+    '#title'       => t('asNavFor main'),
+    '#attributes'  => array('class' => array('is-tooltip', 'js-expandable')),
+    '#description' => t('Valid CSS selector (with "." or "#") for the main display. Target the thumbnail display class or ID attributes. See <a href="@url" target="_blank">HTML structure section at README.txt</a> for details on asNavFor targets.', array('@url' => $readme)),
+    '#states' => array(
+      'invisible' => array(
+        array('select[name*="[optionset_thumbnail]"]' => array('value' => '')),
+        array(':input[name*="[asnavfor_auto]"]' => array('checked' => TRUE)),
+      ),
+    ),
+  );
+
+  $elements['asnavfor_thumbnail'] = array(
+    '#type'        => 'textfield',
+    '#title'       => t('asNavFor thumbnail'),
+    '#attributes'  => array('class' => array('is-tooltip', 'js-expandable')),
+    '#description' => t('Valid CSS selector (with "." or "#") for the thumbnail display. Target the main display class or ID attributes.'),
+    '#states' => array(
+      'invisible' => array(
+        array('select[name*="[optionset_thumbnail]"]' => array('value' => '')),
+        array(':input[name*="[asnavfor_auto]"]' => array('checked' => TRUE)),
+      ),
+    ),
+  );
+
+  $elements['asnavfor_auto'] = array(
+    '#title'       => t('asNavFor auto selectors'),
+    '#type'        => 'checkbox',
+    '#description' => t('If checked, asNavFor selectors will be determined by the current field ID selectors automatically. Check if unsure with manual selectors.'),
+    '#states' => array(
+      'invisible' => array(
+        'select[name*="[optionset_thumbnail]"]' => array('value' => ''),
+      ),
+    ),
+  );
+
+  $weight = -99;
+  foreach (element_children($elements) as $key) {
+    if (!isset($elements[$key]['#weight'])) {
+      $elements[$key]['#weight'] = ++$weight;
+    }
+  }
+
+  drupal_alter('slick_top_elements_info', $elements, $settings, $form_state);
+  return $elements;
+}
+
+/**
+ * Returns shared ending form elements across field formatter and Views.
+ */
+function slick_get_elements(array &$elements, $settings, &$form_state) {
+  // Re-uses one optionset for various displays.
+  $elements['override'] = array(
+    '#title'       => t('Override main optionset'),
+    '#type'        => 'checkbox',
+    '#description' => t('If checked, the following options will override the main optionset. Useful to re-use one optionset for several different displays.'),
+  );
+
+  $overridable_options = slick_get_overridable_options();
+  $overridable_values = is_array($settings['overridables']) ? array_values($settings['overridables']) : $settings['overridables'];
+  $elements['overridables'] = array(
+    '#type'          => 'checkboxes',
+    '#title'         => t('Overridable options'),
+    '#description'   => t("Override the main optionset to re-use one. Anything dictated here will override the current main optionset. Unchecked means FALSE"),
+    '#options'       => $overridable_options,
+    '#default_value' => $overridable_values,
+    '#states' => array(
+      'visible' => array(
+        ':input[name$="[override]"]' => array('checked' => TRUE),
+      ),
+    ),
+  );
+
+  $a = array(300, 600, 900, 1800, 2700, 3600, 10800, 21600, 32400, 43200, 86400);
+  $period = drupal_map_assoc($a, 'format_interval');
+  $elements['cache'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Cache'),
+    '#options'     => $period + array('persistent' => t('Persistent')),
+    '#weight'      => 99,
+    '#description' => t('Ditch all the slick logic to cached bare HTML. <ol><li><strong>Persistent</strong>: cached contents will persist (be displayed) till the next cron runs.</li><li><strong>Any number</strong>: expired by the selected expiration time, and fresh contents are fetched till the next cache rebuilt.</li></ol>A working cron job is required to clear stale cache. At any rate, cached contents will be refreshed regardless of the expiration time after the cron hits. <br />Leave it empty to disable caching.<br /><strong>Warning!</strong> Be sure no useless/ sensitive data such as Edit links as they are rendered as is regardless permissions.'),
+  );
+
+  drupal_alter('slick_elements_info', $elements, $settings, $form_state);
+  return $elements;
+}
+
+/**
+ * Returns reusable grid elements across Slick fields and Views.
+ */
+function slick_get_grid_elements(array &$elements, $settings, &$form_state) {
+  $grid_options = drupal_map_assoc(range(1, 12));
+  $elements['grid'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Grid large'),
+    '#options'     => $grid_options,
+    '#description' => t('The amount of block grid columns for large monitors 64.063em - 90em. Use skin Grid for starter. This module feature has been around before the Slick library officiallly supported it. Leave empty to DIY.'),
+    '#prefix'      => '<h3 class="form--slick__title">' . t('Display content images as grid?') . '</h3>',
+  );
+
+  $elements['grid_medium'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Grid medium'),
+    '#options'     => $grid_options,
+    '#description' => t('The amount of block grid columns for medium devices 40.063em - 64em.'),
+  );
+
+  $elements['grid_small'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Grid small'),
+    '#options'     => $grid_options,
+    '#description' => t('The amount of block grid columns for small devices 0 - 40em.'),
+  );
+
+  $elements['visible_slides'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Visible slides'),
+    '#options'     => drupal_map_assoc(range(1, 32)),
+    '#description' => t('How many items per slide displayed at a time related to this grid. If Unslick checked, all will be displayed.'),
+  );
+
+  $elements['preserve_keys'] = array(
+    '#title'       => t('Preserve keys'),
+    '#type'        => 'checkbox',
+    '#description' => t('If checked, keys will be preserved. Default is FALSE which will reindex the grid chunk numerically'),
+  );
+
+  drupal_alter('slick_grid_elements_info', $elements, $settings, $form_state);
+  return $elements;
+}
+
+/**
+ * Returns reusable logic, styling and assets across Slick fields and Views.
+ */
+function slick_get_admin_assets(array &$elements, $settings = array()) {
+  foreach (element_children($elements) as $key) {
+    if (isset($elements[$key]['#type']) && !in_array($elements[$key]['#type'], array('item', 'hidden'))) {
+      if (!isset($elements[$key]['#default_value']) && isset($settings[$key])) {
+        $elements[$key]['#default_value'] = $settings[$key];
+      }
+      if (!isset($elements[$key]['#attributes']) && isset($elements[$key]['#description'])) {
+        $elements[$key]['#attributes'] = array('class' => array('is-tooltip'));
+      }
+      if ($elements[$key]['#type'] == 'checkbox' && $elements[$key]['#type'] != 'checkboxes') {
+        $elements[$key]['#field_suffix'] = '';
+        $elements[$key]['#title_display'] = 'before';
+      }
+      elseif ($elements[$key]['#type'] == 'checkboxes' && !empty($elements[$key]['#options'])) {
+        foreach ($elements[$key]['#options'] as $i => $option) {
+          $elements[$key][$i]['#field_suffix'] = '';
+          $elements[$key][$i]['#title_display'] = 'before';
+        }
+      }
+      elseif ($elements[$key]['#type'] == 'select' && $key != 'optionset') {
+        if (!isset($elements[$key]['#empty_option']) && !isset($elements[$key]['#required'])) {
+          $elements[$key]['#empty_option'] = t('- None -');
+        }
+      }
+    }
+  }
+
+  if (module_exists('slick_ui')) {
+    $elements['#attached']['library'][] = array('slick_ui', 'slick.ui');
+  }
+  else {
+    $slick_path = drupal_get_path('module', 'slick');
+    $elements['#attached']['css'][] = $slick_path . '/css/admin/slick.admin--ui.css';
+    $elements['#attached']['css'][] = $slick_path . '/css/admin/slick.admin--ui--field.css';
+    $elements['#attached']['js'][]  = $slick_path . '/js/slick.admin.ui.min.js';
+  }
+
+  drupal_alter('slick_admin_assets_info', $elements, $settings);
+  return $elements;
+}
+
+/**
+ * Returns reusable summaries across Slick field formatters.
+ */
+function slick_get_admin_summary($field, $instance, $view_mode, $module) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $form = call_user_func_array($module . '_field_formatter_settings_form', array(
+    $field,
+    $instance,
+    $view_mode,
+    array(),
+    array(),
+  ));
+  $summary = array();
+  foreach ($settings as $key => $setting) {
+    $title = isset($form[$key]['#title']) ? $form[$key]['#title'] : '';
+    if (is_array($setting) || empty($title)) {
+      continue;
+    }
+
+    if (is_numeric($setting) || is_bool($setting)) {
+      $setting = empty($setting) ? t('No') : t('Yes');
+    }
+    elseif (empty($setting)) {
+      $setting = t('None');
+    }
+    if (isset($settings[$key])) {
+      $summary[] = t('@title: <strong>@setting</strong>', array(
+        '@title' => $title,
+        '@setting' => $setting,
+      ));
+    }
+  }
+  return $summary;
 }

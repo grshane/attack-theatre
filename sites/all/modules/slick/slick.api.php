@@ -24,6 +24,8 @@
 // Provides HTML settings with optionset name and ID, none of JS related.
 // See slick_get_element_default_settings() for more supported keys.
 // To add JS key:value pairs, use #options at theme_slick() below instead.
+// If you provide ID, be sure unique per instance as it is cached.
+// Leave empty to be provided by the module.
 $id = 'slick-ticker';
 $settings = array(
 // Optional optionset name, otherwise fallback to default.
@@ -34,11 +36,13 @@ $settings = array(
 // various scenarios before being passed to the actual #attributes property.
 // Or ignore this, if the only attribute is just $id, and the $id is set.
 // @see README.txt for the HTML structure.
+// Leave empty to be provided by the module.
   'attributes' => array(
     'id' => $id,
   ),
-  // content_attributes ID i for nested, or asNavFor slicks.
+  // content_attributes ID is for nested, or asNavFor slicks.
   // Pass the proper ID to asnavfor_target, see slick_fields/slick_views.
+  // Leave empty to be provided by the module.
   'content_attributes' => array(
     'id' => $id . '-slider',
   ),
@@ -60,7 +64,7 @@ foreach ($rows as $key => $row) {
     // 'caption' => 'some-caption data',
     // Individual slide supports some useful settings like layout, classes, etc.
     // Meaning each slide can have different layout, or classes.
-    // @see sub-modules implementation.
+    // See sub-modules implementation.
     'settings' => array(
       'layout' => 'bottom',
       'slide_classes' => 'slide--custom-class--' . $key,
@@ -78,7 +82,7 @@ $attach = array();
 $attachments = slick_attach($attach);
 // Add more attachments using regular library keys just as freely:
 $attachments['css'] += array(HOOK_PATH . '/css/zoom.css' => array('weight' => 9));
-$attachments['js'] += array(HOOK_PATH . '/css/zoom.min.js' => array('weight' => -5));
+$attachments['js'] += array(HOOK_PATH . '/js/zoom.min.js' => array('weight' => -5));
 
 // 5.
 // Optional specific Slick JS options, if no optionset provided above.
@@ -110,8 +114,19 @@ $slick[0] = array(
 print render($slick);
 
 // 6.B.
-// Or alternatively, use slick_build() where the parameters are as described
-// above:
+// Or recommended, use slick_build() so you can cache the slick instance easily.
+// If it is a hardly updated content, such as profile videos, logo carousels, or
+// more permanent home slideshows, select "Persistent", otherwise time.
+// Cache the slick for 1 hour and fetch fresh contents when the time reached.
+// If stale cache is not cleared, slick will keep fetching fresh contents.
+$settings['cache'] = 3600;
+// Or cache the slick and keep stale contents till the next cron runs.
+$settings['cache'] = 'persistent';
+// One cron hits, slick will use the new cached version regardless of expiration
+// time due to the nature of render cache.
+// Add a custom unique cache ID.
+$settings['cid'] = 'my-extra-unique-id';
+// Where the parameters as described above:
 $slick = slick_build($items, $options, $settings, $attachments, $id);
 // All is set, render the Slick.
 print render($slick);
@@ -240,11 +255,13 @@ function hook_slick_skins_info_alter(array &$skins) {
  *
  * @param array $attach
  *   The modified array of $attach information from slick_attach().
+ * @param array $settings
+ *   An array of settings to check for the supported features.
  *
  * @see slick_attach()
  * @see slick_example.module
  */
-function hook_slick_attach_info_alter(array &$attach) {
+function hook_slick_attach_info_alter(array &$attach, $settings) {
   // Disable inline CSS after copying the output to theme at final stage.
   // Inline CSS are only used for 2 cases: Fullscreen and Field collection
   // individual slide color, only if your clients don't change mind much.
@@ -270,12 +287,14 @@ function hook_slick_attach_info_alter(array &$attach) {
  *   The contextual array of $attach information.
  * @param array $skins
  *   The contextual array of $skins information.
+ * @param array $settings
+ *   An array of settings to check for the supported features.
  *
  * @see slick_attach()
  * @see slick_example.module
  * @see slick_devel.module
  */
-function hook_slick_attach_load_info_alter(&$load, $attach, $skins) {
+function hook_slick_attach_load_info_alter(&$load, $attach, $skins, $settings) {
   $slick_path = drupal_get_path('module', 'slick');
   $min = $slick_path . '/js/slick.load.min.js';
   $dev = $slick_path . '/js/slick.load.js';

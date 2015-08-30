@@ -29,6 +29,10 @@ img {
   height: auto;
 }
 
+.slick-hidden {
+  display: none;
+}
+
 /**
  * Arrows contained/wrapped within slick__arrow for easy moves.
  */
@@ -45,8 +49,17 @@ img {
   z-index: 2;
 }
 
+.slick__arrow li,
+.slick__arrow button {
+  pointer-events: auto;
+}
+
 .slick-initialized ~ .slick__arrow {
   display: block;
+}
+
+.slick-initialized ~ .slick__arrow.element-hidden {
+  display: none;
 }
 
 .slick--has-arrow-down > .slick__arrow {
@@ -219,6 +232,11 @@ supports no-js, otherwise IMG tag with dummy placeholder. */
   display: none;
 }
 
+/* Prevents overflowing noscript */
+.no-js .slick__slide {
+  max-width: 100%;
+}
+
 .slick-initialized {
   overflow: visible;
 }
@@ -232,7 +250,7 @@ supports no-js, otherwise IMG tag with dummy placeholder. */
   z-index: 1;
 }
 
-.slick__slide.slide--current {
+.slick__slide.slick-current {
   z-index: 4;
 }
 

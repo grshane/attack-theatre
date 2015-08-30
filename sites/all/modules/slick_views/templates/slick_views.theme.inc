@@ -18,7 +18,7 @@ function template_preprocess_slick_views(&$variables) {
   if (count($variables['rows']) > 1) {
     // Mimick the Slick wrapper attributes.
     $attributes['class'] = array('slick-wrapper', 'slick-wrapper--asnavfor');
-    if ($settings['skin']) {
+    if ($settings['skin'] && $settings['skin'] != 'asnavfor') {
       $attributes['class'][] = drupal_clean_css_identifier('slick-wrapper--' . $settings['skin']);
     }
 

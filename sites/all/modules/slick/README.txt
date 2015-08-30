@@ -28,10 +28,6 @@ VERSIONS:
 7.x-2.x supports exportable optionsets via CTools.
 Be sure to run update, when upgrading from 7.x-1.x to 7.x-2.x to allow creating
 database table to store/ manage option sets.
-Any module that provides settings in the UI needs to store them in a table.
-With Bulk exporter, or Features, optionsets may be stored in codes to avoid
-database lookup. It is analog to Drupal 8 CMI.
-See slick_example.slick_default_preset.inc for the stored-in-code sample.
 
 7.x-2.x supports Slick 1.5 above, and dropped supporting Slick 1.4.x and below.
 Be sure to read the project home page for more info before updating your module.
@@ -85,11 +81,12 @@ REQUIREMENTS:
 OPTIONAL INTEGRATION:
 --------------------------------------------------------------------------------
 Slick supports enhancements and more complex layouts.
-- Colorbox
-- Photobox
-- Picture, to get truly responsive image using art direction technique.
+- Colorbox, to have grids/slides that open up image/video/audio in overlay.
+- Photobox, idem ditto.
+- Picture, to get truly responsive image.
   D8 in core: Responsive image.
-- Media, including media_youtube, media_vimeo, and media_soundcloud.
+- Media, including media_youtube, media_vimeo, and media_soundcloud, to have
+  fairly variant slides: image, video, audio, or a mix of em.
   D8: Media entity, or isfield.
 - Field Collection, to add Overlay image/audio/video over the main image stage,
   with additional basic Scald integration for the image/video/audio overlay.
@@ -101,15 +98,18 @@ Slick supports enhancements and more complex layouts.
   sites/.../libraries/mousewheel/jquery.mousewheel.min.js
 
 
+RECOMMENDED MODULES
+--------------------------------------------------------------------------------
+- Block reference to have more complex slide content for Fullscreen/width skins.
+- Entity translation, to have translated file and translate links with Media.
+- Field formatter settings, to modify field formatter settings and summaries.
+
+
 OPTIONSETS:
 --------------------------------------------------------------------------------
 To create your optionsets, go to:
 "admin/config/media/slick"
 These will be available at Manage display field format, and Views UI.
-
-To store optionsets in code for versioning and performance, use CTools Bulk
-exporter, or Features. And revert it via UI to Default to avoid database lookup.
-
 
 
 VIEWS AND FIELDS:
@@ -118,7 +118,6 @@ Slick works with Views and as field display formatters.
 Slick Views is available as a style plugin included at slick_views.module.
 Slick Fields is available as a display formatter included at slick_fields.module
 which supports core and contrib fields: Image, Media, Field collection.
-
 
 
 PROGRAMATICALLY:
@@ -234,23 +233,16 @@ After Slick 1.4:
 At both cases, asNavFor should target slick-initialized class/ID attributes.
 
 
-RECOMMENDED MODULES
---------------------------------------------------------------------------------
-The following modules are supported, but optional.
-- Colorbox, to have grids/slides that open up image/video/audio in overlay.
-- Photobox, idem ditto.
-- Media, to have fairly variant slides: image, video, audio.
-- Field collection, to have more complex layout along with Media file.
-- Color field, to colorize slide background individually via Field collection.
-- Block reference to have more complex slide content for Fullscreen/width skins.
-- Entity translation, to have translated file and translate links with Media.
-- Field formatter settings, to modify field formatter settings and summaries.
-
-
 HOW CAN YOU HELP?
 --------------------------------------------------------------------------------
 Please consider helping in the issue queue, provide improvement, or helping with
 documentation.
+If you have bug reports, please be sure to provide steps to reproduce it, or
+make sure that the bug is caused by the module. For the Slick library bug,
+please report it to the actual library issue queues:
+https://github.com/kenwheeler/slick
+You can create a fiddle to isolate the bug if reproduceable outside the module:
+http://jsfiddle.net/
 
 
 TROUBLESHOOTING:
@@ -267,7 +259,7 @@ TROUBLESHOOTING:
   updating the module to ensure things are picked up:
   o admin/config/development/performance
 
-- Frontend type juggling is removed [#2497945]:
+- For (pre-)alpha users only: Frontend type juggling is removed [#2497945]:
   - Please re-save and re-export optionsets if you are a pre-alpha user who
     stored optionsets in codes before alpha release on 2015-3-31, or precisely
     before 2015-3-2 commit:
@@ -280,7 +272,22 @@ TROUBLESHOOTING:
 - If switching from beta1 to the latest via Drush fails, try the good old UI.
   Be sure to clear cache first, then run /update.php, if broken slick.
 
-- If you are customizing templates or theme funtions be sure to re-check them.
+- If you are customizing templates, or theme funtions be sure to re-check
+  against the latest.
+
+- A Slick instance may be cached by its ID, and will only take place if you
+  set the "Cache" to some value than None. Having two different slicks with the
+  same ID will cause the first one cached override the second.
+  IDs are guaranteed unique if using sub-modules. However if you do custom works,
+  or input one at Slick Views UI, be sure to have unique IDs as they should be.
+  Be sure no useless/ sensitive data such as "Edit link" as they may be rendered
+  as is regardless permissions.
+
+- Current slide previously has a workaround class "slide--current". Core added
+  "slick-current" later (a year or so) at v1.5.6. Now (8/25/15) "slide--current"
+  is dropped for "slick-current", but the workaround is still kept due to core
+  known issue with asNavFor and nested slicks not having proper "slick-current".
+  If you use "slide--current" before, be sure to update it to "slick-current".
 
 More info relevant to each option is available at their form display by hovering
 over them, and click a dark question mark.
@@ -293,13 +300,11 @@ KNOWN ISSUES
   If you want advanced lazyload, but not willing to use Picture, do preprocess
   with theme_image_lazy() and use lazy 'advanced' to override it and DIY.
   Please see theme_image_lazy() for more info.
-- Photobox is not compatible with infinite true + slidesToShow > 1, since slicks
-  will have clones which are filtered out by Photobox loader, otherwise dup
-  thumbnails. It works best for:
+- Photobox is best for:
   - infinite true + slidesToShow 1
   - infinite false + slidesToShow N
-  If "infinite true + slidesToShow > 1" is a must, simply override the JS to
-  remove ":not(.slick-cloned)", and disable 'thumbs' option.
+  If "infinite true + slidesToShow > 1" is a must, but you don't want dup
+  thumbnails, simply override the JS to disable 'thumbs' option.
 - The following is not module related, but worth a note:
   o lazyLoad ondemand has issue with dummy image excessive height.
     Added fixes to suppress it via CSS.
@@ -316,12 +321,42 @@ UNKNOWN ISSUES
   Please report if you find one. Your report and help is any module QA. Thanks.
 
 
+PERFORMANCE:
+--------------------------------------------------------------------------------
+Any module, even the most innocent one, that provides settings in the UI needs
+to store them in a table. The good thing is we can store them in codes.
+
+With Bulk exporter, or Features, optionsets may be stored in codes to avoid
+database lookup. Be sure to revert via UI to Default to avoid database lookup.
+It is analog to Drupal 8 CMI, so it is the decent choice today.
+
+See slick_example for the stored-in-code samples.
+
+Store large array of skins at my_module.slick.inc to get advantage of Drupal
+autoloading while short ones should be left in the main module file so that
+they are always available.
+
+Most heavy logic were already moved to backend, however slick can be optimized
+more by configuring the "Cache" value per slick instance.
+
+Ditch all the slick logic to cached bare HTML:
+1. Persistent: the stale content will persist (kept/ displayed) till the next
+   cron runs, best for static contents where freshness is no use, such as logo,
+   team, profile video, more permanent home slideshows, etc.
+2. Any number: slick is expired (detached from cached contents) by the selected
+   expiration time, and fetches fresh contents till the next cache rebuilt.
+   If stale cache is not cleared, slick will keep fetching fresh contents.
+
+Be sure to have a working cron job to clear stale cache, so that slick is loaded
+from the correct cached version. At any rate, cached contents will be refreshed
+regardless of the expiration time after the cron hits due to the nature of cron.
+Leave it empty to disable caching.
+
 
 CURRENT DEVELOPMENT STATUS
 --------------------------------------------------------------------------------
 A full release should be reasonable after proper feedbacks from the community,
 some code cleanup, and optimization where needed. Patches are very much welcome.
-
 
 
 ROADMAP

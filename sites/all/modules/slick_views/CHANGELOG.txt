@@ -1,4 +1,25 @@
 
+Slick views 7.x-2.0-dev, 2015-8-25
+----------------------------------
+- Improved Slick Views cache.
+
+Slick views 7.x-2.0-dev, 2015-8-24
+----------------------------------
+- Added cache option from Slick > 7.x-2.0-beta4.
+- Merged slick grid to slick_build_grids().
+
+Slick views 7.x-2.0-dev, 2015-8-15
+----------------------------------
+- Cleaned up admin forms.
+
+Slick views 7.x-2.0-dev, 2015-7-9
+---------------------------------
+- Added entityreference as 'slide_title' field option.
+
+Slick views 7.x-2.0-dev, 2015-6-30
+----------------------------------
+- Simplified admin repetitive lines for readability and consistency.
+
 Slick views 7.x-2.0-dev, 2015-6-22
 ----------------------------------
 - Simplified grid settings.

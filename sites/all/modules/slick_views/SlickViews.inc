@@ -14,8 +14,9 @@ class SlickViews extends views_plugin_style {
    */
   public function option_definition() {
     module_load_include('inc', 'slick_views', 'includes/admin');
-    $options = _slick_views_option_definition() + parent::option_definition();
+    module_load_include('inc', 'slick', 'includes/slick.global');
 
+    $options = _slick_views_option_definition() + parent::option_definition();
     return $options;
   }
 
@@ -25,100 +26,12 @@ class SlickViews extends views_plugin_style {
   public function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
 
-    $slick_module_path = drupal_get_path('module', 'slick');
     ctools_form_include($form_state, 'slick.admin', 'slick');
     ctools_form_include($form_state, 'admin', 'slick_views');
 
     $view = $this->view;
     $settings = $this->options;
-    $elements = _slick_views_options_form($form, $form_state, $view, $settings);
-
-    $form['slick'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Slick carousel'),
-      '#attributes' => array('class' => array('form--slick form--compact form--field has-tooltip')),
-      '#description' => t('Leave anything empty/unchecked, except Optionset, if working with custom markups. <br /><small>Alternatively check <strong>Slick markups</strong> to get consistent markups with Field formatter, be sure to add supported fields below. Views preview works with jQuery > 1.7.</small>'),
-
-    );
-
-    $no_wrappers = array(
-      'optionset',
-      'skin',
-      'skin_arrows',
-      'skin_dots',
-      'id',
-      'asnavfor_main',
-      'grid',
-      'grid_medium',
-      'grid_small',
-      'visible_slides',
-      'preserve_keys',
-      'slide_field_wrapper',
-      'override',
-      'overridables',
-    );
-
-    $grids = array(
-      'grid_medium',
-      'grid_small',
-      'visible_slides',
-      'preserve_keys',
-    );
-
-    foreach ($elements as $key => $element) {
-      $form['slick'][$key] = $element;
-      if (!in_array($key, $no_wrappers)) {
-        $form['slick'][$key]['#states'] = array(
-          'visible' => array(
-            ':input[name*="[slide_field_wrapper]"]' => array('checked' => TRUE),
-          ),
-        );
-      }
-
-      if (in_array($key, array('thumbnail_caption', 'asnavfor_auto'))) {
-        $form['slick'][$key]['#states'] = array(
-          'invisible' => array(
-            array('select[name*="[optionset_thumbnail]"]' => array('value' => '')),
-            array(':input[name*="[slide_field_wrapper]"]' => array('checked' => FALSE)),
-          ),
-        );
-      }
-
-      if (in_array($key, array('asnavfor_main', 'asnavfor_thumbnail'))) {
-        $form['slick'][$key]['#states'] = array(
-          'invisible' => array(
-            array('select[name*="[optionset_thumbnail]"]' => array('value' => '')),
-            array(':input[name*="[slide_field_wrapper]"]' => array('checked' => FALSE)),
-            array(':input[name*="[asnavfor_auto]"]' => array('checked' => TRUE)),
-          ),
-        );
-      }
-
-      if (in_array($key, $grids)) {
-        $form['slick'][$key]['#states'] = array(
-          'invisible' => array(
-            array('select[name$="[grid]"]' => array('value' => '')),
-          ),
-        );
-      }
-
-      if ($key == 'overridables') {
-        $form[$key]['#states'] = array(
-          'visible' => array(
-            ':input[name$="[override]"]' => array('checked' => TRUE),
-          ),
-        );
-      }
-    }
-
-    if (module_exists('slick_ui')) {
-      $form['#attached']['library'][] = array('slick_ui', 'slick.ui');
-    }
-    else {
-      $form['#attached']['css'][] = $slick_module_path . '/css/admin/slick.admin--ui.css';
-      $form['#attached']['css'][] = $slick_module_path . '/css/admin/slick.admin--ui--field.css';
-      $form['#attached']['js'][] = $slick_module_path . '/js/slick.admin.ui.min.js';
-    }
+    _slick_views_options_form($form, $form_state, $view, $settings);
   }
 
   /**
@@ -144,21 +57,57 @@ class SlickViews extends views_plugin_style {
   }
 
   /**
+   * Renders the slick instances.
+   */
+  public function renderSlick($slick) {
+    return array(
+      '#theme'   => $this->theme_functions(),
+      '#view'    => $this->view,
+      '#options' => $this->options,
+      '#rows'    => $slick,
+    );
+  }
+
+  /**
    * Renders the display in this style.
    */
   public function render() {
     $view      = $this->view;
     $settings  = $this->options;
     $view_name = $view->name;
+    $current   = $view->current_display;
+    $slick_id  = &drupal_static('slick_id', 0);
+    $id        = $settings['id'] ? $settings['id'] : drupal_clean_css_identifier("slick-views-{$view_name}-" . ++$slick_id);
+    $thumb_id  = $id . '-thumbnail';
+    $cid       = $settings['cid'] = $settings['optionset'] . $settings['skin'] . $view_name . $current;
+    $asnavfor  = $settings['optionset_thumbnail'];
+
+    // Renders slicks quickly from cache if any, as render cache is just cache.
+    $render_cache = FALSE;
+    if (!empty($settings['cache']) && $cache = cache_get($id . ':' . $cid, 'cache')) {
+      $render_cache = $settings['cache'] == 'persistent' ? TRUE : REQUEST_TIME < $cache->expire;
+    }
+
+    if ($render_cache) {
+      $slick[0] = $cache->data;
+      if ($asnavfor && $thumb_cache = cache_get($thumb_id . ':' . $cid, 'cache')) {
+        $slick[1] = $thumb_cache->data;
+      }
+
+      // Passes slicks to theme_slick_views() to render the cache.
+      return $this->renderSlick($slick);
+    }
+
+    // Otherwise do the routines before a cache stored, or when disabled.
+    module_load_include('inc', 'slick', 'includes/slick.global');
 
     // Group the rows according to the grouping field, if specified.
     $sets                  = $this->render_grouping($view->result, $settings['grouping']);
     $keys                  = array_keys($view->field);
-    $settings['view_name'] = $view_name;
     $slick_markups         = $settings['slide_field_wrapper'];
     $optionset             = slick_optionset_load($settings['optionset']);
-    $asnavfor              = $settings['optionset_thumbnail'];
     $optionset_thumbnail   = $asnavfor ? slick_optionset_load($asnavfor) : NULL;
+    $settings['view_name'] = $view_name;
 
     $attach = array(
       'attach_skin'        => $settings['skin'],
@@ -277,15 +226,14 @@ class SlickViews extends views_plugin_style {
       unset($view->row_index);
 
       // Build the Slick attributes.
-      $slick_id      = &drupal_static('slick_id', 0);
-      $id            = $settings['id'] ? $settings['id'] : drupal_clean_css_identifier("slick-views-{$view_name}-" . ++$slick_id);
-      $thumb_id      = $id . '-thumbnail';
       $is_asnavfor   = $asnavfor && $thumbs;
       $asnavfor_auto = $settings['asnavfor_auto'];
 
       $settings['count']                 = count($items);
+      $settings['current_display']       = 'main';
       $settings['attributes']['id']      = $id;
       $settings['attributes']['class'][] = drupal_clean_css_identifier('slick--view--' . $view_name);
+      $settings['attributes']['class'][] = drupal_clean_css_identifier('slick--view--' . $view_name . '--' . $current);
 
       if ($is_asnavfor) {
         $attach['attach_skin_thumbnail'] = $settings['skin_thumbnail'];
@@ -294,25 +242,8 @@ class SlickViews extends views_plugin_style {
 
       // Build the Slick grid only if having a reasonable amount of grid items.
       if ($settings['grid']) {
-        $visible_slides = $settings['visible_slides'];
-        if ($visible_slides && count($view->result) > $visible_slides) {
-          $grid_items = array_chunk($items, $visible_slides, $settings['preserve_keys']);
-          $grid_settings = array(
-            'count' => count($grid_items),
-            'skin' => $settings['skin'],
-          );
-          $grids = array();
-          foreach ($grid_items as $delta => $grid_item) {
-            $grids[] = array(
-              '#theme'    => 'slick_grid',
-              '#items'    => $grid_item,
-              '#delta'    => $delta,
-              '#settings' => $grid_settings,
-            );
-          }
-
-          // Update the $items with the grid chunks.
-          $items = $grids;
+        if (count($view->result) > $settings['visible_slides']) {
+          $items = slick_build_grids($items, $settings);
         }
       }
 
@@ -325,9 +256,8 @@ class SlickViews extends views_plugin_style {
       }
 
       // Build the single/main display Slick.
-      $attachments = slick_attach($attach);
-      $settings['current_display'] = 'main';
-      $slick[0] = slick_build($items, $js, $settings, $attachments, NULL, $optionset);
+      $attachments = slick_attach($attach, $settings);
+      $slick[0] = slick_build($items, $js, $settings, $attachments, $id, $optionset);
 
       if ($is_asnavfor) {
         $settings['attributes']['id'] = $thumb_id;
@@ -335,17 +265,12 @@ class SlickViews extends views_plugin_style {
         $settings['optionset']        = $settings['optionset_thumbnail'];
         $settings['current_display']  = 'thumbnail';
 
-        // Build the thumbnail/text navigation Slick.
-        $slick[1] = slick_build($thumbs, array(), $settings, array(), NULL, $optionset_thumbnail);
+        // Build the thumbnail+/text navigation Slick.
+        $slick[1] = slick_build($thumbs, array(), $settings, array(), $thumb_id, $optionset_thumbnail);
       }
 
       // Build the Slick.
-      $build = array(
-        '#theme'   => $this->theme_functions(),
-        '#view'    => $view,
-        '#options' => $this->options,
-        '#rows'    => $slick,
-      );
+      $build = $this->renderSlick($slick);
     }
 
     return $build;
