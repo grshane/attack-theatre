@@ -7,13 +7,12 @@ margin-top: 1em;
 	color:$white;
 	margin: 0;
 	}
-	border: 1px solid green;
+	border: 1px $highlight;
 	@include secondary-font;
 	background-color: $darkgrey;
 	color: $white;
-	height:120px;
-	display: table-row;
-	width: 100%;
+	display: flex;
+	width: 100vw;
 	/*min-width: 768px;*/
 	font-size:.8em;
 		div {

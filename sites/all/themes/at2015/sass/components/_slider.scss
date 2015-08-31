@@ -93,15 +93,26 @@ div#Glidercontent_glider_1.glidecontentwrapper div.glidecontent li.node-readmore
 display:none;
 }
 
-.slick__slide {
+.slick__slide,
+.slide__content {
 	height: calc(100vh - 120px) !important;
+	display: flex !important;
+}
+
+.slide__content {
+	flex-direction: column;
+
+}
+
+.view-upcoming-event-slider-homepage-calendar- {
+
 }
 
 nav.slick__arrow {
 	display: flex;
 	justify-content: space-between;
-	transform: translateY(calc(-50vh - 60px));
-
+	transform: translateY(calc(50vh - 60px));
+	z-index: 1000;
 
 	button {
 		text-indent: -9999px;
@@ -116,4 +127,16 @@ nav.slick__arrow {
 			@include border-left-radius(50%);
 		}
 	}
+}
+
+.views-field-field-date-and-time-2 {
+
+}
+
+.views-field-title {
+
+}
+
+.views-field-nothing {
+
 }

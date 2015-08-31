@@ -3,7 +3,7 @@
 /*HP Slideshow*/
 
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
-  display: inline-block;
+  display: flex;
   vertical-align: top;
   height: calc(100vh - 120px);
   .slideshow_overlay {
@@ -83,7 +83,7 @@ margin-top: 1em;
   img {
   float: left;
   margin: 0 5px 5px 0;
-  height: 186px; /* Forcing image height for prototy */
+  height: 200px; /* Forcing image height for prototy */
   }
   p {
   margin: 0;
@@ -101,6 +101,10 @@ margin-top: 1em;
   }
 }
 
+.view-id-content_features {
+    display: flex;
+    min-height: 200px;
+}
 
 div.view-footer {
 padding:0 .5em 0 .5em;
