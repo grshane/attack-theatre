@@ -98,7 +98,11 @@ margin-top: 1em;
   background-color: $palegrey;
   padding: .5em;
   margin: .5em;
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
+}
 }
 
 .view-id-content_features {
