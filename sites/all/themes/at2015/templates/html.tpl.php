@@ -60,7 +60,7 @@
       $('body').flowtype({
       minimum   : 500,
       maximum   : 1200,
-      minFont   : 12,
+      minFont   : 16,
       maxFont : 20,
       fontRatio : 70
       });

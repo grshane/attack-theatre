@@ -4,8 +4,12 @@
 
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
   display: flex;
-  vertical-align: top;
+  align-items: flex-end;
   height: calc(100vh - 120px);
+
+  @media (max-width: 765px) {
+    min-width: 100%;
+  }
   .slideshow_overlay {
   background-color: $white;
   opacity: .8;
@@ -45,11 +49,11 @@
 }
 
 #block-views-calendar-block-4 {
-    display: inline-block;
+    display: flex;
     width: 30%;
     vertical-align: top;
     margin-left:3%;
-    @include breakpoint(mobileonly) {
+    @media (max-width: 768px) {
         width: 100%;
     }
     .views-row {

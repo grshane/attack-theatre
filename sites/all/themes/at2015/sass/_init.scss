@@ -285,13 +285,14 @@ body {
   display: flex;
   justify-content: center;
   text-align: left;
-  height: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
   max-height: 800px;
-  background-color: $white;
+  background-color: #ffffff;
   width: 100%;
   .region-highlighted {
     width: 100vw;
     display: flex;
+    flex-wrap: wrap;
     padding: 0 1em 4px;
     p {
       margin: 1.5em .5em;
