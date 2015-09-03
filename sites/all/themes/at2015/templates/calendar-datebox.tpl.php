@@ -17,7 +17,7 @@
 ?>
 <?php
   if ($selected) {
-    $output = l($day, 'calendar/day/' . $date);
+    $output = l($day, 'attend/day/' . $date);
   } else {
     $output = $day;
   }
