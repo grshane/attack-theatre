@@ -1,6 +1,6 @@
 $(function () {
     //store the element
-    var $top = $('.navigation');
+    var $top = $('.header');
 
     //store the initial position of the element
     $(window).scroll(function(){
