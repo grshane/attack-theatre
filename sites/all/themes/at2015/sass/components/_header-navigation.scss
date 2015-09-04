@@ -145,7 +145,8 @@ left: -50%;
 	margin: 0;
 	}
 	.form-submit, .form-text {
-	background: none;
+	background: $lightgrey;
+	color: $highlight;
 	border: 2px solid $lightgrey;
 	height: 30px;
 	width: 180px;

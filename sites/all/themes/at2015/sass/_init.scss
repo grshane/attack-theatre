@@ -240,6 +240,10 @@ body {
     @include master-font;
     }
 
+.header {
+  display: none;
+}
+
 .navigation {
   padding: 10px 0;
   margin: 0px auto;
@@ -253,8 +257,9 @@ body {
   opacity: 1;
 }
 
-.navigation.fixed {
-    position:fixed;
+.fixed {
+    position: fixed;
+    top: 0px;
     opacity: 1;
 }
 
