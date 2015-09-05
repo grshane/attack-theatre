@@ -34,7 +34,7 @@ body {
 .navigation {
   padding: 10px 0;
   margin: 0px auto;
-  background-color: #ab2c27;
+  background-color: lime;
   min-height: 70px;
   width: 100vw;
   border-top: solid 3px black;
@@ -49,15 +49,16 @@ body {
   position: fixed;
   top: 0px;
   opacity: 1;
+  transition: 0.4s ease;
 }
 
-/* line 266, ../sass/_init.scss */
+/* line 267, ../sass/_init.scss */
 .region-navigation {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* line 270, ../sass/_init.scss */
+/* line 271, ../sass/_init.scss */
 #page {
   display: table;
   height: 100%;
@@ -65,24 +66,24 @@ body {
   /*Fixes firefox bug that disallows responsive resizing of images within table elements*/
 }
 
-/* line 276, ../sass/_init.scss */
+/* line 277, ../sass/_init.scss */
 #comments_wrapper {
   height: 100%;
 }
 
-/* line 280, ../sass/_init.scss */
+/* line 281, ../sass/_init.scss */
 #content {
   height: 100%;
 }
 
-/* line 284, ../sass/_init.scss */
+/* line 285, ../sass/_init.scss */
 #content-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1em;
 }
 
-/* line 289, ../sass/_init.scss */
+/* line 290, ../sass/_init.scss */
 #highlighted {
   display: flex;
   justify-content: center;
@@ -92,23 +93,23 @@ body {
   background-color: #ffffff;
   width: 100%;
 }
-/* line 297, ../sass/_init.scss */
+/* line 298, ../sass/_init.scss */
 #highlighted .region-highlighted {
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
   padding: 0 1em 4px;
 }
-/* line 302, ../sass/_init.scss */
+/* line 303, ../sass/_init.scss */
 #highlighted .region-highlighted p {
   margin: 1.5em .5em;
 }
 
-/* line 308, ../sass/_init.scss */
+/* line 309, ../sass/_init.scss */
 #highlighted {
   clear: both;
 }
-/* line 310, ../sass/_init.scss */
+/* line 311, ../sass/_init.scss */
 #highlighted img {
   object-position: 50% 0%;
   object-fit: cover;
@@ -117,7 +118,7 @@ body {
   overflow: hidden;
 }
 
-/* line 319, ../sass/_init.scss */
+/* line 320, ../sass/_init.scss */
 #main {
   overflow: hidden;
   background-color: #cccccc;
@@ -126,79 +127,79 @@ body {
 }
 
 /*Basic typography */
-/* line 327, ../sass/_init.scss */
+/* line 328, ../sass/_init.scss */
 p {
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
 }
 
-/* line 331, ../sass/_init.scss */
+/* line 332, ../sass/_init.scss */
 img {
   max-width: 100% !important;
 }
 
-/* line 336, ../sass/_init.scss */
+/* line 337, ../sass/_init.scss */
 h1, h2, h2 a, h3, h4, h5 {
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
 }
 
-/* line 341, ../sass/_init.scss */
+/* line 342, ../sass/_init.scss */
 h1 {
   font-weight: normal;
   color: #000000;
 }
 
-/* line 347, ../sass/_init.scss */
+/* line 348, ../sass/_init.scss */
 h2, .heading, h2.minical {
   font-weight: normal;
   color: #000000;
   background-color: none;
 }
 
-/* line 353, ../sass/_init.scss */
+/* line 354, ../sass/_init.scss */
 h2.section_header {
   font-weight: bold;
   width: 100%;
   border-bottom: 1px solid #000000;
 }
 
-/* line 359, ../sass/_init.scss */
+/* line 360, ../sass/_init.scss */
 h2.pitch {
   text-align: center;
 }
 
-/* line 362, ../sass/_init.scss */
+/* line 363, ../sass/_init.scss */
 h3, .subheading {
   font-weight: bold;
   color: #000000;
 }
 
-/* line 367, ../sass/_init.scss */
+/* line 368, ../sass/_init.scss */
 h4, .label {
   font-weight: bold;
 }
 
-/* line 371, ../sass/_init.scss */
+/* line 372, ../sass/_init.scss */
 h5 {
   font-weight: bold;
 }
 
-/* line 375, ../sass/_init.scss */
+/* line 376, ../sass/_init.scss */
 a {
-  color: #ab2c27;
+  color: lime;
   text-decoration: none;
 }
-/* line 378, ../sass/_init.scss */
+/* line 379, ../sass/_init.scss */
 a:hover {
   color: #333366;
 }
 
-/* line 383, ../sass/_init.scss */
+/* line 384, ../sass/_init.scss */
 .views-field-title {
   margin: 1.5em 0 1em 0;
 }
-/* line 385, ../sass/_init.scss */
+/* line 386, ../sass/_init.scss */
 .views-field-title a {
   font-size: 1.6em;
   font-weight: bold;
@@ -206,52 +207,52 @@ a:hover {
   line-height: auto;
 }
 
-/* line 392, ../sass/_init.scss */
+/* line 393, ../sass/_init.scss */
 #highlighted .views-field-title a {
-  color: #ab2c27;
+  color: lime;
 }
 
-/* line 396, ../sass/_init.scss */
+/* line 397, ../sass/_init.scss */
 #main .views-field-title a {
   color: #000000;
 }
 
-/* line 400, ../sass/_init.scss */
+/* line 401, ../sass/_init.scss */
 p.heading {
   margin: 0;
 }
 
-/* line 404, ../sass/_init.scss */
+/* line 405, ../sass/_init.scss */
 .button, .button--primary, .button--secondary {
   font-size: 1.2em;
   font-weight: normal;
   color: #ffffff;
   padding: .5em;
-  background-color: #ab2c27;
+  background-color: lime;
   text-align: center;
 }
-/* line 406, ../sass/_init.scss */
+/* line 407, ../sass/_init.scss */
 .button.big, .big.button--primary, .big.button--secondary {
   margin: .5em auto;
 }
-/* line 409, ../sass/_init.scss */
+/* line 410, ../sass/_init.scss */
 .button.small, .small.button--primary, .small.button--secondary {
   width: 150px;
   margin: 0;
 }
 
-/* line 415, ../sass/_init.scss */
+/* line 416, ../sass/_init.scss */
 .button a, .button--primary a, .button--secondary a, a.button, a.button--primary, a.button--secondary {
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
   color: #ffffff;
 }
-/* line 418, ../sass/_init.scss */
+/* line 419, ../sass/_init.scss */
 .button a:hover, .button--primary a:hover, .button--secondary a:hover, a.button:hover, a.button--primary:hover, a.button--secondary:hover {
   color: #ffffff;
 }
 
-/* line 423, ../sass/_init.scss */
+/* line 424, ../sass/_init.scss */
 .clear {
   width: 0;
   height: 0;
@@ -259,11 +260,11 @@ p.heading {
 }
 
 /*Collapsible Fieldsets*/
-/* line 431, ../sass/_init.scss */
+/* line 432, ../sass/_init.scss */
 html.js fieldset.collapsible {
   border-bottom: 1px solid #333333;
 }
-/* line 433, ../sass/_init.scss */
+/* line 434, ../sass/_init.scss */
 html.js fieldset.collapsible legend:before {
   content: "\f0d7";
   font-family: FontAwesome;
@@ -271,32 +272,32 @@ html.js fieldset.collapsible legend:before {
   margin-left: 0;
   margin-right: 10px;
 }
-/* line 440, ../sass/_init.scss */
+/* line 441, ../sass/_init.scss */
 html.js fieldset.collapsible.collapsed legend:before {
   content: "\f0da";
 }
-/* line 443, ../sass/_init.scss */
+/* line 444, ../sass/_init.scss */
 html.js fieldset.collapsible legend {
   font-size: 1.2em;
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
   width: 100%;
 }
-/* line 448, ../sass/_init.scss */
+/* line 449, ../sass/_init.scss */
 html.js fieldset.collapsible .fieldset-wrapper {
   margin-bottom: 10px;
   margin-left: 0px;
 }
 
 /*Table Styles */
-/* line 456, ../sass/_init.scss */
+/* line 457, ../sass/_init.scss */
 table {
   border: 0;
   color: #999999;
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
 }
-/* line 460, ../sass/_init.scss */
+/* line 461, ../sass/_init.scss */
 table tr td {
   border-bottom: 2px solid #999999;
   border-top: 0;
@@ -304,12 +305,12 @@ table tr td {
   border-right: 0;
 }
 
-/* line 469, ../sass/_init.scss */
+/* line 470, ../sass/_init.scss */
 .fa-lg {
   font-size: 1.4em !important;
 }
 
-/* line 473, ../sass/_init.scss */
+/* line 474, ../sass/_init.scss */
 .region-header a {
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
@@ -318,12 +319,12 @@ table tr td {
   text-decoration: none;
   font-size: .75em;
 }
-/* line 479, ../sass/_init.scss */
+/* line 480, ../sass/_init.scss */
 .region-header a:hover {
   color: #e8e8e8;
 }
 
-/* line 484, ../sass/_init.scss */
+/* line 485, ../sass/_init.scss */
 .navigation a, .navigation .nolink, .navigation .menu a.active {
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
@@ -332,19 +333,19 @@ table tr td {
   font-size: .9em;
   cursor: pointer;
 }
-/* line 491, ../sass/_init.scss */
+/* line 492, ../sass/_init.scss */
 .navigation a:hover, .navigation .nolink:hover, .navigation .menu a.active:hover {
   color: #cccccc;
 }
 
-/* line 497, ../sass/_init.scss */
+/* line 498, ../sass/_init.scss */
 .region-blockgroup-feeds {
   max-width: 960px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 505, ../sass/_init.scss */
+/* line 506, ../sass/_init.scss */
 hr {
   border: 1px dotted #cccccc;
   border-style: none none dotted;
@@ -354,85 +355,85 @@ hr {
 }
 
 /*Pagination Controls*/
-/* line 516, ../sass/_init.scss */
+/* line 517, ../sass/_init.scss */
 .item-list {
   float: left;
   margin-bottom: 1em;
   margin-left: 8px;
   color: #ffffff;
 }
-/* line 521, ../sass/_init.scss */
+/* line 522, ../sass/_init.scss */
 .item-list li {
   line-height: 6em;
 }
-/* line 524, ../sass/_init.scss */
+/* line 525, ../sass/_init.scss */
 .item-list a {
   color: #ffffff;
 }
-/* line 527, ../sass/_init.scss */
+/* line 528, ../sass/_init.scss */
 .item-list .pager-current {
   background-color: #ab2c27;
   padding: 1em;
 }
-/* line 531, ../sass/_init.scss */
+/* line 532, ../sass/_init.scss */
 .item-list .pager-item, .item-list .pager-next, .item-list .pager-last, .item-list .pager-first, .item-list .pager-previous {
   background-color: #000000;
   padding: 1em;
 }
 
 /*Collapsible Fieldset Styles */
-/* line 540, ../sass/_init.scss */
+/* line 541, ../sass/_init.scss */
 html.js fieldset.collapsed {
   height: auto;
 }
 
-/* line 544, ../sass/_init.scss */
+/* line 545, ../sass/_init.scss */
 fieldset {
   padding-bottom: 0px;
 }
-/* line 546, ../sass/_init.scss */
+/* line 547, ../sass/_init.scss */
 fieldset .fieldset-wrapper {
   padding-top: 1em;
 }
 
-/* line 551, ../sass/_init.scss */
+/* line 552, ../sass/_init.scss */
 fieldset.collapsible, fieldset.collapsed {
   border-bottom: none;
   border-left: 0px;
   border-right: 0px;
   border-top: 0px;
 }
-/* line 556, ../sass/_init.scss */
+/* line 557, ../sass/_init.scss */
 fieldset.collapsible .collapsed .fieldset-legend, fieldset.collapsed .collapsed .fieldset-legend {
   background: none;
 }
 
-/* line 561, ../sass/_init.scss */
+/* line 562, ../sass/_init.scss */
 .fieldset-icons {
   float: left;
   margin-top: 1em;
   color: #e8e8e8;
 }
 
-/* line 567, ../sass/_init.scss */
+/* line 568, ../sass/_init.scss */
 .node-type-people-page .fieldset-icons {
   margin-top: .5em;
 }
 
 /*Event URL field on Calendar node edit page is wonky */
-/* line 574, ../sass/_init.scss */
+/* line 575, ../sass/_init.scss */
 .form-item-field-event-url-und-0-url {
   margin-top: 0px !important;
 }
 
 /*Give the content container a little room against the footer */
-/* line 580, ../sass/_init.scss */
+/* line 581, ../sass/_init.scss */
 #content {
   padding-bottom: 1em;
 }
 
 /*People Editing Page UX*/
-/* line 586, ../sass/_init.scss */
+/* line 587, ../sass/_init.scss */
 #edit-field-override-first-name- {
   float: left;
 }
@@ -5010,12 +5011,12 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   font-weight: normal;
   color: #ffffff;
   padding: .5em;
-  background-color: #ab2c27;
+  background-color: lime;
   text-align: center;
   display: inline;
   vertical-align: middle;
   white-space: nowrap;
-  background-color: #ab2c27;
+  background-color: lime;
 }
 /* line 36, ../sass/components/_header-navigation.scss */
 .header ul li.first {
@@ -5118,7 +5119,7 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 }
 /* line 116, ../sass/components/_header-navigation.scss */
 #block-superfish-1 li ul li a:hover {
-  color: #ab2c27;
+  color: lime;
 }
 
 /* line 126, ../sass/components/_header-navigation.scss */
@@ -5153,7 +5154,7 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 /* line 147, ../sass/components/_header-navigation.scss */
 .block-search .form-submit, .block-search .form-text {
   background: #cccccc;
-  color: #ab2c27;
+  color: lime;
   border: 2px solid #cccccc;
   height: 30px;
   width: 180px;
@@ -5211,7 +5212,7 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified {
 div.responsive-menus.responsive-menus-0-0.absolute.responsified span.toggler {
   border-radius: 0px;
   box-shadow: none;
-  background-color: #ab2c27;
+  background-color: lime;
   text-align: left;
   font-size: 1em;
   padding: 5px;
@@ -5345,7 +5346,7 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
 }
 /* line 21, ../sass/components/_frontpageblocks.scss */
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-chevron-left, #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-chevron-right {
-  color: #ab2c27;
+  color: lime;
 }
 /* line 24, ../sass/components/_frontpageblocks.scss */
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-circle {
@@ -5373,14 +5374,15 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
 /* line 43, ../sass/components/_frontpageblocks.scss */
 .front #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
   width: 66%;
+  overflow: hidden;
 }
 
-/* line 47, ../sass/components/_frontpageblocks.scss */
+/* line 48, ../sass/components/_frontpageblocks.scss */
 .calendar #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
   width: 100%;
 }
 
-/* line 51, ../sass/components/_frontpageblocks.scss */
+/* line 52, ../sass/components/_frontpageblocks.scss */
 #block-views-calendar-block-4 {
   display: flex;
   width: 30%;
@@ -5388,57 +5390,57 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
   margin-left: 3%;
 }
 @media (max-width: 768px) {
-  /* line 51, ../sass/components/_frontpageblocks.scss */
+  /* line 52, ../sass/components/_frontpageblocks.scss */
   #block-views-calendar-block-4 {
     width: 100%;
   }
 }
-/* line 59, ../sass/components/_frontpageblocks.scss */
+/* line 60, ../sass/components/_frontpageblocks.scss */
 #block-views-calendar-block-4 .views-row {
   margin: 1em 0;
 }
-/* line 61, ../sass/components/_frontpageblocks.scss */
+/* line 62, ../sass/components/_frontpageblocks.scss */
 #block-views-calendar-block-4 .views-row .views-field-title {
   margin: .3em 0 0 0;
 }
-/* line 66, ../sass/components/_frontpageblocks.scss */
+/* line 67, ../sass/components/_frontpageblocks.scss */
 #block-views-calendar-block-4 .button, #block-views-calendar-block-4 .button--primary, #block-views-calendar-block-4 .button--secondary {
   float: left;
 }
-/* line 69, ../sass/components/_frontpageblocks.scss */
+/* line 70, ../sass/components/_frontpageblocks.scss */
 #block-views-calendar-block-4 .view-footer {
   padding: 0;
 }
-/* line 72, ../sass/components/_frontpageblocks.scss */
+/* line 73, ../sass/components/_frontpageblocks.scss */
 #block-views-calendar-block-4 .cal_social {
   margin-left: 1em;
   margin-top: 5px;
   float: left;
-  color: #ab2c27;
+  color: lime;
 }
-/* line 77, ../sass/components/_frontpageblocks.scss */
+/* line 78, ../sass/components/_frontpageblocks.scss */
 #block-views-calendar-block-4 .cal_social span {
   margin-right: .5em;
 }
 
 /*Content blocks*/
-/* line 85, ../sass/components/_frontpageblocks.scss */
+/* line 86, ../sass/components/_frontpageblocks.scss */
 #block-views-content-features-block {
   margin-top: 1em;
 }
-/* line 87, ../sass/components/_frontpageblocks.scss */
+/* line 88, ../sass/components/_frontpageblocks.scss */
 #block-views-content-features-block img {
   float: left;
   margin: 0 5px 5px 0;
   height: 200px;
   /* Forcing image height for prototy */
 }
-/* line 92, ../sass/components/_frontpageblocks.scss */
+/* line 93, ../sass/components/_frontpageblocks.scss */
 #block-views-content-features-block p {
   margin: 0;
 }
 
-/* line 98, ../sass/components/_frontpageblocks.scss */
+/* line 99, ../sass/components/_frontpageblocks.scss */
 #block-views-content-features-block-1 .views-row {
   display: inline-block;
   width: 43%;
@@ -5448,33 +5450,33 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
   margin: .5em;
 }
 @media (max-width: 768px) {
-  /* line 98, ../sass/components/_frontpageblocks.scss */
+  /* line 99, ../sass/components/_frontpageblocks.scss */
   #block-views-content-features-block-1 .views-row {
     width: 100%;
   }
 }
 
-/* line 112, ../sass/components/_frontpageblocks.scss */
+/* line 113, ../sass/components/_frontpageblocks.scss */
 .view-id-content_features {
   display: flex;
   min-height: 200px;
 }
 
-/* line 117, ../sass/components/_frontpageblocks.scss */
+/* line 118, ../sass/components/_frontpageblocks.scss */
 div.view-footer {
   padding: 0 .5em 0 .5em;
   clear: left;
 }
 
 /* Icon callout blocks */
-/* line 124, ../sass/components/_frontpageblocks.scss */
+/* line 125, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-homepage-icon-callouts {
   text-align: center;
   margin: 0px auto;
   vertical-align: top;
 }
 
-/* line 129, ../sass/components/_frontpageblocks.scss */
+/* line 130, ../sass/components/_frontpageblocks.scss */
 #block-block-8, #block-block-9, #block-block-10 {
   display: inline-block;
   max-width: 300px;
@@ -5484,19 +5486,19 @@ div.view-footer {
 }
 
 /* Styling for full width Callout Boxes */
-/* line 141, ../sass/components/_frontpageblocks.scss */
+/* line 142, ../sass/components/_frontpageblocks.scss */
 .block-nodeblock {
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
 }
-/* line 143, ../sass/components/_frontpageblocks.scss */
+/* line 144, ../sass/components/_frontpageblocks.scss */
 .block-nodeblock .node-content-callout {
   clear: left;
   height: 500px;
   background-size: cover;
   background-position: center center;
 }
-/* line 148, ../sass/components/_frontpageblocks.scss */
+/* line 149, ../sass/components/_frontpageblocks.scss */
 .block-nodeblock .node-content-callout .content {
   max-width: 960px;
   margin: 0px auto;
@@ -5507,13 +5509,13 @@ div.view-footer {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 153, ../sass/components/_frontpageblocks.scss */
+/* line 154, ../sass/components/_frontpageblocks.scss */
 .block-nodeblock .node-content-callout .content h2 {
   color: #ffffff;
   font-size: 2em;
   line-height: normal;
 }
-/* line 158, ../sass/components/_frontpageblocks.scss */
+/* line 159, ../sass/components/_frontpageblocks.scss */
 .block-nodeblock .node-content-callout .content .field-name-field-button-target {
   color: #ffffff;
   border: 1px solid #ffffff;
@@ -5521,86 +5523,86 @@ div.view-footer {
   margin: 0px auto;
   padding: 10px;
 }
-/* line 164, ../sass/components/_frontpageblocks.scss */
+/* line 165, ../sass/components/_frontpageblocks.scss */
 .block-nodeblock .node-content-callout .content .field-name-field-button-target a {
   color: #ffffff;
 }
-/* line 167, ../sass/components/_frontpageblocks.scss */
+/* line 168, ../sass/components/_frontpageblocks.scss */
 .block-nodeblock .node-content-callout .content .field-name-field-button-target a:after {
   content: "" !important;
 }
-/* line 171, ../sass/components/_frontpageblocks.scss */
+/* line 172, ../sass/components/_frontpageblocks.scss */
 .block-nodeblock .node-content-callout .content .field-name-field-subtitle {
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: .2em;
 }
 
-/* line 180, ../sass/components/_frontpageblocks.scss */
+/* line 181, ../sass/components/_frontpageblocks.scss */
 #block-nodeblock-222186288 {
   margin-bottom: -10px;
 }
 
 /*Styling for News and Calendar Feeds */
-/* line 186, ../sass/components/_frontpageblocks.scss */
+/* line 187, ../sass/components/_frontpageblocks.scss */
 #block-views-ab3c0c534b4b1da949f380185f7e45b1 {
   margin-left: 1em;
   margin-right: 1em;
 }
 
-/* line 191, ../sass/components/_frontpageblocks.scss */
+/* line 192, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds {
   text-align: center;
   margin: 0 auto;
   max-width: 90%;
 }
-/* line 195, ../sass/components/_frontpageblocks.scss */
+/* line 196, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 {
   display: inline-block;
   text-align: left;
   vertical-align: top;
 }
 @media (min-width: 0px) and (max-width: 767px) {
-  /* line 195, ../sass/components/_frontpageblocks.scss */
+  /* line 196, ../sass/components/_frontpageblocks.scss */
   .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 {
     max-width: 100%;
     margin: 0 1em;
   }
 }
 @media (min-width: 768px) {
-  /* line 195, ../sass/components/_frontpageblocks.scss */
+  /* line 196, ../sass/components/_frontpageblocks.scss */
   .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 {
     max-width: 45%;
   }
 }
-/* line 206, ../sass/components/_frontpageblocks.scss */
+/* line 207, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .views-row, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .views-row {
   padding-bottom: 1em;
   white-space: nowrap;
 }
-/* line 209, ../sass/components/_frontpageblocks.scss */
+/* line 210, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .views-row .views-field-body, .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .views-row .views-field-title, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .views-row .views-field-body, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .views-row .views-field-title {
   white-space: normal;
 }
-/* line 213, ../sass/components/_frontpageblocks.scss */
+/* line 214, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 h2.block__title, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 h2.block__title {
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
   color: #999999;
   font-size: 1.3em;
 }
-/* line 218, ../sass/components/_frontpageblocks.scss */
+/* line 219, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .views-field-title, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .views-field-title {
   margin-bottom: -1em;
 }
-/* line 220, ../sass/components/_frontpageblocks.scss */
+/* line 221, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .views-field-title a, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .views-field-title a {
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
   font-size: 1.3em;
   line-height: 2em;
 }
-/* line 226, ../sass/components/_frontpageblocks.scss */
+/* line 227, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .views-field-nothing, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .views-field-nothing {
   display: inline-block;
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
@@ -5617,7 +5619,7 @@ div.view-footer {
   margin-bottom: 1.2em;
   margin-right: .5em;
 }
-/* line 241, ../sass/components/_frontpageblocks.scss */
+/* line 242, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .event_feed_wrapper, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .event_feed_wrapper {
   display: inline-block;
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
@@ -5627,24 +5629,24 @@ div.view-footer {
   max-width: 66%;
   white-space: normal;
 }
-/* line 248, ../sass/components/_frontpageblocks.scss */
+/* line 249, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .event_feed_wrapper a, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .event_feed_wrapper a {
   color: #000000;
   font-size: 1.3em;
 }
-/* line 252, ../sass/components/_frontpageblocks.scss */
+/* line 253, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .event_feed_wrapper p, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .event_feed_wrapper p {
   height: 0;
   margin: 0;
 }
-/* line 257, ../sass/components/_frontpageblocks.scss */
+/* line 258, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 p.clear, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 p.clear {
   height: 0;
   width: 0;
   margin: 0;
   clear: left;
 }
-/* line 263, ../sass/components/_frontpageblocks.scss */
+/* line 264, ../sass/components/_frontpageblocks.scss */
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .view-footer, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .view-footer {
   padding-left: 0;
 }
@@ -5691,7 +5693,7 @@ div.view-footer {
 }
 /* line 41, ../sass/components/_calendar.scss */
 .section-attend .view .date-nav-wrapper .date-nav .date-prev .fa, .section-attend .view .date-nav-wrapper .date-nav .date-next .fa {
-  color: #ab2c27;
+  color: lime;
 }
 /* line 47, ../sass/components/_calendar.scss */
 .section-attend .date-nav h2 {
@@ -5870,7 +5872,7 @@ div.view-footer {
 /* line 4, ../sass/components/_footer.scss */
 #footer {
   margin-top: 1em;
-  border: 1px #ab2c27;
+  border: 1px lime;
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
   background-color: #333333;
@@ -6006,9 +6008,9 @@ category: Components - Buttons
 
 /* line 63, ../sass/components/_buttons.scss */
 .button--primary {
-  background-color: linear-gradient(#da625e, #ab2c27);
+  background-color: linear-gradient(#66ff66, #00ff00);
   color: #ffffff;
-  border: 1px solid #81211e;
+  border: 1px solid #00cc00;
 }
 
 /* line 68, ../sass/components/_buttons.scss */
@@ -6057,7 +6059,7 @@ blockquote::before {
   top: 75px;
   left: -40px;
   font-size: 88px;
-  color: #ab2c27;
+  color: lime;
 }
 
 /* line 1, ../sass/components/_slider.scss */
@@ -6205,7 +6207,7 @@ nav.slick__arrow {
 nav.slick__arrow button {
   text-indent: -9999px;
   background-color: white;
-  color: #ab2c27;
+  color: lime;
   width: 3em;
   height: 3em;
 }

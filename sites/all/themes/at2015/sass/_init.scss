@@ -94,7 +94,7 @@ $font-monospace:   $courier;
 //
 // Colors, etc.
 //
-$highlight: #ab2c27;
+$highlight: lime;
 $red: #ab2c27;
 $blue: #58a9e6;
 $darkblue:#1c305f;
@@ -261,6 +261,7 @@ body {
     position: fixed;
     top: 0px;
     opacity: 1;
+    transition: 0.4s ease;
 }
 
 .region-navigation {
