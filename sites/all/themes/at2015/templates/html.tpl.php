@@ -65,5 +65,11 @@
       fontRatio : 70
       });
     </script>
+    <script type="text/javascript">
+      if( !$.trim( $('#highlighted').html() ).length ) {
+          $("#highlighted").addClass("empty");
+        }
+
+    </script>
 </body>
 </html>
