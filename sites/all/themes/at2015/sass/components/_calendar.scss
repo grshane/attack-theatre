@@ -59,7 +59,7 @@ img {
 	&.mini {
 	padding: 10px;
 	border: 1px solid $lightgrey;
-		
+
 	}
 }
 
@@ -78,4 +78,8 @@ img {
 	color: $black;
 	font-size: 1.1em;
 }
+}
+
+.addtoany_list a span.a2a_img {
+	display: none !important;
 }
