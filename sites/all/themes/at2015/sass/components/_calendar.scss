@@ -83,3 +83,11 @@ img {
 .addtoany_list a span.a2a_img {
 	display: none !important;
 }
+
+.view-display-id-block_4 {
+@for $i from 5 through 1000 {
+  .views-row-#{$i} {
+    display:none;
+  }
+}
+}
