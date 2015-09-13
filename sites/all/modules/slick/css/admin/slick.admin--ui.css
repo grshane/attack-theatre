@@ -1,6 +1,10 @@
 /**
  * @file
  * Some !important declarations are to overrides over-specified Seven rules.
+ *
+ * LM1.0:
+ * - FF 23 CHROME 29.0.1547.57
+ * - FF 40 CHROME 45.0.2454.85
  */
 /**
  * Typhography.
@@ -40,13 +44,26 @@ body.page-admin .form--slick *,
 .form--slick *::after {
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box; /* Old FF */
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
+/**
+ * Form
+ */
 .form--slick {
   font-size: 16px;
   font-size: 1rem;
+  padding: 0;
+  position: relative;
+}
+
+.form--slick::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /**
@@ -55,9 +72,7 @@ body.page-admin .form--slick *,
 .form--compact .button,
 .form--compact .button:link,
 .form--compact .button:visited,
-.form--compact .form-submit,
-.form--compact .form-submit,
-.form--compact .media-widget .button {
+.form--compact .form-submit {
   background: #dadada;
   border: 1px solid #dadada;
   border-radius: 0;
@@ -68,7 +83,7 @@ body.page-admin .form--slick *,
   cursor: pointer;
   display: inline-block;
   font-size: 13px;
-  height: 28px;
+  min-height: 28px;
   line-height: 26px;
   margin: 0;
   padding: 0 10px 1px;
@@ -77,13 +92,10 @@ body.page-admin .form--slick *,
   white-space: nowrap;
 }
 
-.media-widget .button:focus,
 .form--compact .form-submit:focus {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.media-widget .button:hover,
-.media-widget .button:active,
 .form--compact .button:hover,
 .form--compact .button:active,
 .form--compact .form-submit:hover,
@@ -103,128 +115,9 @@ body.page-admin .form--slick *,
   float: right;
 }
 
-/**
- * Checkboxes.
- */
 .form--slick .form-disabled {
   cursor: not-allowed;
-}
-
-.form--slick .form-type-radio {
-  border: 0;
-}
-
-.form--slick .form-type-radio,
-.form--slick .form-type-checkbox {
-  position: relative;
-}
-
-/**
- * Fixes for Adminimal gargantuan label.
- */
-.form--slick .form-item label,
-.form--slick .form-item label.option {
-  font-weight: 400;
-  line-height: 1;
-  font-size: 14px;
-  font-size: 0.875rem;
-}
-
-.form--slick .form-type-radio input,
-.form--slick .form-type-checkbox input {
-  cursor: pointer;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  z-index: 2;
-}
-
-.form--slick .form-type-radio label,
-.form--slick .form-type-checkbox label {
-  line-height: 18px;
-  position: relative;
-}
-
-.form--slick .form-type-radio label.option,
-.form--slick .form-type-checkbox .field-suffix {
-  padding-left: 0;
-  position: relative;
-}
-
-.form--slick .form-type-checkbox .field-suffix {
-  top: 14px;
-}
-
-.form--slick .form-type-radio label::before,
-.form--slick .form-type-checkbox .field-suffix::before {
-  display: block;
-  background: #fff;
-  content: '';
-  outline: 0;
-  border: 2px solid #dadada;
-  font-size: 12px;
-  font-size: 0.75rem;
-  width: 20px;
-  height: 20px;
-  line-height: 18px;
-  margin-right: 5px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  text-align: center;
-  -webkit-transition: all 0.4s ease-in-out 0s;
-  transition: all 0.4s ease-in-out 0s;
-}
-
-.form--slick .form-type-checkbox .field-suffix::before {
-  left: auto;
-  right: -26px;
-}
-
-.form--slick .form-type-radio .form-radio:checked + label::before,
-.form--slick .form-type-checkbox .form-checkbox:checked + .field-suffix::before {
-  background: #fff;
-  outline: 0;
-  border-color: #ff6d2c;
-  color: #ff6d2c;
-  font-size: 32px;
-  line-height: 16px;
-}
-
-.form--slick .form-type-radio .form-radio:focus,
-.form--slick .form-type-radio .form-checkbox:focus,
-.form--slick .form-type-checkbox .form-radio:focus,
-.form--slick .form-type-checkbox .form-checkbox:focus {
-  box-shadow: none;
-}
-
-/* bull */
-.form--slick .form-type-radio .form-radio:checked + label::before {
-  content: '\02022';
-}
-
-.form--slick .form-type-checkbox .form-checkbox:checked + .field-suffix::before {
-  content: '\2713';
-  font-size: 16px;
-}
-
-.form--slick .form-type-radio label::before {
-  border-radius: 50%;
-}
-
-.form--slick .form-radios {
-  margin-bottom: 10px;
-}
-
-.form--slick .form-type-textarea .grippie {
-  display: none;
-}
-
-.form--slick .form-type-textarea .form-textarea {
-  resize: vertical;
+  opacity: 0.6;
 }
 
 /**
@@ -259,6 +152,25 @@ body.page-admin .form--slick *,
   border-color: #808080;
 }
 
+.form--slick fieldset {
+  padding: 30px 15px;
+}
+
+.form--slick fieldset fieldset {
+  background: none;
+  padding: 60px 0 1em;
+}
+
+.form--slick .vertical-tabs fieldset {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.form--slick .fieldset--responsive--ajax,
+.form--slick .fieldset--responsive--ajax > .fieldset-wrapper {
+  padding: 0;
+}
+
 .form--slick fieldset .fieldset-description {
   padding: 5px 15px;
 }
@@ -274,6 +186,10 @@ body.page-admin .form--slick *,
   padding: 0;
 }
 
+.form--slick > .fieldset-wrapper {
+  padding: 0;
+}
+
 .form--slick fieldset legend {
   font-size: 18px;
   font-size: 1.125rem;
@@ -281,8 +197,14 @@ body.page-admin .form--slick *,
 }
 
 .form--slick fieldset .fieldset-title {
+  background: none;
   color: #111;
   display: block;
+  font-size: 18px;
+  font-size: 1.125rem;
+  height: auto;
+  padding: 0;
+  text-transform: uppercase;
 }
 
 .form--slick fieldset .fieldset-title:hover {
@@ -292,28 +214,6 @@ body.page-admin .form--slick *,
 
 .form--slick fieldset .fieldset-title:focus {
   outline: 0;
-}
-
-.form--slick fieldset {
-  padding: 30px 15px;
-}
-
-.form--slick fieldset fieldset {
-  background: none;
-  padding: 60px 0 1em;
-}
-
-.form--slick .vertical-tabs fieldset {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.form--slick .fieldset--responsive--ajax {
-  padding: 0;
-}
-
-.form--slick .fieldset--responsive--ajax > .fieldset-wrapper {
-  padding: 0;
 }
 
 .form--slick .fieldset--responsive--ajax > legend,
@@ -342,6 +242,11 @@ body.page-admin .form--slick *,
   padding: 0;
 }
 
+.form--slick .fieldset--responsive--ajax .fieldset--responsive .fieldset--settings .fieldset-wrapper {
+  margin-top: 0;
+  padding: 0;
+}
+
 html.js .form--slick .collapsible,
 html.js .form--slick .collapsed {
   border: 0;
@@ -349,6 +254,8 @@ html.js .form--slick .collapsed {
 
 html.js .form--slick .collapsible legend,
 html.js .form--slick .collapsed legend {
+  background: none;
+  border: 0;
   display: block;
   padding: 0;
   position: relative;
@@ -358,16 +265,19 @@ html.js .form--slick .collapsed legend {
 html.js .form--slick .collapsible .fieldset-legend,
 html.js .form--slick .collapsed .fieldset-legend {
   background: none;
-  margin: 10px;
+  margin: 0;
   padding: 0;
   position: absolute;
   width: 100%;
 }
 
+html.js .form--slick .collapsible legend .icon {
+  display: none;
+}
+
 html.js .form--slick .collapsible .fieldset-legend::after {
   content: "";
 }
-
 
 html.js .form--slick .collapsible .fieldset-legend span.summary {
   position: absolute !important;
@@ -464,8 +374,8 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
  * Tooltip
  * !important declaration is to override Seven.
  */
-.has-tooltip .form-item {
-  position: relative;
+.form--slick .form-item .description {
+  color: #808080;
 }
 
 .has-tooltip .form-item > .description {
@@ -600,14 +510,6 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
 /**
  * Form items
  */
-.form--slick .form-item {
-  position: relative;
-}
-
-.form--slick .form-item .description {
-  color: #808080;
-}
-
 .form--slick .form-item .form-text,
 .form--slick .form-item .form-select,
 .form--slick .form-item .form-textarea {
@@ -643,18 +545,22 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
 }
 
 .form--slick .form-item .form-select {
-  line-height: 32px;
+  line-height: 18px; /* Fix for Chrome linux */
+  min-height: 28px;
   min-width: 120px;
-  padding: 5px 2px;
+  padding: 4px 2px 2px; /* Fix for Chrome linux */
   vertical-align: middle;
   -moz-appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   text-indent: .01px;
   text-overflow: "";
+  white-space: nowrap; /* Fix for Bartik */
 }
 
 .form--slick .form-type-textfield .field-prefix {
   float: left;
+  line-height: 22px;
   padding: 5px;
 }
 
@@ -674,17 +580,18 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   float: left;
   font-size: 13px;
   font-size: 0.8125rem;
-  line-height: 22px;
+  line-height: 32px;
   margin: 0;
-  min-height: 66px;
+  min-height: 68px;
   padding: 20px 0 12px;
+  position: relative;
   width: 33.3333%;
 }
 
 .form--slick .form-item input,
 .form--slick .form-item select {
   float: left;
-  max-width: 160px;
+  max-width: 150px;
   min-width: 40px;
 }
 
@@ -692,17 +599,25 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   margin-left: 180px;
 }
 
+/**
+ * Fixes for Adminimal gargantuan label.
+ */
+.form--slick .form-item label,
+.form--slick .form-item label.option {
+  font-weight: 400;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 22px;
+}
+
 .form--slick .form-item label {
   float: left;
-  padding: 5px 5px 5px 0 !important;
   /* Overrides over-specified Seven */
+  padding: 5px 5px 5px 0 !important;
+  margin: 0;
   width: 160px;
   text-align: right;
   white-space: normal;
-}
-
-.form--slick .form-type-checkboxes > label {
-  padding-right: 0 !important;
 }
 
 .form--slick .form-item.form-type-textfield input {
@@ -730,17 +645,6 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   z-index: 2;
 }
 
-.form--slick .form-type-checkbox input {
-  min-height: 100%;
-  left: 0;
-  min-width: 100%;
-  margin: 0; /* Fix for ember */
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-}
-
 .form--slick .form-type-checkboxes {
   margin-bottom: -1px;
   padding-bottom: 0;
@@ -752,9 +656,12 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   border-bottom: 1px solid #e7e7e7;
   border-top: 1px solid #e7e7e7;
   display: block;
+  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 42px;
   margin-top: -1px;
   min-height: 42px;
+  padding-right: 0 !important;
   padding-top: 20px;
   width: 100%;
 }
@@ -763,10 +670,7 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   border-left: 1px solid #e7e7e7;
   border-right: 1px solid #e7e7e7;
   margin-left: -1px;
-}
-
-.form--slick .vertical-tabs .form-item:nth-child(3n+1) {
-  border-right: 0;
+  min-height: 72px;
 }
 
 .form--slick .vertical-tabs .form-type-checkboxes {
@@ -783,26 +687,162 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   border-left: 0;
 }
 
-.form--slick .vertical-tabs .fieldset-wrapper {
+.form--slick .vertical-tabs .has-tooltip .fieldset-wrapper {
   margin-right: -4px;
-}
-
-.form--slick .vertical-tabs .fieldset-wrapper {
   padding: 0;
 }
 
 .form--slick .vertical-tabs .fieldset--responsive > .fieldset-wrapper {
-  padding: 0 15px;
+  padding: 0;
 }
 
 .form--slick .vertical-tabs .fieldset--responsive .form-item input,
 .form--slick .vertical-tabs .fieldset--responsive .form-item select {
   max-width: 100px;
-  margin: 0; /* Fix for ember */
+  margin: 0; /* Fix for Ember */
 }
 
 .form--slick .vertical-tabs .fieldset--responsive .form-item .form-checkbox {
   max-width: 100%;
+}
+
+/**
+ * Checkboxes.
+ */
+.form--slick .form-type-radio {
+  border: 0;
+}
+
+.form--slick .form-type-radio,
+.form--slick .form-type-checkbox {
+  position: relative;
+}
+
+.form--slick .form-type-radio input,
+.form--slick .form-type-checkbox input[type=checkbox] {
+  background: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-size: 0.75rem;
+  height: 22px;
+  display: inline-block;
+  float: none;
+  margin: 0; /* Fix for Ember */
+  opacity: 0;
+  width: 22px;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  z-index: 2;
+}
+
+/* Fix for UNIX FF + Chrome */
+.form--slick .form-type-checkbox input[type=checkbox] {
+  left: auto;
+  margin-top: 2px;
+  max-width: 100%;
+  min-height: 22px;
+  min-width: 22px;
+  position: absolute;
+  top: auto;
+}
+
+.form--slick .form-type-radio label,
+.form--slick .form-type-checkbox label,
+.form--slick .form-type-checkbox .field-suffix {
+  line-height: 18px;
+  position: relative;
+}
+
+.form--slick .form-type-radio label.option,
+.form--slick .form-type-checkbox .field-suffix {
+  padding-left: 0;
+}
+
+.form--slick .form-type-radio label::before,
+.form--slick .form-type-checkbox .field-suffix::before {
+  content: '';
+  display: block;
+  position: absolute;
+  text-align: center;
+  width: 22px;
+}
+
+.form--slick .form-type-radio label::before {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+
+.form--slick .form-type-radio label::before,
+.form--slick .form-type-checkbox .field-suffix {
+  background: #fff;
+  outline: 0;
+  border: 2px solid #dadada;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  margin-right: 5px;
+  left: 0;
+  top: 4px;
+  text-align: center;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.form--slick .form-type-checkbox .field-suffix {
+  display: inline-block;
+  left: auto;
+  right: auto;
+  top: -4px;
+  vertical-align: middle;
+}
+
+.form--slick .form-type-radio .form-radio:checked + label::before {
+  font-size: 32px;
+  line-height: 18px;
+}
+
+.form--slick .form-type-radio .form-radio:checked + label::before,
+.form--slick .form-type-checkbox .form-checkbox:checked + .field-suffix {
+  background: #fff;
+  outline: 0;
+  border-color: #ff6d2c;
+  color: #ff6d2c;
+}
+
+.form--slick .form-type-radio .form-radio:focus,
+.form--slick .form-type-radio .form-checkbox:focus,
+.form--slick .form-type-checkbox .form-radio:focus,
+.form--slick .form-type-checkbox .form-checkbox:focus {
+  box-shadow: none;
+}
+
+.form--slick .form-type-radio .form-radio:checked + label::before {
+  content: '\02022';
+}
+
+.form--slick .form-type-checkbox .form-checkbox:checked + .field-suffix::before {
+  content: '\2713';
+  font-size: 16px;
+  line-height: 18px;
+  text-indent: -2px;
+}
+
+.form--slick .form-type-radio label::before {
+  border-radius: 50%;
+}
+
+.form--slick .form-radios {
+  margin-bottom: 10px;
+}
+
+.form--slick .form-type-textarea .grippie {
+  display: none;
+}
+
+.form--slick .form-type-textarea .form-textarea {
+  resize: vertical;
 }
 
 /**
@@ -814,19 +854,40 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   background: none;
 }
 
-.form--slick .form-item.form-type-checkboxes {
-  clear: both;
-  float: none;
-  width: 100%;
+.form--slick .form-checkboxes {
+  border-top: 2px solid #e7e7e7;
+  margin-top: -1px;
 }
 
+/**
+ * Header
+ */
 .form--slick .form-item.form-type-checkboxes > label {
-  clear: both;
-  float: none;
   padding: 10px 0;
+}
+
+.ui-dialog-content .form--views > .fieldset-wrapper > .description,
+.form--slick .form-item.form-type-checkboxes > label,
+.form--slick__title {
+  background: #fafafa;
+  clear: both;
+  display: block;
+  float: none;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+  min-height: 42px;
+  padding: 20px 5px 10px !important;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
+}
+
+.form--slick .form-item.form-type-checkboxes > label,
+.form--slick__title {
+  background: #e7e7e7;
 }
 
 .form--slick .fieldset--no-checkboxes-label .form-item.form-type-checkboxes > label {
@@ -838,158 +899,11 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   word-wrap: normal;
 }
 
-#edit-label-machine-name-suffix {
-  padding-left: 5px;
-}
-
-@media screen and (max-width: 1200px) {
-  .form--slick.form--field .form-item,
-  .form--slick .vertical-tabs-panes .form-item {
-    float: left;
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .form--slick.form--field .form-item,
-  .form--slick .vertical-tabs-panes .form-item {
-    min-height: 78px;
-    padding: 10px 15px;
-    width: 50%;
-  }
-
-  .form--slick.form--field .form-item label,
-  .form--slick .vertical-tabs-panes .form-item label {
-    float: none;
-    text-align: left;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .form--slick.form--field .form-item input,
-  .form--slick.form--field .form-item select,
-  .form--slick.form--field .form-type-textfield input,
-  .form--slick .vertical-tabs-panes .form-item input,
-  .form--slick .vertical-tabs-panes .form-item select,
-  .form--slick .vertical-tabs-panes .form-type-textfield input {
-    max-width: 200px;
-  }
-
-  .form--slick.form--field .form-item:nth-child(3n+1),
-  .form--slick .vertical-tabs-panes .form-item:nth-child(3n+1) {
-    border-left: 1px solid #e7e7e7;
-  }
-
-  .form--slick.form--field .form-item:nth-child(3n+1),
-  .form--slick .vertical-tabs-panes .form-item:nth-child(3n+1) {
-    border-right: 1px solid #e7e7e7;
-  }
-}
-
-@media screen and (max-width: 660px) {
-  .form--slick.form--field .form-item,
-  .form--slick .vertical-tabs-panes .form-item {
-    min-height: 76px;
-    padding: 10px 15px;
-    width: 100%;
-  }
-
-  .form--slick.form--field .form-item label,
-  .form--slick.form--field .form-item label.option,
-  .form--slick .vertical-tabs-panes .form-item label,
-  .form--slick .vertical-tabs-panes .form-item label.option {
-    float: left;
-    text-align: right;
-    font-weight: 400;
-    line-height: 22px;
-    width: 120px;
-  }
-
-  .form--slick.form--field .form-item .form-item input,
-  .form--slick.form--field .form-item .form-item select,
-  .form--slick.form--field .form-item .form-type-textfield input,
-  .form--slick .vertical-tabs-panes .form-item .form-item input,
-  .form--slick .vertical-tabs-panes .form-item .form-item select,
-  .form--slick .vertical-tabs-panes .form-item .form-type-textfield input {
-    display: block;
-    float: none;
-    margin: 0 auto;
-    max-width: 200px;
-    width: 200px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .form--slick.form--field .form-item,
-  .form--slick .vertical-tabs-panes .form-item {
-    display: block;
-    margin: 0 auto;
-    min-height: 76px;
-    padding: 10px 15px;
-    width: 100%;
-  }
-
-  .form--slick.form--field .form-item label,
-  .form--slick .vertical-tabs-panes .form-item label {
-    display: block;
-    float: none;
-    text-align: center;
-    width: auto;
-  }
-
-  .form--slick.form--field .form-item .form-type-checkbox input,
-  .form--slick .vertical-tabs-panes .form-item .form-type-checkbox input {
-    left: auto;
-  }
-
-  .form--slick__header .field-suffix {
-    display: block;
-    text-align: center;
-  }
-
-  html #page {
-    margin: 0 10px;
-  }
-}
-/**
- * Form
- */
-.form--slick {
-  font-family: Arial, sans-serif;
-  *zoom: 1;
-  padding: 0;
-}
-
-.form--slick::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.form--slick > .fieldset-wrapper {
-  padding: 0;
-}
-
-/**
- * Header
- */
-.form--slick__title {
-  background: #e7e7e7;
-  clear: both;
-  display: block;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0;
-  min-height: 42px;
-  padding: 20px 5px 10px;
-  text-align: center;
-  text-transform: uppercase;
-  width: 100%;
-}
-
+.ui-dialog-content .form--views > .fieldset-wrapper > .description small,
 .form--slick__title small {
   display: block;
+  font-size: 14px;
+  margin-top: -1px;
   text-transform: none;
 }
 
@@ -1044,13 +958,6 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
 }
 
 /**
- * Misc
- */
-.no-padding {
-  padding: 0 !important;
-}
-
-/**
  * Radios
  */
 .form--compact .form-radios .form-item {
@@ -1059,9 +966,7 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   cursor: pointer;
   display: inline-block;
   padding: 0;
-  text-align: center;
-  font: 12px/16px Arial,serif;
-  width: 100px;
+  width: auto;
 }
 
 .form--compact .form-radios .form-item input {
@@ -1087,7 +992,210 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   position: relative;
 }
 
+/* Fix for Shiny, Adminimal */
 .ui-dialog-content .form--slick .form-item,
 .ui-dialog-content .form--slick .form-item .form-item {
   clear: none;
+}
+
+.ui-dialog-content .form--slick {
+  padding-top: 0;
+}
+
+.ui-dialog-content .form--views {
+  padding-top: 40px;
+}
+
+.ui-dialog-content .form--views > .fieldset-wrapper {
+  padding: 0 !important; /* Fix for Rubik */
+}
+
+.ui-dialog-content .form--slick > legend {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+
+.ui-dialog-content .form--slick > legend .fieldset-legend {
+  margin: 0;
+  padding: 10px 15px;
+  position: absolute;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.form--slick .form-item.form-type-checkboxes {
+  border-left: 0;
+  border-right: 0;
+  clear: both;
+  float: none;
+  padding: 0;
+  width: 100%;
+}
+
+/**
+ * Misc
+ */
+.no-padding {
+  padding: 0 !important;
+}
+
+#edit-label-machine-name-suffix {
+  padding-left: 5px;
+}
+
+.page-admin-config-media-slick #main {
+  width: 100%;
+}
+
+@media screen and (max-width: 1280px) {
+  .form--slick.form--field .form-item,
+  .form--slick .vertical-tabs-panes .form-item {
+    float: left;
+    width: 49.8888%; /* Fix for UNIX rounding margin */
+  }
+
+  .form--slick .form-item.form-type-checkboxes {
+    width: 100%;
+  }
+
+  .form--slick .vertical-tabs-panes .form-type-checkboxes .form-item {
+    width: 33.3333%;
+  }
+
+  .ui-dialog .form--slick .form-item input,
+  .ui-dialog .form--slick .form-item select {
+    max-width: 120px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .form--slick.form--field .form-item,
+  .form--slick .vertical-tabs-panes .form-item {
+    min-height: 100px;
+    width: 100%;
+  }
+
+  .form--slick .form-item.form-type-checkboxes {
+    padding: 0;
+    width: 100%;
+  }
+
+  .form--slick .form--slick__header .form-item {
+    display: block;
+  }
+
+  .form--slick .form--slick__header .form-item-label {
+    width: auto;
+  }
+
+  .form--slick .form--slick__header .form-item-skin,
+  .form--slick .form--slick__header .form-item-breakpoints {
+    float: none;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .form--slick.form--field .form-item,
+  .form--slick .vertical-tabs-panes .form-item {
+    min-height: 76px;
+  }
+
+  .form--slick .form-item input,
+  .form--slick .form-item select {
+    display: inline-block;
+    float: none;
+    margin: 0;
+    max-width: 140px;
+  }
+
+  .form--slick .vertical-tabs-panes .form-type-checkboxes .form-item {
+    width: 100%;
+  }
+
+  .form--field.form--slick .form-type-checkboxes > label {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .form--slick.form--compact .has-tooltip .form-item  > .description {
+    left: 0;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .form--slick .form-item input,
+  .form--slick .form-item select,
+  .form--slick .form-item.form-type-textfield input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .form--slick .vertical-tabs .fieldset-wrapper {
+    margin: 0;
+  }
+  .form--slick.form--compact .form-item,
+  .form--slick .vertical-tabs-panes .form-item {
+    border-left: 0;
+    border-right: 0;
+    display: block;
+    margin: 0 auto;
+    min-height: 76px;
+    padding: 10px 15px;
+    width: 100%;
+  }
+
+  .form--slick.form--field .form-item:nth-child(3n+1),
+  .form--slick .vertical-tabs-panes .form-item:nth-child(3n+1) {
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .form--slick.form--compact .form-item.form-type-checkboxes {
+    border: 0;
+    padding: 10px 0;
+  }
+
+  .form--slick.form--compact .form-type-checkboxes .form-item {
+    border: 0;
+    border-bottom: 1px solid #e7e7e7;
+    margin: 0;
+  }
+
+  .form--slick.form--compact .form-item label,
+  .form--slick .vertical-tabs-panes .form-item label {
+    display: block;
+    float: none;
+    text-align: left;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .form--slick.form--compact .form-type-checkbox label {
+    float: left;
+    white-space: normal;
+    width: 86%;
+  }
+
+  .form--slick.form--compact .form-item .form-type-checkbox input {
+    left: auto;
+  }
+
+  .form--slick__header .field-suffix {
+    display: block;
+    text-align: center;
+  }
+
+  html #page {
+    margin: 0 10px;
+  }
 }

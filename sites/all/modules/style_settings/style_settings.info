@@ -5,9 +5,9 @@ core = 7.x
 soft_dependencies[] = style_settings
 simplytest_dependencies[] = style_settings_simplytest
 
-; Information added by Drupal.org packaging script on 2015-08-11
-version = "7.x-1.1+3-dev"
+; Information added by Drupal.org packaging script on 2015-09-13
+version = "7.x-1.1+4-dev"
 core = "7.x"
 project = "style_settings"
-datestamp = "1439309641"
+datestamp = "1442164140"
 

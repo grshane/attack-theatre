@@ -1,4 +1,8 @@
 
+Slick views 7.x-2.0-dev, 2015-9-8
+---------------------------------
+- Added class form--views.
+
 Slick views 7.x-2.0-dev, 2015-8-25
 ----------------------------------
 - Improved Slick Views cache.

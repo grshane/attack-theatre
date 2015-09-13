@@ -21,8 +21,8 @@ function slick_get_responsive_options($count = 0) {
   foreach ($breakpoints as $key => $breakpoint) {
     $options[$key] = array(
       'breakpoint' => 0,
-      'unslick' => FALSE,
-      'settings' => array(),
+      'unslick'    => FALSE,
+      'settings'   => array(),
     );
 
     foreach (slick_clean_options($defaults) as $name => $value) {
@@ -49,6 +49,7 @@ function slick_clean_options(array $options) {
   $excludes = drupal_map_assoc(array(
     'mobileFirst',
     'asNavFor',
+    'mousewheel',
     'slide',
     'lazyLoad',
     'prevArrow',
@@ -72,9 +73,9 @@ function slick_clean_options(array $options) {
  */
 function slick_get_overridable_options() {
   $overridables = array(
-    'arrows' => t('Arrows'),
-    'autoplay' => t('Autoplay'),
-    'dots' => t('Dots'),
+    'arrows'    => t('Arrows'),
+    'autoplay'  => t('Autoplay'),
+    'dots'      => t('Dots'),
     'draggable' => t('Draggable'),
   );
 
@@ -268,17 +269,17 @@ function slick_optionset_save($optionset, $new = FALSE) {
     $breakpoints = $optionset->breakpoints;
   }
 
-  $defaults['general'] = array('goodies' => array());
+  $defaults['general']  = array('goodies' => array());
   $defaults['settings'] = slick_get_options();
-  $optionset->options = $optionset->options + $defaults;
+  $optionset->options   = $optionset->options + $defaults;
   _slick_typecast_optionset($optionset->options, $breakpoints);
 
   // Prepare the database values.
   $db_values = array(
-    'name' => $optionset->name,
-    'label' => $optionset->label,
+    'name'        => $optionset->name,
+    'label'       => $optionset->label,
     'breakpoints' => $breakpoints,
-    'options' => $optionset->options,
+    'options'     => $optionset->options,
   );
 
   if ($new) {
@@ -377,38 +378,38 @@ function _slick_easing_options() {
 
   if (!isset($easings)) {
     $easings = array(
-      'linear' => 'Linear',
-      'swing' => 'Swing',
-      'easeInQuad' => 'easeInQuad',
-      'easeOutQuad' => 'easeOutQuad',
-      'easeInOutQuad' => 'easeInOutQuad',
-      'easeInCubic' => 'easeInCubic',
-      'easeOutCubic' => 'easeOutCubic',
-      'easeInOutCubic' => 'easeInOutCubic',
-      'easeInQuart' => 'easeInQuart',
-      'easeOutQuart' => 'easeOutQuart',
-      'easeInOutQuart' => 'easeInOutQuart',
-      'easeInQuint' => 'easeInQuint',
-      'easeOutQuint' => 'easeOutQuint',
-      'easeInOutQuint' => 'easeInOutQuint',
-      'easeInSine' => 'easeInSine',
-      'easeOutSine' => 'easeOutSine',
-      'easeInOutSine' => 'easeInOutSine',
-      'easeInExpo' => 'easeInExpo',
-      'easeOutExpo' => 'easeOutExpo',
-      'easeInOutExpo' => 'easeInOutExpo',
-      'easeInCirc' => 'easeInCirc',
-      'easeOutCirc' => 'easeOutCirc',
-      'easeInOutCirc' => 'easeInOutCirc',
-      'easeInElastic' => 'easeInElastic',
-      'easeOutElastic' => 'easeOutElastic',
+      'linear'           => 'Linear',
+      'swing'            => 'Swing',
+      'easeInQuad'       => 'easeInQuad',
+      'easeOutQuad'      => 'easeOutQuad',
+      'easeInOutQuad'    => 'easeInOutQuad',
+      'easeInCubic'      => 'easeInCubic',
+      'easeOutCubic'     => 'easeOutCubic',
+      'easeInOutCubic'   => 'easeInOutCubic',
+      'easeInQuart'      => 'easeInQuart',
+      'easeOutQuart'     => 'easeOutQuart',
+      'easeInOutQuart'   => 'easeInOutQuart',
+      'easeInQuint'      => 'easeInQuint',
+      'easeOutQuint'     => 'easeOutQuint',
+      'easeInOutQuint'   => 'easeInOutQuint',
+      'easeInSine'       => 'easeInSine',
+      'easeOutSine'      => 'easeOutSine',
+      'easeInOutSine'    => 'easeInOutSine',
+      'easeInExpo'       => 'easeInExpo',
+      'easeOutExpo'      => 'easeOutExpo',
+      'easeInOutExpo'    => 'easeInOutExpo',
+      'easeInCirc'       => 'easeInCirc',
+      'easeOutCirc'      => 'easeOutCirc',
+      'easeInOutCirc'    => 'easeInOutCirc',
+      'easeInElastic'    => 'easeInElastic',
+      'easeOutElastic'   => 'easeOutElastic',
       'easeInOutElastic' => 'easeInOutElastic',
-      'easeInBack' => 'easeInBack',
-      'easeOutBack' => 'easeOutBack',
-      'easeInOutBack' => 'easeInOutBack',
-      'easeInBounce' => 'easeInBounce',
-      'easeOutBounce' => 'easeOutBounce',
-      'easeInOutBounce' => 'easeInOutBounce',
+      'easeInBack'       => 'easeInBack',
+      'easeOutBack'      => 'easeOutBack',
+      'easeInOutBack'    => 'easeInOutBack',
+      'easeInBounce'     => 'easeInBounce',
+      'easeOutBounce'    => 'easeOutBounce',
+      'easeInOutBounce'  => 'easeInOutBounce',
     );
   }
 
@@ -456,37 +457,37 @@ function _slick_css_easing_options($all = FALSE) {
     $available_easings = array(
 
       // Defaults/ Native.
-      'ease' => 'ease|ease',
-      'linear' => 'linear|linear',
-      'ease-in' => 'ease-in|ease-in',
-      'ease-out' => 'ease-out|ease-out',
-      'swing' => 'swing|ease-in-out',
+      'ease'           => 'ease|ease',
+      'linear'         => 'linear|linear',
+      'ease-in'        => 'ease-in|ease-in',
+      'ease-out'       => 'ease-out|ease-out',
+      'swing'          => 'swing|ease-in-out',
 
       // Penner Equations (approximated).
-      'easeInQuad' => 'easeInQuad|cubic-bezier(0.550, 0.085, 0.680, 0.530)',
-      'easeInCubic' => 'easeInCubic|cubic-bezier(0.550, 0.055, 0.675, 0.190)',
-      'easeInQuart' => 'easeInQuart|cubic-bezier(0.895, 0.030, 0.685, 0.220)',
-      'easeInQuint' => 'easeInQuint|cubic-bezier(0.755, 0.050, 0.855, 0.060)',
-      'easeInSine' => 'easeInSine|cubic-bezier(0.470, 0.000, 0.745, 0.715)',
-      'easeInExpo' => 'easeInExpo|cubic-bezier(0.950, 0.050, 0.795, 0.035)',
-      'easeInCirc' => 'easeInCirc|cubic-bezier(0.600, 0.040, 0.980, 0.335)',
-      'easeInBack' => 'easeInBack|cubic-bezier(0.600, -0.280, 0.735, 0.045)',
-      'easeOutQuad' => 'easeOutQuad|cubic-bezier(0.250, 0.460, 0.450, 0.940)',
-      'easeOutCubic' => 'easeOutCubic|cubic-bezier(0.215, 0.610, 0.355, 1.000)',
-      'easeOutQuart' => 'easeOutQuart|cubic-bezier(0.165, 0.840, 0.440, 1.000)',
-      'easeOutQuint' => 'easeOutQuint|cubic-bezier(0.230, 1.000, 0.320, 1.000)',
-      'easeOutSine' => 'easeOutSine|cubic-bezier(0.390, 0.575, 0.565, 1.000)',
-      'easeOutExpo' => 'easeOutExpo|cubic-bezier(0.190, 1.000, 0.220, 1.000)',
-      'easeOutCirc' => 'easeOutCirc|cubic-bezier(0.075, 0.820, 0.165, 1.000)',
-      'easeOutBack' => 'easeOutBack|cubic-bezier(0.175, 0.885, 0.320, 1.275)',
-      'easeInOutQuad' => 'easeInOutQuad|cubic-bezier(0.455, 0.030, 0.515, 0.955)',
+      'easeInQuad'     => 'easeInQuad|cubic-bezier(0.550, 0.085, 0.680, 0.530)',
+      'easeInCubic'    => 'easeInCubic|cubic-bezier(0.550, 0.055, 0.675, 0.190)',
+      'easeInQuart'    => 'easeInQuart|cubic-bezier(0.895, 0.030, 0.685, 0.220)',
+      'easeInQuint'    => 'easeInQuint|cubic-bezier(0.755, 0.050, 0.855, 0.060)',
+      'easeInSine'     => 'easeInSine|cubic-bezier(0.470, 0.000, 0.745, 0.715)',
+      'easeInExpo'     => 'easeInExpo|cubic-bezier(0.950, 0.050, 0.795, 0.035)',
+      'easeInCirc'     => 'easeInCirc|cubic-bezier(0.600, 0.040, 0.980, 0.335)',
+      'easeInBack'     => 'easeInBack|cubic-bezier(0.600, -0.280, 0.735, 0.045)',
+      'easeOutQuad'    => 'easeOutQuad|cubic-bezier(0.250, 0.460, 0.450, 0.940)',
+      'easeOutCubic'   => 'easeOutCubic|cubic-bezier(0.215, 0.610, 0.355, 1.000)',
+      'easeOutQuart'   => 'easeOutQuart|cubic-bezier(0.165, 0.840, 0.440, 1.000)',
+      'easeOutQuint'   => 'easeOutQuint|cubic-bezier(0.230, 1.000, 0.320, 1.000)',
+      'easeOutSine'    => 'easeOutSine|cubic-bezier(0.390, 0.575, 0.565, 1.000)',
+      'easeOutExpo'    => 'easeOutExpo|cubic-bezier(0.190, 1.000, 0.220, 1.000)',
+      'easeOutCirc'    => 'easeOutCirc|cubic-bezier(0.075, 0.820, 0.165, 1.000)',
+      'easeOutBack'    => 'easeOutBack|cubic-bezier(0.175, 0.885, 0.320, 1.275)',
+      'easeInOutQuad'  => 'easeInOutQuad|cubic-bezier(0.455, 0.030, 0.515, 0.955)',
       'easeInOutCubic' => 'easeInOutCubic|cubic-bezier(0.645, 0.045, 0.355, 1.000)',
       'easeInOutQuart' => 'easeInOutQuart|cubic-bezier(0.770, 0.000, 0.175, 1.000)',
       'easeInOutQuint' => 'easeInOutQuint|cubic-bezier(0.860, 0.000, 0.070, 1.000)',
-      'easeInOutSine' => 'easeInOutSine|cubic-bezier(0.445, 0.050, 0.550, 0.950)',
-      'easeInOutExpo' => 'easeInOutExpo|cubic-bezier(1.000, 0.000, 0.000, 1.000)',
-      'easeInOutCirc' => 'easeInOutCirc|cubic-bezier(0.785, 0.135, 0.150, 0.860)',
-      'easeInOutBack' => 'easeInOutBack|cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+      'easeInOutSine'  => 'easeInOutSine|cubic-bezier(0.445, 0.050, 0.550, 0.950)',
+      'easeInOutExpo'  => 'easeInOutExpo|cubic-bezier(1.000, 0.000, 0.000, 1.000)',
+      'easeInOutCirc'  => 'easeInOutCirc|cubic-bezier(0.785, 0.135, 0.150, 0.860)',
+      'easeInOutBack'  => 'easeInOutBack|cubic-bezier(0.680, -0.550, 0.265, 1.550)',
     );
 
     foreach ($available_easings as $key => $easing) {
@@ -543,7 +544,7 @@ function slick_get_view_modes($entity_type, $exclude = TRUE) {
 }
 
 /**
- * Gets a list of fields in the Field Collection item.
+ * Gets a list of fields in the Field collection item.
  */
 function slick_get_fc_fields($instance, $field_types) {
   $fc_options = array();
@@ -593,7 +594,7 @@ function slick_get_media_fields($instance, $widget_types = NULL) {
 }
 
 /**
- * Returns shared starting form elements across field formatter and Views.
+ * Returns shared starting form elements across Slick field formatter and Views.
  */
 function slick_get_top_elements(array &$elements, $settings, &$form_state) {
   $slick_path = drupal_get_path('module', 'slick');
@@ -684,7 +685,7 @@ function slick_get_top_elements(array &$elements, $settings, &$form_state) {
   $elements['asnavfor_auto'] = array(
     '#title'       => t('asNavFor auto selectors'),
     '#type'        => 'checkbox',
-    '#description' => t('If checked, asNavFor selectors will be determined by the current field ID selectors automatically. Check if unsure with manual selectors.'),
+    '#description' => t('If checked, asNavFor selectors will be determined by the current field ID selectors automatically. Check if unsure with manual selectors, or needs dynamic selectors for dynamic slicks such as blog/taxonomy-based posts.'),
     '#states' => array(
       'invisible' => array(
         'select[name*="[optionset_thumbnail]"]' => array('value' => ''),
@@ -704,14 +705,25 @@ function slick_get_top_elements(array &$elements, $settings, &$form_state) {
 }
 
 /**
- * Returns shared ending form elements across field formatter and Views.
+ * Returns shared ending form elements across Slick field formatter and Views.
  */
 function slick_get_elements(array &$elements, $settings, &$form_state) {
+  $a = array(300, 600, 900, 1800, 2700, 3600, 10800, 21600, 32400, 43200, 86400);
+  $period = drupal_map_assoc($a, 'format_interval');
+  $elements['cache'] = array(
+    '#type'        => 'select',
+    '#title'       => t('Cache'),
+    '#options'     => $period + array('persistent' => t('Persistent')),
+    '#weight'      => 97,
+    '#description' => t('Ditch all the slick logic to cached bare HTML. <ol><li><strong>Persistent</strong>: cached contents will persist (be displayed) till the next cron runs.</li><li><strong>Any number</strong>: expired by the selected expiration time, and fresh contents are fetched till the next cache rebuilt.</li></ol>A working cron job is required to clear stale cache. At any rate, cached contents will be refreshed regardless of the expiration time after the cron hits. <br />Leave it empty to disable caching.<br /><strong>Warning!</strong> Be sure no useless/ sensitive data such as Edit links as they are rendered as is regardless permissions. Only enable it when all is done, otherwise cached options will be displayed while changing them.'),
+  );
+
   // Re-uses one optionset for various displays.
   $elements['override'] = array(
     '#title'       => t('Override main optionset'),
     '#type'        => 'checkbox',
     '#description' => t('If checked, the following options will override the main optionset. Useful to re-use one optionset for several different displays.'),
+    '#weight'      => 98,
   );
 
   $overridable_options = slick_get_overridable_options();
@@ -722,6 +734,7 @@ function slick_get_elements(array &$elements, $settings, &$form_state) {
     '#description'   => t("Override the main optionset to re-use one. Anything dictated here will override the current main optionset. Unchecked means FALSE"),
     '#options'       => $overridable_options,
     '#default_value' => $overridable_values,
+    '#weight'      => 99,
     '#states' => array(
       'visible' => array(
         ':input[name$="[override]"]' => array('checked' => TRUE),
@@ -729,22 +742,12 @@ function slick_get_elements(array &$elements, $settings, &$form_state) {
     ),
   );
 
-  $a = array(300, 600, 900, 1800, 2700, 3600, 10800, 21600, 32400, 43200, 86400);
-  $period = drupal_map_assoc($a, 'format_interval');
-  $elements['cache'] = array(
-    '#type'        => 'select',
-    '#title'       => t('Cache'),
-    '#options'     => $period + array('persistent' => t('Persistent')),
-    '#weight'      => 99,
-    '#description' => t('Ditch all the slick logic to cached bare HTML. <ol><li><strong>Persistent</strong>: cached contents will persist (be displayed) till the next cron runs.</li><li><strong>Any number</strong>: expired by the selected expiration time, and fresh contents are fetched till the next cache rebuilt.</li></ol>A working cron job is required to clear stale cache. At any rate, cached contents will be refreshed regardless of the expiration time after the cron hits. <br />Leave it empty to disable caching.<br /><strong>Warning!</strong> Be sure no useless/ sensitive data such as Edit links as they are rendered as is regardless permissions.'),
-  );
-
   drupal_alter('slick_elements_info', $elements, $settings, $form_state);
   return $elements;
 }
 
 /**
- * Returns reusable grid elements across Slick fields and Views.
+ * Returns reusable grid elements across Slick field formatter and Views.
  */
 function slick_get_grid_elements(array &$elements, $settings, &$form_state) {
   $grid_options = drupal_map_assoc(range(1, 12));
@@ -774,13 +777,13 @@ function slick_get_grid_elements(array &$elements, $settings, &$form_state) {
     '#type'        => 'select',
     '#title'       => t('Visible slides'),
     '#options'     => drupal_map_assoc(range(1, 32)),
-    '#description' => t('How many items per slide displayed at a time related to this grid. If Unslick checked, all will be displayed.'),
+    '#description' => t('How many items per slide displayed at a time related to this grid.'),
   );
 
   $elements['preserve_keys'] = array(
     '#title'       => t('Preserve keys'),
     '#type'        => 'checkbox',
-    '#description' => t('If checked, keys will be preserved. Default is FALSE which will reindex the grid chunk numerically'),
+    '#description' => t('If checked, keys will be preserved. Default is FALSE which will reindex the grid chunk numerically.'),
   );
 
   drupal_alter('slick_grid_elements_info', $elements, $settings, $form_state);
@@ -799,17 +802,19 @@ function slick_get_admin_assets(array &$elements, $settings = array()) {
       if (!isset($elements[$key]['#attributes']) && isset($elements[$key]['#description'])) {
         $elements[$key]['#attributes'] = array('class' => array('is-tooltip'));
       }
-      if ($elements[$key]['#type'] == 'checkbox' && $elements[$key]['#type'] != 'checkboxes') {
-        $elements[$key]['#field_suffix'] = '';
-        $elements[$key]['#title_display'] = 'before';
-      }
-      elseif ($elements[$key]['#type'] == 'checkboxes' && !empty($elements[$key]['#options'])) {
-        foreach ($elements[$key]['#options'] as $i => $option) {
-          $elements[$key][$i]['#field_suffix'] = '';
-          $elements[$key][$i]['#title_display'] = 'before';
+      if (variable_get('slick_admin_css', TRUE)) {
+        if ($elements[$key]['#type'] == 'checkbox' && $elements[$key]['#type'] != 'checkboxes') {
+          $elements[$key]['#field_suffix'] = '';
+          $elements[$key]['#title_display'] = 'before';
+        }
+        elseif ($elements[$key]['#type'] == 'checkboxes' && !empty($elements[$key]['#options'])) {
+          foreach ($elements[$key]['#options'] as $i => $option) {
+            $elements[$key][$i]['#field_suffix'] = '';
+            $elements[$key][$i]['#title_display'] = 'before';
+          }
         }
       }
-      elseif ($elements[$key]['#type'] == 'select' && $key != 'optionset') {
+      if ($elements[$key]['#type'] == 'select' && $key != 'optionset') {
         if (!isset($elements[$key]['#empty_option']) && !isset($elements[$key]['#required'])) {
           $elements[$key]['#empty_option'] = t('- None -');
         }
@@ -817,14 +822,18 @@ function slick_get_admin_assets(array &$elements, $settings = array()) {
     }
   }
 
-  if (module_exists('slick_ui')) {
-    $elements['#attached']['library'][] = array('slick_ui', 'slick.ui');
-  }
-  else {
-    $slick_path = drupal_get_path('module', 'slick');
-    $elements['#attached']['css'][] = $slick_path . '/css/admin/slick.admin--ui.css';
-    $elements['#attached']['css'][] = $slick_path . '/css/admin/slick.admin--ui--field.css';
-    $elements['#attached']['js'][]  = $slick_path . '/js/slick.admin.ui.min.js';
+  if (variable_get('slick_admin_css', TRUE)) {
+    if (module_exists('slick_ui')) {
+      $elements['#attached']['library'][] = array('slick_ui', 'slick.ui');
+    }
+    else {
+      $slick_path = drupal_get_path('module', 'slick');
+      $elements['#attached']['css'] = array(
+        $slick_path . '/css/admin/slick.admin--ui.css' => array('group' => CSS_THEME + 1),
+        $slick_path . '/css/admin/slick.admin--ui--field.css' => array('group' => CSS_THEME + 1),
+      );
+      $elements['#attached']['js'][]  = $slick_path . '/js/slick.admin.ui.min.js';
+    }
   }
 
   drupal_alter('slick_admin_assets_info', $elements, $settings);

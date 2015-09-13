@@ -23,6 +23,24 @@ function style_settings_page_build(&$page) {
       'weight' => 99,
     ));
   }
+  // Make sure an active theme's style_settings.css is loaded if it exists.
+  // It is only needed if SASS or LESS is used in the theme to avoid Style
+  // Setting's comments to be mangled by the compiling.
+  if (file_exists($GLOBALS['theme_path'] . '/css/style_settings.css')) {
+    drupal_add_css($GLOBALS['theme_path'] . '/css/style_settings.css', array(
+      'group' => CSS_THEME,
+      'every_page' => TRUE,
+      'weight' => 98,
+    ));
+  }
+  // Let's do the same for the admin theme.
+  if (file_exists(drupal_get_path('theme', variable_get('admin_theme')) . '/css/style_settings.css')) {
+    drupal_add_css(drupal_get_path('theme', variable_get('admin_theme')) . '/css/style_settings.css', array(
+      'group' => CSS_THEME,
+      'every_page' => TRUE,
+      'weight' => 97,
+    ));
+  }
 }
 
 /**

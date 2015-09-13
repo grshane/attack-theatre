@@ -79,7 +79,7 @@ function _slick_fields_field_formatter_settings_form($field, $instance, $view_mo
   }
 
   if ($instance['entity_type'] == 'ctools') {
-    $is_views_ui = '<h3 class="form--slick__title">' . t('Be sure to check "Use field template" under "Style settings" below, if using multiple-value field for the slides. Views preview works with jQuery > 1.7.') . '</h3>';
+    $is_views_ui = '<h3 class="form--slick__title">' . t('Check "Use field template" under "Style settings" below, if using multiple-value field for the slides. <small>Views preview works with jQuery > 1.7.</small>') . '</h3>';
   }
 
   $elements['opening'] = array(
@@ -94,7 +94,7 @@ function _slick_fields_field_formatter_settings_form($field, $instance, $view_mo
     '#type'         => 'select',
     '#empty_option' => t('None (original image)'),
     '#options'      => $image_styles,
-    '#description'  => t('The main image style. This allows more variant per View mode with a single optionset.'),
+    '#description'  => t('The main image style. This allows more variants per view mode with a single optionset. If Media module installed, this also determines iframe sizes to have various iframe dimensions with just a single file entity view mode, relevant for a mix of image and multimedia to get a consistent display.'),
   );
 
   $elements['thumbnail_style'] = array(
@@ -113,12 +113,6 @@ function _slick_fields_field_formatter_settings_form($field, $instance, $view_mo
         'select[name*="[thumbnail_style]"]' => array('value' => ''),
       ),
     ),
-  );
-
-  $elements['markup'] = array(
-    '#type'        => 'checkbox',
-    '#title'       => t('Keep field markups'),
-    '#description' => t('Uncheck to clean up caption field markups, otherwise deep markups kept -- .field > .field-items > .field-item. Check only if you need renderable array at Views, e.g. for custom work with collages containing slick instances with your own advanced lazyLoad with recipe -- "Use field template" disabled and this option enabled, otherwise Views flattens/renders the array.'),
   );
 
   // Layout to all supported fields.
@@ -252,12 +246,12 @@ function _slick_fields_field_formatter_settings_form($field, $instance, $view_mo
       '#type'        => 'select',
       '#title'       => t('View mode'),
       '#options'     => $view_mode_options,
-      '#description' => t('Be sure the View mode is enabled, and the enabled fields here are not hidden at this particular view mode. Adjust the video/audio dimensions accordingly at their display page if not using aspect ratio. Create more view modes using hook_entity_info_alter, or <a href="@url" target="_blank">entity_view_mode</a>.', array('@url' => '//drupal.org/project/entity_view_mode')),
-      '#access' => count($view_mode_options) > 1,
+      '#description' => t('Required to grab the fields. Be sure the "View mode" is enabled, and the enabled fields here are not hidden there. Create view modes using hook_entity_info_alter, or <a href="@url" target="_blank">entity_view_mode</a>.', array('@url' => '//drupal.org/project/entity_view_mode')),
+      '#access'      => count($view_mode_options) > 1,
     );
 
     if ($field_entity_type == 'file') {
-      $elements['view_mode']['#description'] .= t('For video, make sure to choose relevant video display, not as image.');
+      $elements['view_mode']['#description'] .= '<br />' . t('For video, make sure to choose relevant video display, not as image.');
     }
   }
 
@@ -376,6 +370,12 @@ function _slick_fields_field_formatter_settings_form($field, $instance, $view_mo
     $elements['thumbnail_caption']['#access'] = TRUE;
   }
 
+  $elements['mousewheel'] = array(
+    '#type'        => 'checkbox',
+    '#title'       => t('Mousewheel'),
+    '#description' => t('Be sure to download the <a href="@url" target="_blank">mousewheel</a> library, and it is available at <em>sites/.../libraries/mousewheel/jquery.mousewheel.min.js</em>.', array('@url' => '//github.com/brandonaaron/jquery-mousewheel')),
+  );
+
   // Picture module integration.
   if ($is_picture) {
     $elements['picture'] = array(
@@ -421,10 +421,10 @@ function _slick_fields_field_formatter_settings_form($field, $instance, $view_mo
     );
   }
 
-  $elements['mousewheel'] = array(
+  $elements['markup'] = array(
     '#type'        => 'checkbox',
-    '#title'       => t('Enable mousewheel'),
-    '#description' => t('Be sure to download the <a href="@url" target="_blank">mousewheel</a> library, and it is available at <em>sites/.../libraries/mousewheel/jquery.mousewheel.min.js</em>.', array('@url' => '//github.com/brandonaaron/jquery-mousewheel')),
+    '#title'       => t('Keep field markups'),
+    '#description' => t('Uncheck to clean up caption field markups, otherwise deep markups kept -- .field > .field-items > .field-item. Check only if you need renderable array at Views, e.g. for custom work with collages containing slick instances with your own advanced lazyLoad with recipe -- "Use field template" disabled and this option enabled, otherwise Views flattens/renders the array.'),
   );
 
   slick_get_elements($elements, $settings, $form_state);

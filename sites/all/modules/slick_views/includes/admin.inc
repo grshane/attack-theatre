@@ -173,7 +173,7 @@ function _slick_views_options_form(&$form, &$form_state, $view, $settings) {
   $form['slick'] = array(
     '#type' => 'fieldset',
     '#title' => t('Slick carousel'),
-    '#attributes' => array('class' => array('form--slick form--compact form--field has-tooltip')),
+    '#attributes' => array('class' => array('form--slick form--compact form--field form--views has-tooltip')),
     '#description' => t('Leave anything empty/unchecked, except Optionset, if working with custom markups. <br /><small>Alternatively check <strong>Slick markups</strong> to get consistent markups with Field formatter, be sure to add supported fields below. Views preview works with jQuery > 1.7.</small>'),
   );
 

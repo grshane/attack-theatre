@@ -1,29 +1,59 @@
-Slick Carousel Module
+
+Slick Carousel
 ================================================================================
 
-Drupal module for Ken Wheeler's Slick carousel.
-See http://kenwheeler.github.io/slick.
+Slick is a powerful and performant slideshow/carousel solution leveraging Ken
+Wheeler's Slick carousel.
+See http://kenwheeler.github.io/slick
 
+Powerful: Slick is one of the sliders [1], as of 9/15, the only one [2], which
+supports a mix of responsive and lazy-loaded image, and 3rd party video and
+audio in a single slideshow/carousel with image to iframe or multimedia lightbox
+switchers. See below for the supported media.
+
+Performant: Slick is stored as plain HTML the first time it is requested, and
+then reused on subsequent requests. Carousels with cacheability and lazyload
+are lighter and faster than those without.
+
+As a CTools plugin, which is future-proof D8 CMI, Slick is easy to customize
+either via UI or code, and can be stored at database, or codebase.
+
+Slick has a gazillion of options, please start with the very basic working
+samples from slick_example [3] only if trouble to build slicks. Be sure to read
+its README.txt. Spending 5 minutes or so will save you hours in building more
+complex slideshows.
+
+[1] https://groups.drupal.org/node/20384
+[2] https://www.drupal.org/node/418616
+[3] http://dgo.to/slick_extras
+
+
+FEATURES
+--------------------------------------------------------------------------------
 o Fully responsive. Scales with its container.
 o Uses CSS3 when available. Fully functional when not.
 o Swipe enabled. Or disabled, if you prefer.
 o Desktop mouse dragging.
 o Fully accessible with arrow key navigation.
-o Autoplay, pagers, arrows, text+/thumbnail pagers etc...
+o Built-in lazyLoad, and multiple breakpoint options.
+o Random, autoplay, pagers, arrows, dots/text/tabs/thumbnail pagers etc...
+o Supports pure text, responsive image, iframe, video, and audio carousels with
+  aspect ratio. No extra jQuery plugin FitVids is required. Just CSS.
 o Exportable via CTools.
 o Works with Views, core and contrib fields: Image, Media or Field collection.
 o Optional and modular skins, e.g.: Carousel, Classic, Fullscreen, Fullwidth,
   Grid, Split. Nothing loaded unless configured so.
 o Various slide layouts are built with pure CSS goodness.
-o Nested slicks, slide overlays or multiple slicks within a single Slick using
-  Field collection, or Views.
+o Nested slicks, image/video/audio slide carousels/overlay or multiple slicks
+  within a single Slick using Field collection, or Views.
 o Some useful hooks and drupal_alters for advanced works.
-o Modular integration with various contribs via optional sub-modules. You can
-  build slicks without sub-modules by simply passing markups to theme_slick().
+o Modular integration with various contribs via optional sub-modules to build
+  carousels with multimedia lightboxes or inline multimedia.
+o Cacheability + lazyload = light + fast.
 
 
 
-VERSIONS:
+VERSIONS
 --------------------------------------------------------------------------------
 7.x-2.x supports exportable optionsets via CTools.
 Be sure to run update, when upgrading from 7.x-1.x to 7.x-2.x to allow creating
@@ -33,14 +63,14 @@ database table to store/ manage option sets.
 Be sure to read the project home page for more info before updating your module.
 
 
-INSTALLATION:
+INSTALLATION
 --------------------------------------------------------------------------------
 Install the module as usual, more info can be found on:
 http://drupal.org/documentation/install/modules-themes/modules-7
 
 The Slick module has several sub-modules:
-- slick_ui, to manage optionsets, can be uninstalled at production.
-- slick_fields, supports Image, Media file, and Field collection fields.
+- slick_ui, included, to manage optionsets, can be uninstalled at production.
+- slick_fields, included, supports Image, Media, and Field collection fields.
 - slick_views, a separate project as of 2015-5-29, > beta1:
   http://dgo.to/slick_views
 - slick_devel, if you want to help testing and developing the Slick.
@@ -48,10 +78,8 @@ The Slick module has several sub-modules:
   The last two are separate projects as of 2015-5-31, > beta1:
   http://dgo.to/slick_extras
 
-See README.txt on each sub-module for their relevant information.
 
-
-REQUIREMENTS:
+REQUIREMENTS
 --------------------------------------------------------------------------------
 - Slick library:
   o Download Slick archive >= 1.5 from https://github.com/kenwheeler/slick/
@@ -76,11 +104,17 @@ REQUIREMENTS:
   sites/../libraries/easing/jquery.easing.min.js
   This is a fallback for non-supporting browsers.
 
+- A basic knowledge of Drupal site building is required.
+  Please refer to the provided README on each sub-module, and each form item
+  description for more info.
+  Also refer to the supported modules guidelines to be useful for Slick.
 
 
-OPTIONAL INTEGRATION:
+
+OPTIONAL INTEGRATION
 --------------------------------------------------------------------------------
 Slick supports enhancements and more complex layouts.
+
 - Colorbox, to have grids/slides that open up image/video/audio in overlay.
 - Photobox, idem ditto.
 - Picture, to get truly responsive image.
@@ -101,26 +135,25 @@ Slick supports enhancements and more complex layouts.
 RECOMMENDED MODULES
 --------------------------------------------------------------------------------
 - Block reference to have more complex slide content for Fullscreen/width skins.
-- Entity translation, to have translated file and translate links with Media.
 - Field formatter settings, to modify field formatter settings and summaries.
 
 
-OPTIONSETS:
+OPTIONSETS
 --------------------------------------------------------------------------------
 To create your optionsets, go to:
 "admin/config/media/slick"
-These will be available at Manage display field format, and Views UI.
+These will be available at field formatter "Manage display", and Views UI.
 
 
-VIEWS AND FIELDS:
+VIEWS AND FIELDS
 --------------------------------------------------------------------------------
 Slick works with Views and as field display formatters.
 Slick Views is available as a style plugin included at slick_views.module.
-Slick Fields is available as a display formatter included at slick_fields.module
+Slick fields is available as a display formatter included at slick_fields.module
 which supports core and contrib fields: Image, Media, Field collection.
 
 
-PROGRAMATICALLY:
+PROGRAMATICALLY
 --------------------------------------------------------------------------------
 See slick_fields.module for advanced sample, or slick.api.php for a simple one.
 
@@ -130,13 +163,18 @@ NESTED SLICKS
 Nested slick is a parent Slick containing slides which contain individual child
 slick per slide. The child slicks are basically regular slide overlays like
 a single video over the large background image, only with nested slicks it can
-be many videos displayed as a slideshow.
+be many videos displayed as a slideshow as well.
 Use Field collection, or Views to build one.
 Supported multi-value fields for nested slicks: Image, Media, Atom reference.
 
 
-SKINS:
+SKINS
 --------------------------------------------------------------------------------
+The main purpose of skins are to demonstrate that often times some CSS lines are
+enough to build fairly variant layouts. No JS needed. Unless, of course, when
+you want more sophisticated slider like spiral 3D carousel which is beyond what
+CSS can do. But more often CSS will do.
+
 Skins allow swappable layouts like next/prev links, split image or caption, etc.
 Be sure to enable slick_fields.module and provide a dedicated slide layout
 per field to get more control over caption placements. However a combination of
@@ -144,7 +182,7 @@ skins and options may lead to unpredictable layouts, get dirty yourself.
 
 Some default complex layout skins applied to desktop only, adjust for the mobile
 accordingly. The provided skins are very basic to support the necessary layouts.
-It is not the module job to match your design requirements.
+It is not the module job to match your awesome design requirements.
 
 Optional skins:
 --------------
@@ -210,7 +248,7 @@ normally < 0 (slick.load.min.js) is the one.
 See slick.slick.inc for more info on skins.
 
 
-HTML structure:
+HTML STRUCTURE
 --------------------------------------------------------------------------------
 Note, non-BEM classes are added by JS.
 Before Slick 1.4:
@@ -237,15 +275,33 @@ HOW CAN YOU HELP?
 --------------------------------------------------------------------------------
 Please consider helping in the issue queue, provide improvement, or helping with
 documentation.
-If you have bug reports, please be sure to provide steps to reproduce it, or
-make sure that the bug is caused by the module. For the Slick library bug,
-please report it to the actual library issue queues:
-https://github.com/kenwheeler/slick
+
+
+BUG REPORTS OR SUPPORT REQUESTS
+--------------------------------------------------------------------------------
+A basic knowledge of Drupal site building is required, and Slick can't help you.
+When you don't know how to build things, you may be tempted to think it is bug.
+
+Please refer to the provided README, including descriptions on each form item,
+also the relevant guidelines from the supported modules.
+
+If you do have bug reports, we love bugs, please be sure to:
+ o provide steps to reproduce it,
+ o more detailed info such as screenshots of the output and Slick form, or words
+   to identify it any better,
+ o make sure that the bug is caused by the module.
+
+For the Slick library bug, please report it to the actual library:
+  https://github.com/kenwheeler/slick
+
 You can create a fiddle to isolate the bug if reproduceable outside the module:
-http://jsfiddle.net/
+  http://jsfiddle.net/
+
+For the support requests, detailed info on the problem is helpful.
+Shortly, you should kindly help me with detailed info to help you. Thanks.
 
 
-TROUBLESHOOTING:
+TROUBLESHOOTING
 --------------------------------------------------------------------------------
 - When upgrading from Slick v1.3.6 to later version, try to resave options at:
   o admin/config/media/slick
@@ -289,9 +345,6 @@ TROUBLESHOOTING:
   known issue with asNavFor and nested slicks not having proper "slick-current".
   If you use "slide--current" before, be sure to update it to "slick-current".
 
-More info relevant to each option is available at their form display by hovering
-over them, and click a dark question mark.
-
 
 KNOWN ISSUES
 --------------------------------------------------------------------------------
@@ -321,13 +374,13 @@ UNKNOWN ISSUES
   Please report if you find one. Your report and help is any module QA. Thanks.
 
 
-PERFORMANCE:
+PERFORMANCE
 --------------------------------------------------------------------------------
 Any module, even the most innocent one, that provides settings in the UI needs
 to store them in a table. The good thing is we can store them in codes.
 
 With Bulk exporter, or Features, optionsets may be stored in codes to avoid
-database lookup. Be sure to revert via UI to Default to avoid database lookup.
+database lookup. Be sure to revert to Default via UI to avoid database lookup.
 It is analog to Drupal 8 CMI, so it is the decent choice today.
 
 See slick_example for the stored-in-code samples.
@@ -340,7 +393,7 @@ Most heavy logic were already moved to backend, however slick can be optimized
 more by configuring the "Cache" value per slick instance.
 
 Ditch all the slick logic to cached bare HTML:
-1. Persistent: the stale content will persist (kept/ displayed) till the next
+1. Persistent: the cached content will persist (be displayed) till the next
    cron runs, best for static contents where freshness is no use, such as logo,
    team, profile video, more permanent home slideshows, etc.
 2. Any number: slick is expired (detached from cached contents) by the selected
@@ -380,6 +433,10 @@ With the help from the community:
 READ MORE
 --------------------------------------------------------------------------------
 See the project page on drupal.org: http://drupal.org/project/slick.
+
+More info relevant to each option is available at their form display by hovering
+over them, and click a dark question mark.
+
 See the Slick docs at:
 - http://kenwheeler.github.io/slick/
 - https://github.com/kenwheeler/slick/

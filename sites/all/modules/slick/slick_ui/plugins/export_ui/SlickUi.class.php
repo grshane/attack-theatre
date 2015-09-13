@@ -23,10 +23,12 @@ class SlickUi extends ctools_export_ui {
     $options = $optionset->options;
     $slick_options = slick_get_options();
 
-    $form['#attached']['library'][] = array('slick_ui', 'slick.ui');
-    $form['#attached']['css'][] = $module_path . '/css/admin/slick.admin--vertical-tabs.css';
+    if (variable_get('slick_admin_css', TRUE)) {
+      $form['#attached']['library'][] = array('slick_ui', 'slick.ui');
+      $form['#attached']['css'][] = $module_path . '/css/admin/slick.admin--vertical-tabs.css';
+    }
 
-    $form['#attributes']['class'][] = 'no-js';
+    // $form['#attributes']['class'][] = 'no-js';
     $form['#attributes']['class'][] = 'form--slick';
     $form['#attributes']['class'][] = 'form--compact';
     $form['#attributes']['class'][] = 'form--optionset';
@@ -112,8 +114,8 @@ class SlickUi extends ctools_export_ui {
       '#title' => t('Goodies'),
       '#default_value' => !empty($options['general']['goodies']) ? array_values((array) $options['general']['goodies']) : array(),
       '#options' => array(
-        'pattern' => t('Use pattern overlay'),
         'arrow-down' => t('Use arrow down'),
+        'pattern' => t('Use pattern overlay'),
         'random' => t('Randomize'),
       ),
       '#description' => t('Applies to main display, not thumbnail pager. <ol><li>Pattern overlay is background image with pattern placed over the main stage.</li><li>Arrow down to scroll down into a certain page section, make sure to provide target selector.</li><li>Randomize the slide display, useful to manipulate cached blocks.</li></ol>'),
@@ -147,9 +149,11 @@ class SlickUi extends ctools_export_ui {
     );
 
     // Add empty suffix to style checkboxes like iOS.
-    foreach ($form['options']['general']['goodies']['#options'] as $key => $value) {
-      $form['options']['general']['goodies'][$key]['#field_suffix'] = '';
-      $form['options']['general']['goodies'][$key]['#title_display'] = 'before';
+    if (variable_get('slick_admin_css', TRUE)) {
+      foreach ($form['options']['general']['goodies']['#options'] as $key => $value) {
+        $form['options']['general']['goodies'][$key]['#field_suffix'] = '';
+        $form['options']['general']['goodies'][$key]['#title_display'] = 'before';
+      }
     }
 
     // Main options.
@@ -164,11 +168,6 @@ class SlickUi extends ctools_export_ui {
 
     foreach ($slick_elements as $name => $element) {
       $default_value = isset($options['settings'][$name]) ? $options['settings'][$name] : $element['default'];
-      // Allows to reset string values by emptying it, such as changing arrows.
-      if (is_string($default_value) && empty($default_value)) {
-        $default_value = $element['default'];
-      }
-
       $form['options']['settings'][$name] = array(
         '#title' => isset($element['title']) ? $element['title'] : '',
         '#description' => isset($element['description']) ? $element['description'] : '',
@@ -186,9 +185,11 @@ class SlickUi extends ctools_export_ui {
         $form['options']['settings'][$name]['#maxlength'] = 255;
       }
 
-      if (!isset($element['field_suffix']) && is_bool($element['default'])) {
-        $form['options']['settings'][$name]['#field_suffix'] = '';
-        $form['options']['settings'][$name]['#title_display'] = 'before';
+      if (variable_get('slick_admin_css', TRUE)) {
+        if (!isset($element['field_suffix']) && is_bool($element['default'])) {
+          $form['options']['settings'][$name]['#field_suffix'] = '';
+          $form['options']['settings'][$name]['#title_display'] = 'before';
+        }
       }
 
       if (is_int($element['default'])) {
@@ -284,9 +285,12 @@ class SlickUi extends ctools_export_ui {
               if (isset($responsive['field_suffix'])) {
                 $form['options']['responsives']['responsive'][$i][$key]['#field_suffix'] = $responsive['field_suffix'];
               }
-              if (!isset($responsive['field_suffix']) && is_bool($responsive['default'])) {
-                $form['options']['responsives']['responsive'][$i][$key]['#field_suffix'] = '';
-                $form['options']['responsives']['responsive'][$i][$key]['#title_display'] = 'before';
+
+              if (variable_get('slick_admin_css', TRUE)) {
+                if (!isset($responsive['field_suffix']) && $responsive['type'] == 'checkbox') {
+                  $form['options']['responsives']['responsive'][$i][$key]['#field_suffix'] = '';
+                  $form['options']['responsives']['responsive'][$i][$key]['#title_display'] = 'before';
+                }
               }
               break;
 
@@ -368,9 +372,12 @@ class SlickUi extends ctools_export_ui {
                 if (isset($item['field_suffix'])) {
                   $form['options']['responsives']['responsive'][$i][$key][$k]['#field_suffix'] = $item['field_suffix'];
                 }
-                if (!isset($item['field_suffix']) && is_bool($item['default'])) {
-                  $form['options']['responsives']['responsive'][$i][$key][$k]['#field_suffix'] = '';
-                  $form['options']['responsives']['responsive'][$i][$key][$k]['#title_display'] = 'before';
+
+                if (variable_get('slick_admin_css', TRUE)) {
+                  if (!isset($item['field_suffix']) && is_bool($item['default'])) {
+                    $form['options']['responsives']['responsive'][$i][$key][$k]['#field_suffix'] = '';
+                    $form['options']['responsives']['responsive'][$i][$key][$k]['#title_display'] = 'before';
+                  }
                 }
               }
               break;
@@ -461,7 +468,7 @@ class SlickUi extends ctools_export_ui {
 
       $elements['adaptiveHeight'] = array(
         'title' => t('Adaptive height'),
-        'description' => t('Enables adaptive height for single slide horizontal carousels. This is useless with variableWidth.'),
+        'description' => t('Enables adaptive height for SINGLE slide horizontal carousels. This is useless with variableWidth.'),
         'type' => 'checkbox',
       );
 
