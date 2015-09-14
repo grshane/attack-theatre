@@ -16,20 +16,21 @@
 @import "layouts/responsive";
 
 /* Component (SMACSS module) rules */
-@import "components/misc";
+@import "misc";
 // Optionally, add your own components here.
 @import "print";
 @import "editor";
-@import "components/font-awesome";
-@import "components/header-navigation";
-@import "components/sidebar-navigation";
-@import "components/frontpageblocks";
-@import "components/calendar";
-@import "components/news-page";
-@import "components/comments";
-@import "components/footer";
-@import "components/buttons";
-@import "components/blockquote";
-@import "components/slider";
+@import "font-awesome";
+@import "header-navigation";
+@import "sidebar-navigation";
+@import "frontpageblocks";
+@import "calendar";
+@import "news-page";
+@import "comments";
+@import "footer";
+@import "buttons";
+@import "blockquote";
+@import "slider";
+@import "page-styles";
 /* SMACSS theme rules */
 

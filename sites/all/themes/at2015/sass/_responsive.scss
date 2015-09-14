@@ -1,0 +1,363 @@
+/**
+ * @file
+ * Positioning for a responsive layout.
+ *
+ * Define CSS classes to create a fluid grid layout with optional sidebars
+ * depending on whether blocks are placed in the left or right sidebars.
+ *
+ * This layout uses the Zen Grids plugin for Compass: https://zengrids.com
+ */
+
+// We are going to create a fluid grid with 1, 3, or 5 columns and 20px gutters
+// between columns (applied as 10px of left/right padding on each column).
+$zen-column-count:  1;
+$zen-gutter-width:  21px;
+
+// If you need IE6/7 support for box-sizing: border-box (default), see _init.scss
+//$zen-box-sizing: content-box;
+
+// You can generate more efficient CSS if you manually apply the
+// zen-grid-item-base mixin to all grid items from within a single ruleset.
+$zen-auto-include-item-base: false;
+// $zen-auto-include-flow-item-base: false;
+
+// Suppress this section of CSS for RTL layouts since it contains no LTR-specific styles.
+@if $zen-reverse-all-floats == false {
+
+/**
+ * Center the page.
+ *
+ * For screen sizes larger than 1200px, prevent excessively long lines of text
+ * by setting a max-width.
+ */
+#page,
+.region-bottom {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Apply the shared properties of grid items in a single, efficient ruleset. */
+#header,
+#content,
+#navigation,
+.region-sidebar-first,
+.region-sidebar-second,
+#footer {
+  // See the note about $zen-auto-include-item-base above.
+  @include zen-grid-item-base();
+  padding: 0 20px;
+}
+
+.front #content, .section-collaborate #content{
+  padding: 0px;
+}
+
+/* Containers for grid items and flow items. */
+#header,
+#content,
+#footer {
+  @include zen-grid-container();
+}
+
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  /*max-width: 960px;*/
+}
+
+@media all and (min-width: 0px) and (max-width: 768px) {
+  #footer {
+    display: none;
+  }
+
+.page-undergrads div#controls .fa-volume-off,.fa-pause,.fa-repeat,.fa-caret-down,.fa-caret-up {
+display:none;
+visibility:hidden;
+}
+
+.front span#views-field-field-view-node {
+display:none;
+visibility:hidden;
+}
+
+.front span#views-field-field-title {
+display:none;
+visibility:hidden;
+}
+
+.front span#views-field-field-youtube-url {
+display:block;
+visibility:visible;
+}
+
+.front a.mobile {
+display:block;
+visibility:visible;
+}
+
+.front div#preview {
+display:none;
+visibility:hidden;
+}
+
+.page-undergrads i#youtube {
+display:block;
+visibility:visible;
+}
+
+ } 
+
+/* Navigation bar */
+@media all and (min-width: 768px) {
+
+.front #main, .section-collaborate #main {
+    bottom: 0;
+    height: unset !important;
+/*    left: 0;
+    right: 0; */
+    margin:0 auto;    
+    position: relative;
+}
+   #main {
+    /* Move all the children of #main down to make room. */
+    padding-top: 0;
+    padding-bottom: 10px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.front #main, .section-collaborate #main {
+    max-width:100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #navigation {
+    /* Move the navbar up inside #main's padding. */
+    position: absolute;
+    top: 0;
+    height: $nav-height;
+    width: $zen-grid-width;
+  }
+  #footer {
+    display: normal;
+  }
+
+}
+
+} // End of @if $zen-reverse-all-floats == true
+
+/**
+ * Use 3 grid columns for smaller screens.
+ */
+@media all and (min-width: 768px) and (max-width: 959px) {
+
+.page-undergrads div#controls .fa-volume-off,.fa-pause,.fa-repeat,.fa-caret-down,.fa-caret-up {
+display:none;
+visibility:hidden;
+}
+
+.front span#views-field-field-view-node {
+display:none;
+visibility:hidden;
+}
+
+.front span#views-field-field-title {
+display:none;
+visibility:hidden;
+}
+
+.front span#views-field-field-youtube-url {
+display:block;
+visibility:visible;
+}
+
+.front a.mobile {
+display:block;
+visibility:visible;
+}
+
+.front div#preview {
+display:none;
+visibility:hidden;
+}
+
+.page-undergrads i#youtube {
+display:block;
+visibility:visible;
+}
+
+  $zen-column-count: 3;
+
+  /**
+   * The layout when there is only one sidebar, the left one.
+   */
+  .sidebar-first {
+    /* Span 2 columns, starting in 2nd column from left. */
+    #content {
+      @include zen-grid-item(2, 2, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Span 1 column, starting in 1st column from left. */
+    .region-sidebar-first {
+      @include zen-grid-item(1, 1, $zen-float-direction, $zen-column-count);
+    }
+  }
+
+  /**
+   * The layout when there is only one sidebar, the right one.
+   */
+
+    .sidebar-second {
+    /* Span 2 columns, starting in 1st column from left. */
+    #content {
+      @include zen-grid-item(2, 1, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Span 1 column, starting in 3rd column from left. */
+    .region-sidebar-second {
+      @include zen-grid-item(1, 3, $zen-float-direction, $zen-column-count);
+    }
+  }
+
+  /**
+   * The layout when there are two sidebars.
+   */
+  .two-sidebars {
+    /* Span 2 columns, starting in 2nd column from left. */
+    #content {
+      @include zen-grid-item(2, 2, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Span 1 column, starting in 1st column from left. */
+    .region-sidebar-first {
+      @include zen-grid-item(1, 1, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Start a new row and span all 3 columns. */
+    .region-sidebar-second {
+      @include zen-grid-item(3, 1, $zen-float-direction, $zen-column-count);
+      @include zen-nested-container(); // Since we're making every block in this region be a grid item.
+      @include zen-clear();
+
+      /* Apply the shared properties of grid items in a single, efficient ruleset. */
+      .block {
+        @include zen-grid-item-base();
+      }
+      /* Span 1 column, starting in the 1st column from left. */
+      .block:nth-child(3n+1) {
+        @include zen-grid-item(1, 1, $zen-float-direction, $zen-column-count);
+        @include zen-clear();
+      }
+      /* Span 1 column, starting in the 2nd column from left. */
+      .block:nth-child(3n+2) {
+        @include zen-grid-item(1, 2, $zen-float-direction, $zen-column-count);
+      }
+      /* Span 1 column, starting in the 3rd column from left. */
+      .block:nth-child(3n) {
+        @include zen-grid-item(1, 3, $zen-float-direction, $zen-column-count);
+      }
+    }
+  }
+}
+
+/**
+ * Use 5 grid columns for larger screens.
+ */
+@media all and (min-width: 960px) {
+
+.page-undergrads i#youtube {
+display:none;
+visibility:hidden;
+}
+
+.front span#views-field-field-title {
+display:block;
+visibility:visible;
+}
+
+.front span#views-field-field-youtube-url {
+display:none;
+visibility:hidden;
+}
+
+.front a.mobile {
+display:none;
+visibility:hidden;
+}
+
+.front div#preview {
+display:block;
+visibility:visible;
+}
+
+
+$zen-column-count: 5;
+
+  /**
+   * The layout when there is only one sidebar, the left one.
+   */
+  .sidebar-first {
+    /* Span 4 columns, starting in 2nd column from left. */
+    #content {
+      @include zen-grid-item(4, 2, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Span 1 column, starting in 1st column from left. */
+    .region-sidebar-first {
+      @include zen-grid-item(1, 1, $zen-float-direction, $zen-column-count);
+    }
+  }
+
+  /**
+   * FRONT PAGE - The layout when there is only one sidebar, the right one.
+   */
+  .front.sidebar-second {
+    /* Span 3 columns, starting in 1st column from left. */
+    #content {
+      @include zen-grid-item(3, 1, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Span 2 columns, starting in 4th column from left. */
+    .region-sidebar-second {
+      @include zen-grid-item(2, 4, $zen-float-direction, $zen-column-count);
+    }
+  }
+
+  /**
+   * The layout when there is only one sidebar, the right one.
+   */
+  .sidebar-second {
+    /* Span 4 columns, starting in 1st column from left. */
+    #content {
+      @include zen-grid-item(3, 1, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Span 1 column, starting in 5th column from left. */
+    .region-sidebar-second {
+      @include zen-grid-item(2, 4, $zen-float-direction, $zen-column-count);
+    }
+  }
+
+  /**
+   * The layout when there are two sidebars.
+   */
+  .two-sidebars {
+    /* Span 3 columns, starting in 2nd column from left. */
+    #content {
+      @include zen-grid-item(3, 2, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Span 1 column, starting in 1st column from left. */
+    .region-sidebar-first {
+      @include zen-grid-item(1, 1, $zen-float-direction, $zen-column-count);
+    }
+
+    /* Span 1 column, starting in 5th column from left. */
+    .region-sidebar-second {
+      @include zen-grid-item(1, 5, $zen-float-direction, $zen-column-count);
+    }
+  }
+}
+
