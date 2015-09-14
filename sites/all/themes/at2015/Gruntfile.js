@@ -57,5 +57,5 @@ module.exports = function (grunt) {
 
 
   // Launch BrowserSync + watch task
-  grunt.registerTask('default', ['browserSync', 'watch']);
+  grunt.registerTask('default', ['browserSync', 'watch','compass']);
 };
