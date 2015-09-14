@@ -7975,7 +7975,6 @@ div.view-footer {
 
 /*Styles to support the sticky footer */
 #footer {
-  margin-top: 1em;
   border: 1px #ab2c27;
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
@@ -8010,6 +8009,10 @@ div.view-footer {
   flex-basis: 100px;
   flex-grow: 10;
 }
+.footer_left .fa {
+  margin-right: 0.5em;
+  width: 20px;
+}
 
 .footer_right {
   text-align: left;
@@ -8020,6 +8023,8 @@ div.view-footer {
 .footer_logo {
   padding-left: 1em;
   flex-basis: 100px;
+  flex-grow: 0;
+  max-width: 100px;
 }
 
 .fa {
@@ -8326,8 +8331,8 @@ nav.slick__arrow button:last-of-type {
   margin-top: 0.5em;
 }
 
-.event__img--calendar {
-  width: 35%;
+.event__img--calendar img {
+  vertical-align: bottom;
 }
 
 .event__category--calendar:hover {
