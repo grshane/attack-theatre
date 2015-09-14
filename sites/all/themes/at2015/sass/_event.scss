@@ -1,0 +1,42 @@
+.event__wrapper--calendar {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.event__content--calendar {
+    padding: 1em 0.5em;
+    width: 65%;
+}
+.event__title--calendar {
+    margin: 0.3em 0 0 0;
+    color: $highlight;
+    a {
+        font-size: 1.4em !important;
+        &:hover {
+            color: lighten($highlight, 20%);
+        }
+    }
+}
+
+.event__body--calendar {
+    margin-top: 0.5em;
+}
+
+.event__img--calendar {
+    width: 35%;
+}
+
+.event__category--calendar {
+    &:hover {
+        color: lighten($highlight, 20%);
+    }
+}
+
+.event__body--calendar {
+
+}
+
+.event__link--calenar {
+    &:hover {
+        color: lighten($highlight, 20%);
+    }
+}

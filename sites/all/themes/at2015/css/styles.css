@@ -111,7 +111,6 @@ body {
   background-color: #cccccc;
   padding-top: 1em;
   width: 100vw;
-  height: 100%;
 }
 
 /*Basic typography */
@@ -4801,20 +4800,10 @@ div.view-footer {
 /*Styles for /attend pages */
 .section-attend .view-id-calendar .views-field {
   background-color: #e8e8e8;
-  height: 300px;
   margin-bottom: 1em;
-}
-.section-attend .view-id-calendar .views-field .event_content {
-  padding: 1em;
 }
 .section-attend .view-id-calendar .views-field p {
   margin: 0;
-}
-.section-attend .view-id-calendar .views-field-title {
-  margin: .3em 0;
-}
-.section-attend .view-id-calendar img {
-  float: right;
 }
 .section-attend .view-calendar .view-header {
   margin-bottom: 1em;
@@ -7855,6 +7844,20 @@ div.view-footer {
   display: none;
 }
 
+.calendar-calendar tr td.today {
+  background-color: #d13a34;
+}
+.calendar-calendar tr td.today .mini-day-off {
+  color: #54d3d8;
+}
+
+.has-events a {
+  color: #54d3d8;
+}
+.has-events a:hover {
+  color: #124c4e;
+}
+
 /*Styles for News Articles and /news page */
 .section-news .views-field-field-default-news-image {
   float: right;
@@ -8296,6 +8299,43 @@ nav.slick__arrow button:last-of-type {
   font-size: 2em;
   color: #707070;
   font-weight: 700;
+}
+
+.event__wrapper--calendar {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.event__content--calendar {
+  padding: 1em 0.5em;
+  width: 65%;
+}
+
+.event__title--calendar {
+  margin: 0.3em 0 0 0;
+  color: #ab2c27;
+}
+.event__title--calendar a {
+  font-size: 1.4em !important;
+}
+.event__title--calendar a:hover {
+  color: #da625e;
+}
+
+.event__body--calendar {
+  margin-top: 0.5em;
+}
+
+.event__img--calendar {
+  width: 35%;
+}
+
+.event__category--calendar:hover {
+  color: #da625e;
+}
+
+.event__link--calenar:hover {
+  color: #da625e;
 }
 
 /* SMACSS theme rules */

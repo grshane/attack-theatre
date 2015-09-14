@@ -6,10 +6,10 @@
 
 .views-field {
 	background-color: $palegrey;
-	height:300px;
+
 	margin-bottom: 1em;
 	.event_content {
-	padding: 1em;
+	//padding: 1em;
 	}
 	p {
 	margin:0;
@@ -17,11 +17,11 @@
 }
 
 .views-field-title {
-	margin: .3em 0;
+	//margin: .3em 0;
 }
 
 img {
-	float:right;
+
 }
 
 }
@@ -91,3 +91,18 @@ img {
   }
 }
 }
+
+.calendar-calendar tr td.today {
+	background-color: lighten($highlight, 10%);
+
+	.mini-day-off {
+		color: invert($highlight);
+	}
+
+}
+	.has-events a {
+		color: invert($highlight);
+		&:hover {
+			color: darken(invert($highlight), 40%);
+		}
+	}
