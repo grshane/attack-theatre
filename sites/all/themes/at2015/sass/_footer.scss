@@ -34,7 +34,7 @@
 	// float: left;
 	margin-left: 30px;
 	// display: table;
-	flex-basis: 100px;
+	flex-basis: 200px;
 	flex-grow: 10;
 	.fa {
 		margin-right: 0.5em;
@@ -66,8 +66,7 @@
 @media (max-width: 767px) {
 	.footer_left, .footer_middle, .footer_right {
 	width: 100%;
-	margin: 10px 10px 10px 0;
-	text-align: center;
+	//margin: 10px 10px 10px 0;
 	.footer_logo {
 	text-align: center;
 	margin: 0 auto;

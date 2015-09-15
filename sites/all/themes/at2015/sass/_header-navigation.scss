@@ -77,7 +77,8 @@ float: left;
 			font-weight: bold;
 		display: table-cell;
 		text-align: center;
-		width: 100px;
+		min-width: 60px;
+		margin-right: 1em;
 		&.last {
 			margin-right: 0px;
 			}
