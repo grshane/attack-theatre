@@ -8310,6 +8310,12 @@ nav.slick__arrow button:last-of-type {
   background-color: #e8e8e8;
   margin-bottom: 1em;
 }
+.page-taxonomy article .node-title {
+  margin-top: 0;
+}
+.page-taxonomy .feed-icon {
+  display: none;
+}
 
 .event__wrapper--calendar {
   display: flex;

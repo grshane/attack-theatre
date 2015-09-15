@@ -9,5 +9,13 @@
         padding: 1em 0.5em;
         background-color: $palegrey;
         margin-bottom: 1em;
+
+        .node-title {
+            margin-top: 0;
+        }
     }
+    .feed-icon {
+            display: none;
+        }
+
 }
