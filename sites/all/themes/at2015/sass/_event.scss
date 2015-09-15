@@ -22,7 +22,10 @@
 }
 
 .event__img--calendar {
-    width: 35%;
+
+    img {
+        vertical-align: bottom;
+    }
 }
 
 .event__category--calendar {
