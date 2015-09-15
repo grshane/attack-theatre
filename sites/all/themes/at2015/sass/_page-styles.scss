@@ -3,3 +3,11 @@
     color: $alt-font;
     font-weight: 700;
 }
+
+.page-taxonomy {
+    article {
+        padding: 1em 0.5em;
+        background-color: $palegrey;
+        margin-bottom: 1em;
+    }
+}

@@ -8305,6 +8305,12 @@ nav.slick__arrow button:last-of-type {
   font-weight: 700;
 }
 
+.page-taxonomy article {
+  padding: 1em 0.5em;
+  background-color: #e8e8e8;
+  margin-bottom: 1em;
+}
+
 .event__wrapper--calendar {
   display: flex;
   flex-direction: row-reverse;
@@ -8329,6 +8335,7 @@ nav.slick__arrow button:last-of-type {
 
 .event__body--calendar {
   margin-top: 0.5em;
+  overflow: hidden;
 }
 
 .event__img--calendar img {
