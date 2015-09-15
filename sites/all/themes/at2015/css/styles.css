@@ -4311,7 +4311,8 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   font-weight: bold;
   display: table-cell;
   text-align: center;
-  width: 100px;
+  min-width: 60px;
+  margin-right: 1em;
 }
 #block-superfish-1 li.last {
   margin-right: 0px;
@@ -8006,7 +8007,7 @@ div.view-footer {
 
 .footer_left {
   margin-left: 30px;
-  flex-basis: 100px;
+  flex-basis: 200px;
   flex-grow: 10;
 }
 .footer_left .fa {
@@ -8034,8 +8035,6 @@ div.view-footer {
 @media (max-width: 767px) {
   .footer_left, .footer_middle, .footer_right {
     width: 100%;
-    margin: 10px 10px 10px 0;
-    text-align: center;
   }
   .footer_left .footer_logo, .footer_middle .footer_logo, .footer_right .footer_logo {
     text-align: center;
@@ -8309,6 +8308,7 @@ nav.slick__arrow button:last-of-type {
 .event__wrapper--calendar {
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .event__content--calendar {
