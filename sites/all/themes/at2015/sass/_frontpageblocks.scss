@@ -98,16 +98,22 @@ margin-top: 1em;
 #block-views-content-features-block-1 {
   .views-row {
   display: inline-block;
-  width: 43%;
+  width: 45%;
   vertical-align: top;
   background-color: $palegrey;
   padding: .5em;
-  margin: .5em;
+  margin: .5em 0;
+  height: 500px;
+  overflow: hidden;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: auto;
   }
 }
+  .views-row-last {
+    float: right;
+  }
+
 }
 
 .view-id-content_features {

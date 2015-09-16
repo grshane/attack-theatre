@@ -19,3 +19,24 @@
         }
 
 }
+
+.section-donate-attack-theatre,
+.section-sign-our-newsletter {
+     .views-field-views-conditional-2 {
+        display: none;
+    }
+
+}
+
+.info h2 {
+    display: none !important;
+}
+
+.houseAnnouncement__wrapper {
+    background-color: $palegrey;
+    padding: 1em 0.5em;
+}
+
+.home__featured {
+    display: flex;
+}

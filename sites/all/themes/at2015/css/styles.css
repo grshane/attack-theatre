@@ -170,9 +170,6 @@ a:hover {
   color: #333366;
 }
 
-.views-field-title {
-  margin: 1.5em 0 1em 0;
-}
 .views-field-title a {
   font-size: 1.6em;
   font-weight: bold;
@@ -312,7 +309,7 @@ hr {
   color: #ffffff;
 }
 .item-list li {
-  line-height: 6em;
+  line-height: 1em;
 }
 .item-list a {
   color: #ffffff;
@@ -4620,16 +4617,21 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
 
 #block-views-content-features-block-1 .views-row {
   display: inline-block;
-  width: 43%;
+  width: 45%;
   vertical-align: top;
   background-color: #e8e8e8;
   padding: .5em;
-  margin: .5em;
+  margin: .5em 0;
+  height: 500px;
+  overflow: hidden;
 }
 @media (max-width: 768px) {
   #block-views-content-features-block-1 .views-row {
-    width: 100%;
+    width: auto;
   }
+}
+#block-views-content-features-block-1 .views-row-last {
+  float: right;
 }
 
 .view-id-content_features {
@@ -8315,6 +8317,24 @@ nav.slick__arrow button:last-of-type {
 }
 .page-taxonomy .feed-icon {
   display: none;
+}
+
+.section-donate-attack-theatre .views-field-views-conditional-2,
+.section-sign-our-newsletter .views-field-views-conditional-2 {
+  display: none;
+}
+
+.info h2 {
+  display: none !important;
+}
+
+.houseAnnouncement__wrapper {
+  background-color: #e8e8e8;
+  padding: 1em 0.5em;
+}
+
+.home__featured {
+  display: flex;
 }
 
 .event__wrapper--calendar {
