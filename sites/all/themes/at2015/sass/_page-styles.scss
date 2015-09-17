@@ -40,3 +40,60 @@
 .home__featured {
     display: flex;
 }
+
+.con__button {
+    width: 7em;
+    float: right;
+    display: inline-block;
+    margin: -0.93em 1em;
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
+
+.views-field-field-flickr-albums {
+    clear: both;
+}
+
+.press__listing,
+.views-field-field-related-content {
+    ul {
+        list-style: none;
+
+    }
+}
+
+.views-field-field-related-content {
+    .item-list {
+    margin-left: 0;
+    }
+    ul {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+    }
+    li {
+            display: inline-block;
+            width: 30%;
+        }
+        article {
+            background: $palegrey;
+            padding: 0.5em;
+
+            h2 {
+                margin: 0;
+            }
+        }
+    }
+.views-field-field-youtube-videos,
+.views-field-field-flickr-albums {
+    .field-content {
+        display: flex;
+        justify-content: space-between;
+    }
+    .file-video {
+        width: 30%;
+
+    }
+}
+
