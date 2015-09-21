@@ -54,12 +54,24 @@
 .views-field-field-flickr-albums {
     clear: both;
 }
+.flickr-citation {
+    display: none;
+}
 
+.press__listing {
+    ul li:before {
+        content: '\2713';
+            margin: 0 1em
+    }
+}
 .press__listing,
 .views-field-field-related-content {
     ul {
         list-style: none;
+        li {
+            line-height: 2.5em;
 
+    }
     }
 }
 
@@ -79,9 +91,17 @@
         article {
             background: $palegrey;
             padding: 0.5em;
+            color: #000;
+            line-height: 1.7em;
 
             h2 {
                 margin: 0;
+                a {
+                color: #000;
+                &:hover {
+                    color: $highlight;
+                }
+            }
             }
         }
     }
@@ -95,5 +115,9 @@
         width: 30%;
 
     }
+}
+
+.flickr-citation {
+    display: none;
 }
 
