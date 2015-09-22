@@ -1004,7 +1004,7 @@ div.add-or-remove-shortcuts {
   float: left;
   height: auto;
 }
-.field-name-field-first-name, .field-name-field-first-name-override, 
+.field-name-field-first-name, .field-name-field-first-name-override,
 .field-name-field-last-name, .field-name-field-last-name-override,
 .field-name-field-prof-title-term, .field-name-field-professional-title-overrid,
 .field-name-field-person-type, .field-name-field-person-type-override,
@@ -1018,7 +1018,7 @@ div.add-or-remove-shortcuts {
 }
 
 .field-name-field-first-name, .field-name-field-last-name, .field-name-field-prof-title-term, .field-name-field-person-type,
-.field-name-field-phone, .field-name-field-fax, .field-name-field-email, .page-node-add-people-page .field-name-field-office-number, 
+.field-name-field-phone, .field-name-field-fax, .field-name-field-email, .page-node-add-people-page .field-name-field-office-number,
 .page-node-add-people-page .field-name-field-building, .field-name-field-department {
   background-color: #e8e8e8;
   min-width: 300px;
@@ -1026,7 +1026,7 @@ div.add-or-remove-shortcuts {
 }
 
 .field-name-field-override-first-name-, .field-name-field-override-last-name-, .field-name-field-override-professional-titl, .field-name-field-override-person-type-,
-.field-name-field-override-phone-, .field-name-field-override-fax-, .field-name-field-override-email-, 
+.field-name-field-override-phone-, .field-name-field-override-fax-, .field-name-field-override-email-,
 .page-node-add-people-page .field-name-field-override-office-number-, .page-node-add-people-page .field-name-field-override-building-, .field-name-field-add-additional-departments {
   height: 50px;
   padding: 25px 20px 0 15px;
@@ -1041,5 +1041,7 @@ div#edit-field-photo-und-0 {
   margin-top: 10px;
 }
 
-
-
+/* Removing non-functional button per Jordan */
+#field-date-range-values .field-type-datetime .field-add-more-submit {
+  display: none;
+}
