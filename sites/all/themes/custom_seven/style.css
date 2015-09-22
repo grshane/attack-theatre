@@ -1042,6 +1042,7 @@ div#edit-field-photo-und-0 {
 }
 
 /* Removing non-functional button per Jordan */
-#field-date-range-values .field-type-datetime .field-add-more-submit {
+#field-date-range-values .field-type-datetime .field-add-more-submit,
+#edit-field-date-range-und-add-more--3 {
   display: none;
 }
