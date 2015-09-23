@@ -74,6 +74,7 @@ scripts[] = js/jQueryRotate.js
 scripts[] = js/jquery-ui/jquery-ui.js
 scripts[] = js/jquery.vegas.js
 scripts[] = js/flowtype.js
+scripts[] = js/slick.min.js
 
 ; This section lists the regions defined in Zen's default page.tpl.php and
 ; maintenance-page.tpl.php files. The name in brackets is the machine name of

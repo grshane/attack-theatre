@@ -19,7 +19,7 @@
   <?php if (count($items) > 1): ?>
     <nav<?php print $arrow_attributes; ?>>
       <?php print $settings['prev_arrow']; ?>
-      <?php isset($arrow_down) && print $arrow_down; ?>
+
       <?php print $settings['next_arrow']; ?>
     </nav>
     <div<?php print $content_attributes; ?>>

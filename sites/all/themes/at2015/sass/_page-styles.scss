@@ -100,9 +100,16 @@
                 color: #000;
                 &:hover {
                     color: $highlight;
+                    }
                 }
             }
+            a {
+                color: $highlight;
+                &:hover {
+                    color: invert($highlight);
+                }
             }
+
         }
     }
 .views-field-field-youtube-videos,

@@ -34,7 +34,7 @@ body {
 .navigation {
   padding: 10px 0;
   margin: 0px auto;
-  background-color: #ab2c27;
+  background-color: #DC6328;
   min-height: 70px;
   width: 100vw;
   border-top: solid 3px black;
@@ -168,7 +168,7 @@ h5 {
 }
 
 a {
-  color: #ab2c27;
+  color: #DC6328;
   text-decoration: none;
 }
 a:hover {
@@ -184,17 +184,17 @@ a:hover {
 }
 
 #highlighted .views-field-title a {
-  color: #ab2c27;
+  color: #DC6328;
 }
 #highlighted .views-field-title a:hover {
-  color: #54d3d8;
+  color: #239cd7;
 }
 
 #main .views-field-title a {
   color: #000000;
 }
 #main .views-field-title a:hover {
-  color: #ab2c27;
+  color: #DC6328;
 }
 
 p.heading {
@@ -206,7 +206,7 @@ p.heading {
   font-weight: normal;
   color: #ffffff;
   padding: .5em;
-  background-color: #ab2c27;
+  background-color: #DC6328;
   text-align: center;
 }
 .button.big, .big.button--primary, .big.button--secondary {
@@ -4268,12 +4268,12 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   font-weight: normal;
   color: #ffffff;
   padding: .5em;
-  background-color: #ab2c27;
+  background-color: #DC6328;
   text-align: center;
   display: inline;
   vertical-align: middle;
   white-space: nowrap;
-  background-color: #ab2c27;
+  background-color: #DC6328;
 }
 .header ul li.first {
   float: left;
@@ -4285,6 +4285,7 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 /*Logo Block*/
 #block-block-6 {
   float: left;
+  height: 70px;
 }
 #block-block-6 img {
   height: auto;
@@ -4362,7 +4363,7 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   padding: 10px;
 }
 #block-superfish-1 li ul li a:hover {
-  color: #ab2c27;
+  color: #DC6328;
 }
 
 .sf-menu {
@@ -4391,7 +4392,7 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 }
 .block-search .form-submit, .block-search .form-text {
   background: #cccccc;
-  color: #ab2c27;
+  color: #DC6328;
   border: 2px solid #cccccc;
   height: 30px;
   width: 180px;
@@ -4439,7 +4440,7 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified {
 div.responsive-menus.responsive-menus-0-0.absolute.responsified span.toggler {
   border-radius: 0px;
   box-shadow: none;
-  background-color: #ab2c27;
+  background-color: #DC6328;
   text-align: left;
   font-size: 1em;
   padding: 5px;
@@ -4551,7 +4552,7 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
   padding: 10px;
 }
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-chevron-left, #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-chevron-right {
-  color: #ab2c27;
+  color: #DC6328;
 }
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-circle {
   color: #ffffff;
@@ -4607,7 +4608,7 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
   margin-left: 1em;
   margin-top: 5px;
   float: left;
-  color: #ab2c27;
+  color: #DC6328;
 }
 #block-views-calendar-block-4 .cal_social span {
   margin-right: .5em;
@@ -4835,7 +4836,7 @@ div.view-footer {
   list-style: none;
 }
 .section-attend .view .date-nav-wrapper .date-nav .date-prev .fa, .section-attend .view .date-nav-wrapper .date-nav .date-next .fa {
-  color: #ab2c27;
+  color: #DC6328;
 }
 .section-attend .date-nav h2 {
   margin: 0px;
@@ -7860,17 +7861,17 @@ div.view-footer {
 }
 
 .calendar-calendar tr td.today {
-  background-color: #d13a34;
+  background-color: #e38354;
 }
 .calendar-calendar tr td.today .mini-day-off {
-  color: #54d3d8;
+  color: #239cd7;
 }
 
 .has-events a {
-  color: #54d3d8;
+  color: #239cd7;
 }
 .has-events a:hover {
-  color: #124c4e;
+  color: #061d28;
 }
 
 /*Styles for News Articles and /news page */
@@ -7990,7 +7991,7 @@ div.view-footer {
 
 /*Styles to support the sticky footer */
 #footer {
-  border: 1px #ab2c27;
+  border: 1px #DC6328;
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
   background-color: #333333;
@@ -8111,9 +8112,9 @@ category: Components - Buttons
 }
 
 .button--primary {
-  background-color: linear-gradient(#da625e, #ab2c27);
+  background-color: linear-gradient(#eaa380, #dc6328);
   color: #ffffff;
-  border: 1px solid #81211e;
+  border: 1px solid #b44f1d;
 }
 
 .button--secondary {
@@ -8136,7 +8137,7 @@ category: Components - blockquote
 ```html_example
     <blockquote>
         <p>Inspirational quote goes here</p>
-        <footer>-Quote Author</footer>
+        <span class="footer">-Quote Author</span>
     </blockquote>
 ```
 */
@@ -8165,7 +8166,7 @@ blockquote::before {
   position: relative;
   left: -40px;
   font-size: 88px;
-  color: #ab2c27;
+  color: #DC6328;
 }
 
 .section {
@@ -8184,7 +8185,6 @@ blockquote::before {
   position: absolute;
   height: 13px;
   background-color: #8e8d8d;
-  background: url("/sites/all/themes/csd2014/images/bg-track.png") repeat top left !important;
   box-shadow: inset 0 1px 5px 0px rgba(0, 0, 0, 0.5), 0 1px 0 0px rgba(250, 250, 250, 0.5);
   left: 20px;
 }
@@ -8282,13 +8282,11 @@ div#Glidercontent_glider_1.glidecontentwrapper div.glidecontent li.node-readmore
   display: none;
 }
 
-.slick__slide,
 .slide__content {
-  display: flex !important;
-}
-
-.slide__content {
-  flex-direction: column;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 nav.slick__arrow {
@@ -8300,7 +8298,7 @@ nav.slick__arrow {
 nav.slick__arrow button {
   text-indent: -9999px;
   background-color: white;
-  color: #ab2c27;
+  color: #DC6328;
   width: 3em;
   height: 3em;
 }
@@ -8414,7 +8412,13 @@ nav.slick__arrow button:last-of-type {
   color: #000;
 }
 .views-field-field-related-content article h2 a:hover {
-  color: #ab2c27;
+  color: #DC6328;
+}
+.views-field-field-related-content article a {
+  color: #DC6328;
+}
+.views-field-field-related-content article a:hover {
+  color: #239cd7;
 }
 
 .views-field-field-youtube-videos .field-content,
@@ -8444,13 +8448,13 @@ nav.slick__arrow button:last-of-type {
 
 .event__title--calendar {
   margin: 0.3em 0 0 0;
-  color: #ab2c27;
+  color: #DC6328;
 }
 .event__title--calendar a {
   font-size: 1.4em !important;
 }
 .event__title--calendar a:hover {
-  color: #da625e;
+  color: #eaa380;
 }
 
 .event__body--calendar {
@@ -8463,11 +8467,11 @@ nav.slick__arrow button:last-of-type {
 }
 
 .event__category--calendar:hover {
-  color: #da625e;
+  color: #eaa380;
 }
 
 .event__link--calenar:hover {
-  color: #da625e;
+  color: #eaa380;
 }
 
 form .search-form h2 {
