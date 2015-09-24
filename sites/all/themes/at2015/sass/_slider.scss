@@ -106,10 +106,12 @@ display:none;
 	height: 50vh;
 	}
 	}
-	.slider_copy {
+	.views-field-nothing-1 {
 	display: table-cell;
 	width:1px;
+	.slider_copy {
 	padding: 1em;
+	}
 	}
 }
 
@@ -134,7 +136,7 @@ nav.slick__arrow {
 	justify-content: space-between;
 	transform: translateY(calc(50vh - 200px));
 	z-index: 500;
-
+	position: relative;
 	button {
 		background-color: white;
 		color: $highlight;

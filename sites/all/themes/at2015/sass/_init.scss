@@ -278,7 +278,7 @@ body {
 }
 #page {
     display: table;
-    height: 100%;
+    max-height: 100%;
     table-layout: fixed; /*Fixes firefox bug that disallows responsive resizing of images within table elements*/
     }
 
