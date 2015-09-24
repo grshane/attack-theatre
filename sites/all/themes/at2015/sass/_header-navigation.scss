@@ -47,9 +47,10 @@
 /*Logo Block*/
 #block-block-6 {
 	float: left;
-	height: 70px;
+	//height: 70px;
 	img {
 	height: auto;
+	margin-top: -0.5em;
 	@media (min-width:835px) {
 	max-height: 70px;
 	}

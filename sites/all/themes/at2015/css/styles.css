@@ -49,6 +49,7 @@ body {
   top: 0px;
   opacity: 1;
   transition: 0.4s ease;
+  height: 70px;
 }
 
 .region-navigation {
@@ -87,6 +88,7 @@ body {
   width: 100%;
   clear: both;
   overflow: hidden;
+  z-index: 100;
 }
 #highlighted .region-highlighted {
   width: 100vw;
@@ -4285,10 +4287,10 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 /*Logo Block*/
 #block-block-6 {
   float: left;
-  height: 70px;
 }
 #block-block-6 img {
   height: auto;
+  margin-top: -0.5em;
   margin-left: 1em;
 }
 @media (min-width: 835px) {
@@ -4867,6 +4869,7 @@ div.view-footer {
   font-size: 1.1em;
 }
 
+/*End section-attend */
 .addtoany_list a span.a2a_img {
   display: none !important;
 }
@@ -8444,6 +8447,7 @@ nav.slick__arrow button:last-of-type {
 .event__content--calendar {
   padding: 1em 0.5em;
   width: 65%;
+  height: 250px;
 }
 
 .event__title--calendar {
@@ -8464,6 +8468,7 @@ nav.slick__arrow button:last-of-type {
 
 .event__img--calendar img {
   vertical-align: bottom;
+  padding: 0;
 }
 
 .event__category--calendar:hover {

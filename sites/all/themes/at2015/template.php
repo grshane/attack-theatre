@@ -53,9 +53,9 @@ function at2015_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function at2015_preprocess_page(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.'); 
-  if (isset($variables['node']->type)) { 
-    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type; 
+  $variables['sample_variable'] = t('Lorem ipsum.');
+  if (isset($variables['node']->type)) {
+    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
   }
 }
 // */
@@ -169,7 +169,7 @@ function at2015_form_search_block_form_alter(&$form, &$form_state, $form_id) {
 
     // Alternative (HTML5) placeholder attribute instead of using the javascript
     $form['search_block_form']['#attributes']['placeholder'] = t(' Search...');
-} 
+}
 
 
 /**
@@ -212,5 +212,77 @@ function at2015_date_nav_title($params) {
   else {
     return $title;
   }
+}
+
+/**
+ * Implements theme_date_repeat_display().
+ */
+function at2015_date_repeat_display(&$vars) {
+
+  if (isset($vars['item']['rrule'])) {
+
+    // Let's pull out the rrule properties. For example, take this:
+    //   RRULE:FREQ=DAILY;INTERVAL=1;UNTIL=20130501T035959Z;WKST=SU
+    // and turn it into:
+    //   array(
+    //     'FREQ' => 'DAILY',
+    //     'INTERVAL' => '1' ,
+    //     'UNTIL' => '20130501T035959Z',
+    //     'WKST' => 'SU'
+    //   );
+    $rrule = array();
+    $rules = explode(';', str_replace('RRULE:', '', $vars['item']['rrule']));
+    foreach($rules as $rule) {
+      $parts = explode('=', $rule);
+      $key = $parts[0];
+      $value = $parts[1];
+      $rrule[$key] = $value;
+    }
+
+    $additions = array();
+
+   // add additional dates
+  foreach ($additions as $addition) {
+    $date2 = new dateObject($addition . ' ' . $start_date->format('H:i:s'), $timezone);
+    $days[] = date_format($date, DATE_FORMAT_DATETIME);
+  }
+
+    // Now that we have our repeat rule, let's change the way it renders itself.
+
+    // Change the 'Repeats every day until [date] .' display to our liking.
+    if ($rrule['FREQ'] == 'DAILY' && $rrule['INTERVAL'] == 1) {
+      $from = strtotime($vars['item']['value']);
+      $to = strtotime($rrule['UNTIL']);
+      $from_month = date('F', $from);
+      $to_month = date('F', $to);
+      $from_year = date('Y', $from);
+      $to_year = date('Y', $to);
+      $date = '';
+      if ($from_year == $to_year) {
+        // Same year.
+        if ($from_month == $to_month) {
+          // Same month.
+          $date = date('F jS', $from) . ' - ' . date('jS, Y', $to);
+        }
+        else {
+          // Different months.
+          $date = date('F jS', $from) . ' - ' . date('F jS, Y', $to);
+        }
+      }
+      else {
+        // Different year.
+        $date = date('F jS, Y', $from) . ' - ' . date('F jS, Y', $to);
+      }
+
+      return '<div>' . $date . ',' . $date2 .'</div>';
+    }
+
+  }
+
+
+
+  // If we made it this far, then we assume that we didn't want to theme this
+  // repeat rule in a custom way, so let's just render it normally.
+  return theme_date_repeat_display($vars);
 }
 
