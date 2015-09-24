@@ -5,7 +5,7 @@
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
   display: flex;
   align-items: flex-end;
-  height: calc(100vh - 120px);
+  /*height: calc(100vh - 120px);*/
 
   @media (max-width: 765px) {
     min-width: 100%;
@@ -43,17 +43,26 @@
 .front #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9{
   width: 66%;
   overflow: hidden;
+  display:inline-block;
+  padding-bottom: 5px;
+
 }
 
 .calendar #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9{
   width: 100%;
 }
-
+.view-display-id-block_4 {
+  width: auto;
+  margin: 0 auto;
+}
 #block-views-calendar-block-4 {
     display: flex;
     width: 30%;
     vertical-align: top;
-    margin-left:3%;
+    border-top: 2px solid $palegrey;
+    margin-top: -2px;
+    margin-bottom: 20px;
+    padding-left: 3%;
     @media (max-width: 768px) {
         width: 100%;
     }
@@ -72,7 +81,7 @@
   }
   .cal_social {
   margin-left: 1em;
-  margin-top: 5px;
+  margin-top: 15px;
   float: left;
   color: $highlight;
   span {

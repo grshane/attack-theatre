@@ -1,3 +1,4 @@
+
 .section {
 	width: 150px;
 	height: auto;
@@ -96,7 +97,20 @@ display:none;
 .slick__slide,
 .slide__content {
 	//display: flex !important;
-
+	display: table-cell;
+	.views-field-field-feature-image {
+	display: table-row;
+	width: 1px;
+	img {
+	width: auto;
+	height: 50vh;
+	}
+	}
+	.slider_copy {
+	display: table-cell;
+	width:1px;
+	padding: 1em;
+	}
 }
 
 .slide__content {
@@ -105,6 +119,12 @@ display:none;
 
 }
 
+.slick-slider {
+	margin-top: -60px;
+
+}
+
+
 .view-upcoming-event-slider-homepage-calendar- {
 
 }
@@ -112,15 +132,14 @@ display:none;
 nav.slick__arrow {
 	display: flex;
 	justify-content: space-between;
-	transform: translateY(calc(50vh - 60px));
-	z-index: 1000;
+	transform: translateY(calc(50vh - 200px));
+	z-index: 500;
 
 	button {
-		text-indent: -9999px;
 		background-color: white;
-		color: $accent-color;
-		width: 3em;
-		height: 3em;
+		color: $highlight;
+		width: 2em;
+		height: 2em;
 		&:first-of-type {
 			@include border-right-radius(50%);
 		}
