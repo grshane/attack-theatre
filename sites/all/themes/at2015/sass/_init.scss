@@ -532,6 +532,12 @@ hr {
 
 }
 
+/*Hide the time field across the site, let template file rewrite it by date*/
+
+.field-name-field-time {
+  display:none;
+}
+
 /*Pagination Controls*/
 
 .item-list {
