@@ -45,6 +45,11 @@
   overflow: hidden;
   display:inline-block;
   padding-bottom: 5px;
+  .field-type-datetime {
+    color: $grey;
+    font-size: 1em;
+    line-height:auto;
+  }
 
 }
 
@@ -62,14 +67,21 @@
     border-top: 2px solid $palegrey;
     margin-top: -2px;
     margin-bottom: 20px;
-    padding-left: 3%;
+    padding-left: .5em;
     @media (max-width: 768px) {
         width: 100%;
     }
     .views-row {
-    margin: 1em 0;
-    .views-field-title {
-    margin: .3em 0 0 0;
+    margin: .5em 0;
+    padding: .5em 0;
+    -moz-box-shadow:      0px 6px 6px -6px $palegrey;
+      -webkit-box-shadow: 0px 6px 6px -6px $palegrey;
+      box-shadow:         0px 6px 6px -6px $palegrey;
+    .field-type-datetime {
+    color: $grey;
+        font-size: .75em;
+        line-height:auto;
+
     }
   }
 

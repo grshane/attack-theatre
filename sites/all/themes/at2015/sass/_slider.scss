@@ -162,6 +162,7 @@ nav.slick__arrow {
     position:relative;
     width: 100vw;
     left: calc(-50vw + 50%);
+    height: 100%;
     .main-feature {
     position: relative;
 	overflow: hidden;
@@ -170,7 +171,7 @@ nav.slick__arrow {
     img {
     height: 100%;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto; 
     }
     }
 }
