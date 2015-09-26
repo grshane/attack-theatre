@@ -47,3 +47,13 @@
         color: lighten($highlight, 20%);
     }
 }
+
+.press__listing {
+    a {
+        color: $highlight;
+
+        &:hover {
+            color: invert($highlight);
+        }
+    }
+}
