@@ -113,7 +113,7 @@ body {
   overflow: hidden;
   background-color: #cccccc;
   padding-top: 1em;
-  /*width: 100vw;*/
+  width: 100%;
   min-height: 100%;
   height: auto !important;
   height: 100%;
@@ -314,6 +314,11 @@ hr {
   color: none;
   background-color: none;
   margin-bottom: 1em;
+}
+
+/*Hide the time field across the site, let template file rewrite it by date*/
+.field-name-field-time {
+  display: none;
 }
 
 /*Pagination Controls*/
@@ -8354,12 +8359,19 @@ nav.slick__arrow {
   transform: translateY(calc(50vh - 200px));
   z-index: 500;
   position: relative;
+  max-width: 100vw;
 }
 nav.slick__arrow button {
   background-color: white;
+  border: 0 !important;
+  border: none;
+  outline: 0;
   color: #DC6328;
   width: 2em;
   height: 2em;
+  -moz-box-shadow: 3px 0px 5px 2px #e8e8e8;
+  -webkit-box-shadow: 3px 0px 5px 2px #e8e8e8;
+  box-shadow: 3px 0px 5px 2px #e8e8e8;
 }
 nav.slick__arrow button:first-of-type {
   -moz-border-radius-topright: 50%;
