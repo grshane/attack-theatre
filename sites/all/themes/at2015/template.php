@@ -53,6 +53,7 @@ function at2015_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function at2015_preprocess_page(&$variables, $hook) {
+
   $variables['sample_variable'] = t('Lorem ipsum.');
   if (isset($variables['node']->type)) {
     $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
@@ -218,7 +219,6 @@ function at2015_date_nav_title($params) {
  * Implements theme_date_repeat_display().
  */
 function at2015_date_repeat_display(&$vars) {
-
   if (isset($vars['item']['rrule'])) {
 
     // Let's pull out the rrule properties. For example, take this:
@@ -258,31 +258,237 @@ function at2015_date_repeat_display(&$vars) {
       $from_year = date('Y', $from);
       $to_year = date('Y', $to);
       $date = '';
+      $entity  = $vars['entity'];
+      $times = $entity->field_time['und'];
+      $timesForDisplay = "";
+      for($x = 0; $x <= sizeof($times); $x++) {
+          if ($x > 0 && $x < sizeof($times)) {
+              $timesForDisplay .= ", ";
+          }
+          $timesForDisplay .= $times[$x]['safe_value'];
+      }
       if ($from_year == $to_year) {
         // Same year.
         if ($from_month == $to_month) {
           // Same month.
-          $date = date('F jS', $from) . ' - ' . date('jS, Y', $to);
+          $date = date('D n/j', $from) . ' - ' . date('D n/j', $to) . ' ' . $timesForDisplay;
         }
         else {
           // Different months.
-          $date = date('F jS', $from) . ' - ' . date('F jS, Y', $to);
+          $date = date('F jS', $from) . ' - ' . date('F jS, Y', $to) . ' ' . $timesForDisplay;
         }
+      } else {
+            // Different year.
+            $date = date('F jS, Y', $from) . ' - ' . date('F jS, Y', $to) . ' ' . $timesForDisplay;
+          }
+      if (isset($date2)) {
+            return '<div>' . $date . ',' . $date2 .'</div>';
+      } else {
+         return '<div>' . $date . '</div>';
+        // return theme_date_repeat_display($vars);
       }
-      else {
-        // Different year.
-        $date = date('F jS, Y', $from) . ' - ' . date('F jS, Y', $to);
-      }
-
-      return '<div>' . $date . ',' . $date2 .'</div>';
     }
 
   }
-
 
 
   // If we made it this far, then we assume that we didn't want to theme this
   // repeat rule in a custom way, so let's just render it normally.
   return theme_date_repeat_display($vars);
 }
+
+function at2015_date_display_single($variables) {
+  $date = $variables['date'];
+  $timezone = $variables['timezone'];
+  $attributes = $variables['attributes'];
+
+  // Wrap the result with the attributes.
+  $output = '<span class="date-display-single"' . drupal_attributes($attributes) . '>' . $date . $timezone;
+  /*
+  if (!empty($variables['add_microdata'])) {
+    $output .= '<meta' . drupal_attributes($variables['microdata']['value']['#attributes']) . '/>';
+  }
+  */
+
+  return $output;
+}
+
+function at2015_date_display_combination($variables) {
+  static $repeating_ids = array();
+  
+  $entity_type = $variables['entity_type'];
+  $entity      = $variables['entity'];
+  $field       = $variables['field'];
+  $instance    = $variables['instance'];
+  $langcode    = $variables['langcode'];
+  $item        = $variables['item'];
+  $delta       = $variables['delta'];
+  $display     = $variables['display'];
+  $field_name  = $field['field_name'];
+  $formatter   = $display['type'];
+  $options     = $display['settings'];
+  $dates       = $variables['dates'];
+  $attributes  = $variables['attributes'];
+  $rdf_mapping = $variables['rdf_mapping'];
+  $add_rdf     = $variables['add_rdf'];
+  $microdata   = $variables['microdata'];
+  $add_microdata = $variables['add_microdata'];
+  $precision   = date_granularity_precision($field['settings']['granularity']);
+
+  $output = '';
+
+  // If date_id is set for this field and delta doesn't match, don't display it.
+  if (!empty($entity->date_id)) {
+    foreach ((array) $entity->date_id as $key => $id) {
+      list($module, $nid, $field_name, $item_delta, $other) = explode('.', $id . '.');
+      if ($field_name == $field['field_name'] && isset($delta) && $item_delta != $delta) {
+        return $output;
+      }
+    }
+  }
+
+  // Check the formatter settings to see if the repeat rule should be displayed.
+  // Show it only with the first multiple value date.
+  list($id) = entity_extract_ids($entity_type, $entity);
+  if (!in_array($id, $repeating_ids) && module_exists('date_repeat_field') && !empty($item['rrule']) && $options['show_repeat_rule'] == 'show') {
+    $repeat_vars = array(
+      'field' => $field,
+      'item' => $item,
+      'entity_type' => $entity_type,
+      'entity' => $entity,
+    );
+    $output .= theme('date_repeat_display', $repeat_vars);
+    $repeating_ids[] = $id;
+  }
+
+  // If this is a full node or a pseudo node created by grouping multiple
+  // values, see exactly which values are supposed to be visible.
+  if (isset($entity->$field_name)) {
+    $entity = date_prepare_entity($formatter, $entity_type, $entity, $field, $instance, $langcode, $item, $display);
+    // Did the current value get removed by formatter settings?
+    if (empty($entity->{$field_name}[$langcode][$delta])) {
+      return $output;
+    }
+    // Adjust the $element values to match the changes.
+    $element['#entity'] = $entity;
+  }
+
+  switch ($options['fromto']) {
+    case 'value':
+      $date1 = $dates['value']['formatted'];
+      $date2 = $date1;
+      break;
+    case 'value2':
+      $date2 = $dates['value2']['formatted'];
+      $date1 = $date2;
+      break;
+    default:
+      $date1 = $dates['value']['formatted'];
+      $date2 = $dates['value2']['formatted'];
+      break;
+  }
+
+  // Pull the timezone, if any, out of the formatted result and tack it back on
+  // at the end, if it is in the current formatted date.
+  $timezone = $dates['value']['formatted_timezone'];
+  if ($timezone) {
+    $timezone = ' ' . $timezone;
+  }
+  $date1 = str_replace($timezone, '', $date1);
+  $date2 = str_replace($timezone, '', $date2);
+  $time1 = preg_replace('`^([\(\[])`', '', $dates['value']['formatted_time']);
+  $time1 = preg_replace('([\)\]]$)', '', $time1);
+  $time2 = preg_replace('`^([\(\[])`', '', $dates['value2']['formatted_time']);
+  $time2 = preg_replace('([\)\]]$)', '', $time2);
+
+  // A date with a granularity of 'hour' has a time string that is an integer
+  // value. We can't use that to replace time strings in formatted dates.
+  $has_time_string = date_has_time($field['settings']['granularity']);
+  if ($precision == 'hour') {
+    $has_time_string = FALSE;
+  }
+
+  // No date values, display nothing.
+  if (empty($date1) && empty($date2)) {
+    $output .= '';
+  }
+  /* elseif ($date1 == $date2 && isset($entity->field_date_and_time_2['und']) && (sizeof($entity->field_date_and_time_2['und'] > 2))) {
+      DebugBreak();
+     
+  }   */
+  // Start and End dates match or there is no End date, display a complete
+  // single date.
+  elseif ($date1 == $date2 || empty($date2)) {
+      if (sizeof($element['#entity']->field_date_and_time_2['und']) == 1) {
+            $output .= theme('date_display_single', array(
+              'date' => $date1,
+              'timezone' => $timezone,
+              'attributes' => $attributes,
+              'rdf_mapping' => $rdf_mapping,
+              'add_rdf' => $add_rdf,
+              'microdata' => $microdata,
+              'add_microdata' => $add_microdata,
+              'dates' => $dates,
+            ));
+          
+
+          $times = $entity->field_time['und'];
+          $timesForDisplay = "";
+          for($x = 0; $x <= sizeof($times); $x++) {
+              if ($x > 0 && $x < sizeof($times)) {
+                  $timesForDisplay .= ", ";
+              }
+              $timesForDisplay .= $times[$x]['safe_value'];
+          }
+              $output .= " " . $timesForDisplay . '</span>';
+      }
+  }
+  // Same day, different times, don't repeat the date but show both Start and
+  // End times. We can NOT do this if the replacement value is an integer
+  // instead of a time string.
+  elseif ($has_time_string && $dates['value']['formatted_date'] == $dates['value2']['formatted_date']) {
+    // Replace the original time with the start/end time in the formatted start
+    // date. Make sure that parentheses or brackets wrapping the time will be
+    // retained in the final result. 
+    $time = theme('date_display_range', array(
+      'date1' => $time1,
+      'date2' => $time2,
+      'timezone' => $timezone,
+      'attributes' => $attributes,
+      'rdf_mapping' => $rdf_mapping,
+      'add_rdf' => $add_rdf,
+      'microdata' => $microdata,
+      'add_microdata' => $add_microdata,
+      'dates' => $dates,
+    ));
+    $replaced = str_replace($time1, $time, $date1);
+    $output .= theme('date_display_single', array(
+      'date' => $replaced,
+      'timezone' => $timezone,
+      'attributes' => array(),
+      'rdf_mapping' => array(),
+      'add_rdf' => FALSE,
+      'dates' => $dates,
+    ));
+  }
+  // Different days, display both in their entirety.
+  else {
+    $output .= theme('date_display_range', array(
+      'date1' => $date1,
+      'date2' => $date2,
+      'timezone' => $timezone,
+      'attributes' => $attributes,
+      'rdf_mapping' => $rdf_mapping,
+      'add_rdf' => $add_rdf,
+      'microdata' => $microdata,
+      'add_microdata' => $add_microdata,
+      'dates' => $dates,
+    ));
+  }
+
+  return $output;
+}
+
+
+
 
