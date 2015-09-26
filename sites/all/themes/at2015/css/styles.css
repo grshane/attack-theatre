@@ -178,7 +178,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #333366;
+  color: #239cd7;
 }
 
 .views-field-title a {
@@ -4827,6 +4827,24 @@ div.view-footer {
 }
 .region-blockgroup-feeds #block-views-ab3c0c534b4b1da949f380185f7e45b1 .view-footer, .region-blockgroup-feeds #block-views-fde4ccd696c94b0b833277471e679471 .view-footer {
   padding-left: 0;
+}
+
+.featured__body {
+  height: 400px;
+  overflow: hidden;
+}
+
+mask {
+  position: relative;
+  height: 1.5em;
+  top: -2.5em;
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, white));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff',endColorstr='#1ffffff',GradientType=0 );
 }
 
 /*Styles for /attend pages */

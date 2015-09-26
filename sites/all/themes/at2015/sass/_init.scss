@@ -396,7 +396,7 @@ a {
     color: $highlight;
     text-decoration:none;
     &:hover {
-    color: $darkblue;
+    color: invert($highlight);
     }
 }
 
