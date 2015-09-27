@@ -45,7 +45,11 @@
   overflow: hidden;
   display:inline-block;
   padding-bottom: 5px;
- 
+  .field-type-datetime {
+    color: $grey;
+    font-size: .9em;
+    line-height:auto;
+  }
 
 }
 
