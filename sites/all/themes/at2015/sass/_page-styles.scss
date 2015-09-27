@@ -117,6 +117,7 @@
     .field-content {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
     .file-video {
         width: 30%;
