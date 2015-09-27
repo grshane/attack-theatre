@@ -4477,69 +4477,6 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified .responsive-menu
   margin-left: 10px;
 }
 
-/*Sidebar Menu Styles*/
-.front .sidebars {
-  margin-top: 0 !important;
-}
-
-.sidebars {
-  margin-top: 1em;
-}
-.sidebars ul.menu {
-  background-color: #000000;
-  margin-top: 20%;
-  padding: 0;
-}
-.sidebars ul.menu li {
-  list-style: none;
-  border-bottom: 1px solid #ffffff;
-  padding: 10px 5px;
-}
-.sidebars ul.menu li a {
-  color: #ffffff;
-  padding: 10px;
-  text-transform: uppercase;
-  font-family: montserrat, Helvetica, Arial, Verdana, sans-serif;
-}
-.sidebars ul.menu li a:after {
-  content: "\f054";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
-  text-align: right;
-  float: right;
-}
-
-.sidebars ul.menu a:hover {
-  color: #cccccc;
-}
-
-.sidebars ul ul.menu a:hover {
-  color: #cccccc;
-}
-
-.sidebars ul ul.menu {
-  background-color: #cccccc;
-  margin: 10px -5px -10px -5px;
-}
-.sidebars ul ul.menu li a {
-  text-transform: capitalize;
-  color: #cccccc;
-}
-
-#back-top {
-  right: 75px;
-  bottom: 150px;
-}
-
-div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first.last.odd ul.menu li.menu__item {
-  border-bottom: 1px solid #fff;
-  list-style: outside none none;
-  padding: 10px 1em;
-  text-indent: -10px;
-}
-
 /*HP Slideshow*/
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
   display: flex;
@@ -4585,11 +4522,6 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
   overflow: hidden;
   display: inline-block;
   padding-bottom: 5px;
-}
-.front #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .field-type-datetime {
-  color: #999999;
-  font-size: .9em;
-  line-height: auto;
 }
 
 .calendar #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
@@ -7920,121 +7852,6 @@ mask {
 }
 .has-events a:hover {
   color: #061d28;
-}
-
-/*Styles for News Articles and /news page */
-.section-news .views-field-field-default-news-image {
-  float: right;
-  padding: 1em;
-}
-.section-news .views-field-field-default-news-image img {
-  width: 100%;
-}
-@media (max-width: 767px) {
-  .section-news .views-field-field-default-news-image {
-    max-width: 100%;
-    height: auto;
-    padding: 1em;
-  }
-}
-.section-news .view-display-id-page .views-row {
-  border-bottom: 1px dotted #cccccc;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
-}
-.section-news .view-display-id-page .views-row img {
-  float: left;
-  padding-right: 1em;
-  padding-bottom: 1em;
-}
-.section-news .view-display-id-page .views-row .caption {
-  margin-bottom: 10px;
-}
-.section-news .view-display-id-page .views-row .subhead {
-  margin-bottom: 10px;
-  font-size: 1.1em;
-}
-.section-news .view-display-id-page .views-row h2 {
-  line-height: 1.3em;
-  margin-bottom: .3em;
-}
-@media (max-width: 767px) {
-  .section-news .view-display-id-page .views-row img {
-    float: none;
-    padding-right: 1em;
-    padding-bottom: 1em;
-    width: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  .node-type-article .news-image {
-    max-width: 30%;
-    float: right;
-    padding-left: 1em;
-    padding-bottom: 1em;
-  }
-}
-@media (max-width: 767px) {
-  .node-type-article .news-image {
-    max-width: 100%;
-    height: auto;
-    padding: 0em;
-  }
-}
-
-/* Controls the Comments section */
-.comments_wrapper {
-  background-color: #e8e8e8;
-  width: 100%;
-}
-.comments_wrapper .filter-wrapper {
-  display: none;
-}
-
-.comments_wrapper input[type=text], .comments_wrapper textarea, .comments_wrapper .grippie {
-  width: 100%;
-}
-
-.comments_container {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px 0 10px 0;
-  width: 80%;
-}
-.comments_container article {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #cccccc;
-}
-.comments_container article p.submitted {
-  font-size: .8em;
-  font-style: italic;
-  margin-bottom: .5em;
-}
-.comments_container article p.submitted a {
-  font-style: normal;
-}
-
-.comments_container h3 {
-  margin-top: 0px;
-}
-.comments_container h3.comment-form {
-  margin-top: 1em;
-}
-
-.field-name-field-file-attachments {
-  margin-bottom: 10px;
-}
-
-.comment-add a::after {
-  content: "\f103";
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  text-decoration: none;
-  padding-left: 5px;
-  color: #cccccc;
 }
 
 /*Styles to support the sticky footer */
