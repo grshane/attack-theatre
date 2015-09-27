@@ -4586,6 +4586,11 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
   display: inline-block;
   padding-bottom: 5px;
 }
+.front #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .field-type-datetime {
+  color: #999999;
+  font-size: .9em;
+  line-height: auto;
+}
 
 .calendar #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 {
   width: 100%;
@@ -4603,7 +4608,7 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
   border-top: 2px solid #e8e8e8;
   margin-top: -2px;
   margin-bottom: 20px;
-  padding-left: 3%;
+  padding-left: .5em;
 }
 @media (max-width: 768px) {
   #block-views-calendar-block-4 {
@@ -4611,10 +4616,16 @@ div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first
   }
 }
 #block-views-calendar-block-4 .views-row {
-  margin: 1em 0;
+  margin: .5em 0;
+  padding: .5em 0;
+  -moz-box-shadow: 0px 6px 6px -6px #e8e8e8;
+  -webkit-box-shadow: 0px 6px 6px -6px #e8e8e8;
+  box-shadow: 0px 6px 6px -6px #e8e8e8;
 }
-#block-views-calendar-block-4 .views-row .views-field-title {
-  margin: .3em 0 0 0;
+#block-views-calendar-block-4 .views-row .field-type-datetime {
+  color: #999999;
+  font-size: .9em;
+  line-height: auto;
 }
 #block-views-calendar-block-4 .button, #block-views-calendar-block-4 .button--primary, #block-views-calendar-block-4 .button--secondary {
   float: left;
@@ -8394,6 +8405,7 @@ nav.slick__arrow button:last-of-type {
   position: relative;
   width: 100vw;
   left: calc(-50vw + 50%);
+  height: 100%;
 }
 .view-calendar-event-node-layout .views-field-views-conditional .main-feature {
   position: relative;
@@ -8405,6 +8417,7 @@ nav.slick__arrow button:last-of-type {
   height: 100%;
   display: block;
   margin: 0 auto;
+  padding: 0 .5em;
 }
 
 .page__subhead {
