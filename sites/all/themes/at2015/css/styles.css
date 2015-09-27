@@ -2111,7 +2111,7 @@ tr.selected td {
 }
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1443067802');
+  background-image: url('../images/progress.gif?1443372332');
 }
 
 div.region.region-blockgroup-collaborate-benefits.blockgroup img {
@@ -8527,6 +8527,7 @@ nav.slick__arrow button:last-of-type {
 .views-field-field-flickr-albums .field-content {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .views-field-field-youtube-videos .file-video,
 .views-field-field-flickr-albums .file-video {
