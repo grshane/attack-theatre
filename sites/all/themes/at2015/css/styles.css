@@ -8238,6 +8238,10 @@ nav.slick__arrow button:last-of-type {
   padding: 0 .5em;
 }
 
+#cboxLoadedContent .main-feature {
+  height: 0 !important;
+}
+
 .page__subhead {
   font-size: 2em;
   color: #707070;
