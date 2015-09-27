@@ -72,7 +72,6 @@ scripts[] = js/jquery.matchHeight.js
 scripts[] = js/sticky.js
 scripts[] = js/jQueryRotate.js
 scripts[] = js/jquery-ui/jquery-ui.js
-scripts[] = js/jquery.vegas.js
 scripts[] = js/flowtype.js
 scripts[] = js/jquery.adaptive-backgrounds.js
 
