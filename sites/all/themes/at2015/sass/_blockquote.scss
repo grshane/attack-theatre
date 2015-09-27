@@ -28,13 +28,14 @@ blockquote {
     flex-direction: column;
     justify-content: center;
 
-    p {
+    p:first-of-type {
         font-size: 1.3em;
         margin-top: -4em;
 
     }
 
-    span.footer {
+    span.footer,
+    p:last-of-type { //Remove last of type if breaks with no citation
         font-style: italic;
         font-size: 0.9em;
         text-align: right;
