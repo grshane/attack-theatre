@@ -1,0 +1,10 @@
+name = Menu Inject Block
+description = Allows blocks to be injected as menu items.
+core = 7.x
+
+; Information added by Drupal.org packaging script on 2014-12-23
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "menu_inject_block"
+datestamp = "1419347949"
+

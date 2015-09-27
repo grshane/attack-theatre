@@ -1,0 +1,721 @@
+//
+// Initialization partial
+//
+// To make it easier to use all variables and mixins in any Sass file in this
+// theme, each .scss file has a @import "init" declaration. And this _init.scss
+// file is in charge of importing all the other partials needed for the theme.
+//
+// This initialization partial is organized in this way:
+// - First we set any shared Sass variables.
+// - Next we import Compass plug-ins (Sass mixin libraries).
+// - Last we define our custom mixins for this theme.
+//
+
+
+// =============================================================================
+// Variables
+// =============================================================================
+
+//
+// Legacy IE support
+//
+// These variables are used by many mixins to add additional CSS to support
+// specific versions of IE or specific vendor prefixes.
+//
+// IE6-7 don't support box-sizing: border-box. We can fix this in 1 of 3 ways:
+// - Drop support for IE 6/7. :-) Set $legacy-support-for-ie6
+//   and $legacy-support-for-ie7 to false.
+// - (Preferred) Install the box-sizing polyfill and set the variable below to
+//   the absolute path URL to the boxsizing.htc file.
+//   @see https://github.com/Schepp/box-sizing-polyfill
+//   $box-sizing-polyfill-path: "/path/to/boxsizing.htc";
+// - Use the same CSS unit for grid and gutter width in resonsive-sidebars.scss
+//   (use px for both or use % for both) and set the box-sizing variable to content-box.
+//
+// Zen does not require special handling for IE8 or later. But Compass uses that
+// variable for a couple edge cases. We include it for completeness sake. See
+// the documentation at http://compass-style.org/reference/compass/support/
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+$legacy-support-for-ie8: true;
+
+
+//
+// Font faces, stacks and sizes.
+//
+
+// Compass' vertical_rhythm extension is a powerful tool to set up a vertical
+// rhythm for your entire page. You can see some of its mixins and functions in
+// use in the normalize.scss file.
+// @see http://compass-style.org/reference/compass/typography/vertical_rhythm/
+
+$base-font-size:   16px; // The font size set on the root html element.
+$base-line-height: 1.45;
+$lineHeight: $base-line-height; // This line-height determines the basic unit of vertical rhythm.
+
+$h1-font-size: 2.625    * $base-font-size;
+$h2-font-size: 2  * $base-font-size;
+$h3-font-size: 1.5 * $base-font-size;
+$h4-font-size: 1    * $base-font-size;
+$h5-font-size: 0.83 * $base-font-size;
+$h6-font-size: 0.67 * $base-font-size;
+
+// The following font family declarations are based on the Microsoft core web
+// fonts which are common fonts available on most computer systems. The DejaVu
+// and Nimbus Sans fonts are commonly available on Linux systems where the MS
+// fonts are less common. Tahoma and Helvetica are also widely available.
+//
+// A user's web browser will look at the comma-separated list and will
+// attempt to use each font in turn until it finds one that is available
+// on the user's computer. The final "generic" font (sans-serif, serif or
+// monospace) hints at what type of font to use if the web browser doesn't
+// find any of the fonts in the list.
+
+// First, let's create some font stacks.
+$times-new-roman: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+$times:           Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+$georgia:         Georgia, "Times New Roman", "DejaVu Serif", serif;
+
+$verdana:         Verdana, Tahoma, "DejaVu Sans", sans-serif;
+$tahoma:          Tahoma, Verdana, "DejaVu Sans", sans-serif;
+$helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
+$arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
+
+// For an explanation of why "sans-serif" is at the end of this list, see
+// http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+$courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+
+// Now create some variables for the font stacks we want to use on this site.
+$base-font-family: $verdana; // The font family set on the html element.
+$font-body:        $verdana;
+$font-monospace:   $courier;
+
+
+//
+// Colors, etc.
+//
+$highlight: #DC6328;
+$alt-font: #707070;
+$red: #ab2c27;
+$blue: #58a9e6;
+$darkblue:#1c305f;
+$palegrey: #e8e8e8;
+$lightgrey: #cccccc;
+$grey: #999999;
+$medgrey: #3f3f3f;
+$darkgrey: #333333;
+$white: #ffffff;
+$black: #000000;
+$yellow: #f99325;
+$bluegreen: #02bd9e;
+$purple: #662e93;
+$pink: #e26374;
+$green: #066452;
+$brown: #6c4f31;
+$darkblue: #333366;
+$orange: #ff6600;
+$darkred: #660000;
+$accent-color: $highlight;
+
+
+th.views-field-field-prof-title-term-1 {
+    width: 10%;
+}
+
+// The amount lists, blockquotes and comments are indented.
+$indent-amount: 30px;
+
+// The height of the navigation container.
+$nav-height: 3em;
+
+// Tab styling.
+$tabs-container-bg: #fff;
+$tabs-border: #bbb;
+
+/*********************
+BREAKPOINTS
+*********************/
+
+ @mixin breakpoint($point) {
+   @if $point == desktop {
+     @media (min-width: 70em) { @content ; }
+  }
+   @else if $point == laptop {
+     @media (min-width: 64em) { @content ; }
+  }
+    @else if $point == tablet {
+     @media (min-width: 50em) { @content ; }
+  }
+   @else if $point == phablet {
+     @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $point == mobileonly {
+     @media (max-width: 37.5em)  { @content ; }
+
+  }
+}
+
+
+// =============================================================================
+// Partials to be shared with all .scss files.
+// =============================================================================
+
+// Add Compass' IE and vendor prefix support variables.
+@import "compass/support";
+// Better than Drupal's clearfix.
+@import "compass/utilities/general/clearfix";
+// See http://compass-style.org/help/tutorials/spriting/
+@import "compass/utilities/sprites";
+// Use one CSS3 mixin instead of multiple vendor prefixes.
+@import "compass/css3";
+// Helps set up a vertical rhythm.
+@import "compass/typography/vertical_rhythm";
+// Add the Zen Grids responsive layout mixins.
+@import "zen";
+
+// Now we add our custom helper mixins.
+@import "mixins";
+
+
+@mixin double-border-right {
+    border-right: 1px solid $darkgrey;
+    box-shadow: 1px 0px 0 0 $lightgrey inset;
+}
+
+@mixin master-font {
+  font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
+  line-height: auto;
+}
+
+@mixin secondary-font {
+    font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
+    line-height: auto;
+}
+
+@mixin horizontal-menu {
+    padding: 0;
+    list-style-type: none;
+    list-style-image: none;
+    @include master-font;
+}
+
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+@mixin button {
+    font-size: 1.2em;
+    font-weight: normal;
+    color: $white;
+    padding: .5em;
+    background-color: $highlight;
+    text-align: center;
+
+}
+
+
+// ===============================================================================
+// Custom Font Styles
+// ===============================================================================
+
+/*Element styles to allow sticky footer and sticky header to be friends */
+
+html,
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+    @include master-font;
+    }
+
+.header {
+  display: none;
+}
+
+.empty {
+  display: none !important;
+}
+
+.navigation {
+  padding: 10px 0;
+  margin: 0px auto;
+  background-color: $highlight;
+  min-height: 70px;
+  /*width: 100vw;*/
+  width: 100%;
+  border-top: solid 3px black;
+  box-shadow: 2px 2px 10px 0px #000;
+  z-index: 1000;
+  transition: 0.7s all;
+  opacity: 1;
+}
+
+.fixed {
+    position: fixed;
+    top: 0px;
+    opacity: 1;
+    transition: 0.4s ease;
+    height: 70px;
+}
+
+.region-navigation {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#page {
+    display: table;
+    max-height: 100%;
+    table-layout: fixed; /*Fixes firefox bug that disallows responsive resizing of images within table elements*/
+    }
+
+#comments_wrapper {
+    height: 100%;
+    }
+
+#content {
+    height:100%;
+    }
+
+#content-container {
+  max-width: 1200px;
+  margin:0 auto;
+  padding: 0 1em;
+}
+#highlighted {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  /*min-height: calc(100vh - 120px);*/
+  /*max-height: 800px;*/
+  background-color: #ffffff;
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+  z-index: 100;
+
+  .region-highlighted {
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1em 4px;
+    p {
+      margin: 1.5em .5em;
+    }
+    img {
+      /*object-position: 50% 0%;
+      object-fit: cover;
+      width: auto;
+      max-height: 90vh;
+      min-height: 600px;
+      overflow: hidden;*/
+    }
+  }
+}
+
+#main {
+  overflow:hidden;
+  background-color: $lightgrey;
+  padding-top:1em;
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  padding-bottom: 14em;
+}
+/*Basic typography */
+
+p {
+  @include master-font;
+}
+
+img {
+  max-width: 100% !important;
+  //height: auto !important;
+  padding: 0.5em;
+}
+
+h1, h2, h2 a, h3, h4, h5 {
+  @include secondary-font;
+
+}
+
+h1 {
+    font-weight: bold;
+    color: $black;
+}
+
+
+h2, .heading, h2.minical {
+    font-weight: normal;
+    color: $black;
+    background-color: none;
+}
+
+h2.section_header {
+  font-weight: bold;
+  width: 100%;
+  border-bottom: 1px solid $black;
+}
+
+h2.pitch {
+  text-align:center;
+}
+h3, .subheading {
+    font-weight: bold;
+    color: $black;
+}
+
+h4, .label {
+    font-weight: bold;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+a {
+    color: $highlight;
+    text-decoration:none;
+    &:hover {
+    color: invert($highlight);
+    }
+}
+
+.views-field-title {
+  //margin: 1.5em 0 1em 0;
+  a {
+  width: 65%;
+  font-size: 1.6em;
+  font-weight: bold;
+  @include master-font;
+  }
+}
+
+#highlighted .views-field-title a {
+  color: $highlight;
+  &:hover {
+    color: invert($highlight);
+  }
+}
+
+#main .views-field-title a {
+  color: $black;
+  &:hover {
+    color: $highlight;
+  }
+}
+
+p.heading {
+    margin:0;
+}
+
+.button {
+    @include button;
+    &.big {
+    margin: .5em auto;
+    }
+    &.small {
+    width: 150px;
+    margin: 0;
+    }
+    }
+
+.button a, a.button {
+    @include master-font;
+    color: $white;
+    &:hover {
+    color: darken($white, 20%);
+    }
+}
+
+.clear {
+  width: 0;
+  height:0;
+  clear:both;
+}
+
+/*Collapsible Fieldsets*/
+
+html.js fieldset.collapsible {
+  border-bottom: 1px solid $darkgrey;
+  legend:before {
+   content: "\f0d7";
+   font-family: FontAwesome;
+   float: left;
+   margin-left: 0;
+   margin-right: 10px;
+   }
+   &.collapsed legend:before {
+   content: "\f0da";
+   }
+   legend {
+   font-size: 1.2em;
+    @include secondary-font;
+    width: 100%;
+   }
+   .fieldset-wrapper {
+   margin-bottom: 10px;
+   margin-left: 0px;
+   }
+  }
+
+/*Table Styles */
+
+table {
+border: 0;
+color: $grey;
+@include master-font;
+  tr td {
+  border-bottom: 2px solid $grey;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+}
+
+
+.fa-lg {
+    font-size: 1.4em !important;
+}
+
+.region-header a {
+  @include master-font;
+  font-weight: normal;
+  color: $white;
+  text-decoration: none;
+  font-size: .75em;
+  &:hover {
+    color:$palegrey;
+  }
+}
+
+.navigation a, .navigation .nolink, .navigation .menu a.active {
+  @include master-font;
+  color: $white;
+  text-decoration: none;
+  font-size: .9em;
+      cursor: pointer;
+
+      &:hover {
+        color: #cccccc;
+      }
+}
+
+
+.region-blockgroup-feeds {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+hr {
+    border: 1px dotted $lightgrey;
+    border-style: none none dotted;
+    color: none;
+    background-color: none;
+    margin-bottom: 1em;
+
+}
+
+/*Hide the time field across the site, let template file rewrite it by date*/
+
+.field-name-field-time {
+  display:none;
+}
+
+/*Pagination Controls*/
+
+.item-list {
+  float: left;
+  margin-bottom: 1em;
+  margin-left: 8px;
+  color: $white;
+  li {
+  line-height: 1em;
+  }
+  a {
+  color: $white;
+  }
+  .pager-current {
+  background-color: $red;
+  padding: 1em;
+  }
+  .pager-item, .pager-next, .pager-last, .pager-first, .pager-previous {
+  background-color: $black;
+  padding: 1em;
+
+  }
+}
+
+/*Collapsible Fieldset Styles */
+
+html.js fieldset.collapsed {
+    height: auto;
+}
+
+fieldset {
+    padding-bottom: 0px;
+    .fieldset-wrapper {
+    padding-top: 1em;
+    }
+}
+
+fieldset.collapsible, fieldset.collapsed {
+    border-bottom: none;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    .collapsed .fieldset-legend{
+        background: none;
+    }
+}
+
+.fieldset-icons {
+    float: left;
+    margin-top: 1em;
+    color: $palegrey;
+}
+
+.node-type-people-page .fieldset-icons {
+    margin-top: .5em;
+}
+
+
+/*Event URL field on Calendar node edit page is wonky */
+
+.form-item-field-event-url-und-0-url {
+  margin-top: 0px !important;
+}
+
+/*Give the content container a little room against the footer */
+
+#content {
+  padding-bottom: 1em;
+}
+
+/*People Editing Page UX*/
+
+#edit-field-override-first-name- {
+  float: left;
+}
+
+/*@font-face fonts here; Font Awesome has its own component */
+
+/*Fira styles */
+
+@font-face {
+  font-family: 'Fira';
+  src: url('../fonts/Fira_Sans/FiraSans-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Fira';
+  src: url('../fonts/Fira_Sans/FiraSans-Regular.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Fira';
+  src: url('../fonts/Fira_Sans/FiraSans-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Fira';
+  src: url('../fonts/Fira_Sans/FiraSans-Bold.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+/*Raleway styles */
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../fonts/Raleway/Raleway-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('../fonts/Raleway/Raleway-Regular.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('../fonts/Raleway/Raleway-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('../fonts/Raleway/Raleway-Bold.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/*Open Sans styles */
+
+@font-face {
+    font-family: 'opensans';
+    src: url('../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.eot');
+    src: url('../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/opensans_regular_macroman/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'opensans';
+    src: url('../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.eot');
+    src: url('../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.woff') format('woff'),
+         url('../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.ttf') format('truetype'),
+         url('../fonts/opensans_italic_macroman/OpenSans-Italic-webfont.svg#open_sansitalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'opensans';
+    src: url('../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.eot');
+    src: url('../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.ttf') format('truetype'),
+         url('../fonts/opensans_bold_macroman/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'opensans';
+    src: url('../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.eot');
+    src: url('../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.woff') format('woff'),
+         url('../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.ttf') format('truetype'),
+         url('../fonts/opensans_bolditalic_macroman/OpenSans-BoldItalic-webfont.svg#open_sansbold_italic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+

@@ -1,0 +1,65 @@
+/*Sidebar Menu Styles*/
+.front .sidebars {
+margin-top:0 !important;
+}
+
+.sidebars {
+	margin-top: 1em;
+	ul.menu{
+	background-color: $black;
+	margin-top: 20%;
+	padding: 0;
+		li {
+		list-style:none;
+		border-bottom: 1px solid $white;
+		padding: 10px 5px;
+			a {
+			color: $white;
+			padding: 10px;
+			text-transform: uppercase;
+			font-family: montserrat, Helvetica, Arial, Verdana, sans-serif;
+			&:after {
+    			content: "\f054";
+    			font-family: FontAwesome;
+    			font-style: normal;
+    			font-weight: normal;
+    			text-decoration: inherit;
+    			text-align: right;
+    			float: right;
+
+    			}
+			}
+		}
+	}
+}
+
+.sidebars ul.menu a:hover {
+	color: $lightgrey;
+}
+
+.sidebars ul ul.menu a:hover {
+	color: $lightgrey;
+}
+
+.sidebars ul ul.menu {
+	background-color: $lightgrey;
+	margin: 10px -5px -10px -5px;
+	li a {
+	text-transform: capitalize;
+	color: $lightgrey;
+	}
+}
+
+#back-top {
+	right: 75px;
+	bottom: 150px;
+}
+
+
+div#block-menu-menu-learn-with-us.block.block-menu.contextual-links-region.first.last.odd ul.menu li.menu__item {
+border-bottom: 1px solid #fff;
+list-style: outside none none;
+padding: 10px 1em;
+text-indent: -10px;
+}
+

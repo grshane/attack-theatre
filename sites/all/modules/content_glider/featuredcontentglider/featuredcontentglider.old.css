@@ -1,0 +1,192 @@
+.glidecontenttoggler i,a:hover{
+font-color: #58A9E6;
+cursor: pointer;
+}
+.glidecontenttoggler i {
+text-shadow: 0.05em 0.05em 0.125em #000;
+}
+
+.rotate180 {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+
+/* Now the styles for the undergrads page. */
+
+.page-undergrads #main {
+    bottom: 22em;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px;
+    padding-bottom:0;
+    padding-top: 0;
+    position: absolute;
+    margin-top:0;
+    right: 0;
+    z-index:0;
+}
+
+.page-undergrads p,div {
+color:white;
+}
+
+.page-undergrads h3 {
+    background-color: #58a9e6;
+    color: #ffffff;
+    font-size: 0.875em;
+    line-height: 1em;
+    margin: 0 -1.5em 0 0;
+    padding: 0.625em 0 0.5em 0.938em;
+    position:relative;
+}
+
+.page-undergrads h2 {
+    color: #58a9e6;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    margin: .313em 0 0 .625em;
+    padding: 0;
+}
+
+.page-undergrads li.node-readmore.first.last {
+display:none;
+}
+
+.page-undergrads div#Glidercontent_glider_1.glidecontentwrapper {
+height: 200px !important;
+}
+
+.page-undergrads div.field.field-name-field-student-name {
+padding:.938em 0em 0em .875em;
+font-size: 1.1em;
+margin: -1em 0;
+
+}
+
+.page-undergrads div.field.field-name-field-video-description {
+padding: 0em .875em 0em .875em;
+
+}
+
+.page-undergrads div.field.field-name-field-preview-image {
+float:left;
+padding:0 .625em 0em .625em;
+}
+
+.page-undergrads .glidecontentwrapper{
+/* width: 350px; */
+/*height: 330px; /* Set height to be able to contain height of largest content shown*/
+/*border: 5px solid #336299; /* #687C98; */
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+/*
+	Total wrapper width: 350px+5px+5px=360px
+	Or width of wrapper div itself plus any left and right CSS border and padding
+	Adjust related containers below according to comments
+*/
+
+
+.page-undergrads .glidecontent{ /*style for each glide content DIV within wrapper.*/
+position: absolute; /* Do not change this value */
+background-color: rgba(51,51,51,.75);
+/*padding: 10px;*/
+visibility: hidden;
+width:100%;
+
+}
+
+.page-undergrads .glidecontent a:hover {
+  text-decoration: none;
+}
+.page-undergrads .glidecontent a {
+  text-decoration: none;
+   
+} 
+/*
+ Total glidecontent width: 330px+10px+10px=350px
+	Or width of wrapper div itself (not counting wrapper border/padding)
+*/
+
+.page-undergrads .glidecontenttoggler{ /*style for DIV used to contain toggler links. */
+ width: 100%; 
+ position:absolute;
+z-index:200;
+
+/*padding: 4px;*/
+  margin: 9.375em 0;
+    position: absolute;
+    text-align: center;
+
+
+}
+/*
+ Total contenttoggler width: 350px+5px+5px=360px
+	Or total width of wrapper div (counting wrapper border/padding)
+*/
+
+.page-undergrads .glidecontenttoggler a{ /*style for every navigational link within toggler */isplay: -moz-inline-box;
+display: inline;
+/*border: 1px solid black;*/
+color: #FFFFFF;
+/*padding: 1px 3px;
+margin-right: 3px;*/
+text-decoration: none;
+/*background: white;*/
+}
+
+.page-undergrads .glidecontenttoggler a.selected{ /*style for selected page's toggler link. ".selected" class auto generated! */
+}
+
+.page-undergrads .glidecontenttoggler a:hover{
+font-color: #58A9E6;
+}
+
+.page-undergrads .glidecontenttoggler a.toc{ /*style for individual toggler links (page 1, page 2, etc). ".toc" class auto generated! */
+}
+
+.page-undergrads .glidecontenttoggler a.prev, .page-undergrads .glidecontenttoggler a.next{ 
+font-color:#FFFFFF; 
+}
+.page-undergrads .glidecontenttoggler a.next{
+}
+
+.page-undergrads .glidecontenttoggler a.prev:hover, .page-undergrads .glidecontenttoggler a.next:hover{
+}
+
+.page-undergrads div#controls a#prev.prev {
+      display: block;
+      font-family: FontAwesome;
+      text-decoration: none;
+text-shadow: .05em .05em .125em #000;
+float: right;
+padding-right:1.125em;
+}
+
+.page-undergrads div#controls a#next.next {
+      display: block;
+      font-family: FontAwesome;
+      text-decoration: none;
+      font-color:#FFFFFF;
+text-shadow: .05em .05em .125em #000;
+float: left;
+padding-left:1.125em;}
+
+div.field.field-name-field-mp4-video {
+display: none;
+visibility:hidden;
+}
+
+div.field.field-name-field-webm-video {
+display: none;
+visibility:hidden;
+}
+
+div.field.field-name-field-preview-image {
+display:none;
+visibility:hidden;
+}

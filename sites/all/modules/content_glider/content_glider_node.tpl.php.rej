@@ -1,0 +1,12 @@
+--- content_glider_node.tpl.php	2011-10-13 10:16:41.000000000 -0400
++++ content_glider_node.tpl.php	2014-12-03 13:16:11.069523042 -0500
+@@ -1,3 +1,6 @@
+-<div class="glidecontent">
+-    <?php print drupal_render($node,'content_glider') ?>
+-</div>
++<?php 
++$content  = "<div class='glidecontent'>" . "\n";
++$content .= drupal_render($node, 'content_glider');
++$content .= "</div>" . "\n";
++print $content;
++?>

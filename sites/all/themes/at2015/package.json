@@ -1,0 +1,23 @@
+{
+  "name": "at2015",
+  "version": "0.0.0",
+  "description": "BUILD A THEME WITH ZEN ----------------------",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.0.2",
+    "browser-sync": "^2.9.3",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^6.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "postcss": "^5.0.5"
+  },
+  "dependencies": {},
+  "scripts": {
+    "postinstall": "find node_modules/ -name '*.info' -type f -delete"
+  }
+}

@@ -1,0 +1,59 @@
+.event__wrapper--calendar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.event__content--calendar {
+    padding: 1em 0.5em;
+    width: 65%;
+    height: 250px;
+}
+.event__title--calendar {
+    margin: 0.3em 0 0 0;
+    color: $highlight;
+    a {
+        font-size: 1.4em !important;
+        &:hover {
+            color: lighten($highlight, 20%);
+        }
+    }
+}
+
+.event__body--calendar {
+    margin-top: 0.5em;
+    overflow: hidden;
+}
+
+.event__img--calendar {
+
+    img {
+        vertical-align: bottom;
+        padding: 0;
+    }
+}
+
+.event__category--calendar {
+    &:hover {
+        color: lighten($highlight, 20%);
+    }
+}
+
+.event__body--calendar {
+
+}
+
+.event__link--calenar {
+    &:hover {
+        color: lighten($highlight, 20%);
+    }
+}
+
+.press__listing {
+    a {
+        color: $highlight;
+
+        &:hover {
+            color: invert($highlight);
+        }
+    }
+}

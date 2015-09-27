@@ -1,0 +1,240 @@
+
+
+/* Move the Nav when hamburger menu fires */
+
+@media (max-width:834px) {
+	.region-navigation {
+	margin-top: 2em;
+	}
+}
+
+@media (min-width:835px) {
+	.region-navigation {
+	margin-top: 0em;
+	}
+}
+
+/*top utility menu */
+
+.header {
+	background-color: $darkgrey;
+	color: $white;
+	height: 50px;
+	padding: 10px 0;
+	width:100%;
+	ul {
+	margin: 0;
+	padding: 0 1em;
+	height: 40px;
+		li {
+		@include horizontal-menu;
+		@include button;
+		display: inline;
+		vertical-align: middle;
+		white-space: nowrap;
+		background-color: $highlight;
+		&.first {
+		float: left;
+		}
+		&.last {
+		float: right;
+		}
+		}
+	}
+}
+
+
+/*Logo Block*/
+#block-block-6 {
+	float: left;
+	//height: 70px;
+	img {
+	height: auto;
+	margin-top: -0.5em;
+	@media (min-width:835px) {
+	max-height: 70px;
+	}
+	@media (max-width:834px) {
+	max-height: 50px;
+	}
+	margin-left: 1em;
+
+	}
+}
+
+
+
+/*main menu */
+
+#block-superfish-1 {
+	white-space: nowrap;
+	margin: 0 auto;
+	width: 400px;
+	padding-top: 1.4em;
+	position:relative;
+	text-align:center;
+		li {
+		@include horizontal-menu;
+			font-size: 1.5em;
+			font-weight: bold;
+		display: table-cell;
+		text-align: center;
+		min-width: 60px;
+		margin-right: 1em;
+		&.last {
+			margin-right: 0px;
+			}
+			ul {
+			white-space: wrap;
+			margin-top: -30px;
+			margin-left:-41px;
+			width: 150px !important;
+			text-align:center;
+				li {
+				display: table-cell;
+				text-align: center;
+				font-weight: normal;
+				white-space: normal;
+				margin: 0px;
+				border-collapse: collapse;
+				background-color: $white;
+				&.first {
+				-moz-border-radius-topleft: 5px;
+    			-moz-border-radius-topright: 5px;
+    			border-top-left-radius: 5px;
+    			border-top-right-radius: 5px;
+				}
+				&.last {
+				-moz-border-radius-bottomleft: 5px;
+    			-moz-border-radius-bottomright: 5px;
+    			border-bottom-left-radius: 5px;
+    			border-bottom-right-radius: 5px;
+				}
+					a {
+					height: auto;
+					color: $medgrey;
+					font-size: .5em;
+					font-weight: normal;
+					padding: 10px;
+						&:hover {
+						color: $highlight;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+.sf-menu {
+float: left;
+position: relative;
+left: 50%;
+}
+.sf-menu ul li {
+left: 0%;
+}
+.sf-menu li {
+left: -50%;
+}
+
+/*Search Block*/
+
+.block-search{
+	@include secondary-font;
+	float: right;
+	padding-right:1em;
+	.form-item {
+	margin: 0;
+	}
+	.form-submit, .form-text {
+	background: $lightgrey;
+	color: $highlight;
+	border: 2px solid $lightgrey;
+	height: 30px;
+	width: 180px;
+	margin: 0;
+	}
+	.form-submit {
+	display: none;
+	}
+	.form-text {
+		width: 180px;
+
+	}
+}
+
+
+/* Add/Remove main menu items on sticky header and hamburger menu */
+
+
+.responsive-menus {
+	width: 100% !important;
+}
+
+/*Responsive Menus dropdown styles */
+
+.is-sticky .navigation .region-navigation #block-superfish-1 {
+	margin: 0px 0px 0px 10px;
+}
+
+ul li ul li .nolink {
+	padding: 10px;
+	display: block;
+}
+select#superfish-1-select {
+	-webkit-appearance: none;
+}
+select#superfish-1-select::after {
+	content: '\f078';
+	font-family: FontAwesome;
+}
+
+
+.sf-accordion-toggle {
+	display:none;
+}
+
+div.responsive-menus.responsive-menus-0-0.absolute.responsified {
+	position: absolute;
+	top: 0px;
+	span.toggler {
+		border-radius: 0px;
+		box-shadow: none;
+		background-color: $highlight;
+		text-align: left;
+		font-size: 1em;
+		padding: 5px;
+	}
+}
+
+div.responsive-menus.responsive-menus-0-0.absolute.responsified {
+	.responsive-menus-simple {
+	box-shadow: none;
+	border-radius: 0px;
+	ul {
+		li {
+		background-color: $medgrey;
+		color: $grey;
+		text-transform: uppercase;
+		a {
+			color: $white;
+			&:hover {
+			color:$palegrey;
+			}
+		}
+		}
+	}
+}
+}
+
+div.responsive-menus.responsive-menus-0-0.absolute.responsified {
+	.responsive-menus-simple {
+	li.menuparent {
+	padding: 10px 0 0 0px;
+	span {
+	margin-left: 10px;
+	}
+	}
+}
+}

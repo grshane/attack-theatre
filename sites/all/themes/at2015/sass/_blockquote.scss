@@ -1,0 +1,51 @@
+/**
+*
+* Featured Content
+*
+**/
+
+/*doc
+---
+title: Blockquote
+name: Blockquote
+category: Components - blockquote
+---
+```html_example
+    <blockquote>
+        <p>Inspirational quote goes here</p>
+        <span class="footer">-Quote Author</span>
+    </blockquote>
+```
+*/
+
+blockquote {
+    background-color: $palegrey;
+    padding-right: 3em;
+    padding-left: 4em;
+    padding-bottom: 1.5em;
+    margin: 0.7em 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p:first-of-type {
+        font-size: 1.3em;
+        margin-top: -4em;
+
+    }
+
+    span.footer,
+    p:last-of-type { //Remove last of type if breaks with no citation
+        font-style: italic;
+        font-size: 0.9em;
+        text-align: right;
+    }
+}
+
+blockquote::before {
+    content: "\201C";
+    position: relative;
+    left: -40px;
+    font-size: 88px;
+    color: $highlight;
+}
