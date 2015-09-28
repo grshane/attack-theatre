@@ -83,6 +83,7 @@
       $(document).ready(function(){
         $.adaptiveBackground.run();
       });
+
     </script>
 </body>
 </html>
