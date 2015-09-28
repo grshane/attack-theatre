@@ -41,15 +41,7 @@
     <![endif]-->
   <?php endif; ?>
 
-  <script type="text/javascript">
-
-  $(document).ready(function(){
-    $.adaptiveBackground.run({
-      exclude: [ 'rgb(0,0,0)' ] // too many black pixels
-    });
-  });
-
-  </script>
+  
 
 
 </head>
