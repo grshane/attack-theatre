@@ -34,9 +34,9 @@ function at2015_preprocess_maintenance_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
+/* -- Delete this line if you want to use this function
 function at2015_preprocess_html(&$variables, $hook) {
 drupal_add_library('system', 'ui');
-
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
   //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
@@ -140,6 +140,7 @@ drupal_add_css('https://fonts.googleapis.com/css?family=Fira_Sans', array('group
   if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
     $vars['theme_hook_suggestions'][] = 'html__colorbox';
   }
+  drupal_add_library('system', 'ui');
 }
 
 function hook_preprocess_page(&$vars) {
