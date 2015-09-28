@@ -140,7 +140,6 @@ drupal_add_css('https://fonts.googleapis.com/css?family=Fira_Sans', array('group
   if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
     $vars['theme_hook_suggestions'][] = 'html__colorbox';
   }
-  drupal_add_library('system', 'ui');
 }
 
 function hook_preprocess_page(&$vars) {

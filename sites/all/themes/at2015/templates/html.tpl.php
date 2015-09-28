@@ -45,16 +45,10 @@
 (function ($) {
    $(document).ready(function(){
     $.adaptiveBackground.run({
-      exclude: [ 'rgb(0,0,0)' ] // too many black pixels
     });
   });
 })(jQuery);
   </script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-        jQuery('ul.sf-menu').superfish();
-    });
-</script>
 
 
 </head>
