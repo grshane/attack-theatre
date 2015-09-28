@@ -2111,7 +2111,7 @@ tr.selected td {
 }
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1443394220');
+  background-image: url('../images/progress.gif?1443398946');
 }
 
 div.region.region-blockgroup-collaborate-benefits.blockgroup img {
@@ -8279,7 +8279,7 @@ nav.slick__arrow button:last-of-type {
 }
 
 .con__button {
-  width: 7em;
+  width: 7em !important;
   float: right;
   display: inline-block;
   margin: -0.93em 1em;
