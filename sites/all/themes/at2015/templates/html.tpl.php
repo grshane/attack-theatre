@@ -79,5 +79,10 @@
         }
 
     </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $.adaptiveBackground.run();
+      });
+    </script>
 </body>
 </html>
