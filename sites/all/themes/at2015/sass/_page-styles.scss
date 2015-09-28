@@ -97,6 +97,7 @@
             padding: 0.5em;
             color: #000;
             line-height: 1.7em;
+            height: 320px;
 
             h2 {
                 margin: 0;
@@ -107,8 +108,9 @@
                     }
                 }
             }
-            a {
+            + a {
                 color: $highlight;
+                margin-top: -1em;
                 &:hover {
                     color: invert($highlight);
                 }
