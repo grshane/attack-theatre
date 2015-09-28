@@ -50,6 +50,11 @@
   });
 })(jQuery);
   </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        jQuery('ul.sf-menu').superfish();
+    });
+</script>
 
 
 </head>
