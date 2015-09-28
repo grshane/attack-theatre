@@ -41,8 +41,10 @@
     padding: 1em 0.5em;
 }
 
-.home__featured {
+.home--featured {
     display: flex;
+    background-color: $palegrey;
+    padding: 1em 0.5em;
 }
 
 .con__button {

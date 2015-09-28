@@ -8274,8 +8274,10 @@ nav.slick__arrow button:last-of-type {
   padding: 1em 0.5em;
 }
 
-.home__featured {
+.home--featured {
   display: flex;
+  background-color: #e8e8e8;
+  padding: 1em 0.5em;
 }
 
 .con__button {
