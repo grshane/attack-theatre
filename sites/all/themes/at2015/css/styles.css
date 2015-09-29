@@ -4779,19 +4779,6 @@ div.view-footer {
   overflow: hidden;
 }
 
-.mask {
-  position: relative;
-  height: 1.5em;
-  top: -2.5em;
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, white));
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
-  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff',endColorstr='#1ffffff',GradientType=0 );
-}
-
 /*Styles for /attend pages */
 .section-attend .view-id-calendar .views-field {
   background-color: #e8e8e8;
