@@ -52,6 +52,7 @@
     float: right;
     display: inline-block;
     margin: -0.93em 1em;
+    position: static !important;
     &:last-of-type {
         margin-right: 0;
     }
