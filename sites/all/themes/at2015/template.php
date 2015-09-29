@@ -135,11 +135,12 @@ function at2015_preprocess_block(&$variables, $hook) {
 
 function at2015_preprocess_html(&$variables) {
 drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', array('group' => CSS_THEME, 'preprocess' => FALSE));
-drupal_add_css('https://fonts.googleapis.com/css?family=Fira+Sans', array('group' => CSS_THEME, 'preprocess' => FALSE));
+drupal_add_css('https://fonts.googleapis.com/css?family=Fira_Sans', array('group' => CSS_THEME, 'preprocess' => FALSE));
  // give colorbox its own html
   if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
     $vars['theme_hook_suggestions'][] = 'html__colorbox';
   }
+  drupal_add_library('system', 'ui');
 }
 
 function hook_preprocess_page(&$vars) {
@@ -237,7 +238,115 @@ function at2015_date_repeat_display(&$vars) {
       $value = $parts[1];
       $rrule[$key] = $value;
     }
-
+    $output = "";
+    $alldates = $vars['entity']->field_date_and_time_2['und'];
+    $interval = array();
+    foreach($alldates as $dateVal) {
+        if (sizeof($interval) == 0) {
+            $interval[] = $dateVal['value'];
+        } else {
+            $date1 = date_create($dateVal['value']);
+            $date2 = date_create(end($interval));
+            $diff = date_diff($date1, $date2);
+            if ($diff->days == 1) {
+                $interval[] = $dateVal['value'];
+            } else {
+                // output current interval
+                if ($rrule['FREQ'] == 'DAILY' && $rrule['INTERVAL'] == 1) {
+                $from = strtotime($interval[0]);
+                $to = strtotime(end($interval));
+                $from_month = date('F', $from);
+                  $to_month = date('F', $to);
+                  $from_year = date('Y', $from);
+                  $to_year = date('Y', $to);
+                  $date = '';
+                  
+                  $entity  = $vars['entity'];
+                  $times = $entity->field_time['und'];
+                  $timesForDisplay = "";
+                  for($x = 0; $x <= sizeof($times); $x++) {
+                      if ($x > 0 && $x < sizeof($times)) {
+                          $timesForDisplay .= ", ";
+                      }
+                      $timesForDisplay .= $times[$x]['safe_value'];
+                  }
+                  if ($from_year == $to_year) {
+                    // Same year.
+                    if ($from_month == $to_month) {
+                      // Same month.
+                      $date = date('D n/j', $from) . ' - ' . date('D n/j', $to) . ' ' . $timesForDisplay;
+                    }
+                    else {
+                      // Different months.
+                      $date = date('F jS', $from) . ' - ' . date('F jS, Y', $to) . ' ' . $timesForDisplay;
+                    }
+                  } else {
+                        // Different year.
+                        $date = date('F jS, Y', $from) . ' - ' . date('F jS, Y', $to) . ' ' . $timesForDisplay;
+                      }
+                  
+                     $output .= '<div>' . $date . '</div>';
+                    // return theme_date_repeat_display($vars);
+                }
+                $interval = array();
+                $interval[] = $dateVal['value'];
+            }
+        }
+    }
+     if (sizeof($interval) < 2) {
+         if (sizeof($interval == 1) && $rrule['FREQ'] == 'DAILY' && $rrule['INTERVAL'] == 1) {
+                $from = strtotime($interval[0]);
+                $entity  = $vars['entity'];
+                  $times = $entity->field_time['und'];
+                  $timesForDisplay = "";
+                  for($x = 0; $x <= sizeof($times); $x++) {
+                      if ($x > 0 && $x < sizeof($times)) {
+                          $timesForDisplay .= ", ";
+                      }
+                      $timesForDisplay .= $times[$x]['safe_value'];
+                  }
+                $date = date('D n/j', $from) . ' ' . $timesForDisplay;
+                $output .= '<div>' . $date . '</div>';
+         }
+     } else {
+         if ($rrule['FREQ'] == 'DAILY' && $rrule['INTERVAL'] == 1) {
+                $from = strtotime($interval[0]);
+                $to = strtotime(end($interval));
+                $from_month = date('F', $from);
+                  $to_month = date('F', $to);
+                  $from_year = date('Y', $from);
+                  $to_year = date('Y', $to);
+                  $date = '';
+                  
+                  $entity  = $vars['entity'];
+                  $times = $entity->field_time['und'];
+                  $timesForDisplay = "";
+                  for($x = 0; $x <= sizeof($times); $x++) {
+                      if ($x > 0 && $x < sizeof($times)) {
+                          $timesForDisplay .= ", ";
+                      }
+                      $timesForDisplay .= $times[$x]['safe_value'];
+                  }
+                  if ($from_year == $to_year) {
+                    // Same year.
+                    if ($from_month == $to_month) {
+                      // Same month.
+                      $date = date('D n/j', $from) . ' - ' . date('D n/j', $to) . ' ' . $timesForDisplay;
+                    }
+                    else {
+                      // Different months.
+                      $date = date('F jS', $from) . ' - ' . date('F jS, Y', $to) . ' ' . $timesForDisplay;
+                    }
+                  } else {
+                        // Different year.
+                        $date = date('F jS, Y', $from) . ' - ' . date('F jS, Y', $to) . ' ' . $timesForDisplay;
+                      }
+                  
+                     $output .= '<div>' . $date . '</div>';
+                    // return theme_date_repeat_display($vars);
+                }
+     }
+     
     $additions = array();
 
    // add additional dates
@@ -245,9 +354,9 @@ function at2015_date_repeat_display(&$vars) {
     $date2 = new dateObject($addition . ' ' . $start_date->format('H:i:s'), $timezone);
     $days[] = date_format($date, DATE_FORMAT_DATETIME);
   }
-
+  /*
     // Now that we have our repeat rule, let's change the way it renders itself.
-
+     DebugBreak();
     // Change the 'Repeats every day until [date] .' display to our liking.
     if ($rrule['FREQ'] == 'DAILY' && $rrule['INTERVAL'] == 1) {
       $from = strtotime($vars['item']['value']);
@@ -290,19 +399,24 @@ function at2015_date_repeat_display(&$vars) {
 
   }
 
-
+   */
   // If we made it this far, then we assume that we didn't want to theme this
   // repeat rule in a custom way, so let's just render it normally.
-  return theme_date_repeat_display($vars);
+  return $output;
+} else {
+    return '<div>  No RRule specified </div>';
+}
 }
 
 function at2015_date_display_single($variables) {
+    
   $date = $variables['date'];
+  $prettyDate = date('D n/j', strtotime($date));
   $timezone = $variables['timezone'];
   $attributes = $variables['attributes'];
 
   // Wrap the result with the attributes.
-  $output = '<span class="date-display-single"' . drupal_attributes($attributes) . '>' . $date . $timezone;
+  $output = '<span class="date-display-single"' . drupal_attributes($attributes) . '>' . $prettyDate . $timezone;
   /*
   if (!empty($variables['add_microdata'])) {
     $output .= '<meta' . drupal_attributes($variables['microdata']['value']['#attributes']) . '/>';
@@ -314,7 +428,7 @@ function at2015_date_display_single($variables) {
 
 function at2015_date_display_combination($variables) {
   static $repeating_ids = array();
-
+  
   $entity_type = $variables['entity_type'];
   $entity      = $variables['entity'];
   $field       = $variables['field'];
@@ -335,7 +449,7 @@ function at2015_date_display_combination($variables) {
   $precision   = date_granularity_precision($field['settings']['granularity']);
 
   $output = '';
-
+  
   // If date_id is set for this field and delta doesn't match, don't display it.
   if (!empty($entity->date_id)) {
     foreach ((array) $entity->date_id as $key => $id) {
@@ -345,7 +459,7 @@ function at2015_date_display_combination($variables) {
       }
     }
   }
-
+/*
   // Check the formatter settings to see if the repeat rule should be displayed.
   // Show it only with the first multiple value date.
   list($id) = entity_extract_ids($entity_type, $entity);
@@ -356,9 +470,11 @@ function at2015_date_display_combination($variables) {
       'entity_type' => $entity_type,
       'entity' => $entity,
     );
+    
     $output .= theme('date_repeat_display', $repeat_vars);
     $repeating_ids[] = $id;
   }
+  */
 
   // If this is a full node or a pseudo node created by grouping multiple
   // values, see exactly which values are supposed to be visible.
@@ -406,19 +522,19 @@ function at2015_date_display_combination($variables) {
   if ($precision == 'hour') {
     $has_time_string = FALSE;
   }
-
+  // DebugBreak();
   // No date values, display nothing.
   if (empty($date1) && empty($date2)) {
     $output .= '';
   }
   /* elseif ($date1 == $date2 && isset($entity->field_date_and_time_2['und']) && (sizeof($entity->field_date_and_time_2['und'] > 2))) {
       DebugBreak();
-
+     
   }   */
   // Start and End dates match or there is no End date, display a complete
   // single date.
-  elseif ($date1 == $date2 || empty($date2)) {
-      if (sizeof($element['#entity']->field_date_and_time_2['und']) == 1) {
+  elseif (($date1 == $date2 || empty($date2)) && 
+      sizeof($element['#entity']->field_date_and_time_2['und']) == 1) {
             $output .= theme('date_display_single', array(
               'date' => $date1,
               'timezone' => $timezone,
@@ -429,7 +545,7 @@ function at2015_date_display_combination($variables) {
               'add_microdata' => $add_microdata,
               'dates' => $dates,
             ));
-
+          
 
           $times = $entity->field_time['und'];
           $timesForDisplay = "";
@@ -440,7 +556,7 @@ function at2015_date_display_combination($variables) {
               $timesForDisplay .= $times[$x]['safe_value'];
           }
               $output .= " " . $timesForDisplay . '</span>';
-      }
+      
   }
   // Same day, different times, don't repeat the date but show both Start and
   // End times. We can NOT do this if the replacement value is an integer
@@ -448,7 +564,7 @@ function at2015_date_display_combination($variables) {
   elseif ($has_time_string && $dates['value']['formatted_date'] == $dates['value2']['formatted_date']) {
     // Replace the original time with the start/end time in the formatted start
     // date. Make sure that parentheses or brackets wrapping the time will be
-    // retained in the final result.
+    // retained in the final result. 
     $time = theme('date_display_range', array(
       'date1' => $time1,
       'date2' => $time2,
@@ -472,17 +588,28 @@ function at2015_date_display_combination($variables) {
   }
   // Different days, display both in their entirety.
   else {
-    $output .= theme('date_display_range', array(
-      'date1' => $date1,
-      'date2' => $date2,
-      'timezone' => $timezone,
-      'attributes' => $attributes,
-      'rdf_mapping' => $rdf_mapping,
-      'add_rdf' => $add_rdf,
-      'microdata' => $microdata,
-      'add_microdata' => $add_microdata,
-      'dates' => $dates,
-    ));
+        if ($delta < 1) {
+   /*     $output .= theme('date_display_range', array(
+            'date1' => $date1,
+          'date2' => $date2,
+          'timezone' => $timezone,
+          'attributes' => $attributes,
+          'rdf_mapping' => $rdf_mapping,
+          'add_rdf' => $add_rdf,
+          'microdata' => $microdata,
+          'add_microdata' => $add_microdata,
+          'dates' => $dates,
+        ));
+        */
+        $repeat_vars = array(
+      'field' => $field,
+      'item' => $item,
+      'entity_type' => $entity_type,
+      'entity' => $entity,
+    );
+        $output .= theme('date_repeat_display', $repeat_vars);
+          
+  }
   }
 
   return $output;
