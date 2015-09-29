@@ -24,6 +24,7 @@
 	width:100%;
 	z-index: 1000;
 	height: 47px;
+	opacity: 0;
 	ul {
 	margin: 0;
 	padding: 0 1em;
@@ -43,8 +44,14 @@
 		}
 		}
 	}
-}
 
+}
+	.top-fixed {
+		position: fixed;
+		top: 0px;
+		display: block !important;
+		opacity: 1;
+	}
 
 /*Logo Block*/
 #block-block-6 {
@@ -69,6 +76,14 @@
 /*main menu */
 span.nolink > .sf-sub-indicator {
 	display: none;
+}
+
+.fixed {
+    position: fixed;
+    top: 50px;
+    opacity: 1;
+    transition: 0.4s ease;
+    height: 70px;
 }
 
 #block-superfish-1 {
@@ -149,6 +164,7 @@ left: -50%;
 	@include secondary-font;
 	float: right;
 	padding-right:1em;
+	padding-top: 1em;
 	.form-item {
 	margin: 0;
 	}

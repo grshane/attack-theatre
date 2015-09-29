@@ -4262,6 +4262,7 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   width: 100%;
   z-index: 1000;
   height: 47px;
+  opacity: 0;
 }
 .header ul {
   margin: 0;
@@ -4292,6 +4293,13 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   float: right;
 }
 
+.top-fixed {
+  position: fixed;
+  top: 0px;
+  display: block !important;
+  opacity: 1;
+}
+
 /*Logo Block*/
 #block-block-6 {
   float: left;
@@ -4315,6 +4323,14 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 /*main menu */
 span.nolink > .sf-sub-indicator {
   display: none;
+}
+
+.fixed {
+  position: fixed;
+  top: 50px;
+  opacity: 1;
+  transition: 0.4s ease;
+  height: 70px;
 }
 
 #block-superfish-1 {
@@ -4400,6 +4416,7 @@ span.nolink > .sf-sub-indicator {
   line-height: auto;
   float: right;
   padding-right: 1em;
+  padding-top: 1em;
 }
 .block-search .form-item {
   margin: 0;

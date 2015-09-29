@@ -12,10 +12,11 @@ $(function () {
           $top.css('display:block');
           $top2.addClass('fixed');
           $top2.css('top: 50px');
-          $ctaButton.addClass('fixed');
+          $ctaButton.addClass('top-fixed');
         } else {
           // otherwise remove it
           $top2.removeClass('fixed');
+          $ctaButton.removeClass('top-fixed');
 
         }
     });
