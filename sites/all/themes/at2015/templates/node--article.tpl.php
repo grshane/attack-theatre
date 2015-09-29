@@ -8,7 +8,7 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  
+
     <header>
       <h1>
       <?php if (!empty($content['field_title_override'])): ?>
@@ -16,6 +16,7 @@
       <?php else: ?>
       <?php echo render($content['title'][0]);?>
       <?php endif; ?>
+      </h1>
 </header>
 <article>
       <?php echo '<h2>'.render($content['field_subheading'][0]).'</h2>';?>
