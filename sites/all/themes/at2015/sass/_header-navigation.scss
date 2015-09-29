@@ -24,7 +24,7 @@
 	width:100%;
 	z-index: 1000;
 	height: 47px;
-	opacity: 0;
+
 	ul {
 	margin: 0;
 	padding: 0 1em;
@@ -35,6 +35,8 @@
 		display: inline;
 		vertical-align: middle;
 		white-space: nowrap;
+		border-top-right-radius: 10px;
+		border-top-left-radius: 10px;
 		background-color: $highlight;
 		&.first {
 		float: left;
@@ -42,6 +44,11 @@
 		&.last {
 		float: right;
 		}
+		}
+		a {
+			display: inline-block;
+			height: 50px;
+			padding-top: 15px;
 		}
 	}
 
@@ -65,6 +72,7 @@
 	}
 	@media (max-width:834px) {
 	max-height: 50px;
+	margin-top: -0.2em;
 	}
 	margin-left: 1em;
 
@@ -83,7 +91,7 @@ span.nolink > .sf-sub-indicator {
     top: 50px;
     opacity: 1;
     transition: 0.4s ease;
-    height: 70px;
+    min-height: 70px;
 }
 
 #block-superfish-1 {

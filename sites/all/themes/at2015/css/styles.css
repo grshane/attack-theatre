@@ -44,13 +44,11 @@ body {
   transition: 0.7s all;
   opacity: 1;
 }
-
-.fixed {
-  position: fixed;
-  top: 0px;
-  opacity: 1;
-  transition: 0.4s ease;
-  height: 70px;
+@media (max-width: 835px) {
+  .navigation {
+    height: 80px;
+    padding: 0 0 20px;
+  }
 }
 
 .region-navigation {
@@ -4262,7 +4260,6 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   width: 100%;
   z-index: 1000;
   height: 47px;
-  opacity: 0;
 }
 .header ul {
   margin: 0;
@@ -4284,6 +4281,8 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   display: inline;
   vertical-align: middle;
   white-space: nowrap;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   background-color: #DC6328;
 }
 .header ul li.first {
@@ -4291,6 +4290,11 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 }
 .header ul li.last {
   float: right;
+}
+.header ul a {
+  display: inline-block;
+  height: 50px;
+  padding-top: 15px;
 }
 
 .top-fixed {
@@ -4317,6 +4321,7 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 @media (max-width: 834px) {
   #block-block-6 img {
     max-height: 50px;
+    margin-top: -0.2em;
   }
 }
 
@@ -4330,7 +4335,7 @@ span.nolink > .sf-sub-indicator {
   top: 50px;
   opacity: 1;
   transition: 0.4s ease;
-  height: 70px;
+  min-height: 70px;
 }
 
 #block-superfish-1 {
