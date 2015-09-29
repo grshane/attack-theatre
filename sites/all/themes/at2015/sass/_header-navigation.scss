@@ -46,9 +46,8 @@
 		}
 		}
 		a {
-			display: inline-block;
+			display: block;
 			height: 50px;
-			padding-top: 7px;
 		}
 	}
 
@@ -172,7 +171,7 @@ left: -50%;
 	@include secondary-font;
 	float: right;
 	padding-right:1em;
-	padding-top: 1em;
+	//padding-top: 1em;
 	.form-item {
 	margin: 0;
 	}

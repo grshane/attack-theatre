@@ -4292,9 +4292,8 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   float: right;
 }
 .header ul a {
-  display: inline-block;
+  display: block;
   height: 50px;
-  padding-top: 7px;
 }
 
 .top-fixed {
@@ -4421,7 +4420,6 @@ span.nolink > .sf-sub-indicator {
   line-height: auto;
   float: right;
   padding-right: 1em;
-  padding-top: 1em;
 }
 .block-search .form-item {
   margin: 0;

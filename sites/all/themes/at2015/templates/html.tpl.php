@@ -69,7 +69,7 @@
       maximum   : 1200,
       minFont   : 14,
       maxFont : 20,
-      fontRatio : 45
+      fontRatio : 75
       });
     </script>
     <script type="text/javascript">
