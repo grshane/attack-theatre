@@ -135,7 +135,7 @@ function at2015_preprocess_block(&$variables, $hook) {
 
 function at2015_preprocess_html(&$variables) {
 drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', array('group' => CSS_THEME, 'preprocess' => FALSE));
-drupal_add_css('https://fonts.googleapis.com/css?family=Fira_Sans', array('group' => CSS_THEME, 'preprocess' => FALSE));
+drupal_add_css('https://fonts.googleapis.com/css?family=Fira+Sans', array('group' => CSS_THEME, 'preprocess' => FALSE));
  // give colorbox its own html
   if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
     $vars['theme_hook_suggestions'][] = 'html__colorbox';
@@ -314,7 +314,7 @@ function at2015_date_display_single($variables) {
 
 function at2015_date_display_combination($variables) {
   static $repeating_ids = array();
-  
+
   $entity_type = $variables['entity_type'];
   $entity      = $variables['entity'];
   $field       = $variables['field'];
@@ -413,7 +413,7 @@ function at2015_date_display_combination($variables) {
   }
   /* elseif ($date1 == $date2 && isset($entity->field_date_and_time_2['und']) && (sizeof($entity->field_date_and_time_2['und'] > 2))) {
       DebugBreak();
-     
+
   }   */
   // Start and End dates match or there is no End date, display a complete
   // single date.
@@ -429,7 +429,7 @@ function at2015_date_display_combination($variables) {
               'add_microdata' => $add_microdata,
               'dates' => $dates,
             ));
-          
+
 
           $times = $entity->field_time['und'];
           $timesForDisplay = "";
@@ -448,7 +448,7 @@ function at2015_date_display_combination($variables) {
   elseif ($has_time_string && $dates['value']['formatted_date'] == $dates['value2']['formatted_date']) {
     // Replace the original time with the start/end time in the formatted start
     // date. Make sure that parentheses or brackets wrapping the time will be
-    // retained in the final result. 
+    // retained in the final result.
     $time = theme('date_display_range', array(
       'date1' => $time1,
       'date2' => $time2,
