@@ -45,7 +45,7 @@
   overflow: hidden;
   display:inline-block;
   padding-bottom: 5px;
- 
+
 
 }
 
@@ -294,7 +294,7 @@ max-width: 90%;
   height: 400px;
   overflow: hidden;
 }
-mask {
+.mask {
  position: relative;
   height: 1.5em;
   top: -2.5em;
@@ -306,6 +306,7 @@ mask {
    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff',endColorstr='#1ffffff',GradientType=0 );
 }
+
 
 
 

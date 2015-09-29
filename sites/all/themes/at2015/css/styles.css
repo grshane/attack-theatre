@@ -4779,7 +4779,7 @@ div.view-footer {
   overflow: hidden;
 }
 
-mask {
+.mask {
   position: relative;
   height: 1.5em;
   top: -2.5em;
@@ -8285,6 +8285,7 @@ nav.slick__arrow button:last-of-type {
   float: right;
   display: inline-block;
   margin: -0.93em 1em;
+  position: static !important;
 }
 .con__button:last-of-type {
   margin-right: 0;
@@ -8390,6 +8391,11 @@ nav.slick__arrow button:last-of-type {
   margin-top: 0.5em;
   overflow: hidden;
 }
+@media (max-width: 1016px) {
+  .event__body--calendar {
+    height: 50%;
+  }
+}
 
 .event__img--calendar img {
   vertical-align: bottom;
@@ -8398,6 +8404,12 @@ nav.slick__arrow button:last-of-type {
 
 .event__category--calendar:hover {
   color: #eaa380;
+}
+
+@media (max-width: 1016px) {
+  .event__body--calendar {
+    height: 42%;
+  }
 }
 
 .event__link--calenar:hover {
@@ -8409,6 +8421,21 @@ nav.slick__arrow button:last-of-type {
 }
 .press__listing a:hover {
   color: #239cd7;
+}
+
+@media (max-width: 1016px) {
+  .mask--mobile {
+    position: relative;
+    height: 1.5em;
+    top: -1.3em;
+    background: -moz-linear-gradient(top, rgba(232, 232, 232, 0) 0%, #e8e8e8 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(232, 232, 232, 0)), color-stop(100%, #e8e8e8));
+    background: -webkit-linear-gradient(top, rgba(232, 232, 232, 0) 0%, #e8e8e8 100%);
+    background: -o-linear-gradient(top, rgba(232, 232, 232, 0) 0%, #e8e8e8 100%);
+    background: -ms-linear-gradient(top, rgba(232, 232, 232, 0) 0%, #e8e8e8 100%);
+    background: linear-gradient(to bottom, rgba(232, 232, 232, 0) 0%, #e8e8e8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff',endColorstr='#1ffffff',GradientType=0 );
+  }
 }
 
 form .search-form h2 {
