@@ -4260,6 +4260,8 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   height: 50px;
   padding: 10px 0;
   width: 100%;
+  z-index: 1000;
+  height: 47px;
 }
 .header ul {
   margin: 0;
