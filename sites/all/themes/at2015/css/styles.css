@@ -4313,6 +4313,10 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 }
 
 /*main menu */
+span.nolink > .sf-sub-indicator {
+  display: none;
+}
+
 #block-superfish-1 {
   white-space: nowrap;
   margin: 0 auto;
