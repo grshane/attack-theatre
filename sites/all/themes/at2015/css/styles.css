@@ -4786,6 +4786,7 @@ div.view-footer {
 
 .featured__body {
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .featured__link {
