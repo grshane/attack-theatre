@@ -4420,6 +4420,7 @@ span.nolink > .sf-sub-indicator {
   line-height: auto;
   float: right;
   padding-right: 1em;
+  padding-top: 1em;
 }
 .block-search .form-item {
   margin: 0;
