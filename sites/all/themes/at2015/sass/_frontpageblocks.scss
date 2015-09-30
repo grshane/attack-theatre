@@ -120,7 +120,7 @@ margin-top: 1em;
   background-color: $palegrey;
   padding: .5em;
   margin: .5em 0;
-  height: 500px;
+  // height: 500px;
   overflow: hidden;
 
   @media (max-width: 768px) {
@@ -275,8 +275,13 @@ max-width: 90%;
 }
 
 .featured__body {
-  height: 400px;
+  //height: 400px;
   overflow: hidden;
+}
+
+.featured__link {
+  position: absolute;
+  bottom: 0.8em;
 }
 // .mask {
 //  position: relative;

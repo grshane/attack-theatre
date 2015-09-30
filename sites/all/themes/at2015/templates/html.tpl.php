@@ -64,6 +64,13 @@
 
 
  <script type="text/javascript">
+      $(function() {
+        $('.featured--block').matchHeight();
+
+      });
+
+
+
       $('body').flowtype({
       minimum   : 500,
       maximum   : 1200,
