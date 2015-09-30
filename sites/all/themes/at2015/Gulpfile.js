@@ -34,11 +34,11 @@ gulp.task('autoprefixer', function () {
     var sourcemaps   = require('gulp-sourcemaps');
     var autoprefixer = require('autoprefixer');
 
-    return gulp.src('./src/*.css')
+    return gulp.src('css/styles.css')
         .pipe(sourcemaps.init())
         .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./dest'));
+        .pipe(gulp.dest('css/styles-prefixed.css'));
 });
 // Reload all Browsers
 gulp.task('bs-reload', function () {

@@ -46,7 +46,9 @@
   display:inline-block;
   padding-bottom: 5px;
 
-
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .calendar #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9{
