@@ -615,6 +615,15 @@ function at2015_date_display_combination($variables) {
   return $output;
 }
 
-
+ // Require WWW.
+    if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
+      $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+      if ($_SERVER['HTTP_HOST'] == 'attacktheatre.com' ||
+          $_SERVER['HTTP_HOST'] == 'live-attack-theatre.pantheon.io') {
+        header('HTTP/1.0 301 Moved Permanently');
+        header('Location: http://www.attacktheatre.com'. $_SERVER['REQUEST_URI']);
+        exit();
+      }
+    }
 
 
