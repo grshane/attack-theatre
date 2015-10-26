@@ -135,7 +135,7 @@ function at2015_preprocess_block(&$variables, $hook) {
 
 function at2015_preprocess_html(&$variables) {
 drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', array('group' => CSS_THEME, 'preprocess' => FALSE));
-drupal_add_css('https://fonts.googleapis.com/css?family=Fira+Sans:400,400italic,700,700italic', array('group' => CSS_THEME, 'preprocess' => FALSE));
+drupal_add_css('https://fonts.googleapis.com/css?family=Fira_Sans', array('group' => CSS_THEME, 'preprocess' => FALSE));
  // give colorbox its own html
   if (isset($_GET['template']) && $_GET['template'] == 'colorbox') {
     $vars['theme_hook_suggestions'][] = 'html__colorbox';
@@ -260,15 +260,18 @@ function at2015_date_repeat_display(&$vars) {
                   $from_year = date('Y', $from);
                   $to_year = date('Y', $to);
                   $date = '';
-
+                  
                   $entity  = $vars['entity'];
-                  $times = $entity->field_time['und'];
                   $timesForDisplay = "";
-                  for($x = 0; $x <= sizeof($times); $x++) {
-                      if ($x > 0 && $x < sizeof($times)) {
-                          $timesForDisplay .= ", ";
+                  if (isset($entity->field_time['und'])) { 
+                      $times = $entity->field_time['und'];
+                      
+                      for($x = 0; $x <= sizeof($times); $x++) {
+                          if ($x > 0 && $x < sizeof($times)) {
+                              $timesForDisplay .= ", ";
+                          }
+                          $timesForDisplay .= $times[$x]['safe_value'];
                       }
-                      $timesForDisplay .= $times[$x]['safe_value'];
                   }
                   if ($from_year == $to_year) {
                     // Same year.
@@ -284,7 +287,7 @@ function at2015_date_repeat_display(&$vars) {
                         // Different year.
                         $date = date('F jS, Y', $from) . ' - ' . date('F jS, Y', $to) . ' ' . $timesForDisplay;
                       }
-
+                  
                      $output .= '<div>' . $date . '</div>';
                     // return theme_date_repeat_display($vars);
                 }
@@ -297,13 +300,15 @@ function at2015_date_repeat_display(&$vars) {
          if (sizeof($interval == 1) && $rrule['FREQ'] == 'DAILY' && $rrule['INTERVAL'] == 1) {
                 $from = strtotime($interval[0]);
                 $entity  = $vars['entity'];
-                  $times = $entity->field_time['und'];
                   $timesForDisplay = "";
-                  for($x = 0; $x <= sizeof($times); $x++) {
-                      if ($x > 0 && $x < sizeof($times)) {
-                          $timesForDisplay .= ", ";
+                  if (isset($entity->field_time['und'])) {
+                      $times = $entity->field_time['und']; 
+                      for($x = 0; $x <= sizeof($times); $x++) {
+                          if ($x > 0 && $x < sizeof($times)) {
+                              $timesForDisplay .= ", ";
+                          }
+                          $timesForDisplay .= $times[$x]['safe_value'];
                       }
-                      $timesForDisplay .= $times[$x]['safe_value'];
                   }
                 $date = date('D n/j', $from) . ' ' . $timesForDisplay;
                 $output .= '<div>' . $date . '</div>';
@@ -317,15 +322,17 @@ function at2015_date_repeat_display(&$vars) {
                   $from_year = date('Y', $from);
                   $to_year = date('Y', $to);
                   $date = '';
-
+                  
                   $entity  = $vars['entity'];
-                  $times = $entity->field_time['und'];
                   $timesForDisplay = "";
-                  for($x = 0; $x <= sizeof($times); $x++) {
-                      if ($x > 0 && $x < sizeof($times)) {
-                          $timesForDisplay .= ", ";
+                  if (isset($entity->field_time['und'])) {
+                      $times = $entity->field_time['und'];
+                      for($x = 0; $x <= sizeof($times); $x++) {
+                          if ($x > 0 && $x < sizeof($times)) {
+                              $timesForDisplay .= ", ";
+                          }
+                          $timesForDisplay .= $times[$x]['safe_value'];
                       }
-                      $timesForDisplay .= $times[$x]['safe_value'];
                   }
                   if ($from_year == $to_year) {
                     // Same year.
@@ -341,12 +348,12 @@ function at2015_date_repeat_display(&$vars) {
                         // Different year.
                         $date = date('F jS, Y', $from) . ' - ' . date('F jS, Y', $to) . ' ' . $timesForDisplay;
                       }
-
+                  
                      $output .= '<div>' . $date . '</div>';
                     // return theme_date_repeat_display($vars);
                 }
      }
-
+     
     $additions = array();
 
    // add additional dates
@@ -409,7 +416,7 @@ function at2015_date_repeat_display(&$vars) {
 }
 
 function at2015_date_display_single($variables) {
-
+    
   $date = $variables['date'];
   $prettyDate = date('D n/j', strtotime($date));
   $timezone = $variables['timezone'];
@@ -428,7 +435,7 @@ function at2015_date_display_single($variables) {
 
 function at2015_date_display_combination($variables) {
   static $repeating_ids = array();
-
+  
   $entity_type = $variables['entity_type'];
   $entity      = $variables['entity'];
   $field       = $variables['field'];
@@ -449,7 +456,7 @@ function at2015_date_display_combination($variables) {
   $precision   = date_granularity_precision($field['settings']['granularity']);
 
   $output = '';
-
+  
   // If date_id is set for this field and delta doesn't match, don't display it.
   if (!empty($entity->date_id)) {
     foreach ((array) $entity->date_id as $key => $id) {
@@ -470,7 +477,7 @@ function at2015_date_display_combination($variables) {
       'entity_type' => $entity_type,
       'entity' => $entity,
     );
-
+    
     $output .= theme('date_repeat_display', $repeat_vars);
     $repeating_ids[] = $id;
   }
@@ -529,11 +536,11 @@ function at2015_date_display_combination($variables) {
   }
   /* elseif ($date1 == $date2 && isset($entity->field_date_and_time_2['und']) && (sizeof($entity->field_date_and_time_2['und'] > 2))) {
       DebugBreak();
-
+     
   }   */
   // Start and End dates match or there is no End date, display a complete
   // single date.
-  elseif (($date1 == $date2 || empty($date2)) &&
+  elseif (($date1 == $date2 || empty($date2)) && 
       sizeof($element['#entity']->field_date_and_time_2['und']) == 1) {
             $output .= theme('date_display_single', array(
               'date' => $date1,
@@ -545,18 +552,21 @@ function at2015_date_display_combination($variables) {
               'add_microdata' => $add_microdata,
               'dates' => $dates,
             ));
+          
 
-
-          $times = $entity->field_time['und'];
+      
           $timesForDisplay = "";
-          for($x = 0; $x <= sizeof($times); $x++) {
-              if ($x > 0 && $x < sizeof($times)) {
-                  $timesForDisplay .= ", ";
+          if (isset($entity->field_time['und'])) {
+              $times = $entity->field_time['und'];
+              for($x = 0; $x <= sizeof($times); $x++) {
+                  if ($x > 0 && $x < sizeof($times)) {
+                      $timesForDisplay .= ", ";
+                  }
+                  $timesForDisplay .= $times[$x]['safe_value'];
               }
-              $timesForDisplay .= $times[$x]['safe_value'];
           }
               $output .= " " . $timesForDisplay . '</span>';
-
+      
   }
   // Same day, different times, don't repeat the date but show both Start and
   // End times. We can NOT do this if the replacement value is an integer
@@ -564,7 +574,7 @@ function at2015_date_display_combination($variables) {
   elseif ($has_time_string && $dates['value']['formatted_date'] == $dates['value2']['formatted_date']) {
     // Replace the original time with the start/end time in the formatted start
     // date. Make sure that parentheses or brackets wrapping the time will be
-    // retained in the final result.
+    // retained in the final result. 
     $time = theme('date_display_range', array(
       'date1' => $time1,
       'date2' => $time2,
@@ -608,13 +618,10 @@ function at2015_date_display_combination($variables) {
       'entity' => $entity,
     );
         $output .= theme('date_repeat_display', $repeat_vars);
-
+          
   }
   }
 
   return $output;
 }
-
-
-
 
