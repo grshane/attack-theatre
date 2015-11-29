@@ -1,4 +1,40 @@
 
+Slick views 7.x-2.0-dev, 2015-11-29
+-----------------------------------
+- RC3 release.
+
+Slick views 7.x-2.0-dev, 2015-11-16
+-----------------------------------
+- Disabled thumbnail navigation if items < 2 to avoid gargantuan broken single
+  thumbnail nav since it will be unslicked anyway. The good thing is this allows
+  a combination of asnavfor at one page and/or a single image or slideshow
+  display at another without creating different fields.
+- #2611838 by gge: Caching per language.
+
+Slick views 7.x-2.0-dev, 2015-11-08
+-----------------------------------
+- Added slide_classes option like Media integration to have different background
+  with transparent images and skin Split, or Slick filtering.
+  Supported fields: Node title, Entityreference, Taxonomy term, List, Text.
+
+Slick views 7.x-2.0-dev, 2015-9-30
+----------------------------------
+- Added lazyLoad support for plain image_formatter based on the given optionset.
+- Updated slide images to use a renderable array rather than a flattened one.
+
+Slick views 7.x-2.0-dev, 2015-9-12
+----------------------------------
+- Made thumbnail pagers independent from Main BG image to allow more flexibility
+  where overlays can be static image/video/audio or nested slicks:
+  o Main image + overlays + captions.
+  o Main image + thumbnails + captions.
+  o Main image + thumbnails + overlays + captions.
+  o Thumbnails + overlays + captions.
+    Previously not possible.
+
+- #2567233 by espacecode: Grid options require Visible slides, otherwise no
+  slides shown anymore.
+
 Slick views 7.x-2.0-dev, 2015-9-8
 ---------------------------------
 - Added class form--views.

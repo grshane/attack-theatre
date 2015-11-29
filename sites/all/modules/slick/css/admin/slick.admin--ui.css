@@ -56,6 +56,7 @@ body.page-admin .form--slick *,
 .form--slick {
   font-size: 16px;
   font-size: 1rem;
+  max-width: 100%;
   padding: 0;
   position: relative;
 }
@@ -105,14 +106,6 @@ body.page-admin .form--slick *,
   box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.5) inset;
   color: #fff;
   outline: 0;
-}
-
-#edit-delete {
-  background: none;
-  border: 0;
-  box-shadow: none;
-  color: #fff;
-  float: right;
 }
 
 .form--slick .form-disabled {
@@ -166,6 +159,10 @@ body.page-admin .form--slick *,
   padding-right: 0;
 }
 
+.form--slick .fieldset-description > small {
+  line-height: 1.2;
+}
+
 .form--slick .fieldset--responsive--ajax,
 .form--slick .fieldset--responsive--ajax > .fieldset-wrapper {
   padding: 0;
@@ -187,7 +184,8 @@ body.page-admin .form--slick *,
 }
 
 .form--slick > .fieldset-wrapper {
-  padding: 0;
+  max-width: 100%;
+  padding: 40px 0 0;
 }
 
 .form--slick fieldset legend {
@@ -249,6 +247,7 @@ body.page-admin .form--slick *,
 
 html.js .form--slick .collapsible,
 html.js .form--slick .collapsed {
+  clear: both;
   border: 0;
 }
 
@@ -376,6 +375,8 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
  */
 .form--slick .form-item .description {
   color: #808080;
+  max-width: 80%;
+  white-space: normal;
 }
 
 .has-tooltip .form-item > .description {
@@ -588,6 +589,13 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   width: 33.3333%;
 }
 
+.form--slick.form--compact table .form-item {
+  background: none;
+  border: 0;
+  min-height: 32px;
+  padding: 5px;
+}
+
 .form--slick .form-item input,
 .form--slick .form-item select {
   float: left;
@@ -760,6 +768,11 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   padding-left: 0;
 }
 
+.form--slick .form-type-checkbox label::before {
+  background: none;
+  border: 0;
+}
+
 .form--slick .form-type-radio label::before,
 .form--slick .form-type-checkbox .field-suffix::before {
   content: '';
@@ -837,6 +850,9 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   margin-bottom: 10px;
 }
 
+/**
+ * Overrides
+ */
 .form--slick .form-type-textarea .grippie {
   display: none;
 }
@@ -845,9 +861,6 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   resize: vertical;
 }
 
-/**
- * Overrides
- */
 .form--slick .fieldset-wrapper div[class*="-breakpoint"],
 .form--slick .vertical-tabs .fieldset-wrapper div[class*="-unslick"] {
   border: 0;
@@ -867,6 +880,7 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
 }
 
 .ui-dialog-content .form--views > .fieldset-wrapper > .description,
+.form--views > .fieldset-wrapper > .description,
 .form--slick .form-item.form-type-checkboxes > label,
 .form--slick__title {
   background: #fafafa;
@@ -998,10 +1012,6 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   clear: none;
 }
 
-.ui-dialog-content .form--slick {
-  padding-top: 0;
-}
-
 .ui-dialog-content .form--views {
   padding-top: 40px;
 }
@@ -1027,6 +1037,7 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   white-space: nowrap;
 }
 
+.form--slick .form-item.form-type-radios,
 .form--slick .form-item.form-type-checkboxes {
   border-left: 0;
   border-right: 0;
@@ -1072,7 +1083,7 @@ html.js .form--slick .collapsed .fieldset-legend .fieldset-legend-prefix::after 
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 940px) {
   .form--slick.form--field .form-item,
   .form--slick .vertical-tabs-panes .form-item {
     min-height: 100px;

@@ -1,4 +1,65 @@
 
+Slick 7.x-2.0-dev, 2015-11-28
+-----------------------------
+- Cleaned up useless lines.
+- Fixed for FC nested slicks with iframe and media icons visibility.
+
+Slick 7.x-2.0-dev, 2015-11-26
+-----------------------------
+- Added more description on Slick Grid or multiple rows carousel.
+- Removed personal styling from slick.theme.css, mostly those testing rules
+  against Bartik.
+- Added "Lazy iframe" option to have truly lazyloaded iframes for Media and FC
+  to speed up loading time before JS fired.
+- Moved media icons and iframes after the image to allow using CSS siblings
+  selector (~) for spinner visibility in combination with [data-lazy] which is
+  removed when the image is fully loaded, e.g.:
+  .media-icon--spinner { display: none; }
+  img[data-lazy] ~ .media-icon--spinner { display: block; }
+
+Slick 7.x-2.0-dev, 2015-11-21
+-----------------------------
+- #2546614 by Dr.Osd: Colorbox integration has broken iframe width
+
+Slick 7.x-2.0-dev, 2015-11-16
+-----------------------------
+- Disabled thumbnail navigation if items < 2 to avoid gargantuan broken single
+  thumbnail nav since it will be unslicked anyway. The good thing is this allows
+  a combination of asnavfor at one page and/or a single image or slideshow
+  display at another without creating different fields.
+- Added caching per language to reflect the change at Slick Views per 2611838.
+
+Slick 7.x-2.0-dev, 2015-11-07
+-----------------------------
+- #2600970 by dalearyous: remove the image zoom or magnification for center
+  image slick carousel
+- #2610348 by IckZ: Colorbox not working when only one image is displayed.
+- #2596599 by mparker17: Add link to settings page in .info file
+  Oops, sorry, attribution!
+- #2596599 by mparker17: Add link to settings page in .info file
+
+Slick 7.x-2.0-dev, 2015-9-30
+----------------------------
+- Clarified several descriptions on form items, and elsewhere.
+- Moved some contents of slick.field.inc into slick.global.inc to share with
+  Slick views for its future enhancement with Media file like Slick fields.
+- Added configurable optional core slick-theme.css and module slick.theme.css
+  which are normally included by default along with skins.
+- Removed problematic Editor links for Media file, since it is not displayed
+  when cache enabled anyway.
+
+Slick 7.x-2.0-dev, 2015-9-12
+----------------------------
+- #2567233 by espacecode: Grid options require Visible slides, otherwise no
+  slides shown anymore.
+  Added more information on Grid options about requiring Visible slides.
+
+Slick 7.x-2.0-dev, 2015-9-11
+----------------------------
+- Issue #2566799 by quasi: Image linked to content should not be
+  removed without colorbox/photobox.
+- Cleaned up README.txt, and a few other things.
+
 Slick 7.x-2.0-dev, 2015-9-09
 ----------------------------
 - Merged DRY stuffs into slick_get_image().

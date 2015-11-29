@@ -20,7 +20,7 @@
           }
 
           // Apply Superfish to the list.
-          $('ul.sf-menu').superfish();
+          list.superfish(options.sf);
 
           // Check if we are to apply any other plug-in to it.
           if (options.plugins || false) {
@@ -29,9 +29,6 @@
             }
             if (options.plugins.smallscreen || false) {
               list.sfsmallscreen(options.plugins.smallscreen);
-            }
-            if (options.plugins.automaticwidth || false) {
-              list.sfautomaticwidth();
             }
             if (options.plugins.supposition || false) {
               list.supposition();

@@ -122,11 +122,11 @@ print render($slick);
 $settings['cache'] = 3600;
 // Or cache the slick and keep stale contents till the next cron runs.
 $settings['cache'] = 'persistent';
-// One cron hits, slick will use the new cached version regardless of expiration
-// time due to the nature of render cache.
+// Once cron hits, slick will use the new cached version regardless of
+// expiration time due to the nature of render cache.
 // Add a custom unique cache ID.
 $settings['cid'] = 'my-extra-unique-id';
-// Where the parameters as described above:
+// The parameters are as described above:
 $slick = slick_build($items, $options, $settings, $attachments, $id);
 // All is set, render the Slick.
 print render($slick);
@@ -214,7 +214,8 @@ function hook_slick_arrows_info() {
  * Alter Slick skins.
  *
  * This function lives in a module file, not my_module.slick.inc.
- * Overriding skin CSS can be done via theme.info, hook_css_alter(), or below.
+ * Overriding skin CSS can be done via theme.info, hook_css_alter(), or below
+ * before anything passed to drupal_process_attached().
  *
  * @param array $skins
  *   The associative array of skin information from hook_slick_skins_info().

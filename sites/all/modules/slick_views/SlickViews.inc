@@ -51,9 +51,34 @@ class SlickViews extends views_plugin_style {
   /**
    * Gets renderable array of field containing rendered and raw data.
    */
-  public function getFieldData($row, $field_name) {
+  public function getFieldData($row, $field_name, $multiple = FALSE) {
     $field = $this->view->field[$field_name]->handler_type . '_' . $field_name;
-    return isset($row->{$field}[0]) ? $row->{$field}[0] : '';
+    return $multiple && isset($row->{$field})? $row->{$field} : (isset($row->{$field}[0]) ? $row->{$field}[0] : '');
+  }
+
+  /**
+   * Returns the values for the expected Title, ET, List, Term.
+   */
+  public function getFieldValue($row, $field_name, $idx) {
+    $values = array();
+
+    // Content title/List/Text, either as link or plain text.
+    if ($value = $this->get_field_value($idx, $field_name)) {
+      $value = is_string($value) ? $value : (isset($value[0]['value'])? $value[0]['value'] : '');
+      $values[$idx] = empty($value) ? '' : drupal_clean_css_identifier(drupal_strtolower($value));
+    }
+
+    // Term reference/ET, either as link or plain text.
+    if ($renderable = $this->getFieldData($row, $field_name, TRUE)) {
+      $value = array();
+      foreach ($renderable as $key => $render) {
+        $class = isset($render['rendered']['#title']) ? $render['rendered']['#title'] : drupal_render($render['rendered']);
+        $class = strip_tags($class);
+        $value[$key] = drupal_clean_css_identifier(drupal_strtolower($class));
+      }
+      $values[$idx] = empty($value) ? '' : implode(' ', $value);
+    }
+    return $values;
   }
 
   /**
@@ -72,15 +97,19 @@ class SlickViews extends views_plugin_style {
    * Renders the display in this style.
    */
   public function render() {
-    $view      = $this->view;
-    $settings  = $this->options;
-    $view_name = $view->name;
-    $current   = $view->current_display;
-    $slick_id  = &drupal_static('slick_id', 0);
-    $id        = $settings['id'] ? $settings['id'] : drupal_clean_css_identifier("slick-views-{$view_name}-" . ++$slick_id);
-    $thumb_id  = $id . '-thumbnail';
-    $cid       = $settings['cid'] = $settings['optionset'] . $settings['skin'] . $view_name . $current;
-    $asnavfor  = $settings['optionset_thumbnail'];
+    global $language;
+    $langcode    = isset($language->language) ? $language->language : LANGUAGE_NONE;
+    $view        = $this->view;
+    $settings    = $this->options;
+    $view_name   = $view->name;
+    $current     = $view->current_display;
+    $slick_id    = &drupal_static('slick_id', 0);
+    $id          = $settings['id'] ? $settings['id'] : drupal_clean_css_identifier("slick-views-{$view_name}-" . ++$slick_id);
+    $thumb_id    = $id . '-thumbnail';
+    $cid         = $settings['cid'] = $settings['optionset'] . $settings['skin'] . $view_name . $current . $langcode;
+    $asnavfor    = $settings['optionset_thumbnail'];
+    $is_asnavfor = $asnavfor && count($view->result) > 1;
+    $stage       = $settings['slide_image'];
 
     // Renders slicks quickly from cache if any, as render cache is just cache.
     $render_cache = FALSE;
@@ -90,7 +119,7 @@ class SlickViews extends views_plugin_style {
 
     if ($render_cache) {
       $slick[0] = $cache->data;
-      if ($asnavfor && $thumb_cache = cache_get($thumb_id . ':' . $cid, 'cache')) {
+      if ($is_asnavfor && $thumb_cache = cache_get($thumb_id . ':' . $cid, 'cache')) {
         $slick[1] = $thumb_cache->data;
       }
 
@@ -102,12 +131,18 @@ class SlickViews extends views_plugin_style {
     module_load_include('inc', 'slick', 'includes/slick.global');
 
     // Group the rows according to the grouping field, if specified.
-    $sets                  = $this->render_grouping($view->result, $settings['grouping']);
-    $keys                  = array_keys($view->field);
-    $slick_markups         = $settings['slide_field_wrapper'];
-    $optionset             = slick_optionset_load($settings['optionset']);
-    $optionset_thumbnail   = $asnavfor ? slick_optionset_load($asnavfor) : NULL;
-    $settings['view_name'] = $view_name;
+    $sets                    = $this->render_grouping($view->result, $settings['grouping']);
+    $keys                    = array_keys($view->field);
+    $slick_markups           = $settings['slide_field_wrapper'];
+    $optionset               = slick_optionset_load($settings['optionset']);
+    $optionset_thumbnail     = $is_asnavfor ? slick_optionset_load($asnavfor) : NULL;
+    $settings['lazy']        = $optionset->options['settings']['lazyLoad'];
+    $settings['has_pattern'] = !empty($optionset->options['general']['goodies']['pattern']);
+
+    $settings['view_name']            = $view_name;
+    $settings['view_current_display'] = $current;
+    $settings['current_display']      = 'main';
+    $settings['attributes']['id']     = $id;
 
     $attach = array(
       'attach_skin'        => $settings['skin'],
@@ -120,8 +155,9 @@ class SlickViews extends views_plugin_style {
       $items = $thumbs = $js = array();
       foreach ($rows as $index => $row) {
         $view->row_index = $index;
+        $settings['count'] = count($rows);
         $thumb = array();
-        $item = array(
+        $slide = array(
           'caption'  => array(),
           'slide'  => array(),
           'settings' => array(
@@ -129,93 +165,116 @@ class SlickViews extends views_plugin_style {
           ),
         );
 
+        if (!empty($settings['slide_classes'])) {
+          $classes = $this->getFieldValue($row, $settings['slide_classes'], $index);
+          $slide['settings']['slide_classes'] = empty($classes[$index]) ?  '' : $classes[$index];
+        }
+
+        // Uses Slick markups if so configured, ignoring Views ones.
         if ($slick_markups) {
+          // Add layout field, may be a list field, or builtin layout options.
+          if ($layout = $settings['slide_layout']) {
+            if (strpos($layout, 'field_') !== FALSE) {
+              $settings['slide_layout'] = check_plain($this->get_field($index, $layout));
+            }
+            $slide['settings']['layout'] = $settings['slide_layout'];
+          }
+
           // Add main image field if so configured.
-          if ($slide_image = $settings['slide_image']) {
-            $image = $this->getFieldData($row, $slide_image);
+          if ($stage) {
+            $media = array();
+            $image = $this->getFieldData($row, $stage);
 
             // Not-empty behavior and filter fail, so add own check here.
-            if (isset($image['raw']) && $image_rendered = $this->get_field($index, $slide_image)) {
+            if (isset($image['rendered']) && $image_rendered = $this->get_field($index, $stage)) {
+              $rendered = $image['rendered'];
               $bg_type = isset($image['raw']['type']) ? $image['raw']['type'] : 'image';
-              $item['settings']['type'] = $bg_type;
-              $item['slide']['#markup'] = $image_rendered;
-            }
+              $slide['settings']['type'] = $bg_type;
+              $slide['settings']['uri'] = $image['raw']['uri'];
 
-            // Add thumbnail navigation if so configured.
-            if ($slide_thumbnail = $settings['slide_thumbnail']) {
-              $thumbnail = $this->getFieldData($row, $slide_thumbnail);
-              if (isset($thumbnail['raw']) && $thumbnail_rendered = $this->get_field($index, $slide_thumbnail)) {
-                $thumb['slide']['#markup'] = $thumbnail_rendered;
+              // Only lazyLoad known formatter: image_formatter.
+              $supported = isset($rendered['#theme']) && in_array($rendered['#theme'], array('image_formatter'));
+              if (!empty($settings['lazy']) && $supported) {
+                $settings['image_style'] = isset($rendered['#image_style']) ? $rendered['#image_style'] : '';
+                if (isset($rendered['#path']['path'])) {
+                  $settings['media_switch'] = 'content';
+                  $slide['settings']['url'] = $settings['entity_uri'] = $rendered['#path']['path'];
+                }
+
+                slick_extract_image_data($settings, $media, $slide, $image['raw']);
+                $slide['slide'] = slick_get_image($settings, $media, $index, $slide['settings']);
+              }
+              else {
+                $slide['slide'] = $rendered;
               }
             }
+          }
 
-            // Allows text-only thumbnail navigation, like regular tabs.
-            // Use Views UI "Rewrite results" to sanitize the caption.
-            if ($thumbnail_caption = $settings['thumbnail_caption']) {
-              $thumb['caption']['data']['#markup'] = $this->get_field($index, $thumbnail_caption);
-              if (!isset($thumb['slide'])) {
-                $thumb['slide'] = array();
-                $item['settings']['type'] = 'text';
-              }
+          // Add thumbnail navigation if so configured.
+          if ($slide_thumbnail = $settings['slide_thumbnail']) {
+            $thumbnail = $this->getFieldData($row, $slide_thumbnail);
+            if (isset($thumbnail['rendered']) && $thumbnail_rendered = $this->get_field($index, $slide_thumbnail)) {
+              $thumb['slide'] = $thumbnail['rendered'];
+            }
+          }
+
+          // Allows text-only thumbnail navigation, like regular tabs.
+          // Use Views UI "Rewrite results" to sanitize the caption.
+          if ($thumbnail_caption = $settings['thumbnail_caption']) {
+            $thumb['caption']['data']['#markup'] = $this->get_field($index, $thumbnail_caption);
+            if (!isset($thumb['slide'])) {
+              $thumb['slide'] = array();
+              $slide['settings']['type'] = 'text';
             }
           }
 
           // Add all caption fields if so configured.
-          if ($slide_captions = $settings['slide_caption']) {
-            $slide_captions = is_array($slide_captions) ? array_filter($slide_captions) : (array) $slide_captions;
+          if ($captions = $settings['slide_caption']) {
+            $captions = is_array($captions) ? array_filter($captions) : (array) $captions;
 
             $caption_items = array();
-            foreach ($slide_captions as $key => $slide_caption) {
-              $slide_caption_rendered = $this->get_field($index, $slide_caption);
-              if (empty($slide_caption_rendered)) {
+            foreach ($captions as $key => $caption) {
+              $caption_rendered = $this->get_field($index, $caption);
+              if (empty($caption_rendered)) {
                 continue;
               }
 
-              if (in_array($slide_caption, array_values($keys))) {
-                $caption_items[$key]['#markup'] = $slide_caption_rendered;
+              if (in_array($caption, array_values($keys))) {
+                $caption_items[$key]['#markup'] = $caption_rendered;
               }
             }
             if ($caption_items) {
-              $item['caption']['data'] = $caption_items;
+              $slide['caption']['data'] = $caption_items;
             }
           }
 
           // Add overlay, this allows overlay only without image background.
-          if ($slide_overlay = $settings['slide_overlay']) {
-            $item['caption']['overlay']['#markup'] = $this->get_field($index, $slide_overlay);
+          if ($overlay = $settings['slide_overlay']) {
+            $slide['caption']['overlay']['#markup'] = $this->get_field($index, $overlay);
           }
 
           // Add title field if so configured.
-          if ($slide_title = $settings['slide_title']) {
-            $item['caption']['title']['#markup'] = filter_xss_admin($this->get_field($index, $slide_title));
+          if ($title = $settings['slide_title']) {
+            $slide['caption']['title']['#markup'] = filter_xss_admin($this->get_field($index, $title));
           }
 
           // Add link field if so configured.
-          if ($slide_link = $settings['slide_link']) {
-            $item['caption']['link']['#markup'] = $this->get_field($index, $slide_link);
+          if ($link = $settings['slide_link']) {
+            $slide['caption']['link']['#markup'] = $this->get_field($index, $link);
           }
 
           // Add editor link field, Views takes care of the access control.
           if ($editor_link = $settings['editor_link']) {
-            $item['caption']['editor']['#markup'] = $this->get_field($index, $editor_link);
-          }
-
-          // Add layout field, may be a list field, or builtin layout options.
-          if ($slide_layout = $settings['slide_layout']) {
-            if (strpos($slide_layout, 'field_') !== FALSE) {
-              $item['settings']['layout'] = check_plain($this->get_field($index, $slide_layout));
-            }
-            else {
-              $item['settings']['layout'] = $slide_layout;
-            }
+            $slide['caption']['editor']['#markup'] = $this->get_field($index, $editor_link);
           }
         }
         else {
-          $item['slide'] = $view->style_plugin->row_plugin->render($row);
+          // Otherwise uses all Views markups, ignoring Slick markups.
+          $slide['slide'] = $view->style_plugin->row_plugin->render($row);
         }
 
         // Main slide items.
-        $items[] = $item;
+        $items[] = $slide;
 
         // Thumbnail slide items.
         if ($thumb) {
@@ -226,12 +285,9 @@ class SlickViews extends views_plugin_style {
       unset($view->row_index);
 
       // Build the Slick attributes.
-      $is_asnavfor   = $asnavfor && $thumbs;
+      $is_asnavfor   = $is_asnavfor && $thumbs;
       $asnavfor_auto = $settings['asnavfor_auto'];
 
-      $settings['count']                 = count($items);
-      $settings['current_display']       = 'main';
-      $settings['attributes']['id']      = $id;
       $settings['attributes']['class'][] = drupal_clean_css_identifier('slick--view--' . $view_name);
       $settings['attributes']['class'][] = drupal_clean_css_identifier('slick--view--' . $view_name . '--' . $current);
 
@@ -241,10 +297,8 @@ class SlickViews extends views_plugin_style {
       }
 
       // Build the Slick grid only if having a reasonable amount of grid items.
-      if ($settings['grid']) {
-        if (count($view->result) > $settings['visible_slides']) {
-          $items = slick_build_grids($items, $settings);
-        }
+      if ($settings['grid'] && $settings['visible_slides'] && count($view->result) > $settings['visible_slides']) {
+        $items = slick_build_grids($items, $settings);
       }
 
       // Overrides common options to re-use a single optionset.
@@ -262,7 +316,7 @@ class SlickViews extends views_plugin_style {
       if ($is_asnavfor) {
         $settings['attributes']['id'] = $thumb_id;
         $settings['asnavfor_target']  = $asnavfor_auto ? "#{$id}-slider" : $settings['asnavfor_thumbnail'];
-        $settings['optionset']        = $settings['optionset_thumbnail'];
+        $settings['optionset']        = $asnavfor;
         $settings['current_display']  = 'thumbnail';
 
         // Build the thumbnail+/text navigation Slick.
@@ -272,7 +326,6 @@ class SlickViews extends views_plugin_style {
       // Build the Slick.
       $build = $this->renderSlick($slick);
     }
-
     return $build;
   }
 

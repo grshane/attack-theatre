@@ -158,7 +158,7 @@ function template_preprocess_slick(&$variables) {
     }
 
     // All these s***s are to re-use one optionset when all these disabled.
-    // focusOnSelect will not work with empty slide value, so add proper selector.
+    // focusOnSelect won't work with empty slide value, so add proper selector.
     $js['slide'] = empty($js['slide']) && $js['focusOnSelect'] ? '.slick__slide' : '';
 
     // Only if asNavFor, enforce clickable thumbnail, otherwise no joy.
@@ -281,8 +281,8 @@ function template_preprocess_slick_item(&$variables) {
       $grids = array('small', 'medium', 'large');
       $content_attributes['class'][] = 'block-grid';
       foreach ($grids as $grid) {
-        if ($settings['grid_' . $grid]) {
-          $content_attributes['class'][] = $grid . '-block-grid-' . $settings['grid_' . $grid];
+        if ($column = $settings['grid_' . $grid]) {
+          $content_attributes['class'][] = $grid . '-block-grid-' . $column;
         }
       }
     }
@@ -388,18 +388,19 @@ function template_preprocess_slick_grid(&$variables) {
  * Implements hook_preprocess_slick_media().
  */
 function template_preprocess_slick_media(&$variables) {
-  $element  = $variables['element'];
-  $settings = $element['#settings'];
-  $item     = $variables['item'] = $element['#item'];
-  $media    = isset($item['#item']) ? $item['#item'] : $settings;
-  $type     = isset($settings['type']) ? $settings['type'] : 'image';
-  $switcher = $settings['media_switch'] = isset($settings['media_switch']) ? $settings['media_switch'] : FALSE;
+  $element    = $variables['element'];
+  $settings   = $element['#settings'];
+  $item       = $variables['item'] = $element['#item'];
+  $media      = isset($item['#item']) ? $item['#item'] : $settings;
+  $type       = isset($settings['type']) ? $settings['type'] : 'image';
+  $switcher   = $settings['media_switch'] = isset($settings['media_switch']) ? $settings['media_switch'] : FALSE;
+  $multimedia = in_array($type, array('video', 'audio'));
 
   // Prepare variables.
   // $variables['classes_array'] = array_diff($variables['classes_array'], array('slick-media'));
   $variables['item_prefix'] = $variables['item_suffix'] = array();
   $variables['is_lightbox'] = $switcher && strpos($switcher, 'box') !== FALSE;
-  $settings['is_media']     = isset($settings['is_media']) && $switcher != 'content' ? $settings['is_media'] : FALSE;
+  $settings['is_media']     = isset($settings['is_media']) && $multimedia ? $settings['is_media'] : FALSE;
   $variables['alternative_content'] = '';
 
   // Configure attributes for containing elements.
@@ -445,6 +446,9 @@ function template_preprocess_slick_media(&$variables) {
         $attributes['class'][] = 'media--player';
         $attributes['class'][] = 'media--switch--player';
         $attributes['class'][] = drupal_clean_css_identifier('media--' . $media['scheme'] . '-player');
+        if (!empty($settings['iframe_lazy'])) {
+          $content_attributes['src'] = 'about:blank';
+        }
       }
 
       // Gets consistent with colorbox to share JS manipulation.
@@ -563,18 +567,15 @@ function theme_slick_image_lazy(array $variables) {
     }
 
     $url = $variables['url'];
-    $options = isset($variables['options']['url']) ? (array) $variables['options']['url'] : array();
-    $options['html'] = TRUE;
-    $build = l($build, $url, $options);
+    $link_options = isset($options['url']) ? (array) $options['url'] : array();
+    $link_options['html'] = TRUE;
+    $build = l($build, $url, $link_options);
   }
   return $build;
 }
 
 /**
  * Returns HTML or layout related settings to avoid extra checks and notices.
- *
- * @return array
- *   An array of alterable default theme settings.
  */
 function slick_get_element_default_settings() {
   $settings = array(
@@ -616,7 +617,7 @@ function _slick_remove_default_optionset_options($optionset, $settings = array()
   }
   unset($config['prevArrow'], $config['nextArrow']);
 
-  // Clean up responsive options if similar to the main defaults.
+  // Clean up responsive options if similar to the defaults.
   $responses = array();
   if (isset($options['responsives']) && isset($options['responsives']['responsive'])) {
     $responsives = $options['responsives']['responsive'];

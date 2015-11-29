@@ -28,9 +28,10 @@ function slick_format_media(&$settings, $config, $thumb_nav = FALSE) {
     // Build settings for both theme_slick_item() and theme_slick_media().
     slick_extract_image_data($settings, $media, $slide, $item);
     $slide['settings'] += array(
-      'ratio'     => !empty($settings['aspect_ratio']) ? $settings['aspect_ratio'] : FALSE,
-      'type'      => $file->type,
-      'view_mode' => $view_mode,
+      'ratio'       => !empty($settings['aspect_ratio']) ? $settings['aspect_ratio'] : FALSE,
+      'type'        => $file->type,
+      'view_mode'   => $view_mode,
+      'iframe_lazy' => !empty($settings['iframe_lazy']),
     );
 
     // Needed settings: type scheme image_style uri view_mode.
@@ -53,27 +54,6 @@ function slick_format_media(&$settings, $config, $thumb_nav = FALSE) {
       // Slide classes, if so configured.
       if (!empty($settings['slide_classes']) && $classes = field_get_items('file', $file, $settings['slide_classes'])) {
         $slide['settings']['slide_classes'] = strip_tags($classes[0]['value']);
-      }
-
-      // Editor links, excluded from render cache.
-      if (empty($settings['cache']) && file_entity_access('update', $file)) {
-        if (!empty($slide['caption']) && field_is_translatable($config['entity_type'], $config['field'])) {
-          $slide['caption']['editor']['translate']['#markup'] = l(t('Translate'), 'file/' . $file->fid . '/translate', array(
-            'query' => drupal_get_destination(),
-            'attributes' => array(
-              'title' => t('Translate file @title', array('@title' => $file->filename)),
-              'class' => array('file__translate edit-link icon-globe'),
-            ),
-          ));
-        }
-
-        $slide['caption']['editor']['edit']['#markup'] = l(t('Edit'), 'file/' . $file->fid . '/edit', array(
-          'query' => drupal_get_destination(),
-          'attributes' => array(
-            'title' => t('Edit file @title', array('@title' => $file->filename)),
-            'class' => array('file__edit edit-link icon-edit'),
-          ),
-        ));
       }
 
       // Image with picture, lazyLoad, and lightbox supports.

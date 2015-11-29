@@ -90,3 +90,25 @@ make sure to:
 
 More info relevant to each option is available at their form display by hovering
 over them, and click a dark question mark.
+
+
+AUTHOR/MAINTAINER/CREDITS
+--------------------------------------------------------------------------------
+Gaus Surahman
+https://drupal.org/user/159062
+
+With the help from the community:
+- https://www.drupal.org/node/2232779/committers
+- https://www.drupal.org/node/2497045/committers
+- CHANGELOG.txt for helpful souls with their patches, suggestions and reports.
+
+READ MORE
+--------------------------------------------------------------------------------
+See the project page on drupal.org: http://drupal.org/project/slick.
+
+More info relevant to each option is available at their form display by hovering
+over them, and click a dark question mark.
+
+See the Slick docs at:
+- http://kenwheeler.github.io/slick/
+- https://github.com/kenwheeler/slick/
