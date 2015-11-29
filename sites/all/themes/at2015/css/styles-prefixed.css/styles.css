@@ -4274,7 +4274,7 @@ span.nolink > .sf-sub-indicator {
   top: 50px;
   opacity: 1;
   transition: 0.4s ease;
-  min-height: 70px;
+  height: 70px;
 }
 
 #block-superfish-1 {
@@ -4737,6 +4737,7 @@ div.view-footer {
 }
 
 .featured__body {
+  height: 400px;
   overflow: hidden;
   margin-bottom: 10px;
 }
@@ -7848,8 +7849,8 @@ div.view-footer {
 
 .footer_left {
   margin-left: 30px;
-  -ms-flex-preferred-size: 200px;
-      -webkit-flex-basis: 200px;
+  -webkit-flex-basis: 200px;
+      -ms-flex-preferred-size: 200px;
           flex-basis: 200px;
   -webkit-flex-grow: 10;
       -ms-flex-positive: 10;
@@ -7863,15 +7864,15 @@ div.view-footer {
 .footer_right {
   text-align: left;
   margin-top: 20px;
-  -ms-flex-preferred-size: 120px;
-      -webkit-flex-basis: 120px;
+  -webkit-flex-basis: 120px;
+      -ms-flex-preferred-size: 120px;
           flex-basis: 120px;
 }
 
 .footer_logo {
   padding-left: 1em;
-  -ms-flex-preferred-size: 100px;
-      -webkit-flex-basis: 100px;
+  -webkit-flex-basis: 100px;
+      -ms-flex-preferred-size: 100px;
           flex-basis: 100px;
   -webkit-flex-grow: 0;
       -ms-flex-positive: 0;
@@ -8412,8 +8413,6 @@ form .search-form h2 {
 }
 
 /* SMACSS theme rules */
-
-/*# sourceMappingURL=styles.css.map */
 
 /*# sourceMappingURL=styles.css.map */
 
