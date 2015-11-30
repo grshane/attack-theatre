@@ -123,11 +123,13 @@
     }
 .views-field-field-youtube-videos,
 .views-field-field-flickr-albums {
+    clear: both;
+
     .field-content {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        clear: both;
+
     }
     .file-video {
         width: 30%;
