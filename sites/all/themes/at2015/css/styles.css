@@ -8363,6 +8363,7 @@ nav.slick__arrow button:last-of-type {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  clear: both;
 }
 .views-field-field-youtube-videos .file-video,
 .views-field-field-flickr-albums .file-video {
