@@ -8312,10 +8312,6 @@ nav.slick__arrow button:last-of-type {
   color: #239cd7;
 }
 
-.views-field-field-youtube-videos,
-.views-field-field-flickr-albums {
-  clear: both;
-}
 .views-field-field-youtube-videos .field-content,
 .views-field-field-flickr-albums .field-content {
   display: -webkit-flex;
