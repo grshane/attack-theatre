@@ -56,7 +56,7 @@ function browsersync_theme($existing, $type, $theme, $path) {
  * @link https://github.com/shakyShane/browser-sync/issues/10
  */
 function browsersync_css_alter(&$css) {
-  if (browsersync_get_setting('enabled') && !variable_get('preprocess_css')) {
+  if (browsersync_get_setting('enabled', FALSE) && !variable_get('preprocess_css')) {
     foreach ($css as $key => $value) {
       // Skip core files.
       $is_core = (strpos($value['data'], 'misc/') === 0 || strpos($value['data'], 'modules/') === 0);
@@ -90,7 +90,7 @@ function browsersync_form_system_theme_settings_alter(&$form, &$form_state, $for
   $form['browsersync']['browsersync_enabled'] = array(
     '#title' => 'Enable Browsersync',
     '#type' => 'checkbox',
-    '#default_value' => browsersync_get_setting('enabled', $theme_key),
+    '#default_value' => browsersync_get_setting('enabled', FALSE, $theme_key),
   );
 
   $form['browsersync']['settings'] = array(
@@ -106,14 +106,14 @@ function browsersync_form_system_theme_settings_alter(&$form, &$form_state, $for
     '#title' => 'Host',
     '#type' => 'textfield',
     '#description' => t('Override host detection if you know the correct IP to use.'),
-    '#default_value' => browsersync_get_setting('host', $theme_key),
+    '#default_value' => browsersync_get_setting('host', '', $theme_key),
   );
 
   $form['browsersync']['settings']['browsersync_port'] = array(
     '#title' => 'Port',
     '#type' => 'textfield',
     '#description' => t('Use a specific port (instead of the one auto-detected by Browsersync).'),
-    '#default_value' => browsersync_get_setting('port', $theme_key),
+    '#default_value' => browsersync_get_setting('port', '', $theme_key),
   );
 }
 
@@ -123,11 +123,11 @@ function browsersync_form_system_theme_settings_alter(&$form, &$form_state, $for
  * Adds the Browsersync snippet to the bottom of the page.
  */
 function browsersync_page_build(&$page) {
-  if (browsersync_get_setting('enabled') && user_access('use browsersync')) {
+  if (browsersync_get_setting('enabled', FALSE) && user_access('use browsersync')) {
     $page['page_bottom']['browsersync'] = array(
       '#theme' => 'browsersync_snippet',
-      '#host' => browsersync_get_setting('host'),
-      '#port' => browsersync_get_setting('port'),
+      '#host' => browsersync_get_setting('host', ''),
+      '#port' => browsersync_get_setting('port', ''),
       '#weight' => 100,
     );
   }
@@ -136,41 +136,44 @@ function browsersync_page_build(&$page) {
 /**
  * Retrieves a setting for the current theme or for a given theme.
  *
- * @param $setting_name
+ * @param string $setting_name
  *   The name of the setting to be retrieved.
- * @param $theme
+ * @param mixed $default
+ *   (optional) A default value. Defaults to NULL.
+ * @param string $theme
  *   (optional) The name of a given theme. Defaults to the current theme.
  *
  * @return mixed
- *   The value of the requested setting or NULL if the setting does not exist.
+ *   The value of the requested setting, or the $default value if the setting
+ *   does not exist.
  *
  * @see theme_get_setting()
  */
-function browsersync_get_setting($setting_name, $theme = NULL) {
-  $cache = &drupal_static(__FUNCTION__, array());
+function browsersync_get_setting($setting_name, $default = NULL, $theme = NULL) {
+  $cache = &drupal_static('theme_get_setting', array());
 
+  // If no key is given, use the current theme if we can determine it.
   if (!isset($theme)) {
     $theme = !empty($GLOBALS['theme_key']) ? $GLOBALS['theme_key'] : '';
   }
 
-  if (empty($cache[$theme])) {
-    // Set the default values for each global setting.
-    $cache[$theme] = array(
-      'browsersync_enabled' => 0,
-      'browsersync_host' =>  '',
-      'browsersync_port' =>  '',
-    );
-  }
-
-  // Get the saved global settings from the database.
-  $cache[$theme] = array_merge($cache[$theme], variable_get('theme_settings', array()));
-
-  if ($theme) {
-    // Get the saved theme-specific settings from the database.
-    $cache[$theme] = array_merge($cache[$theme], variable_get('theme_' . $theme . '_settings', array()));
-  }
-
+  // Prefix the setting name with the module's namespace.
   $setting_name = 'browsersync_' . $setting_name;
 
-  return isset($cache[$theme][$setting_name]) ? $cache[$theme][$setting_name] : NULL;
+  if (empty($cache[$theme])) {
+    // If the cache has not been filled yet, invoke theme_get_setting to
+    // retrieve the value. This will populate the cache and make it available
+    // for subsequent requests.
+    $setting = theme_get_setting($setting_name, $theme);
+  }
+  elseif (isset($cache[$theme][$setting_name])) {
+    // Retrieve the value from the cache.
+    $setting = $cache[$theme][$setting_name];
+  }
+  else {
+    // Use the default value, setting does not exist.
+    $setting = $default;
+  }
+
+  return $setting;
 }
