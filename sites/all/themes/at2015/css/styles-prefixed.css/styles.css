@@ -4575,6 +4575,14 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified .responsive-menu
   margin: .5em 0;
   overflow: hidden;
 }
+#block-views-content-features-block-1 .views-row:first-of-type:last-of-type {
+  padding: 1em 0.5em;
+  width: auto;
+  display: block;
+}
+#block-views-content-features-block-1 .views-row:first-of-type:last-of-type .featured__body {
+  height: auto;
+}
 @media (max-width: 768px) {
   #block-views-content-features-block-1 .views-row {
     width: auto;
