@@ -25,6 +25,10 @@
 	z-index: 1000;
 	height: 47px;
 
+	@media (max-width: 834px) {
+			display: none;
+		}
+
 	ul {
 	margin: 0;
 	padding: 0 1em;
@@ -52,12 +56,17 @@
 	}
 
 }
+
+
 	.top-fixed {
 		position: fixed;
 		top: 0px;
 		display: block !important;
 		opacity: 1;
-	}
+		@media (max-width: 834px) {
+			display: none;
+		}
+}
 
 /*Logo Block*/
 #block-block-6 {
@@ -91,6 +100,11 @@ span.nolink > .sf-sub-indicator {
     opacity: 1;
     transition: 0.4s ease;
    	height: 70px;
+
+   	@media (max-width: 834px) {
+   		//position: relative;
+   		top: 0px;
+   	}
 }
 
 #block-superfish-1 {
@@ -189,6 +203,9 @@ left: -50%;
 	.form-text {
 		width: 180px;
 
+	}
+	@media (max-width: 834px) {
+		display: none;
 	}
 }
 
