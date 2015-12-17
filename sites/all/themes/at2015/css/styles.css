@@ -4309,7 +4309,8 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
 }
 @media (max-width: 834px) {
   .top-fixed {
-    display: none;
+    opacity: 0;
+    display: none !important;
   }
 }
 

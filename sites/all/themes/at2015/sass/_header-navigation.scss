@@ -64,7 +64,8 @@
 		display: block !important;
 		opacity: 1;
 		@media (max-width: 834px) {
-			display: none;
+			opacity: 0;
+			display: none !important;
 		}
 }
 
