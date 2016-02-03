@@ -21,6 +21,20 @@ Drupal.behaviors.my_custom_behavior = {
 
   }
 };
+Drupal.behaviors.responsiveDropdownMenuDropDown = {
+    attach: function(context) {
+      $('.responsive-menu li.menu-parent').hover(
+        function() {
+          $(this).children('.sub-menu').addClass('active');
+        },
+        function() {
+          $(this).children('.sub-menu').delay(1000).queue(function(){
+            removeClass('active');
+          });
+        }
+      );
+    }
+  }
 
 
 })(jQuery, Drupal, this, this.document);

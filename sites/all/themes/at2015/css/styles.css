@@ -54,6 +54,8 @@ body {
 .region-navigation {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 #page {
@@ -4353,6 +4355,10 @@ span.nolink > .sf-sub-indicator {
   }
 }
 
+#block-responsive-dropdown-menus-main-menu {
+  float: left;
+}
+
 #block-superfish-1 {
   white-space: nowrap;
   margin: 0 auto;
@@ -4360,6 +4366,8 @@ span.nolink > .sf-sub-indicator {
   padding-top: 1.4em;
   position: relative;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 #block-superfish-1 li {
   padding: 0;
@@ -4492,6 +4500,9 @@ select#superfish-1-select::after {
 div.responsive-menus.responsive-menus-0-0.absolute.responsified {
   position: absolute;
   top: 0px;
+  left: 0;
+  height: 100vh;
+  overflow: scroll;
 }
 div.responsive-menus.responsive-menus-0-0.absolute.responsified span.toggler {
   border-radius: 0px;

@@ -108,13 +108,20 @@ span.nolink > .sf-sub-indicator {
    	}
 }
 
-#block-superfish-1 {
+#block-responsive-dropdown-menus-main-menu {
+	float: left;
+}
+
+#block-superfish-1,
+ {
 	white-space: nowrap;
 	margin: 0 auto;
 	width: 400px;
 	padding-top: 1.4em;
 	position:relative;
 	text-align:center;
+	display: flex;
+    justify-content: space-between;
 		li {
 		@include horizontal-menu;
 			font-size: 1.5em;
@@ -244,6 +251,9 @@ select#superfish-1-select::after {
 div.responsive-menus.responsive-menus-0-0.absolute.responsified {
 	position: absolute;
 	top: 0px;
+	left: 0;
+	height: 100vh;
+    overflow: scroll;
 	span.toggler {
 		border-radius: 0px;
 		box-shadow: none;

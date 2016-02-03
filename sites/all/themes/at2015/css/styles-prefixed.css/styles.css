@@ -54,6 +54,12 @@ body {
 .region-navigation {
   max-width: 1200px;
   margin: 0 auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #page {
@@ -4201,6 +4207,11 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   z-index: 1000;
   height: 47px;
 }
+@media (max-width: 834px) {
+  .header {
+    display: none;
+  }
+}
 .header ul {
   margin: 0;
   padding: 0 1em;
@@ -4242,6 +4253,12 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   display: block !important;
   opacity: 1;
 }
+@media (max-width: 834px) {
+  .top-fixed {
+    opacity: 0;
+    display: none !important;
+  }
+}
 
 /*Logo Block*/
 #block-block-6 {
@@ -4276,6 +4293,15 @@ span.nolink > .sf-sub-indicator {
   transition: 0.4s ease;
   height: 70px;
 }
+@media (max-width: 834px) {
+  .fixed {
+    top: 0px;
+  }
+}
+
+#block-responsive-dropdown-menus-main-menu {
+  float: left;
+}
 
 #block-superfish-1 {
   white-space: nowrap;
@@ -4284,6 +4310,12 @@ span.nolink > .sf-sub-indicator {
   padding-top: 1.4em;
   position: relative;
   text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 #block-superfish-1 li {
   padding: 0;
@@ -4379,6 +4411,11 @@ span.nolink > .sf-sub-indicator {
 .block-search .form-text {
   width: 180px;
 }
+@media (max-width: 834px) {
+  .block-search {
+    display: none;
+  }
+}
 
 /* Add/Remove main menu items on sticky header and hamburger menu */
 .responsive-menus {
@@ -4411,6 +4448,9 @@ select#superfish-1-select::after {
 div.responsive-menus.responsive-menus-0-0.absolute.responsified {
   position: absolute;
   top: 0px;
+  left: 0;
+  height: 100vh;
+  overflow: scroll;
 }
 div.responsive-menus.responsive-menus-0-0.absolute.responsified span.toggler {
   border-radius: 0px;
