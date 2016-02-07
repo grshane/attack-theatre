@@ -4493,8 +4493,11 @@ select#superfish-1-select::after {
   font-family: FontAwesome;
 }
 
-.sf-accordion-toggle,
-.sf-clone-parent {
+.sf-accordion-toggle {
+  display: none;
+}
+
+li.sf-clone-parent {
   display: none;
 }
 
