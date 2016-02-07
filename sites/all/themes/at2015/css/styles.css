@@ -4498,7 +4498,7 @@ select#superfish-1-select::after {
 }
 
 li.sf-clone-parent {
-  display: none;
+  display: none !important;
 }
 
 div.responsive-menus.responsive-menus-0-0.absolute.responsified {
