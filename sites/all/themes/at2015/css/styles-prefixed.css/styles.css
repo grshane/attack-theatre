@@ -4446,7 +4446,7 @@ select#superfish-1-select::after {
 }
 
 li.sf-clone-parent {
-  display: none;
+  display: none !important;
 }
 
 div.responsive-menus.responsive-menus-0-0.absolute.responsified {
@@ -8300,6 +8300,15 @@ nav.slick__arrow button:last-of-type {
 }
 .con__button:last-of-type {
   margin-right: 0;
+}
+.con__button ~ a {
+  z-index: 1000;
+}
+
+@media (max-width: 835px) {
+  .views-field-field-date-range {
+    padding-top: 2em;
+  }
 }
 
 .views-field-field-flickr-albums {

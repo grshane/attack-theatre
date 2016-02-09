@@ -256,7 +256,6 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified {
 	position: absolute;
 	top: 0px;
 	left: 0;
-	height: 100vh;
     overflow: scroll;
 	span.toggler {
 		border-radius: 0px;
@@ -266,6 +265,11 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified {
 		font-size: 1em;
 		padding: 5px;
 	}
+
+}
+
+.responsive-menus.responsified.responsive-toggled.absolute {
+	height: 100vh;
 }
 
 div.responsive-menus.responsive-menus-0-0.absolute.responsified {

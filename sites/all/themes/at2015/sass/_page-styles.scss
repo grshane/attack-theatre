@@ -56,8 +56,17 @@
     &:last-of-type {
         margin-right: 0;
     }
+
+    ~ a {
+        z-index: 1000;
+    }
 }
 
+.views-field-field-date-range {
+    @media (max-width: 835px) {
+        padding-top: 2em;
+    }
+}
 .views-field-field-flickr-albums {
     clear: both;
 }
