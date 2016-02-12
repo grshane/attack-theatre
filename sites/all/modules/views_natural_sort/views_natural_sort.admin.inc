@@ -5,6 +5,17 @@
  */
 
 /**
+ * Views Natural Sort Admin Settings Page callback.
+ */
+function views_natural_sort_settings_page() {
+  $content = array(
+    'settings' => drupal_get_form('views_natural_sort_settings_form'),
+    'rebuild' => drupal_get_form('views_natural_sort_rebuild_index_form'),
+  );
+  return $content;
+}
+
+/**
  * Form callback for Views Natural Sort Rebuild Index page.
  *
  * Allows rebuilding index but should also allow things like limiting what node
@@ -14,9 +25,17 @@ function views_natural_sort_rebuild_index_form() {
   $form = array();
 
   $form['rebuild'] = array(
-    '#type' => 'submit',
-    '#value' => t('Rebuild title index'),
-    '#submit' => array('views_natural_sort_rebuild_index_submit'),
+    '#type' => 'fieldset',
+    '#title' => t('Incase of Emergency'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+
+    'button' => array(
+      '#type' => 'submit',
+      '#description' => 'Incase of an emergency.',
+      '#value' => t('Rebuild Index'),
+      '#submit' => array('views_natural_sort_rebuild_index_submit'),
+    ),
   );
 
   return $form;
@@ -50,7 +69,19 @@ function views_natural_sort_settings_form() {
     '#default_value' => variable_get('views_natural_sort_symbols_remove', ''),
     '#description' => t('Most symbols are ignored when performing a sort naturally. Those symbols you want ignored go here. Do not use a separator. EX: &$".'),
   );
-
+  $form['days_of_the_week_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => 'Sort days of the week and their abbreviations',
+    '#description' => "Checking this setting will allow sorting of days of the week in their proper order starting with the day of the week that is configurable by you and for each language.",
+    '#efault_value' => variable_get('views_natural_sort_days_of_the_week_enabled', FALSE),
+  );
+  $form['batch_items'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Items per Batch',
+    '#default_value' => variable_get('views_natural_sort_rebuild_items_per_batch', '500'),
+    '#description' => t('The number of items a batch process will work through at a given time. Raising this number will make the batch go quicker, however, raising it too high can cause timeouts and/or memory limit errors.'),
+    '#element_validate' => array('element_validate_integer_positive'),
+  );
   $form['save'] = array(
     '#type' => 'submit',
     '#value' => t('Save Settings'),
@@ -72,7 +103,8 @@ function views_natural_sort_settings_form_submit($form, &$form_state) {
   variable_set('views_natural_sort_beginning_words_remove', $beginning_words);
   variable_set('views_natural_sort_words_remove', $words);
   variable_set('views_natural_sort_symbols_remove', $symbols);
-
+  variable_set('views_natural_sort_days_of_the_week_enabled', $form_state['values']['days_of_the_week_enabled']);
+  variable_set('views_natural_sort_rebuild_items_per_batch', $form_state['values']['batch_items']);
   views_natural_sort_rebuild_index_submit();
 }
 
@@ -109,18 +141,14 @@ function views_natural_sort_rebuild_index($entry_type, &$context) {
   // Alias sandbox for easier referencing.
   $sandbox = &$context['sandbox'];
 
-  // Hook for modules to implement and return data that views_natural_sort can
-  // store as an index for that module's entries.
-  $index_entries = module_invoke_all('views_natural_sort_get_rebuild_data', $entry_type);
-
-  //TODO: this seems like it has the possiblity to produce unused data.
-  // Consider a delete of some sort.
-
   // Initialize our context.
   if (!isset($sandbox['max'])) {
+    // Hook for modules to implement and return data that views_natural_sort can
+    // store as an index for that module's entries.
+    $sandbox['entries'] = module_invoke_all('views_natural_sort_get_rebuild_data', $entry_type);
     $sandbox['progress'] = 0;
-    $sandbox['max'] = count($index_entries) - 1;
-    $sandbox['total'] = count($index_entries);
+    $sandbox['max'] = count($sandbox['entries']) - 1;
+    $sandbox['total'] = count($sandbox['entries']);
 
     $sandbox['current'] = 0;
 
@@ -130,7 +158,7 @@ function views_natural_sort_rebuild_index($entry_type, &$context) {
     }
   }
 
-  $results = array_slice($index_entries, $sandbox['current'], 100);
+  $results = array_slice($sandbox['entries'], $sandbox['current'], variable_get('views_natural_sort_rebuild_items_per_batch', '500'));
 
   $entity_type = '';
   $field = '';
