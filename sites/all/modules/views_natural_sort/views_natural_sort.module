@@ -123,8 +123,8 @@ function views_natural_sort_entity_update($entity, $type) {
  * This keep sour natural sort index clean.
  */
 function views_natural_sort_entity_delete($entity, $type) {
-  $entity_info = entity_get_info($entity_type);
-  $id_field = $entity_info['entity_keys']['id'];
+  $entity_info = entity_get_info($type);
+  $id_field = $entity_info['entity keys']['id'];
   views_natural_sort_remove($entry = array(
     'eid' => $entity->$id_field,
     'entity_type' => $type,
@@ -325,7 +325,7 @@ function views_natural_sort_get_supported_entity_properties() {
       }
       $properties = $info['properties'];
       foreach($properties as $property => $property_info) {
-        $property_info = array_merge($property_info, entity_property_info_defaults());
+        $property_info += entity_property_info_defaults();
         if ($property_info['type'] != 'text' || empty($property_info['schema field'])) {
           continue;
         }
