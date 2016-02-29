@@ -4453,7 +4453,6 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified {
   position: absolute;
   top: 0px;
   left: 0;
-  height: 100vh;
   overflow: scroll;
 }
 div.responsive-menus.responsive-menus-0-0.absolute.responsified span.toggler {
@@ -4463,6 +4462,10 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified span.toggler {
   text-align: left;
   font-size: 1em;
   padding: 5px;
+}
+
+.responsive-menus.responsified.responsive-toggled.absolute {
+  height: 100vh;
 }
 
 div.responsive-menus.responsive-menus-0-0.absolute.responsified .responsive-menus-simple {
