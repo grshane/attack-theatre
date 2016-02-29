@@ -34,7 +34,7 @@ body {
 .navigation {
   padding: 10px 0;
   margin: 0px auto;
-  background-color: #D7213D;
+  background-color: #1C8AC2;
   min-height: 70px;
   /*width: 100vw;*/
   width: 100%;
@@ -171,11 +171,11 @@ h5 {
 }
 
 a {
-  color: #D7213D;
+  color: #1C8AC2;
   text-decoration: none;
 }
 a:hover {
-  color: #28dec2;
+  color: #e3753d;
 }
 
 .views-field-title a {
@@ -187,17 +187,17 @@ a:hover {
 }
 
 #highlighted .views-field-title a {
-  color: #D7213D;
+  color: #1C8AC2;
 }
 #highlighted .views-field-title a:hover {
-  color: #28dec2;
+  color: #e3753d;
 }
 
 #main .views-field-title a {
   color: #000000;
 }
 #main .views-field-title a:hover {
-  color: #D7213D;
+  color: #1C8AC2;
 }
 
 p.heading {
@@ -209,7 +209,7 @@ p.heading {
   font-weight: normal;
   color: #ffffff;
   padding: .5em;
-  background-color: #D7213D;
+  background-color: #1C8AC2;
   text-align: center;
 }
 .button.big, .big.button--primary, .big.button--secondary {
@@ -4283,14 +4283,14 @@ div.region.region-blockgroup-collaborate-benefits.blockgroup:nth-child(3n+3) {
   font-weight: normal;
   color: #ffffff;
   padding: .5em;
-  background-color: #D7213D;
+  background-color: #1C8AC2;
   text-align: center;
   display: inline;
   vertical-align: middle;
   white-space: nowrap;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  background-color: #D7213D;
+  background-color: #1C8AC2;
 }
 .header ul li.first {
   float: left;
@@ -4421,7 +4421,7 @@ span.nolink > .sf-sub-indicator {
   padding: 10px;
 }
 #block-superfish-1 li ul li a:hover {
-  color: #D7213D;
+  color: #1C8AC2;
 }
 
 .sf-menu {
@@ -4451,7 +4451,7 @@ span.nolink > .sf-sub-indicator {
 }
 .block-search .form-submit, .block-search .form-text {
   background: #cccccc;
-  color: #D7213D;
+  color: #1C8AC2;
   border: 2px solid #cccccc;
   height: 30px;
   width: 180px;
@@ -4510,7 +4510,7 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified {
 div.responsive-menus.responsive-menus-0-0.absolute.responsified span.toggler {
   border-radius: 0px;
   box-shadow: none;
-  background-color: #D7213D;
+  background-color: #1C8AC2;
   text-align: left;
   font-size: 1em;
   padding: 5px;
@@ -4563,7 +4563,7 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified .responsive-menu
   padding: 10px;
 }
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-chevron-left, #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-chevron-right {
-  color: #D7213D;
+  color: #1C8AC2;
 }
 #block-views-0bf6eda9d8e95f392ccfdd21ad2e2ec9 .fa-circle {
   color: #ffffff;
@@ -4640,7 +4640,7 @@ div.responsive-menus.responsive-menus-0-0.absolute.responsified .responsive-menu
   margin-left: 1em;
   margin-top: 15px;
   float: left;
-  color: #D7213D;
+  color: #1C8AC2;
 }
 #block-views-calendar-block-4 .cal_social span {
   margin-right: .5em;
@@ -4871,7 +4871,7 @@ div.view-footer {
   list-style: none;
 }
 .section-attend .view .date-nav-wrapper .date-nav .date-prev .fa, .section-attend .view .date-nav-wrapper .date-nav .date-next .fa {
-  color: #D7213D;
+  color: #1C8AC2;
 }
 .section-attend .date-nav h2 {
   margin: 0px;
@@ -7897,22 +7897,22 @@ div.view-footer {
 }
 
 .calendar-calendar tr td.today {
-  background-color: #e34860;
+  background-color: #30a5e1;
 }
 .calendar-calendar tr td.today .mini-day-off {
-  color: #28dec2;
+  color: #e3753d;
 }
 
 .has-events a {
-  color: #28dec2;
+  color: #e3753d;
 }
 .has-events a:hover {
-  color: #08322c;
+  color: #49200b;
 }
 
 /*Styles to support the sticky footer */
 #footer {
-  border: 1px #D7213D;
+  border: 1px #1C8AC2;
   font-family: 'Fira', Helvetica, Arial, Verdana, sans-serif;
   line-height: auto;
   background-color: #333333;
@@ -8032,9 +8032,9 @@ category: Components - Buttons
 }
 
 .button--primary {
-  background-color: linear-gradient(#ea7486, #d7213d);
+  background-color: linear-gradient(#5cb9e8, #1c8ac2);
   color: #ffffff;
-  border: 1px solid #ab1a30;
+  border: 1px solid #166a95;
 }
 
 .button--secondary {
@@ -8087,7 +8087,7 @@ blockquote::before {
   position: relative;
   left: -40px;
   font-size: 88px;
-  color: #D7213D;
+  color: #1C8AC2;
 }
 
 .section {
@@ -8251,7 +8251,7 @@ nav.slick__arrow button {
   border: 0 !important;
   border: none;
   outline: 0;
-  color: #D7213D;
+  color: #1C8AC2;
   width: 2em;
   height: 2em;
   -moz-box-shadow: 3px 0px 5px 2px #e8e8e8;
@@ -8404,14 +8404,14 @@ nav.slick__arrow button:last-of-type {
   color: #000;
 }
 .views-field-field-related-content article h2 a:hover {
-  color: #D7213D;
+  color: #1C8AC2;
 }
 .views-field-field-related-content article + a {
-  color: #D7213D;
+  color: #1C8AC2;
   margin-top: -1em;
 }
 .views-field-field-related-content article + a:hover {
-  color: #28dec2;
+  color: #e3753d;
 }
 
 .views-field-field-youtube-videos,
@@ -8447,13 +8447,13 @@ nav.slick__arrow button:last-of-type {
 
 .event__title--calendar {
   margin: 0.3em 0 0 0;
-  color: #D7213D;
+  color: #1C8AC2;
 }
 .event__title--calendar a {
   font-size: 1.4em !important;
 }
 .event__title--calendar a:hover {
-  color: #ea7486;
+  color: #5cb9e8;
 }
 
 .event__body--calendar {
@@ -8472,7 +8472,7 @@ nav.slick__arrow button:last-of-type {
 }
 
 .event__category--calendar:hover {
-  color: #ea7486;
+  color: #5cb9e8;
 }
 
 @media (max-width: 1016px) {
@@ -8482,14 +8482,14 @@ nav.slick__arrow button:last-of-type {
 }
 
 .event__link--calenar:hover {
-  color: #ea7486;
+  color: #5cb9e8;
 }
 
 .press__listing a {
-  color: #D7213D;
+  color: #1C8AC2;
 }
 .press__listing a:hover {
-  color: #28dec2;
+  color: #e3753d;
 }
 
 @media (max-width: 1016px) {
