@@ -158,7 +158,7 @@ function style_settings_rewrite($path, $reset = FALSE) {
           'title' => t('Home » Administration » Reports'),
         ),
       ));
-      drupal_set_message(t('Style Settings CSS files have been rewritten successfully. Check !watchdog for details.', array('!watchdog' => $watchdog)), 'status', FALSE);
+      drupal_set_message(t('Style Settings CSS files have been rewritten successfully. Check !watchdog for details.', array('!watchdog' => $watchdog)), 'warning', FALSE);
       watchdog('style_settings', 'Rewritten successfully %path to %new_path', array('%path' => $path, '%new_path' => $new_path));
     }
   }
