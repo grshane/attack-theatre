@@ -302,6 +302,16 @@ $drupal_hash_salt = 'WgxjGMz7CdH3j3RvQnDoKJjRras1SN0hjQjUr8m2E3M';
     $base_url = 'https://'. $domain;
   }
 
+  // Require both SSL and www in live environment. Use an alternative, but not
+// in addition to the first method. Remove FALSE to use.
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
+  if ($_SERVER['HTTP_HOST'] == 'yoursite.com' || !isset($_SERVER['HTTP_X_SSL']) || $_SERVER['HTTP_X_SSL'] != 'ON' ) {
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: https://www.yoursite.com'. $_SERVER['REQUEST_URI']);
+    exit;
+  }
+}
+
 /**
  * PHP settings:
  *
