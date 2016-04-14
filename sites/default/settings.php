@@ -281,26 +281,26 @@ $drupal_hash_salt = 'WgxjGMz7CdH3j3RvQnDoKJjRras1SN0hjQjUr8m2E3M';
 # $base_url = 'http://www.example.com';  // NO trailing slash!
 # Set the $base_url parameter if we are running on Pantheon:
 
-  if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-    if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
-      $domain = 'dev-attack-theatre.pantheon.io';
-    }
-    if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
-      $domain = 'test-attack-theatre.pantheon.io';
-    }
-    if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
-      $domain = 'www.attacktheatre.com';
-    }
-    else {
-      # Fallback value for multidev or other environments.
-      # This covers environment-sitename.pantheon.io domains
-      # that are generated per environment.
-      $domain = $_SERVER['HTTP_HOST'];
-    }
+  // if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  //   if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev') {
+  //     $domain = 'dev-attack-theatre.pantheon.io';
+  //   }
+  //   if ($_ENV['PANTHEON_ENVIRONMENT'] === 'test') {
+  //     $domain = 'test-attack-theatre.pantheon.io';
+  //   }
+  //   if ($_ENV['PANTHEON_ENVIRONMENT'] === 'live') {
+  //     $domain = 'www.attacktheatre.com';
+  //   }
+  //   else {
+  //     # Fallback value for multidev or other environments.
+  //     # This covers environment-sitename.pantheon.io domains
+  //     # that are generated per environment.
+  //     $domain = $_SERVER['HTTP_HOST'];
+  //   }
 
-    # This global variable determines the base for all URLs in Drupal.
-    $base_url = 'https://'. $domain;
-  }
+  //   # This global variable determines the base for all URLs in Drupal.
+  //   $base_url = 'https://'. $domain;
+  // }
 
 // Require HTTPS.
 // Check if Drupal is running via command line
