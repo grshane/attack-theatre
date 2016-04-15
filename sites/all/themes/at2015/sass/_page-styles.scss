@@ -53,13 +53,14 @@
     display: inline-block;
     margin: -0.93em 1em;
     position: static !important;
-    &:last-of-type {
-        margin-right: 0;
-    }
-    @media (min-width: 800px) {
+    @media (max-width: 800px) {
         width: 100%;
         margin: 0.5em 1em;
     }
+    &:last-of-type {
+        margin-right: 0;
+    }
+
     ~ a {
         z-index: 1000;
     }

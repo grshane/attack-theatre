@@ -8343,14 +8343,14 @@ nav.slick__arrow button:last-of-type {
   margin: -0.93em 1em;
   position: static !important;
 }
-.con__button:last-of-type {
-  margin-right: 0;
-}
-@media (min-width: 800px) {
+@media (max-width: 800px) {
   .con__button {
     width: 100%;
     margin: 0.5em 1em;
   }
+}
+.con__button:last-of-type {
+  margin-right: 0;
 }
 .con__button ~ a {
   z-index: 1000;
