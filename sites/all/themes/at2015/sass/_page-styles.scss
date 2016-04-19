@@ -48,13 +48,13 @@
 }
 
 .con__button {
-    width: 7em;
+    width: 7em !important;
     float: right;
     display: inline-block;
     margin: -0.93em 1em;
     position: static !important;
     @media (max-width: 800px) {
-        width: 100%;
+        width: 100% !important;
         margin: 0.5em 1em;
     }
     &:last-of-type {

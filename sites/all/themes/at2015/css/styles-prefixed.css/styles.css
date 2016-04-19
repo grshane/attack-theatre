@@ -8064,6 +8064,163 @@ blockquote::before {
   color: #1C8AC2;
 }
 
+#cboxLoadedContent .main-feature {
+  height: 0 !important;
+}
+
+.page__subhead {
+  font-size: 2em;
+  color: #707070;
+  font-weight: 700;
+}
+
+.page-taxonomy article {
+  padding: 1em 0.5em;
+  background-color: #e8e8e8;
+  margin-bottom: 1em;
+}
+.page-taxonomy article .node-title {
+  margin-top: 0;
+}
+.page-taxonomy .feed-icon {
+  display: none;
+}
+
+.section-donate-attack-theatre .views-field-views-conditional-2,
+.section-sign-our-newsletter .views-field-views-conditional-2 {
+  display: none;
+}
+
+.info h2 {
+  display: none !important;
+}
+
+.houseAnnouncement__wrapper {
+  background-color: #e8e8e8;
+  padding: 1em 0.5em;
+}
+
+.home--featured {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #e8e8e8;
+  padding: 1em 0.5em;
+}
+
+.con__button {
+  width: 7em;
+  float: right;
+  display: inline-block;
+  margin: -0.93em 1em;
+  position: static !important;
+}
+@media (max-width: 800px) {
+  .con__button {
+    width: 100%;
+    margin: 0.5em 1em;
+  }
+}
+.con__button:last-of-type {
+  margin-right: 0;
+}
+.con__button ~ a {
+  z-index: 1000;
+}
+
+@media (max-width: 835px) {
+  .views-field-field-date-range {
+    padding-top: 2em;
+  }
+}
+
+.views-field-field-flickr-albums {
+  clear: both;
+}
+
+.flickr-citation {
+  display: none;
+}
+
+.press__listing ul li:before {
+  content: '\2713';
+  margin: 0 1em;
+}
+
+.press__listing ul,
+.views-field-field-related-content ul {
+  list-style: none;
+}
+.press__listing ul li,
+.views-field-field-related-content ul li {
+  line-height: 2.5em;
+}
+
+.views-field-field-related-content .item-list {
+  margin-left: 0;
+}
+.views-field-field-related-content ul {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+}
+.views-field-field-related-content li {
+  display: inline-block;
+  width: 30%;
+}
+.views-field-field-related-content article {
+  background: #e8e8e8;
+  padding: 0.5em;
+  color: #000;
+  line-height: 1.7em;
+  height: 320px;
+}
+.views-field-field-related-content article h2 {
+  margin: 0;
+}
+.views-field-field-related-content article h2 a {
+  color: #000;
+}
+.views-field-field-related-content article h2 a:hover {
+  color: #1C8AC2;
+}
+.views-field-field-related-content article + a {
+  color: #1C8AC2;
+  margin-top: -1em;
+}
+.views-field-field-related-content article + a:hover {
+  color: #e3753d;
+}
+
+.views-field-field-youtube-videos,
+.views-field-field-flickr-albums {
+  clear: both;
+}
+.views-field-field-youtube-videos .field-content,
+.views-field-field-flickr-albums .field-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.views-field-field-youtube-videos .file-video,
+.views-field-field-flickr-albums .file-video {
+  width: 30%;
+}
+
+.flickr-citation {
+  display: none;
+}
+
 .section {
   width: 150px;
   height: auto;
@@ -8248,157 +8405,6 @@ nav.slick__arrow button:last-of-type {
   display: block;
   margin: 0 auto;
   padding: 0 .5em;
-}
-
-#cboxLoadedContent .main-feature {
-  height: 0 !important;
-}
-
-.page__subhead {
-  font-size: 2em;
-  color: #707070;
-  font-weight: 700;
-}
-
-.page-taxonomy article {
-  padding: 1em 0.5em;
-  background-color: #e8e8e8;
-  margin-bottom: 1em;
-}
-.page-taxonomy article .node-title {
-  margin-top: 0;
-}
-.page-taxonomy .feed-icon {
-  display: none;
-}
-
-.section-donate-attack-theatre .views-field-views-conditional-2,
-.section-sign-our-newsletter .views-field-views-conditional-2 {
-  display: none;
-}
-
-.info h2 {
-  display: none !important;
-}
-
-.houseAnnouncement__wrapper {
-  background-color: #e8e8e8;
-  padding: 1em 0.5em;
-}
-
-.home--featured {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #e8e8e8;
-  padding: 1em 0.5em;
-}
-
-.con__button {
-  width: 7em !important;
-  float: right;
-  display: inline-block;
-  margin: -0.93em 1em;
-  position: static !important;
-}
-.con__button:last-of-type {
-  margin-right: 0;
-}
-.con__button ~ a {
-  z-index: 1000;
-}
-
-@media (max-width: 835px) {
-  .views-field-field-date-range {
-    padding-top: 2em;
-  }
-}
-
-.views-field-field-flickr-albums {
-  clear: both;
-}
-
-.flickr-citation {
-  display: none;
-}
-
-.press__listing ul li:before {
-  content: '\2713';
-  margin: 0 1em;
-}
-
-.press__listing ul,
-.views-field-field-related-content ul {
-  list-style: none;
-}
-.press__listing ul li,
-.views-field-field-related-content ul li {
-  line-height: 2.5em;
-}
-
-.views-field-field-related-content .item-list {
-  margin-left: 0;
-}
-.views-field-field-related-content ul {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0;
-}
-.views-field-field-related-content li {
-  display: inline-block;
-  width: 30%;
-}
-.views-field-field-related-content article {
-  background: #e8e8e8;
-  padding: 0.5em;
-  color: #000;
-  line-height: 1.7em;
-  height: 320px;
-}
-.views-field-field-related-content article h2 {
-  margin: 0;
-}
-.views-field-field-related-content article h2 a {
-  color: #000;
-}
-.views-field-field-related-content article h2 a:hover {
-  color: #1C8AC2;
-}
-.views-field-field-related-content article + a {
-  color: #1C8AC2;
-  margin-top: -1em;
-}
-.views-field-field-related-content article + a:hover {
-  color: #e3753d;
-}
-
-.views-field-field-youtube-videos,
-.views-field-field-flickr-albums {
-  clear: both;
-}
-.views-field-field-youtube-videos .field-content,
-.views-field-field-flickr-albums .field-content {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-}
-.views-field-field-youtube-videos .file-video,
-.views-field-field-flickr-albums .file-video {
-  width: 30%;
-}
-
-.flickr-citation {
-  display: none;
 }
 
 .event__wrapper--calendar {

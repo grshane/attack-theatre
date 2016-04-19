@@ -8337,7 +8337,7 @@ nav.slick__arrow button:last-of-type {
 }
 
 .con__button {
-  width: 7em;
+  width: 7em !important;
   float: right;
   display: inline-block;
   margin: -0.93em 1em;
@@ -8345,7 +8345,7 @@ nav.slick__arrow button:last-of-type {
 }
 @media (max-width: 800px) {
   .con__button {
-    width: 100%;
+    width: 100% !important;
     margin: 0.5em 1em;
   }
 }
