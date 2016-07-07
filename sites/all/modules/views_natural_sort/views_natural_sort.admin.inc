@@ -142,6 +142,9 @@ function views_natural_sort_rebuild_index($entry_type, &$context) {
   $sandbox = &$context['sandbox'];
 
   // Initialize our context.
+  if (!isset($context['results']['entries'])) {
+    $context['results']['entries'] = 0;
+  }
   if (!isset($sandbox['max'])) {
     // Hook for modules to implement and return data that views_natural_sort can
     // store as an index for that module's entries.
