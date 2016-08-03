@@ -8,7 +8,7 @@ var reload      = browserSync.reload;
 gulp.task('browser-sync', function() {
   browserSync.init({
    // Change as required
-   proxy: "http://www.attackdev.local",
+   proxy: "http://attack-theatre.kbox",
    });
 });
 
