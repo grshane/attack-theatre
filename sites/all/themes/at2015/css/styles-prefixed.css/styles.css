@@ -2089,7 +2089,7 @@ tr.selected td {
 }
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1470777667');
+  background-image: url('../images/progress.gif?1473996079');
 }
 
 div.region.region-blockgroup-collaborate-benefits.blockgroup img {
@@ -8035,7 +8035,10 @@ blockquote {
   padding-right: 3em;
   padding-left: 4em;
   padding-bottom: 1.5em;
-  margin: 0.7em 3em;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
+  margin-left: 3em;
+  margin-right: 3em;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -8045,6 +8048,10 @@ blockquote {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
 }
 blockquote p:first-of-type {
   font-size: 1.3em;
