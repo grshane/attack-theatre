@@ -2,11 +2,17 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    @media (max-width: 1016px) {
+      flex-direction: column;
+    }
 }
 .event__content--calendar {
     padding: 1em 0.5em;
     width: 65%;
-    height: 250px;
+    min-height: 250px;
+    @media (max-width: 1016px) {
+      width: 90%;
+    }
 }
 .event__title--calendar {
     margin: 0.3em 0 0 0;
@@ -44,7 +50,7 @@
 
 .event__body--calendar {
     @media (max-width: 1016px) {
-        height: 42%;
+        height: auto;
     }
 }
 
