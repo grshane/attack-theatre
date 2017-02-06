@@ -111,5 +111,12 @@
       });
 
     </script>
+    <script type='text/javascript'>
+			$(document).bind('cbox_open', function () {
+				$('html').css({ overflow: 'hidden' });
+			}).bind('cbox_closed', function () {
+				$('html').css({ overflow: 'auto' });
+			});
+    </script>
 </body>
 </html>
