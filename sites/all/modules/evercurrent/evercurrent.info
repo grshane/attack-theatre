@@ -1,0 +1,13 @@
+name = Evercurrent
+description = Connect your site to the Evercurrent server
+dependencies[] = update
+package = Evercurrent
+core = 7.x
+version = 7.x-1.x-dev
+
+; Information added by Drupal.org packaging script on 2017-02-24
+version = "7.x-1.5"
+core = "7.x"
+project = "evercurrent"
+datestamp = "1487895187"
+
