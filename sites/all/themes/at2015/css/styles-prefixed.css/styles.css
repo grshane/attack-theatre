@@ -8426,7 +8426,7 @@ nav.slick__arrow button:last-of-type {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-@media (min-width: 50em) {
+@media (max-width: 1016px) {
   .event__wrapper--calendar {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
@@ -8438,6 +8438,11 @@ nav.slick__arrow button:last-of-type {
   padding: 1em 0.5em;
   width: 65%;
   min-height: 250px;
+}
+@media (max-width: 1016px) {
+  .event__content--calendar {
+    width: 90%;
+  }
 }
 
 .event__title--calendar {
@@ -8472,7 +8477,7 @@ nav.slick__arrow button:last-of-type {
 
 @media (max-width: 1016px) {
   .event__body--calendar {
-    height: 42%;
+    height: auto;
   }
 }
 
